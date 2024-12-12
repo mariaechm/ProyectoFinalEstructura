@@ -1,0 +1,11 @@
+{% extends 'blank.html' %}
+{% block content %}
+  <form action="/persona/delete/send" method="post">
+    <input type="number" name="id" value="{{id}}" hidden> 
+    <h2>Seguro que quiere eliminar?</h2>
+    <a href="/persona/list">
+      <button>Volver</button>
+    </a>
+    <button type="submit">eliminar</button>
+  </form>
+{% endblock %}
