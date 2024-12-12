@@ -1,5 +1,6 @@
 package com.example.controller.dao.implement;
 
+import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.Scanner;
@@ -11,7 +12,7 @@ public abstract class AdapterDao<T> implements InterfazDao<T> {
     
     private Class<?> clazz;
     protected Gson g;
-    public static String URL = "media/";
+    public static String URL = "./media/";
     
     //CONSTRUCTOR VACIO
     public AdapterDao() {}
@@ -88,12 +89,21 @@ public abstract class AdapterDao<T> implements InterfazDao<T> {
 
     //LEER EL ARCHIVO JSON
     private String readFile() throws Exception {
-        Scanner in = new Scanner(new FileReader(URL + clazz.getSimpleName() + ".json"));
+        BufferedReader reader = new BufferedReader(new FileReader(URL + clazz.getSimpleName() + ".json"));
+        StringBuilder sb = new StringBuilder();
+        String line;
+        while ((line = reader.readLine()) != null) {
+            sb.append(line).append("\n");
+            
+        }
+        reader.close();
+        return sb.toString().trim();
+        /* Scanner in = new Scanner(new FileReader(URL + clazz.getSimpleName() + ".json"));
         StringBuilder sb = new StringBuilder();
         while (in.hasNext()) {
             sb.append(in.next());
         }
         in.close();
-        return sb.toString();
+        return sb.toString(); */
     }
 }

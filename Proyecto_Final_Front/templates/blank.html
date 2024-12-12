@@ -31,9 +31,9 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Rutinas de<br><center>Entrenamiento</center></a>
                     <div class="dropdown-menu bg-transparent border-0">
-                        <a href="splits.html" class="dropdown-item">Splits</a>
-                        <a href="/fragmento" class="dropdown-item">Rutinas</a>
-                        <a href="element.html" class="dropdown-item">Ejercicios</a>
+                        <a href="/admin/splits/list" class="dropdown-item">Splits</a>
+                        <a href="/admin/rutinas/list" class="dropdown-item">Rutinas</a>
+                        <a href="/admin/ejercicios/list" class="dropdown-item">Ejercicios</a>
                     </div>
                 </div>
                 <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
@@ -150,11 +150,13 @@
 
         <!-- Blank Start -->
         <div class="container-fluid pt-4 px-4">
-            <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
+            {% block content%}
+            {% endblock%}
+            <!-- <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
                 <div class="col-md-6 text-center">
                     <h3>This is blank page</h3>
                 </div>
-            </div>
+            </div> -->
         </div>
         <!-- Blank End -->
 
