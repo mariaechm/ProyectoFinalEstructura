@@ -1,7 +1,5 @@
 package com.example.controller.dao.services;
 
-import java.util.HashMap;
-
 import com.example.controller.dao.PersonaDao;
 import com.example.models.Persona;
 import com.example.models.enumerator.Genero;
@@ -42,11 +40,15 @@ public class PersonaServices {
         return this.obj.deletePersona(id);
     }
 
-    public HashMap<String,Object> enumerations() {
-        HashMap<String, Object> map = new HashMap<>();
-        map.put("tipos", TipoIdentificacion.values());
-        map.put("roles", Rol.values());
-        map.put("generos", Genero.values());
-        return map;
+    public Genero[] generos() {
+        return Genero.values();
+    }
+
+    public Rol[] roles() {
+        return Rol.values();
+    }
+    
+    public TipoIdentificacion[] tiposIdentificacion() {
+        return TipoIdentificacion.values();
     }
 }

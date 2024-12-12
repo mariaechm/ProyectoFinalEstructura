@@ -8,7 +8,6 @@ public class LinkedList<E> {
     private Node<E> header;
     private Node<E> last;
     private Integer size;
-    Class<?> clazz;
 
     // ORDENAMIENTO
     public static Integer ASC = 1;
@@ -19,11 +18,6 @@ public class LinkedList<E> {
         this.header = null;
         this.last = null;
         this.size = 0;
-    }
-
-    public LinkedList(Class<?> claxs) {
-        this();
-        this.clazz = claxs;
     }
 
     // GETTERS Y SETTERS
@@ -221,14 +215,17 @@ public class LinkedList<E> {
     // CONVERTIR LA LISTA A UN ARREGLO
     @SuppressWarnings("unchecked")
     public E[] toArray() {
-        Class<?> clase = (this.clazz != null) ? this.clazz : this.header.getInfo().getClass();  
-        E[] array = (E[])Array.newInstance(clase, this.size);
-        Node<E> node = this.header;
-        for(int i = 0; i < this.size; i++) {
-            array[i] = node.getInfo();
-            node = node.getNext();
+        E[] matrix = null;
+        if (!isEmpty()) {
+            Class<?> clazz = header.getInfo().getClass(); // Class es una clase de java que permite obtener la clase de un objeto
+            matrix = (E[]) java.lang.reflect.Array.newInstance(clazz, size); // Casteo del arr de la clase que obtuve
+            Node<E> aux = header;
+            for (int i = 0; i < this.size; i++) {
+                matrix[i] = aux.getInfo();
+                aux = aux.getNext();
+            }
         }
-        return array;
+        return matrix;
     }
 
     // CONVERTIR UN ARREGLO A UNA LISTA

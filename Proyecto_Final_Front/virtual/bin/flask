@@ -1,4 +1,6 @@
-#!/home/pccdva/proyecto-estructuras-datos/ProyectoFinalEstructura/Proyecto_Final_Front/virtual/bin/python3
+#!/bin/sh
+'''exec' /home/gabriel/Escritorio/EstructuraDatos/SistemaGestionGimnasio/SistemaGestionUsuariosYRutinasDeGimnasio/Proyecto_Final_Front/virtual/bin/python3 "$0" "$@"
+' '''
 # -*- coding: utf-8 -*-
 import re
 import sys

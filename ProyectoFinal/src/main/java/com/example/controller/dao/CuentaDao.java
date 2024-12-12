@@ -1,7 +1,6 @@
 package com.example.controller.dao;
 
 import com.example.controller.dao.implement.AdapterDao;
-import com.example.controller.dao.implement.JsonFileManager;
 import com.example.models.Cuenta;
 
 public class CuentaDao extends AdapterDao<Cuenta> {
@@ -28,7 +27,7 @@ public class CuentaDao extends AdapterDao<Cuenta> {
     }
 
     public Cuenta saveCuenta() throws Exception {
-        this.getCuenta().setId(JsonFileManager.readAndUpdateCurrentIdOf(className));
+        this.getCuenta().setId(listAll().getSize()+1);
         persist(cuenta);
         return this.cuenta;
     }

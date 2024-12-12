@@ -7,13 +7,9 @@ def create_app():
         from routes.router import router
         from routes.router_ejercicio import router_ejercicio
         from routes.router_rutina import router_rutina
-        from routes.routerEstadistica import router_estadistica
-
-        from routes.router_persona import router
-        
-        
         app.register_blueprint(router)
         app.register_blueprint(router_ejercicio)
-        app.register_blueprint(router_rutina)         
-        app.register_blueprint(router_estadistica)       
+        app.register_blueprint(router_rutina)
+        from routes.routerEstadistica import router_estadistica
+        app.register_blueprint(router_estadistica)
     return app
