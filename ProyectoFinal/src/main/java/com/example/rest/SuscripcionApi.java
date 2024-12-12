@@ -2,9 +2,6 @@ package com.example.rest;
 
 import java.util.HashMap;
 
-import javax.validation.Valid;
-import javax.validation.Validation;
-import javax.validation.ValidatorFactory;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -18,18 +15,10 @@ import javax.ws.rs.core.Response.Status;
 
 import com.example.controller.tda.list.LinkedList;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.reflect.TypeToken;
-
-import java.io.FileInputStream;
-
 import com.example.controller.dao.services.SuscripcionServices;
 import com.example.models.enumerator.TipoSuscripcion;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.example.controller.dao.SuscripcionDao;
-import com.example.models.Suscripcion;
-import com.example.models.*;
 
 @Path("Suscripcion")
 public class SuscripcionApi {
@@ -37,7 +26,7 @@ public class SuscripcionApi {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllEstadistica() throws Exception{
-        HashMap map = new HashMap<>();
+        HashMap<String,Object> map = new HashMap<>();
         SuscripcionServices ps = new SuscripcionServices();
         map.put("msg", "OK");
         map.put("data", ps.listAll().toArray());
