@@ -33,6 +33,11 @@ public class EstadisticaDao extends AdapterDao<Estadistica> {
         this.listAll = listAll();
         return true;
     }
+    public Boolean update() throws Exception{
+        this.merge(getEstadistica(),getEstadistica().getId());
+        this.listAll = listAll();
+        return true;
+    }
 
     
 }
