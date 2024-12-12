@@ -1,4 +1,3 @@
-/* 
 package com.example.controller.dao.services;
 
 import com.example.controller.dao.PersonaDao;
@@ -19,40 +18,37 @@ public class PersonaServices {
         return this.obj.getPersona();
     }
 
-    public void setPersona(Persona persona) {
-        this.obj.setPersona(persona);
+    public Persona[] getAllPersonas() {
+        return this.obj.getAllPersonas();
     }
 
     public Persona getPersonaById(Integer id) throws Exception {
         return this.obj.getPersonaById(id);
     }
 
-    public String getPersonaJsonById(Integer id) throws Exception {
-        return this.obj.getPersonaJsonById(id);
+    public Persona savePersona(String json) throws Exception {
+        this.obj.personaFromJson(json);
+        return this.obj.savePersona();
     }
 
-    public Boolean save() throws Exception {
-        return this.obj.save();
+    public Persona updatePersona(String json) throws Exception {
+        this.obj.personaFromJson(json);
+        return this.obj.updatePersona();
     }
 
-    public void update(Persona persona) throws Exception {
-        this.obj.updatePersona(persona);
-    }
-
-    public void delete(Integer id) throws Exception {
-        this.obj.deletePersona(id);
+    public Persona deletePersona(Integer id) throws Exception {
+        return this.obj.deletePersona(id);
     }
 
     public Genero[] generos() {
-        return this.obj.generos();
+        return Genero.values();
     }
 
     public Rol[] roles() {
-        return this.obj.roles();
+        return Rol.values();
     }
     
     public TipoIdentificacion[] tiposIdentificacion() {
-        return this.obj.tiposIdentificaion();
+        return TipoIdentificacion.values();
     }
 }
- */
