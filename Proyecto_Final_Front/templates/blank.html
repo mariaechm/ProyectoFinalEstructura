@@ -31,12 +31,20 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Rutinas de<br><center>Entrenamiento</center></a>
                     <div class="dropdown-menu bg-transparent border-0">
-                        <a href="splits.html" class="dropdown-item">Splits</a>
-                        <a href="/fragmento" class="dropdown-item">Rutinas</a>
-                        <a href="element.html" class="dropdown-item">Ejercicios</a>
+                        <a href="/admin/splits/list" class="dropdown-item">Splits</a>
+                        <a href="/admin/rutinas/list" class="dropdown-item">Rutinas</a>
+                        <a href="/admin/ejercicios/list" class="dropdown-item">Ejercicios</a>
                     </div>
                 </div>
-                <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-table me-2"></i>Estadistica<br><center>Usuarios</center></a>
+                    <div class="dropdown-menu bg-transparent border-0">
+                        <a href="/admin/estadistica" class="dropdown-item"><i class="fa fa-keyboard me-2"></i>Estadistica</a>
+                        <a href="/admin/estadistica/registro" class="dropdown-item"><i class="fa fa-keyboard me-2"></i>Registro Estadistica</a>
+                        <a href="/admin/estadistica" class="dropdown-item"><i class="fa fa-keyboard me-2"></i>Estadistica</a>
+                    </div>
+                </div>
+                <a href="form.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Estadistica</a>
                 <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
                 <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
                 <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
@@ -150,11 +158,18 @@
 
         <!-- Blank Start -->
         <div class="container-fluid pt-4 px-4">
-            <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
+<<<<<<< HEAD
+            {% block content%}
+            {% endblock%}
+=======
+            {% block content%}	
+            {% endblock %}
+>>>>>>> origin/moduloEstadistica
+            <!-- <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
                 <div class="col-md-6 text-center">
                     <h3>This is blank page</h3>
                 </div>
-            </div>
+            </div> -->
         </div>
         <!-- Blank End -->
 
