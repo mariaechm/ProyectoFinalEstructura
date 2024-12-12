@@ -6,8 +6,9 @@ import com.example.models.enumerator.ObjetivoRutina;
 public class Rutina {
     private Integer id;
     private String nombreRutina;
+    private String descripcion;
     private int nroEjercicios;
-    private int idEjercicio;
+    private Integer idEjercicio;
 
     private GrupoMuscularObjetivo grupoMuscularObjetivo;
     private ObjetivoRutina objetivoRutina;
@@ -33,6 +34,14 @@ public class Rutina {
         this.nombreRutina = nombreRutina;
     }
 
+    public String getDescripcion() {
+        return this.descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+    
     public int getNroEjercicios() {
         return this.nroEjercicios;
     }
@@ -41,7 +50,7 @@ public class Rutina {
         this.nroEjercicios = nroEjercicios;
     }
 
-    public int getIdEjercicio() {
+    public Integer getIdEjercicio() {
         return this.idEjercicio;
     }
 
