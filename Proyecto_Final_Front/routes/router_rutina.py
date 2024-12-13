@@ -24,7 +24,8 @@ def view_register_rutina():
     r1 = requests.get("http://localhost:8080/api/rutinas/grupoMuscularObjetivo")
     print(r1.json())
     data1 = r1.json()["data"]
-    return render_template('fragmento/rutinas/registro.html', list = data, list1 = data1)
+    personas = requests.get('http://localhost:8080/api/persona/list').json()['data']
+    return render_template('fragmento/rutinas/registro.html', list = data, list1 = data1,personas=personas)
 
 
 @router_rutina.route('/admin/rutinas/save', methods=['POST'])
@@ -36,11 +37,13 @@ def save_rutina():
         "nombreRutina": form['nombreR'],
         "descripcion": form['descrip'],
         "nroEjercicios": form['nroE'],
-        #"idEjercicio": form['idE'],
+        "idEjercicio": form.getlist('hola'),
         "grupoMuscularObjetivo": form['grupoMuscular'],
         "objetivoRutina": form['objR'],
     }
 
+    print("***********************************************8")
+    print(request.form.getlist('hola'))
     r = requests.post("http://localhost:8080/api/rutinas/save", data=json.dumps(dataF), headers=headers)
     print(r.json())
     dat = r.json()

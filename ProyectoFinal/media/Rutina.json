@@ -1,1 +1,68 @@
-[{"id":1,"nombreRutina":"Tom Platz Leg Day","descripcion":"Rutina de pierna del culturista Tom Platz","nroEjercicios":6,"grupoMuscularObjetivo":"PIERNA","objetivoRutina":"HIPERTROFIA"},{"id":2,"nombreRutina":"Arnold Chest Day","descripcion":"Rutina de pecho del culturista Arnold Schwarzenegger","nroEjercicios":8,"idEjercicio":[1,2,7,8],"grupoMuscularObjetivo":"PECHO","objetivoRutina":"HIPERTROFIA"},{"id":3,"nombreRutina":"Dorian Yates Chest Day","descripcion":"Rutina de pecho del culturista Dorian Yates","nroEjercicios":4,"idEjercicio":[2,4,7,8],"grupoMuscularObjetivo":"PECHO","objetivoRutina":"HIPERTROFIA"},{"id":4,"nombreRutina":"Rutina de brazo de Cbum","descripcion":"Rutina de ejercicios del culturista Cbum","nroEjercicios":4,"grupoMuscularObjetivo":"BRAZO","objetivoRutina":"HIPERTROFIA"}]
+[
+  {
+    "id": 1,
+    "nombreRutina": "Tom Platz Leg Day",
+    "descripcion": "Rutina de pierna del culturista Tom Platz",
+    "nroEjercicios": 6,
+    "grupoMuscularObjetivo": "PIERNA",
+    "objetivoRutina": "HIPERTROFIA"
+  },
+  {
+    "id": 2,
+    "nombreRutina": "Arnold Chest Day",
+    "descripcion": "Rutina de pecho del culturista Arnold Schwarzenegger",
+    "nroEjercicios": 8,
+    "idEjercicio": [
+      1,
+      2,
+      7,
+      8
+    ],
+    "grupoMuscularObjetivo": "PECHO",
+    "objetivoRutina": "HIPERTROFIA"
+  },
+  {
+    "id": 3,
+    "nombreRutina": "Dorian Yates Chest Day",
+    "descripcion": "Rutina de pecho del culturista Dorian Yates",
+    "nroEjercicios": 4,
+    "idEjercicio": [
+      2,
+      4,
+      7,
+      8
+    ],
+    "grupoMuscularObjetivo": "PECHO",
+    "objetivoRutina": "HIPERTROFIA"
+  },
+  {
+    "id": 4,
+    "nombreRutina": "Rutina de brazo de Cbum",
+    "descripcion": "Rutina de ejercicios del culturista Cbum",
+    "nroEjercicios": 4,
+    "grupoMuscularObjetivo": "BRAZO",
+    "objetivoRutina": "HIPERTROFIA"
+  },
+  {
+    "id": 5,
+    "nombreRutina": "ss",
+    "descripcion": "sdfsdf",
+    "nroEjercicios": 4,
+    "grupoMuscularObjetivo": "PIERNA",
+    "objetivoRutina": "HIPERTROFIA"
+  },
+  {
+    "id": 6,
+    "nombreRutina": "xd",
+    "descripcion": "xdxd",
+    "nroEjercicios": 3,
+    "idEjercicio": [
+      2,
+      3,
+      4,
+      5
+    ],
+    "grupoMuscularObjetivo": "PIERNA",
+    "objetivoRutina": "HIPERTROFIA"
+  }
+]

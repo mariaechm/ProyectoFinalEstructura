@@ -43,6 +43,12 @@
                 <textarea type="text" class="form-control" name="descrip" style="height: 150px;"></textarea>
             </div>
 
+            <select name="hola" class="form-select" multiple aria-label="multiple select example">
+                {% for persona in personas %}
+                    <option value="{{ persona.id }}">{{ persona.nombre }}</option>
+                {% endfor %}
+            </select>
+
             <!-- <div class="col-sm-6">
                 <label for="validationCustom02" class="form-label">Ejercicios</label>
                 <input type="text" class="form-control" name="idE">
