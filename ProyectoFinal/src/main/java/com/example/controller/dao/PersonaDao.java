@@ -56,6 +56,7 @@ public class PersonaDao extends AdapterDao<Persona> {
     // VALIDADORES =============================================================================
 
     public Boolean isThereAllFields() {
+        if(this.getPersona().getId() == null) return false;
         if(this.getPersona().getApellido() == null) return false;
         if(this.getPersona().getNombre() == null) return false;
         if(this.getPersona().getCelular() == null) return false;
@@ -170,5 +171,5 @@ public class PersonaDao extends AdapterDao<Persona> {
     }
 
     // BÚSQUEDA Y ORDENACIÓN ===================================================================
-    
+
 }
