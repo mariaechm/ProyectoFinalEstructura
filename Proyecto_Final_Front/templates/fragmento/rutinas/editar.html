@@ -1,0 +1,64 @@
+{% extends 'blank.html' %}
+
+{% block content %}
+
+<div class="pagetitle">
+    <h1>Información de Rutinas</h1>
+</div>
+
+<div class="col-12">
+    <div class="bg-secondary rounded h-100 p-4">
+        <h6 class="mb-4">Edición</h6>
+        <form class="row g-3 needs-validation" method="POST" action="/admin/rutinas/update" novalidate="">
+            <input type="hidden" value="{{ rutina.id}}" name="idR"/>
+            <div class="col-sm-6">
+                <label for="validationCustom02" class="form-label">Nombre de la Rutina</label>
+                <input type="text" class="form-control" name="nombreR" required value="{{ rutina.nombreRutina }}">
+            </div>
+
+            <div class="col-sm-6">
+                <label for="validationCustom02" class="form-label">Número de Ejercicios</label>
+                <input type="number" step="1" min="1" class="form-control" name="nroE" required value="{{ rutina.nroEjercicios }}">
+            </div>
+            
+            <div class="col-sm-6">
+                <label for="lbltipo" class="form-label">Objetivo de la Rutina</label>
+                <select class="form-select mb-3" name="objR" required>
+                    {% for item in list %}
+                        <option {% if item == rutina.objetivoRutina%} selected {%endif%} value="{{ item }}">{{ item }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="col-sm-6">
+                <label for="lbltipo" class="form-label">Grupo Muscular Objetivo</label>
+                <select class="form-select mb-3" required name="grupoMuscular">
+                    {% for item in list1 %}
+                        <option {% if item == rutina.grupoMuscularObjetivo%} selected {%endif%} value="{{ item }}">{{ item }}</option>
+                    {% endfor %}
+                </select>
+            </div>        
+
+            <div class="col-sm-6">
+                <label for="descrip" class="form-label">Descripción de la Rutina</label>
+                <textarea type="text" class="form-control" name="descrip" style="height: 150px;" required="">{{ rutina.descripcion }}</textarea>
+            </div>
+            
+            <!-- <div class="col-sm-6">
+                <label for="validationCustom02" class="form-label">Ejercicios</label>
+                <input type="text" class="form-control" name="idE" required value="{{ rutina.idEjercicio }}">
+            </div> -->
+
+            <div class="form-inline">
+                <div class="col-sm-6">
+                    <button type="submit" class="btn btn-success rounded-pill">Guardar</button>
+                </div>
+                
+                <div class="col-sm-6">
+                    <a href="/admin/rutinas/list" class="btn btn-primary rounded-pill">Cancelar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock%}

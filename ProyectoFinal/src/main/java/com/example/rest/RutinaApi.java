@@ -49,7 +49,8 @@ public class RutinaApi {
         RutinaServices rs = new RutinaServices();
         HashMap<String,Object> responseMap = new HashMap<>();
         ObjectMapper om = new ObjectMapper();
-
+        
+                
         try {
             rs.RutinaFromJson(rutinaJson);
             rs.saveRutina();
@@ -88,7 +89,7 @@ public class RutinaApi {
         }
     }
 
-    @POST
+    @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/get/{id}")
     public Response getRutinaById(@PathParam("id") Integer id) throws Exception {
@@ -134,19 +135,38 @@ public class RutinaApi {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/enumerations")
-    public Response enumerations() throws Exception {
+    @Path("/grupoMuscularObjetivo")
+    public Response getGrupoMuscularObjetivo() throws Exception {
         RutinaServices rs = new RutinaServices();
         HashMap<String,Object> responseMap = new HashMap<>();
-        HashMap<String,Object> enumerations = new HashMap<>();
         ObjectMapper om = new ObjectMapper();
 
         try {
-            enumerations.put("gruposMuscularesObjetivos", rs.gruposMuscularesObjetivos());
-            enumerations.put("objetivosRutina",rs.objetivosRutina());
-
             responseMap.put("status", "OK");
-            responseMap.put("data",enumerations);
+            responseMap.put("data",rs.getGrupos());
+
+            return Response.ok(om.writeValueAsString(responseMap)).build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            responseMap.put("status", "ERROR");
+            responseMap.put("data", e.getMessage());
+
+            return Response.status(Status.INTERNAL_SERVER_ERROR)
+            .entity(responseMap).build();
+        }
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/objetivoRutina")
+    public Response getObjetivoRutina() throws Exception {
+        RutinaServices rs = new RutinaServices();
+        HashMap<String,Object> responseMap = new HashMap<>();
+        ObjectMapper om = new ObjectMapper();
+
+        try {
+            responseMap.put("status", "OK");
+            responseMap.put("data",rs.getObjetivos());
 
             return Response.ok(om.writeValueAsString(responseMap)).build();
         } catch (Exception e) {

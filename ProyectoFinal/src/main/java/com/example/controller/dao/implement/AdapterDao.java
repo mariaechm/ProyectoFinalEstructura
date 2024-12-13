@@ -2,7 +2,6 @@ package com.example.controller.dao.implement;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.Type;
-
 import com.example.controller.tda.list.LinkedList;
 import com.google.gson.Gson;
 
