@@ -15,7 +15,7 @@
                 <form id="perfilForm" class="row g-3 needs-validation" method="POST" action="/admin/perfil/update" novalidate>
                     <input type="hidden" name="id" value="{{ perfil.id }}" name="id"/>
                     <div class="col-md-6">
-                        <label for="peso" class="form-label">Peso</label>
+                        <label for="peso" class="form-label">Peso (kg)</label>
                         <input type="number" id="peso" step="0.01" min="1" class="form-control" name="peso" required value="{{ perfil.peso }}">
                         <div class="invalid-feedback">Por favor, ingresa un peso válido.</div>
                     </div>

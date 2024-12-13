@@ -17,7 +17,7 @@ def list_perfil():
     for perfil in perfiles:
         perfil["numero"] = i
         i += 1
-    return render_template('fragmento/perfil/lista.html', perfiles=perfiles)
+    return render_template('fragmento/perfil/lista_perfiles.html', perfiles=perfiles)
 
 @router_perfil.route('/admin/perfil/save', methods=['POST'])
 def crear_perfil():
@@ -39,7 +39,7 @@ def crear_perfil():
 
 @router_perfil.route('/admin/perfil/registro')
 def registro_perfil():
-    return render_template('fragmento/perfil/guardar.html')
+    return render_template('fragmento/perfil/guardar_perfil.html')
 
 @router_perfil.route('/admin/perfil/update', methods=['POST'])
 def update_perfil():
@@ -68,7 +68,7 @@ def editar_perfil(id):
     data1 = r1.json()
     print("Datos de perfil", data1)
     if r.status_code == 200:
-        return render_template('fragmento/perfil/editar.html', perfil=data1["data"], perfiles=data["data"])
+        return render_template('fragmento/perfil/editar_perfil.html', perfil=data1["data"], perfiles=data["data"])
     else:
         flash(data1["data"], category='Error')
-    return render_template('fragmento/perfil/lista.html')
+    return render_template('fragmento/perfil/lista_perfiles.html')

@@ -5,5 +5,7 @@ def create_app():
     app.secret_key = 'sistema_gestion_usuarios_rutinas_gimnasio'
     with app.app_context():
         from routes.router import router
+        from routes.router_perfil import router_perfil
         app.register_blueprint(router)
+        app.register_blueprint(router_perfil)
     return app
