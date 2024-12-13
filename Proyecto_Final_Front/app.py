@@ -10,6 +10,7 @@ def create_app():
         from routes.routerEstadistica import router_estadistica
         from routes.routerEstadistica import router_estadistica
         from routes.router_persona import router
+        from routes.router_suscripcion import router
         
         app.register_blueprint(router)
         app.register_blueprint(router_ejercicio)

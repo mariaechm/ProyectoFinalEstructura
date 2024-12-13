@@ -1,1 +1,38 @@
-[{"id":1,"nombre":"ElJAJAS","apellido":"Administrador","identificacion":"196847SS5690","tipoIdentificacion":"CEDULA","rol":"CLIENTE"},{"id":2,"nombre":"Leandro","apellido":"Administrador","identificacion":"196847SS5690","tipoIdentificacion":"CEDULA","rol":"ADMINISTRADOR"},{"id":3,"nombre":"Leandro","apellido":"Administrador","identificacion":"196847SS5690","tipoIdentificacion":"CEDULA","rol":"ADMINISTRADOR"},{"id":4,"nombre":"Leandro","apellido":"Administrador","identificacion":"196847SS5690","tipoIdentificacion":"CEDULA","rol":"ADMINISTRADOR"},{"id":5,"nombre":"Leandro","apellido":"Administrador","identificacion":"196847SS5690","tipoIdentificacion":"CEDULA","rol":"ADMINISTRADOR"}]
+[
+  {
+    "id": 1,
+    "nombre": "Juan",
+    "apellido": "Perez",
+    "identificacion": "09487489393",
+    "celular": "0987584756",
+    "fechaNacimiento": "2005-11-11",
+    "direccion": "Av. Oriental",
+    "tipoIdentificacion": "CEDULA",
+    "genero": "HOMBRE",
+    "rol": "ADMINISTRADOR"
+  },
+  {
+    "id": 2,
+    "nombre": "Ramón Adrián",
+    "apellido": "Pinto Suarez",
+    "identificacion": "3384838343223",
+    "celular": "234324234234",
+    "fechaNacimiento": "2003-03-03",
+    "direccion": "Universidad Nacional de Loja",
+    "tipoIdentificacion": "CEDULA",
+    "genero": "OTRO",
+    "rol": "CLIENTE"
+  },
+  {
+    "id": 3,
+    "nombre": "Benito",
+    "apellido": "Minga",
+    "identificacion": "39493934858894",
+    "celular": "09934737343",
+    "fechaNacimiento": "2012-11-11",
+    "direccion": "Av. Pio Jaramillo",
+    "tipoIdentificacion": "CEDULA",
+    "genero": "HOMBRE",
+    "rol": "ADMINISTRADOR"
+  }
+]

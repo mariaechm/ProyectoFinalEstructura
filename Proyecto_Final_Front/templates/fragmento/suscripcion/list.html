@@ -2,7 +2,7 @@
 {% block content %}
 
 <a href="/suscripcion/save">
-  <button type="button" class="btn btn-warning m-2"><i class="fa fa-plus"></i></button>
+  <button type="button" class="btn btn-warning m-2">Agregar</i></button>
 </a>
 <table class="table table-dark">
   <thead>
@@ -15,18 +15,18 @@
       </tr>
   </thead>
   <tbody>
-     {% for persona in personas %}
+     {% for suscripcion in suscripciones %}
       <tr>
         <td>{{ suscripcion.numero }}</td>
         <td>{{ suscripcion.fechaInicio }}</td>
         <td>{{ suscripcion.fechaFinalizacion }}</td>
         <td>{{ suscripcion.tipo }}</td>
         <td>
-          <a href="/persona/update/{{ persona.id }}">
-            <button type="button" class="btn btn-square btn-info m-2"><i class="fa fa-pen"></i></button>
+          <a href="/persona/update/{{ suscripcion.id }}">
+            <button type="button" class="btn btn-warning m-2">Actualizar</button>
           </a>
-          <a href="/persona/delete/{{ persona.id }}">
-            <button type="button" class="btn btn-square btn-danger m-2"><i class="fa fa-trash"></i></button>
+          <a href="/persona/delete/{{ suscripcion.id }}">
+            <button type="button" class="btn btn-danger m-2">Eliminar</button>
           </a>
         </td>
       </tr>

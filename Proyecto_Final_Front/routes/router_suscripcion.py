@@ -5,10 +5,10 @@ SCP_URL = f'{BASE_URL}/suscripcion'
 
 @router.route('/suscripcion/list')
 def suscripcion_list():
-    suscripcions = requests.get(f'{SCP_URL}/list').json()['data']
-    for i in range(0,len(suscripcions)):
-        suscripcions[i]['numero'] = i + 1
-    return render_template('fragmento/suscripcion/list.html', suscripcions=suscripcions)
+    suscripciones = requests.get(f'{SCP_URL}/list').json()['data']
+    for i in range(0,len(suscripciones)):
+        suscripciones[i]['numero'] = i + 1
+    return render_template('fragmento/suscripcion/list.html', suscripciones=suscripciones)
 
 @router.route('/suscripcion/save')
 def suscripcion_save():
