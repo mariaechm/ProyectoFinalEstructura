@@ -83,7 +83,6 @@ public abstract class AdapterDao<T> implements InterfazDao<T> {
         T object = list.get(indice);
         list.delete(indice);
         JsonFileManager.saveFile(list.toArray(), className);
-        return object;
-        
+        return object;  
     }
 }

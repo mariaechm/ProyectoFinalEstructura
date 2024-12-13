@@ -1,6 +1,7 @@
 package com.example.controller.dao;
 
 import com.example.controller.dao.implement.AdapterDao;
+import com.example.controller.dao.implement.JsonFileManager;
 import com.example.controller.tda.list.LinkedList;
 import com.example.models.Suscripcion;
 import com.example.models.enumerator.TipoSuscripcion;
@@ -33,25 +34,25 @@ public class SuscripcionDao extends AdapterDao<Suscripcion> {
         return listAll;
     }
 
-    public Boolean save () throws Exception {
-        Integer id = getListAll().getSize() +1;
+    public Suscripcion save () throws Exception {
+        Integer id = JsonFileManager.readAndUpdateCurrentIdOf(className);
         suscripcion.setId(id);
         this.persist(this.suscripcion);
         this.listAll = listAll();
         return true;
 
     }
-    //TODO: CAMBIAR EL TIPO DE RETORNO
-    public void update() throws Exception {
+
+    public Suscripcion update() throws Exception {
         Integer id =  this.getSuscripcion().getId();
-        merge(this.suscripcion,id);
+        return merge(this.suscripcion,id);
     }
 
-    public void delete(Integer id) throws Exception{
-        remove(id);
+    public Suscripcion delete(Integer id) throws Exception{
+        return remove(id);
     }
 
-    public Suscripcion getById(Integer id) throws Exception{
+    public Suscripcion getById(Integer id) throws Exception {
         return get(id);
     }
     
