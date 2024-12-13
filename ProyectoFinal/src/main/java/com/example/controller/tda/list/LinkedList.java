@@ -457,8 +457,7 @@ public class LinkedList<E> {
     //BUSQUEDA LINEAL BINARIA
     public LinkedList<E> busquedaLinealBinaria(String attribute, Object x) {
         if(isEmpty()) return new LinkedList<>(); 
-        try {
-            this.mergeSort(attribute, 1); 
+        try { 
             Integer indice = getIndice(attribute, x); 
             Integer i = indice.intValue(); 
             E objeto = get(indice); 
@@ -503,16 +502,18 @@ public class LinkedList<E> {
         if (isEmpty()) return null; 
         try{
             E[] arr = this.toArray(); 
+            mergeSort(attribute,arr,0,arr.length-1,ASC);
             return arr[busquedaBinaria(arr, x, attribute)]; 
         } catch (Exception e) {
-            e.printStackTrace();
-            throw new Exception("Objeto no encontrado");
+            System.out.println("LinkedList.busquedaBinaria() dice: " + e.getMessage());
+            return null;
         }
     }
 
     public Integer getIndice(String attribute, Object x) throws Exception {
         if (isEmpty()) return -1; 
-        E[] arr = this.toArray(); 
+        E[] arr = this.toArray();
+        mergeSort(attribute, arr, 0, arr.length-1, ASC);; 
         return busquedaBinaria(arr, x, attribute); 
     }
 }
