@@ -31,7 +31,6 @@ public class SplitServices {
     }
 
     // CRUD
-
     public Split getSplitById(Integer id) throws Exception {
         return this.obj.getSplitById(id);
     }

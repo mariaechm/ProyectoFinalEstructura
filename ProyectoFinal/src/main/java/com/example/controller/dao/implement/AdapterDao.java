@@ -15,6 +15,7 @@ public abstract class AdapterDao<T> implements InterfazDao<T> {
     protected String className;
 
     LinkedList<T> listAll;
+
     
     //CONSTRUCTOR VACIO
     public AdapterDao() {}

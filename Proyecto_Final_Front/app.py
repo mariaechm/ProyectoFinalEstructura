@@ -10,10 +10,12 @@ def create_app():
         from routes.routerEstadistica import router_estadistica
         from routes.routerEstadistica import router_estadistica
         from routes.router_persona import router
+        from routes.router_perfil import router_perfil
         
         app.register_blueprint(router)
         app.register_blueprint(router_ejercicio)
         app.register_blueprint(router_rutina)         
         app.register_blueprint(router_estadistica)       
-
+        app.register_blueprint(router_perfil)
+        
     return app

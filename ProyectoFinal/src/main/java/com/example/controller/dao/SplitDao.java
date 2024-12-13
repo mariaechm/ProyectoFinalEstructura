@@ -61,7 +61,7 @@ public class SplitDao extends AdapterDao<Split> {
         if(this.getSplit().getNombreSplit() == null) return false;
         if(this.getSplit().getDescripcion() == null) return false;
         if(this.getSplit().getNroDias() == 0) return false;
-        if(this.getSplit().getIdRutina() == 0) return false;
+        if(this.getSplit().getIdRutina() == null) return false;
         return true;
     }
 }

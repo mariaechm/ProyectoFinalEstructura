@@ -8,6 +8,7 @@ import json
 
 router_estadistica = Blueprint('router_estadistica',__name__)
 
+
 @router_estadistica.route('/admin/estadistica')
 def list_estadistica():
     r = requests.get('http://localhost:8080/api/estadistica/list')
@@ -18,6 +19,7 @@ def list_estadistica():
         estadistica["numero"] = i
         i += 1
     return render_template('fragmento/estadistica/lista.html', estadisticas=estadisticas)
+
 
 @router_estadistica.route('/admin/estadistica/save', methods=['POST'])
 def crear_estadistica():
@@ -32,10 +34,12 @@ def crear_estadistica():
         flash('Error al crear la estadistica', 'danger')
     return redirect('/admin/estadistica')
 
+
 @router_estadistica.route('/admin/estadistica/registro')
 def registro_estadistica():
 
     return render_template('fragmento/estadistica/guardar.html')
+
 
 @router_estadistica.route('/admin/estadistica/update', methods=['POST'])
 def update_estadistica():
@@ -51,6 +55,7 @@ def update_estadistica():
         flash('Error al actualizar la estadistica', 'danger')
         return redirect('/admin/estadistica')
 
+
 @router_estadistica.route('/admin/estadistica/edit/<id>')
 def editar_estadistica(id):
     r = requests.get('http://localhost:8080/api/estadistica/list')
@@ -59,7 +64,10 @@ def editar_estadistica(id):
     data1= r1.json()
     print ("aaaa",data1)
     if (r.status_code == 200):
+
         return render_template('fragmento/estadistica/editar.html', estadistica=data1["data"], estadisticas=data["data"])
     else:
+
         flash(data1["data"],category= 'Error')
+
     return render_template('fragmento/estadistica/lista.html') 

@@ -5,7 +5,7 @@ public class Split {
     private String nombreSplit;
     private String descripcion;
     private int nroDias;
-    private int idRutina;
+    private Integer[] idRutina;
 
     // CONSTRUCTOR VACIO
     public Split() {}
@@ -43,11 +43,11 @@ public class Split {
         this.nroDias = nroDias;
     }
 
-    public int getIdRutina() {
+    public Integer[] getIdRutina() {
         return this.idRutina;
     }
 
-    public void setIdRutina(int idRutina) {
+    public void setIdRutina(Integer[] idRutina) {
         this.idRutina = idRutina;
     }
 }
