@@ -1,16 +1,22 @@
 package com.example.controller.dao.implement;
 
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.util.Scanner;
+import java.lang.reflect.Array;
+import java.lang.reflect.Type;
+
 import com.example.controller.tda.list.LinkedList;
 import com.google.gson.Gson;
 
+
 @SuppressWarnings("unchecked")
 public abstract class AdapterDao<T> implements InterfazDao<T> {
+    
     private Class<?> clazz;
+
     protected Gson g;
-    public static String URL = "media/";
+    protected String className;
+
+    LinkedList<T> listAll;
+
     
     //CONSTRUCTOR VACIO
     public AdapterDao() {}
@@ -18,27 +24,36 @@ public abstract class AdapterDao<T> implements InterfazDao<T> {
     //CONSTRUCTOR
     public AdapterDao(Class<?> clazz) {
         this.clazz = clazz;
+        this.className = clazz.getSimpleName();
         this.g = new Gson();
+    }
+
+    public T[] getArray() {
+        try {
+            Type arrayType = Array.newInstance(clazz, 0).getClass();
+            T[] array = g.fromJson(JsonFileManager.readFile(className), arrayType);
+            if(array == null) {
+                T[] objects = (T[])Array.newInstance(clazz, 0);
+                return objects;
+            }
+            return array;
+        } catch (Exception e) {
+            System.out.println("AdapterDao.getArray() dice: " + e.getMessage());
+            T[] objects = (T[])Array.newInstance(clazz, 0);
+            return objects;
+        }
     }
 
     //OBTENER LA LISTA DE TODOS LOS OBJETOS
     public LinkedList<T> listAll() {
-        LinkedList<T> list = new LinkedList<>();
-        try {
-            String data = readFile();
-            T[] matrix = (T[]) g.fromJson(data, java.lang.reflect.Array.newInstance(clazz, 0).getClass());
-            list.toList(matrix);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        LinkedList<T> list = new LinkedList<>(clazz);
+        list.toList(getArray());
         return list;
     }
 
     //OBTENER UN OBJETO
     public T get(Integer id) throws Exception {
         LinkedList<T> list = listAll();
-        System.out.println("ID: " + id);
-        System.out.println("LISTA: " + list);
         try {
             return list.busquedaBinaria("id", id);
         } catch (Exception e) {
@@ -51,8 +66,7 @@ public abstract class AdapterDao<T> implements InterfazDao<T> {
     public T persist(T object) throws Exception {
         LinkedList<T> list = listAll();
         list.add(object);
-        String info = g.toJson(list.toArray());
-        saveFile(info);
+        JsonFileManager.saveFile(list.toArray(), className);
         return object;
     }
 
@@ -60,8 +74,7 @@ public abstract class AdapterDao<T> implements InterfazDao<T> {
     public T merge(T object, Integer id) throws Exception {
         LinkedList<T> list = listAll();
         list.update(object, list.getIndice("id", id));
-        String info = g.toJson(list.toArray());
-        saveFile(info);
+        JsonFileManager.saveFile(list.toArray(), className);
         return object;
     }
   
@@ -71,28 +84,8 @@ public abstract class AdapterDao<T> implements InterfazDao<T> {
         Integer indice = list.getIndice("id", id);
         T object = list.get(indice);
         list.delete(indice);
-        String info = g.toJson(list.toArray());
-        saveFile(info);
+        JsonFileManager.saveFile(list.toArray(), className);
         return object;
         
-    }
-
-    //GUARDAR EL ARCHIVO JSON
-    private void saveFile(String data) throws Exception {
-        FileWriter f = new FileWriter(URL + clazz.getSimpleName() + ".json");
-        f.write(data);
-        f.flush();
-        f.close();
-    }
-
-    //LEER EL ARCHIVO JSON
-    private String readFile() throws Exception {
-        Scanner in = new Scanner(new FileReader(URL + clazz.getSimpleName() + ".json"));
-        StringBuilder sb = new StringBuilder();
-        while (in.hasNext()) {
-            sb.append(in.next());
-        }
-        in.close();
-        return sb.toString();
     }
 }

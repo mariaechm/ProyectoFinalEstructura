@@ -1,0 +1,67 @@
+{% extends 'blank.html' %}
+{% block content %}
+
+<div class="pagetitle">
+    <h1>Crear Perfil</h1>
+</div>
+<section class="seccion">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="bg-secondary rounded h-100 p-4">
+                <div class="card-body">
+                  <h5 class="card-title">Registro De Perfil</h5>
+                  
+                  <!-- Custom Styled Validation with Tooltips -->
+                <form id="perfilForm" class="row g-3 needs-validation" method="POST" action="/admin/perfil/save" novalidate>
+                    <div class="col-md-6">
+                        <label for="peso" class="form-label">Peso</label>
+                        <input type="number" id="peso" step="0.01" min="1" class="form-control" name="peso" required>
+                        <div class="invalid-feedback">Por favor, ingresa un peso válido.</div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="altura" class="form-label">Altura</label>
+                        <input type="number" id="altura" step="0.01" min="1" class="form-control" name="altura" required>
+                        <div class="invalid-feedback">Por favor, ingresa una altura válida.</div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="imagen" class="form-label">Imagen</label>
+                        <input type="text" id="imagen" class="form-control" name="imagen" required>
+                        <div class="invalid-feedback">Por favor, ingresa una URL de imagen válida.</div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="objetivoCliente" class="form-label">Objetivo del Cliente</label>
+                        <input type="text" id="objetivoCliente" class="form-control" name="objetivoCliente" required>
+                        <div class="invalid-feedback">Por favor, ingresa un objetivo válido.</div>
+                    </div>
+
+                    <div class="col-6">
+                      <button class="btn btn-success rounded-pill" type="submit">Guardar</button>
+                    </div>
+
+                    <div class="col-6">
+                      <a href="/admin/perfil" class="btn btn-danger rounded-pill">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+  (function () {
+      'use strict';
+      const form = document.getElementById('perfilForm');
+      form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+              event.preventDefault();
+              event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+      }, false);
+  })();
+</script>
+
+{% endblock %}
