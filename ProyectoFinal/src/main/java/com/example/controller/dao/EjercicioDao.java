@@ -22,6 +22,10 @@ public class EjercicioDao extends AdapterDao<Ejercicio> {
         return this.ejercicio;
     }
 
+    public void setEjercicio(Ejercicio ejercicio) {
+        this.ejercicio = ejercicio;
+    }
+
     // METODOS DE ACCESO
     public LinkedList<Ejercicio> getAllEjercicios() throws Exception {
         return this.listAll();

@@ -49,11 +49,20 @@ public class RutinaServices {
         this.obj.deleteRutina(id);
     }
 
-    public GrupoMuscularObjetivo[] gruposMuscularesObjetivos() {
-        return this.obj.gruposMuscularesObjetivos();
+    // ENUMERACIONES
+    public GrupoMuscularObjetivo getGrupoMuscularObjetivo(String grupoMuscularObjetivo) {
+        return obj.getGrupoMuscularObjetivo(grupoMuscularObjetivo);
     }
 
-    public ObjetivoRutina[] objetivosRutina() {
-        return this.objetivosRutina();
+    public GrupoMuscularObjetivo[] getGrupos() {
+        return obj.getGrupos();
+    }
+
+    public ObjetivoRutina getObjetivoRutina(String objetivoRutina) {
+        return obj.getObjetivoRutina(objetivoRutina);
+    }
+
+    public ObjetivoRutina[] getObjetivos() {
+        return obj.getObjetivos();
     }
 }

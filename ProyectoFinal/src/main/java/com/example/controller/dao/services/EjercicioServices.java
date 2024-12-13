@@ -19,6 +19,10 @@ public class EjercicioServices {
         return this.obj.getEjercicio();
     }
     
+    public void setEjercicio(Ejercicio ejercicio) {
+        this.obj.setEjercicio(ejercicio);
+    } 
+
     public void EjercicioFromJson(String EjercicioJson) {
         this.obj.EjercicioFromJson(EjercicioJson);
     }
@@ -48,6 +52,7 @@ public class EjercicioServices {
         this.obj.deleteEjercicio(id);
     }
 
+    // ENUMERACIONES
     public TipoEjercicio getTipoEjercicio(String tipoEjercicio) {
         return obj.getTipoEjercicio(tipoEjercicio);
     }

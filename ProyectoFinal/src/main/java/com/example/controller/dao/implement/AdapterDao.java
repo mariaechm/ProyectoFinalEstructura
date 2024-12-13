@@ -3,7 +3,7 @@ package com.example.controller.dao.implement;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.util.Scanner;
+//import java.util.Scanner;
 import com.example.controller.tda.list.LinkedList;
 import com.google.gson.Gson;
 
