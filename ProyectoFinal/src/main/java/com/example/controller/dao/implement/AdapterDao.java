@@ -2,6 +2,7 @@ package com.example.controller.dao.implement;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.Type;
+
 import com.example.controller.tda.list.LinkedList;
 import com.google.gson.Gson;
 
@@ -15,6 +16,7 @@ public abstract class AdapterDao<T> implements InterfazDao<T> {
     protected String className;
 
     LinkedList<T> listAll;
+
     
     //CONSTRUCTOR VACIO
     public AdapterDao() {}
