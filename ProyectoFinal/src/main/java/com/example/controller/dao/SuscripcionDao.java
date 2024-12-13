@@ -39,7 +39,7 @@ public class SuscripcionDao extends AdapterDao<Suscripcion> {
         suscripcion.setId(id);
         this.persist(this.suscripcion);
         this.listAll = listAll();
-        return true;
+        return this.getSuscripcion();
 
     }
 
