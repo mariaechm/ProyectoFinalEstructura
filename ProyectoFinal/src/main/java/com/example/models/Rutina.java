@@ -8,12 +8,11 @@ public class Rutina {
     private String nombreRutina;
     private String descripcion;
     private int nroEjercicios;
-    private Integer idEjercicio;
+    private Integer[] idEjercicio;
 
     private GrupoMuscularObjetivo grupoMuscularObjetivo;
     private ObjetivoRutina objetivoRutina;
     
-
     // CONSTRUCTOR VACIO
     public Rutina() {}
 
@@ -50,11 +49,11 @@ public class Rutina {
         this.nroEjercicios = nroEjercicios;
     }
 
-    public Integer getIdEjercicio() {
+    public Integer[] getIdEjercicio() {
         return this.idEjercicio;
     }
 
-    public void setIdEjercicio(int idEjercicio) {
+    public void setIdEjercicio(Integer[] idEjercicio) {
         this.idEjercicio = idEjercicio;
     }
 

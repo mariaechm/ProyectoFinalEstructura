@@ -5,6 +5,7 @@ import com.example.controller.tda.list.LinkedList;
 import com.example.models.Rutina;
 import com.example.models.enumerator.GrupoMuscularObjetivo;
 import com.example.models.enumerator.ObjetivoRutina;
+import com.example.models.enumerator.TipoEjercicio;
 
 public class RutinaDao extends AdapterDao<Rutina> {
     private Rutina rutina;
@@ -57,19 +58,32 @@ public class RutinaDao extends AdapterDao<Rutina> {
         remove(id);
     }
 
-    public GrupoMuscularObjetivo[] gruposMuscularesObjetivos() {
+    public TipoEjercicio getTipoEjercicio(String tipoEjercicio) {
+        return TipoEjercicio.valueOf(tipoEjercicio);
+    }
+
+    public GrupoMuscularObjetivo getGrupoMuscularObjetivo(String grupoMuscularObjetivo) {
+        return GrupoMuscularObjetivo.valueOf(grupoMuscularObjetivo);
+    }
+    public GrupoMuscularObjetivo[] getGrupos() {
         return GrupoMuscularObjetivo.values();
     }
 
-    public ObjetivoRutina[] objetivosRutina() {
+    public ObjetivoRutina getObjetivoRutina(String objetivoRutina) {
+        return ObjetivoRutina.valueOf(objetivoRutina);
+    }
+
+    public ObjetivoRutina[] getObjetivos() {
         return ObjetivoRutina.values();
     }
+   
 
     // VALIDACIONES
     public Boolean camposLlenos() {
         if(this.getRutina().getNombreRutina() == null) return false;
+        if(this.getRutina().getDescripcion() == null) return false;
         if(this.getRutina().getNroEjercicios() == 0) return false;
-        if(this.getRutina().getIdEjercicio() == 0) return false;
+        //if(this.getRutina().getIdEjercicio() == null) return false;
         if(this.getRutina().getGrupoMuscularObjetivo() == null) return false;
         if(this.getRutina().getObjetivoRutina() == null) return false;
         return true;
