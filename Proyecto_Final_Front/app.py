@@ -19,3 +19,4 @@ def create_app():
         app.register_blueprint(router_perfil)
         
     return app
+
