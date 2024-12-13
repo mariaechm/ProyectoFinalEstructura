@@ -19,7 +19,7 @@ import com.example.controller.dao.services.EstadisticaServices;
 import com.example.models.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@Path("estadistica")
+@Path("/estadistica")
 public class EstadisticaApi {
     @Path("/list")
     @GET

@@ -31,7 +31,7 @@ import com.example.controller.dao.SuscripcionDao;
 import com.example.models.Suscripcion;
 import com.example.models.*;
 
-@Path("Suscripcion")
+@Path("/suscripcion")
 public class SuscripcionApi {
     @Path("/list")
     @GET
