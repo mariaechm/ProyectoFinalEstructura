@@ -1,0 +1,82 @@
+[
+  {
+    "id": 2,
+    "nombreEjercicio": "Press de Banca Inclinado con Barra",
+    "descripcion": "Ejercicio enfocado a la parte superior del pectoral.",
+    "imagen": "https://strengthlevel.es/estandares-de-fuerza/press-de-banca-inclinado/kg",
+    "tiempoDescanso": 4,
+    "nroSeries": 3,
+    "nroRepSerie": 8,
+    "tipoEjercicio": "COMPUESTO"
+  },
+  {
+    "id": 5,
+    "nombreEjercicio": "Press de Banca Inclinado con Mancuernas",
+    "descripcion": "Ejercicio que se enfoca en la parte superior del pectoral.",
+    "imagen": "https://eresfitness.com/press-de-banca-inclinado-con-mancuernas/",
+    "tiempoDescanso": 3,
+    "nroSeries": 3,
+    "nroRepSerie": 10,
+    "tipoEjercicio": "COMPUESTO"
+  },
+  {
+    "id": 6,
+    "nombreEjercicio": "Press de Banca Declinado con Mancuernas",
+    "descripcion": "Ejercicio que se enfoca en la parte inferior del pectoral.",
+    "imagen": "https://tumejorfisico.com/ejercicios-pecho/press-declinado-con-mancuernas/",
+    "tiempoDescanso": 3,
+    "nroSeries": 3,
+    "nroRepSerie": 10,
+    "tipoEjercicio": "COMPUESTO"
+  },
+  {
+    "id": 7,
+    "nombreEjercicio": "Aperturas en Polea Baja",
+    "descripcion": "Ejercicio que se enfoca en la parte superior del pectoral.",
+    "imagen": "https://eresfitness.com/cruces-en-polea-baja/",
+    "tiempoDescanso": 2,
+    "nroSeries": 2,
+    "nroRepSerie": 15,
+    "tipoEjercicio": "AISLADO"
+  },
+  {
+    "id": 8,
+    "nombreEjercicio": "Aperturas con Mancuernas",
+    "descripcion": "Ejercicio de adducción de pectoral.",
+    "imagen": "https://strengthlevel.es/estandares-de-fuerza/aperturas-con-mancuernas/kg",
+    "tiempoDescanso": 2,
+    "nroSeries": 3,
+    "nroRepSerie": 12,
+    "tipoEjercicio": "AISLADO"
+  },
+  {
+    "id": 9,
+    "nombreEjercicio": "Sentadilla Libre",
+    "descripcion": "Ejercicio para pierna en general.",
+    "imagen": "https://strengthlevel.es/estandares-de-fuerza/sentadilla/kg",
+    "tiempoDescanso": 5,
+    "nroSeries": 3,
+    "nroRepSerie": 8,
+    "tipoEjercicio": "COMPUESTO"
+  },
+  {
+    "id": 10,
+    "nombreEjercicio": "Sentadilla Hack",
+    "descripcion": "Ejercicio enfocado a los cuádriceps.",
+    "imagen": "https://www.dhzfitness.com/es/news/hack-squat-or-barbell-squat-which-is-the-king-of-leg-strength/",
+    "tiempoDescanso": 5,
+    "nroSeries": 4,
+    "nroRepSerie": 10,
+    "tipoEjercicio": "COMPUESTO"
+  },
+  {
+    "id": 11,
+    "nombreEjercicio": "Extensiones de Cuádriceps",
+    "descripcion": "Ejercicio enfocado en los cuádriceps.",
+    "imagen": "https://strengthlevel.es/estandares-de-fuerza/extension-de-piernas/lb",
+    "tiempoDescanso": 2,
+    "nroSeries": 3,
+    "nroRepSerie": 15,
+    "tipoEjercicio": "AISLADO"
+  }
+]

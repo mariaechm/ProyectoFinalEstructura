@@ -14,8 +14,6 @@ public abstract class AdapterDao<T> implements InterfazDao<T> {
     protected Gson g;
     protected String className;
 
-    public static String URL = "./media/";
-
     LinkedList<T> listAll;
     
     //CONSTRUCTOR VACIO
