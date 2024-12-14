@@ -4,11 +4,10 @@ import com.example.controller.dao.implement.AdapterDao;
 import com.example.controller.dao.implement.JsonFileManager;
 import com.example.controller.tda.list.LinkedList;
 import com.example.models.Suscripcion;
-import com.example.models.enumerator.TipoSuscripcion;
 
 public class SuscripcionDao extends AdapterDao<Suscripcion> {
     private Suscripcion suscripcion;
-    private LinkedList listAll;
+    private LinkedList<Suscripcion> listAll;
 
     public SuscripcionDao(){
         super(Suscripcion.class);
@@ -26,7 +25,7 @@ public class SuscripcionDao extends AdapterDao<Suscripcion> {
         this.suscripcion = Suscripcion;
     }
 
-    public LinkedList getListAll(){
+    public LinkedList<Suscripcion> getListAll(){
         if (listAll == null) {
             this.listAll = listAll();
         }

@@ -2,9 +2,6 @@ package com.example.rest;
 
 import java.util.HashMap;
 
-import javax.validation.Valid;
-import javax.validation.Validation;
-import javax.validation.ValidatorFactory;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -16,20 +13,12 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import com.example.controller.tda.list.LinkedList;
-
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.reflect.TypeToken;
-
-import java.io.FileInputStream;
 
 import com.example.controller.dao.services.SuscripcionServices;
 import com.example.models.enumerator.TipoSuscripcion;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.example.controller.dao.SuscripcionDao;
-import com.example.models.Suscripcion;
-import com.example.models.*;
+
 
 @Path("suscripcion")
 public class SuscripcionApi {
@@ -37,7 +26,7 @@ public class SuscripcionApi {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllEstadistica() throws Exception{
-        HashMap map = new HashMap<>();
+        HashMap<String,Object> map = new HashMap<>();
         SuscripcionServices ps = new SuscripcionServices();
         map.put("msg", "OK");
         map.put("data", ps.listAll().toArray());
@@ -54,13 +43,8 @@ public class SuscripcionApi {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response save(HashMap map) {
-        HashMap res = new HashMap<>();
-
-        /// TODO
-        /// VALIDACION
-
-        System.out.println("ASAS");
+    public Response save(HashMap<String,Object> map) {
+        HashMap<String,Object> res = new HashMap<>();
         SuscripcionDao ps = new SuscripcionDao();
       
         try {
@@ -90,7 +74,7 @@ public class SuscripcionApi {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response delete(@PathParam("id") Integer id) { // Extraer el id de la URL {id}
-        HashMap res = new HashMap<>();
+        HashMap<String,Object> res = new HashMap<>();
 
         SuscripcionDao ps = new SuscripcionDao();
       
@@ -115,10 +99,8 @@ public class SuscripcionApi {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response update(HashMap map) {
-        HashMap res = new HashMap<>();
-
-        System.out.println("ASAS");
+    public Response update(HashMap<String,Object> map) {
+        HashMap<String,Object> res = new HashMap<>();
         SuscripcionDao ps = new SuscripcionDao();
       
         try {
@@ -147,9 +129,7 @@ public class SuscripcionApi {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response get(@PathParam("id") Integer id) {
-        HashMap res = new HashMap<>();
-
-        
+        HashMap<String,Object> res = new HashMap<>();
         SuscripcionDao ps = new SuscripcionDao();
       
         try {         

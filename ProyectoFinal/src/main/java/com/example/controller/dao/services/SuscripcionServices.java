@@ -16,7 +16,7 @@ public class SuscripcionServices {
         return obj.save();
     }
 
-    public LinkedList listAll() {
+    public LinkedList<Suscripcion> listAll() {
         return obj.getListAll();
     }
 
@@ -42,6 +42,10 @@ public class SuscripcionServices {
 
     public Suscripcion getById(Integer id) throws Exception{
         return obj.getById(id);
+    }
+
+    public TipoSuscripcion[] tiposSuscripcion() {
+        return TipoSuscripcion.values();
     }
     
 } 
