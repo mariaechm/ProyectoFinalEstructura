@@ -30,8 +30,9 @@ public class PersonaDao extends AdapterDao<Persona> {
     }
 
     public Persona savePersona() throws Exception {
-        this.getPersona().setId(JsonFileManager.readAndUpdateCurrentIdOf(className));
+        this.getPersona().setId(0); // Se establece un id provisional hasta validar todos los datos
         validateData();
+        this.getPersona().setId(JsonFileManager.readAndUpdateCurrentIdOf(className)); // Se coloca el id real
         persist(persona);
         return this.persona;
     }
@@ -106,7 +107,6 @@ public class PersonaDao extends AdapterDao<Persona> {
 
         return true;
     }
-
 
     public Boolean validNumeric(String numeric) {
         for(int i = 0; i < numeric.length(); i++) {

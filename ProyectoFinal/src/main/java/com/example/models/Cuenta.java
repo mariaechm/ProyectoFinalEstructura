@@ -6,6 +6,8 @@ public class Cuenta {
     private String contrasena;
     private String fechaCreacion;
 
+    private Integer personaId;
+
     public Cuenta() {}
 
 
@@ -40,4 +42,13 @@ public class Cuenta {
     public void setFechaCreacion(String fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
+
+    public Integer getPersonaId() {
+        return personaId;
+    }
+
+    public void setPersonaId(Integer personaId) {
+        this.personaId = personaId;
+    }
+    
 }

@@ -1,5 +1,6 @@
 package com.example.controller.dao;
 
+import java.time.LocalDate;
 import java.util.regex.Pattern;
 
 import com.example.controller.dao.implement.AdapterDao;
@@ -31,8 +32,10 @@ public class CuentaDao extends AdapterDao<Cuenta> {
     }
 
     public Cuenta saveCuenta() throws Exception {
-        this.getCuenta().setId(JsonFileManager.readAndUpdateCurrentIdOf(className));
+        this.getCuenta().setId(0);
+        this.getCuenta().setFechaCreacion(LocalDate.now().toString());
         validateData();
+        this.getCuenta().setId(JsonFileManager.readAndUpdateCurrentIdOf(className));
         persist(cuenta);
         return this.cuenta;
     }
@@ -57,6 +60,7 @@ public class CuentaDao extends AdapterDao<Cuenta> {
     // VALIDADORES ================================================================
 
     public Boolean isThereAllFields() {
+        if (this.getCuenta().getPersonaId() == null) return false;
         if (this.getCuenta().getCorreoElectronico() == null) return false;
         if (this.getCuenta().getContrasena() == null) return false;
         if (this.getCuenta().getFechaCreacion() == null) return false;
@@ -103,7 +107,7 @@ public class CuentaDao extends AdapterDao<Cuenta> {
         if (!isThereAllFields())
             throw new Exception("Los datos están incompletos, no se guardarán");
 
-        final Integer personaId = this.getCuenta().getId();
+        final Integer personaId = this.getCuenta().getPersonaId();
         if (!existsPersonaWith(personaId)) 
             throw new Exception("No existe registro de Persona con Id: " + personaId);
         

@@ -47,7 +47,8 @@ public class JsonFileManager {
     // CURRENT ID MANAGMENT ===============================================================
 
     public static void saveCurrentIdOf(Integer currentId,String className) {
-        HashMap<String,Integer> cIdMap = new HashMap<>();
+        HashMap<String,Integer> cIdMap = readCurrentIDMap();
+        if(cIdMap == null) cIdMap = new HashMap<>();
         final String key = "current" + className + "Id";
         cIdMap.put(key, currentId);
         saveFile(cIdMap,currentID);
