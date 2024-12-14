@@ -1,0 +1,36 @@
+{% extends 'blank.html' %}
+{% block content %}
+
+<a href="/suscripcion/save">
+  <button type="button" class="btn btn-warning m-2">Agregar</i></button>
+</a>
+<table class="table table-dark">
+  <thead>
+      <tr>
+          <th scope="col">#</th>
+          <th scope="col">Fecha de Inicio</th>
+          <th scope="col">Fecha de Finalización</th>
+          <th scope="col">Tipo de Suscripción</th>
+          <th scope="col">Acciones</th>
+      </tr>
+  </thead>
+  <tbody>
+     {% for suscripcion in suscripciones %}
+      <tr>
+        <td>{{ suscripcion.numero }}</td>
+        <td>{{ suscripcion.fechaInicio }}</td>
+        <td>{{ suscripcion.fechaFinalizacion }}</td>
+        <td>{{ suscripcion.tipo }}</td>
+        <td>
+          <a href="/persona/update/{{ suscripcion.id }}">
+            <button type="button" class="btn btn-warning m-2">Actualizar</button>
+          </a>
+          <a href="/persona/delete/{{ suscripcion.id }}">
+            <button type="button" class="btn btn-danger m-2">Eliminar</button>
+          </a>
+        </td>
+      </tr>
+     {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

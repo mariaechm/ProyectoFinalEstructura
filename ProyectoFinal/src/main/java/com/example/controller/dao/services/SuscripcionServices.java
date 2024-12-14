@@ -12,11 +12,11 @@ public class SuscripcionServices {
         obj = new SuscripcionDao();
     }
 
-    public Boolean save () throws Exception{
+    public Suscripcion save () throws Exception{
         return obj.save();
     }
 
-    public LinkedList listAll() {
+    public LinkedList<Suscripcion> listAll() {
         return obj.getListAll();
     }
 
@@ -32,16 +32,20 @@ public class SuscripcionServices {
         return obj.get(id);
     }
 
-    public void update() throws Exception{
-        obj.update();
+    public Suscripcion update() throws Exception{
+        return obj.update();
     }
 
-    public void delete(Integer id) throws Exception{
-        obj.delete(id);
+    public Suscripcion delete(Integer id) throws Exception{
+        return obj.delete(id);
     }
 
     public Suscripcion getById(Integer id) throws Exception{
         return obj.getById(id);
+    }
+
+    public TipoSuscripcion[] tiposSuscripcion() {
+        return TipoSuscripcion.values();
     }
     
 } 
