@@ -8,7 +8,7 @@ def create_app():
         from routes.router_ejercicio import router_ejercicio
         from routes.router_rutina import router_rutina
         from routes.routerEstadistica import router_estadistica
-        from routes.routerEstadistica import router_estadistica
+        from routes.router_perfil import router_perfil
         from routes.router_persona import router
         from routes.router_suscripcion import router
         
