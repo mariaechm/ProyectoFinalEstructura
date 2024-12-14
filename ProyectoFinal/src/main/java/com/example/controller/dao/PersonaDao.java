@@ -172,4 +172,35 @@ public class PersonaDao extends AdapterDao<Persona> {
 
     // BÚSQUEDA Y ORDENACIÓN ===================================================================
 
+    public Persona[] sort(String attribute, Integer orden, Integer method) throws Exception {
+        LinkedList<Persona> list = listAll();
+        switch (method) {
+            case 0:
+                list.quickSort(attribute, orden);
+                break;
+            case 1:
+                list.mergeSort(attribute, orden);
+                break;
+            case 2:
+                list.shellSort(attribute, orden);
+                break;
+        
+            default:
+                break;
+        }
+        return list.toArray();
+    }
+
+    public Persona[] search(String attribute, String x) throws Exception {
+        LinkedList<Persona> list = listAll();
+        if (attribute.equalsIgnoreCase("nombre") || attribute.equalsIgnoreCase("apellido")) {
+            return list.buscarPorAtributo(attribute, x).toArray();
+        } else if (attribute.equalsIgnoreCase("celular") || attribute.equalsIgnoreCase("identificacion")) {
+            return new Persona[] {
+                list.busquedaBinaria(attribute,x),
+            }; 
+        } else {
+            return list.busquedaLinealBinaria(attribute, x).toArray();
+        }
+    }
 }

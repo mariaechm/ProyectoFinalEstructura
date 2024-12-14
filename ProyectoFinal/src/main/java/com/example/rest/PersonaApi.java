@@ -61,4 +61,21 @@ public class PersonaApi {
     public Response enumerations() {
         return ResponseFactory.buildResponse(new PersonaServices(),"enumerations");
     }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/sort/{attribute}/{orden}/{method}")
+    public Response sort(@PathParam("attribute") String attribute,
+                        @PathParam("orden") Integer orden,
+                        @PathParam("method") Integer method) 
+    {
+        return ResponseFactory.buildResponse(new PersonaServices(),"sort",attribute,orden,method);
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/search/{attribute}/{x}")
+    public Response enumerations(@PathParam("attribute") String attribute, @PathParam("x") String x) {
+        return ResponseFactory.buildResponse(new PersonaServices(),"search", attribute, x);
+    }
 }

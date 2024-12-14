@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 
 import com.example.controller.dao.implement.AdapterDao;
 import com.example.controller.dao.implement.JsonFileManager;
+import com.example.controller.tda.list.LinkedList;
 import com.example.models.Cuenta;
 import com.example.models.Persona;
 
@@ -130,4 +131,35 @@ public class CuentaDao extends AdapterDao<Cuenta> {
     }
 
     // BÚSQUEDA Y ORDENACIÓN ============================================================
+
+    public Cuenta[] sort(String attribute, Integer orden, Integer method) throws Exception {
+    LinkedList<Cuenta> list = listAll();
+    switch (method) {
+        case 0:
+            list.quickSort(attribute, orden);
+            break;
+        case 1:
+            list.mergeSort(attribute, orden);
+            break;
+        case 2:
+            list.shellSort(attribute, orden);
+            break;
+    
+        default:
+            break;
+    }
+    return list.toArray();
+    }
+    
+    public Cuenta[] search(String attribute, String x) throws Exception {
+        LinkedList<Cuenta> list = listAll();
+        if (attribute.equalsIgnoreCase("correoElectronico")) {
+            return new Cuenta[] {
+                list.busquedaBinaria(attribute,x),
+            }; 
+        } else {
+            return list.busquedaLinealBinaria(attribute, x).toArray();
+        }
+    }
+    
 }

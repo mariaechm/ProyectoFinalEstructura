@@ -218,6 +218,10 @@ public class LinkedList<E> {
         return sb.toString();
     }
 
+    public Class<?> getClazz() {
+        return clazz;
+    }
+
     // CONVERTIR LA LISTA A UN ARREGLO
     @SuppressWarnings("unchecked")
     public E[] toArray() {
@@ -311,7 +315,7 @@ public class LinkedList<E> {
 
     
     public LinkedList<E> buscarPorAtributo(String attribute, Object x) throws Exception {
-        LinkedList<E> list = new LinkedList<>();
+        LinkedList<E> list = new LinkedList<>(this.clazz);
         if(isEmpty()) return list; 
         E[] array = this.toArray(); 
         for(int i = 0; i < array.length; i++) { 
@@ -456,7 +460,7 @@ public class LinkedList<E> {
 
     //BUSQUEDA LINEAL BINARIA
     public LinkedList<E> busquedaLinealBinaria(String attribute, Object x) {
-        if(isEmpty()) return new LinkedList<>(); 
+        if(isEmpty()) return new LinkedList<>(this.clazz); 
         try { 
             Integer indice = getIndice(attribute, x); 
             Integer i = indice.intValue(); 

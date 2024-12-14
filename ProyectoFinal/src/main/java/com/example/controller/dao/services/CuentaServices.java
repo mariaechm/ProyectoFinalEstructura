@@ -2,10 +2,6 @@ package com.example.controller.dao.services;
 
 import com.example.controller.dao.CuentaDao;
 import com.example.models.Cuenta;
-import com.example.models.enumerator.Genero;
-import com.example.models.enumerator.Rol;
-import com.example.models.enumerator.TipoIdentificacion;
-
 
 public class CuentaServices {
     private CuentaDao obj;
@@ -40,15 +36,15 @@ public class CuentaServices {
         return this.obj.deleteCuenta(id);
     }
 
-    public Genero[] generos() {
-        return Genero.values();
+    // BUSQUEDA Y ORDENACIÓN ==========================================================
+
+    public Cuenta[] sort(String attribute, Integer orden, Integer method) throws Exception {
+        return this.obj.sort(attribute,orden,method);
     }
 
-    public Rol[] roles() {
-        return Rol.values();
+    public Cuenta[] search(String attribute, String x) throws Exception {
+        return this.obj.search(attribute, x);
     }
-    
-    public TipoIdentificacion[] tiposIdentificacion() {
-        return TipoIdentificacion.values();
-    }
+
 }
+
