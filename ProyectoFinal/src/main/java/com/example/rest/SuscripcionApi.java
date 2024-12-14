@@ -2,9 +2,6 @@ package com.example.rest;
 
 import java.util.HashMap;
 
-import javax.validation.Valid;
-import javax.validation.Validation;
-import javax.validation.ValidatorFactory;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -16,33 +13,28 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import com.example.controller.tda.list.LinkedList;
-
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.reflect.TypeToken;
-
-import java.io.FileInputStream;
 
 import com.example.controller.dao.services.SuscripcionServices;
 import com.example.models.enumerator.TipoSuscripcion;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.example.controller.dao.SuscripcionDao;
-import com.example.models.Suscripcion;
-import com.example.models.*;
 
+<<<<<<< HEAD
 @Path("/suscripcion")
+=======
+
+@Path("suscripcion")
+>>>>>>> moduloSuscripcion
 public class SuscripcionApi {
     @Path("/list")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllEstadistica() throws Exception{
-        HashMap map = new HashMap<>();
-        SuscripcionServices ps = new SuscripcionServices();
+        HashMap<String,Object> map = new HashMap<>();
+        SuscripcionServices ssrv = new SuscripcionServices();
         map.put("msg", "OK");
-        map.put("data", ps.listAll().toArray());
+        map.put("data", ssrv.listAll().toArray());
 
-        if (ps.listAll().getSize() == 0) {
+        if (ssrv.listAll().getSize() == 0) {
             map.put("data", new Object[]{});
         }
         ObjectMapper om = new ObjectMapper();
@@ -54,23 +46,18 @@ public class SuscripcionApi {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response save(HashMap map) {
-        HashMap res = new HashMap<>();
-
-        /// TODO
-        /// VALIDACION
-
-        System.out.println("ASAS");
-        SuscripcionDao ps = new SuscripcionDao();
+    public Response save(HashMap<String,Object> map) {
+        HashMap<String,Object> res = new HashMap<>();
+        SuscripcionServices ssrv = new SuscripcionServices();
       
         try {
 
-            ps.getSuscripcion().setFechaInicio(map.get("fechaInicio").toString());
-            ps.getSuscripcion().setFechaFinalizacion(map.get("fechaFinalizacion").toString());
-            ps.getSuscripcion().setTipo((TipoSuscripcion.valueOf(map.get("tipo").toString())));
+            ssrv.getSuscripcion().setFechaInicio(map.get("fechaInicio").toString());
+            ssrv.getSuscripcion().setFechaFinalizacion(map.get("fechaFinalizacion").toString());
+            ssrv.getSuscripcion().setTipo((TipoSuscripcion.valueOf(map.get("tipo").toString())));
             
 
-            ps.save();
+            ssrv.save();
             res.put("msg", "OK");
             res.put("data", "Suscripcion Registarada");
             return Response.ok(res).build();
@@ -90,12 +77,12 @@ public class SuscripcionApi {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response delete(@PathParam("id") Integer id) { // Extraer el id de la URL {id}
-        HashMap res = new HashMap<>();
+        HashMap<String,Object> res = new HashMap<>();
 
-        SuscripcionDao ps = new SuscripcionDao();
+        SuscripcionServices ssrv = new SuscripcionServices();
       
         try {
-            ps.delete(id);
+            ssrv.delete(id);
             res.put("msg", "OK");
             res.put("status", "Suscripcion Eliminada");
             ObjectMapper om = new ObjectMapper();
@@ -115,20 +102,18 @@ public class SuscripcionApi {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response update(HashMap map) {
-        HashMap res = new HashMap<>();
-
-        System.out.println("ASAS");
-        SuscripcionDao ps = new SuscripcionDao();
+    public Response update(HashMap<String,Object> map) {
+        HashMap<String,Object> res = new HashMap<>();
+        SuscripcionServices ssrv = new SuscripcionServices();
       
         try {
-            ps.getSuscripcion().setId(Integer.parseInt(map.get("id").toString()));
-            ps.getSuscripcion().setFechaInicio(map.get("fechaInicio").toString());
-            ps.getSuscripcion().setFechaFinalizacion(map.get("fechaFinalizacion").toString());
-            ps.getSuscripcion().setTipo((TipoSuscripcion.valueOf(map.get("tipo").toString())));
+            ssrv.getSuscripcion().setId(Integer.parseInt(map.get("id").toString()));
+            ssrv.getSuscripcion().setFechaInicio(map.get("fechaInicio").toString());
+            ssrv.getSuscripcion().setFechaFinalizacion(map.get("fechaFinalizacion").toString());
+            ssrv.getSuscripcion().setTipo((TipoSuscripcion.valueOf(map.get("tipo").toString())));
             
 
-            ps.update();
+            ssrv.update();
             res.put("msg", "OK");
             res.put("data", "Suscripcion Registarada");
             return Response.ok(res).build();
@@ -147,14 +132,12 @@ public class SuscripcionApi {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response get(@PathParam("id") Integer id) {
-        HashMap res = new HashMap<>();
-
-        
-        SuscripcionDao ps = new SuscripcionDao();
+        HashMap<String,Object> res = new HashMap<>();
+        SuscripcionServices ssrv = new SuscripcionServices();
       
         try {         
             res.put("msg", "OK");
-            res.put("data", ps.getById(id));
+            res.put("data", ssrv.getById(id));
             ObjectMapper om = new ObjectMapper();
             return Response.ok(om.writeValueAsString(res)).build();
 
@@ -168,8 +151,27 @@ public class SuscripcionApi {
     }
 
 
+    @Path("/tipoSuscripcion")
+    @GET
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response enumeration() {
+        HashMap<String,Object> res = new HashMap<>();
+        SuscripcionServices ssrv = new SuscripcionServices();
+      
+        try {         
+            res.put("msg", "OK");
+            res.put("data", ssrv.tiposSuscripcion());
+            ObjectMapper om = new ObjectMapper();
+            return Response.ok(om.writeValueAsString(res)).build();
 
-    
-    
-    
+        } catch (Exception e) {
+            System.out.println("Error" + e.toString());
+            res.put("msg", "Error");
+            res.put("data", e.toString());
+            return Response.status(Status.BAD_REQUEST).entity(res).build();
+
+        }
+    }
+
 }

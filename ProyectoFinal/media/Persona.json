@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "nombre": "Juan",
+    "apellido": "Perez",
+    "identificacion": "09487489393",
+    "celular": "0987584756",
+    "fechaNacimiento": "2005-11-11",
+    "direccion": "Av. Oriental",
+    "tipoIdentificacion": "CEDULA",
+    "genero": "HOMBRE",
+    "rol": "ADMINISTRADOR"
+  },
+  {
+    "id": 2,
+    "nombre": "Ramón Adrián",
+    "apellido": "Pinto Suarez",
+    "identificacion": "3384838343223",
+    "celular": "234324234234",
+    "fechaNacimiento": "2003-03-03",
+    "direccion": "Universidad Nacional de Loja",
+    "tipoIdentificacion": "CEDULA",
+    "genero": "OTRO",
+    "rol": "CLIENTE"
+  },
+  {
+    "id": 3,
+    "nombre": "Benito",
+    "apellido": "Minga",
+    "identificacion": "39493934858894",
+    "celular": "09934737343",
+    "fechaNacimiento": "2012-11-11",
+    "direccion": "Av. Pio Jaramillo",
+    "tipoIdentificacion": "CEDULA",
+    "genero": "HOMBRE",
+    "rol": "ADMINISTRADOR"
+  }
+]
