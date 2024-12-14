@@ -18,12 +18,8 @@ import com.example.controller.dao.services.SuscripcionServices;
 import com.example.models.enumerator.TipoSuscripcion;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-<<<<<<< HEAD
-@Path("/suscripcion")
-=======
 
-@Path("suscripcion")
->>>>>>> moduloSuscripcion
+@Path("/suscripcion")
 public class SuscripcionApi {
     @Path("/list")
     @GET
