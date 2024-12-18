@@ -1,7 +1,5 @@
 package com.example.controller.dao.services;
 
-import java.lang.reflect.Array;
-
 import com.example.controller.dao.SplitDao;
 import com.example.models.Split;
 
@@ -22,28 +20,41 @@ public class SplitServices {
         this.obj.SplitFromJson(SplitJson);
     }
 
+    // CRUD
     public Split[] getAllSplits() throws Exception {
-        try {
-            return obj.getAllSplits().toArray(); 
-        } catch (Exception e) {
-            return (Split[])Array.newInstance(Split.class, 0);
-        }
+        return this.obj.getAllSplits().toArray();
     }
 
-    // CRUD
+    public Object[] showListAll() throws Exception {
+        return this.obj.listShowAll();
+    }
+
     public Split getSplitById(Integer id) throws Exception {
         return this.obj.getSplitById(id);
     }
 
-    public void saveSplit() throws Exception {
-        this.obj.saveSplit();
+    public Split saveSplit(String json) throws Exception {
+        this.obj.SplitFromJson(json);
+        return this.obj.saveSplit();
     }
 
-    public void update() throws Exception {
-        this.obj.updateSplit();
+    public Split updateSplit(String json) throws Exception {
+        this.obj.SplitFromJson(json);
+        return this.obj.updateSplit();
     }
 
-    public void deleteSplit(Integer id) throws Exception {        
-        this.obj.deleteSplit(id);
+    public Split deleteSplit(Integer id) throws Exception {        
+        return this.obj.deleteSplit(id);
+    }
+
+
+    // ORDENAR
+    public Split[] sort(String attribute, Integer orden, Integer method) throws Exception {
+        return this.obj.sort(attribute, orden, method);
+    }
+
+    // BUSCAR
+    public Split[] search(String attribute, String value) throws Exception {
+        return this.obj.search(attribute, value);
     }
 }

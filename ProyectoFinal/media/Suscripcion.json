@@ -1,1 +1,92 @@
-[{"id":2,"fechaInicio":"12/12/2024","fechaFinalizacion":"12/12/2001","tipo":"DIA"},{"id":3,"fechaInicio":"12/12/2024","fechaFinalizacion":"12/12/2000","tipo":"MES"}]
+[
+    {
+        "id": 1,
+        "fechaInicio": "01/01",
+        "fechaFinalizacion": "31/01",
+        "tipo": "MES"
+    },
+    {
+        "id": 2,
+        "fechaInicio": "01/02",
+        "fechaFinalizacion": "28/02",
+        "tipo": "MES"
+    },
+    {
+        "id": 3,
+        "fechaInicio": "01/03",
+        "fechaFinalizacion": "31/03",
+        "tipo": "MES"
+    },
+    {
+        "id": 4,
+        "fechaInicio": "01/04",
+        "fechaFinalizacion": "30/04",
+        "tipo": "MES"
+    },
+    {
+        "id": 5,
+        "fechaInicio": "01/05",
+        "fechaFinalizacion": "31/05",
+        "tipo": "MES"
+    },
+    {
+        "id": 6,
+        "fechaInicio": "01/06",
+        "fechaFinalizacion": "30/06",
+        "tipo": "MES"
+    },
+    {
+        "id": 7,
+        "fechaInicio": "01/07",
+        "fechaFinalizacion": "31/07",
+        "tipo": "MES"
+    },
+    {
+        "id": 8,
+        "fechaInicio": "01/08",
+        "fechaFinalizacion": "31/08",
+        "tipo": "MES"
+    },
+    {
+        "id": 9,
+        "fechaInicio": "01/09",
+        "fechaFinalizacion": "30/09",
+        "tipo": "MES"
+    },
+    {
+        "id": 10,
+        "fechaInicio": "01/10",
+        "fechaFinalizacion": "31/10",
+        "tipo": "MES"
+    },
+    {
+        "id": 11,
+        "fechaInicio": "01/11",
+        "fechaFinalizacion": "30/11",
+        "tipo": "MES"
+    },
+    {
+        "id": 12,
+        "fechaInicio": "01/12",
+        "fechaFinalizacion": "31/12",
+        "tipo": "MES"
+    },
+    {
+        "id": 13,
+        "fechaInicio": "15/03",
+        "fechaFinalizacion": "15/03",
+        "tipo": "DIA"
+    },
+    {
+        "id": 14,
+        "fechaInicio": "21/06",
+        "fechaFinalizacion": "21/06",
+        "tipo": "DIA"
+    },
+    {
+        "id": 15,
+        "fechaInicio": "10/10",
+        "fechaFinalizacion": "10/10",
+        "tipo": "DIA"
+    }
+]

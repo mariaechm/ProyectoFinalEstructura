@@ -3,43 +3,49 @@
 {% block content %}
 
 <div class="pagetitle">
-    <h1>Lista de Rutinas</h1>
+  <h1>Lista de Rutinas</h1>
 </div>
 
 <div class="col-12">
-    <div class="bg-secondary rounded h-100 p-4">
-        <a href="/admin/rutinas/register" class="btn btn-info rounded-pill">Crear</a><br><br>
-        <table class="table table-dark">
-            <thead>
-                <tr>
-                    <th scope="col"><center>Nro</th>
-                    <th scope="col">Rutina</th>
-                    <th scope="col">Descripción</th>
-                    <th scope="col"><center>Número de Ejercicios</th>
-                    <th scope="col"><center>Ejercicios</th>
-                    <th scope="col"><center>Grupo Muscular Objetivo</th>
-                    <th scope="col"><center>Objetivo</th>
-                    <th scope="col"><center>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for rutina in rutinas %}
-                  <tr>
-                    <td><center>{{ rutina.numero}}</td>
-                    <td>{{ rutina.nombreRutina }}</td>
-                    <td>{{ rutina.descripcion }}</td>
-                    <td><center>{{ rutina.nroEjercicios }}</td>
-                    <td><center>{{ rutina.idEjercicio }}</td>
-                    <td><center>{{ rutina.grupoMuscularObjetivo }}</td>
-                    <td><center>{{ rutina.objetivoRutina }}</td>
-                    <td>
-                      <a href="/admin/rutinas/edit/{{ rutina.id }}" class="btn btn-warning rounded-pill">Modificar</a>
-                      <a href="/admin/rutinas/delete/{{ rutina.id }}" class="btn btn-primary rounded-pill">Eliminar</a>
-                    </td>
-                  </tr>
-                {% endfor %}
-              </tbody>
-        </table>
-    </div>
+  <div class="bg-secondary rounded h-100 p-4">
+    <a href="/admin/rutinas/register">
+      <button type="button" class="btn btn-warning m-2"><i class="fa fa-plus"></i></button>
+    </a>
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col"><center>Nro</th>
+            <th scope="col">Rutina</th>
+            <th scope="col">Descripción</th>
+            <th scope="col"><center>Número de Ejercicios</th>
+            <th scope="col"><center>Ejercicios</th>
+            <th scope="col"><center>Grupo Muscular Objetivo</th>
+            <th scope="col"><center>Objetivo</th>
+            <th scope="col"><center>Acciones</th>
+          </tr>
+        </thead>
+          <tbody>
+            {% for rutina in rutinas %}
+              <tr>
+                <td><center>{{ rutina.numero}}</td>
+                <td>{{ rutina.nombreRutina }}</td>
+                <td>{{ rutina.descripcion }}</td>
+                <td><center>{{ rutina.nroEjercicios }}</td>
+                <td><center>{{ rutina.idEjercicio }}</td>
+                <td><center>{{ rutina.grupoMuscularObjetivo }}</td>
+                <td><center>{{ rutina.objetivoRutina }}</td>
+                <td>
+                  <a href="/admin/rutinas/edit/{{ rutina.id }}">
+                    <button type="button" class="btn btn-square btn-info m-2"><i class="fa fa-pen"></i></button>
+                  </a>
+                  <a href="/admin/rutinas/delete/{{ rutina.id }}">
+                    <button type="button" class="btn btn-square btn-danger m-2"><i class="fa fa-trash"></i></button>
+                  </a>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+      </table>
+  </div>
 </div>
 {% endblock %}

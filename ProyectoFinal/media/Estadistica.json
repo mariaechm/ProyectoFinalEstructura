@@ -1,1 +1,137 @@
-[{"id":1,"medidaEspalda":41.5,"medidaPierna":50.2,"medidaBrazo":32.4,"medidaCintura":72.0,"peso":64.5,"altura":1.75},{"id":2,"medidaEspalda":41.5,"medidaPierna":50.2,"medidaBrazo":32.4,"medidaCintura":72.0,"peso":65.5,"altura":2.75},{"id":3,"medidaEspalda":41.5,"medidaPierna":50.2,"medidaBrazo":32.4,"medidaCintura":72.0,"peso":65.5,"altura":2.75},{"id":4,"medidaEspalda":41.5,"medidaPierna":50.2,"medidaBrazo":32.4,"medidaCintura":72.0,"peso":65.5,"altura":2.75},{"id":5,"medidaEspalda":41.5,"medidaPierna":50.2,"medidaBrazo":32.4,"medidaCintura":72.0,"peso":65.5,"altura":2.75},{"id":6,"medidaEspalda":41.5,"medidaPierna":50.2,"medidaBrazo":32.4,"medidaCintura":72.0,"peso":65.5,"altura":2.75},{"id":7,"medidaEspalda":41.5,"medidaPierna":54.2,"medidaBrazo":32.4,"medidaCintura":72.0,"peso":65.5,"altura":2.75},{"id":8,"medidaEspalda":47.5,"medidaPierna":57.2,"medidaBrazo":37.4,"medidaCintura":77.0,"peso":65.5,"altura":2.75},{"id":9,"medidaEspalda":55.5,"medidaPierna":57.2,"medidaBrazo":37.4,"medidaCintura":77.0,"peso":65.5,"altura":2.75},{"id":10,"medidaEspalda":41.5,"medidaPierna":50.2,"medidaBrazo":32.4,"medidaCintura":72.0,"peso":65.5,"altura":2.75},{"id":11,"medidaEspalda":43.5,"medidaPierna":53.2,"medidaBrazo":32.4,"medidaCintura":72.0,"peso":65.5,"altura":2.75},{"id":12,"medidaEspalda":43.5,"medidaPierna":53.2,"medidaBrazo":32.4,"medidaCintura":72.0,"peso":65.5,"altura":2.75},{"id":13,"medidaEspalda":222.0,"medidaPierna":22.0,"medidaBrazo":22.0,"medidaCintura":22.0,"peso":22.0,"altura":22.0},{"id":14,"medidaEspalda":324.0,"medidaPierna":342.0,"medidaBrazo":324.0,"medidaCintura":22.0,"peso":222.0,"altura":324.0},{"id":15,"medidaEspalda":432.0,"medidaPierna":12.0,"medidaBrazo":12.0,"medidaCintura":12.0,"peso":21.0,"altura":21.0},{"id":16,"medidaEspalda":221.88,"medidaPierna":33.0,"medidaBrazo":21.95,"medidaCintura":21.97,"peso":21.99,"altura":22.1}]
+[
+  {
+    "id": 1,
+    "medidaEspalda": 41.5,
+    "medidaPierna": 50.2,
+    "medidaBrazo": 32.4,
+    "medidaCintura": 72.0,
+    "peso": 64.5,
+    "altura": 1.75
+  },
+  {
+    "id": 2,
+    "medidaEspalda": 43.0,
+    "medidaPierna": 52.5,
+    "medidaBrazo": 34.0,
+    "medidaCintura": 74.0,
+    "peso": 67.8,
+    "altura": 1.78
+  },
+  {
+    "id": 3,
+    "medidaEspalda": 39.8,
+    "medidaPierna": 48.0,
+    "medidaBrazo": 31.2,
+    "medidaCintura": 70.5,
+    "peso": 62.3,
+    "altura": 1.72
+  },
+  {
+    "id": 4,
+    "medidaEspalda": 42.7,
+    "medidaPierna": 53.1,
+    "medidaBrazo": 35.5,
+    "medidaCintura": 75.0,
+    "peso": 69.0,
+    "altura": 1.80
+  },
+  {
+    "id": 5,
+    "medidaEspalda": 40.2,
+    "medidaPierna": 47.8,
+    "medidaBrazo": 30.6,
+    "medidaCintura": 69.0,
+    "peso": 61.0,
+    "altura": 1.70
+  },
+  {
+    "id": 6,
+    "medidaEspalda": 44.0,
+    "medidaPierna": 54.3,
+    "medidaBrazo": 36.8,
+    "medidaCintura": 76.2,
+    "peso": 71.5,
+    "altura": 1.83
+  },
+  {
+    "id": 7,
+    "medidaEspalda": 38.5,
+    "medidaPierna": 46.5,
+    "medidaBrazo": 29.8,
+    "medidaCintura": 68.2,
+    "peso": 59.8,
+    "altura": 1.68
+  },
+  {
+    "id": 8,
+    "medidaEspalda": 45.2,
+    "medidaPierna": 55.8,
+    "medidaBrazo": 37.6,
+    "medidaCintura": 77.5,
+    "peso": 73.0,
+    "altura": 1.85
+  },
+  {
+    "id": 9,
+    "medidaEspalda": 40.8,
+    "medidaPierna": 49.5,
+    "medidaBrazo": 32.0,
+    "medidaCintura": 71.0,
+    "peso": 63.5,
+    "altura": 1.73
+  },
+  {
+    "id": 10,
+    "medidaEspalda": 42.3,
+    "medidaPierna": 51.7,
+    "medidaBrazo": 33.5,
+    "medidaCintura": 73.5,
+    "peso": 66.2,
+    "altura": 1.77
+  },
+  {
+    "id": 11,
+    "medidaEspalda": 46.0,
+    "medidaPierna": 57.0,
+    "medidaBrazo": 38.2,
+    "medidaCintura": 78.0,
+    "peso": 74.5,
+    "altura": 1.88
+  },
+  {
+    "id": 12,
+    "medidaEspalda": 39.2,
+    "medidaPierna": 48.2,
+    "medidaBrazo": 30.8,
+    "medidaCintura": 70.0,
+    "peso": 62.0,
+    "altura": 1.72
+  },
+  {
+    "id": 13,
+    "medidaEspalda": 41.8,
+    "medidaPierna": 50.7,
+    "medidaBrazo": 33.0,
+    "medidaCintura": 72.8,
+    "peso": 65.0,
+    "altura": 1.76
+  },
+  {
+    "id": 14,
+    "medidaEspalda": 47.0,
+    "medidaPierna": 58.0,
+    "medidaBrazo": 39.0,
+    "medidaCintura": 79.2,
+    "peso": 75.8,
+    "altura": 1.90
+  },
+  {
+    "id": 15,
+    "medidaEspalda": 37.5,
+    "medidaPierna": 45.0,
+    "medidaBrazo": 28.9,
+    "medidaCintura": 67.0,
+    "peso": 58.5,
+    "altura": 1.65
+  }
+]

@@ -1,1 +1,107 @@
-[{"id":1,"peso":75.5,"imagen":"imagen1.png","altura":180.0,"objetivoCliente":"Perder peso"},{"id":2,"peso":84.0,"imagen":"imagen2.png","altura":175.0,"objetivoCliente":"Perder peso"},{"id":3,"peso":45.0,"imagen":"imagen3.png","altura":195.0,"objetivoCliente":"Ganar masa muscular"}]
+[
+  {
+    "id": 1,
+    "peso": 75.5,
+    "imagen": "imagen1.png",
+    "altura": 180.0,
+    "objetivoCliente": "Perder peso"
+  },
+  {
+    "id": 2,
+    "peso": 68.0,
+    "imagen": "imagen2.png",
+    "altura": 165.5,
+    "objetivoCliente": "Ganar masa muscular"
+  },
+  {
+    "id": 3,
+    "peso": 82.3,
+    "imagen": "imagen3.png",
+    "altura": 175.0,
+    "objetivoCliente": "Definir músculo"
+  },
+  {
+    "id": 4,
+    "peso": 90.5,
+    "imagen": "imagen4.png",
+    "altura": 185.2,
+    "objetivoCliente": "Perder peso"
+  },
+  {
+    "id": 5,
+    "peso": 60.0,
+    "imagen": "imagen5.png",
+    "altura": 160.0,
+    "objetivoCliente": "Ganar masa muscular"
+  },
+  {
+    "id": 6,
+    "peso": 72.8,
+    "imagen": "imagen6.png",
+    "altura": 172.5,
+    "objetivoCliente": "Definir músculo"
+  },
+  {
+    "id": 7,
+    "peso": 65.5,
+    "imagen": "imagen7.png",
+    "altura": 167.8,
+    "objetivoCliente": "Perder peso"
+  },
+  {
+    "id": 8,
+    "peso": 88.0,
+    "imagen": "imagen8.png",
+    "altura": 190.0,
+    "objetivoCliente": "Ganar fuerza"
+  },
+  {
+    "id": 9,
+    "peso": 74.5,
+    "imagen": "imagen9.png",
+    "altura": 180.0,
+    "objetivoCliente": "Ganar masa muscular"
+  },
+  {
+    "id": 10,
+    "peso": 62.3,
+    "imagen": "imagen10.png",
+    "altura": 165.0,
+    "objetivoCliente": "Perder peso"
+  },
+  {
+    "id": 11,
+    "peso": 85.0,
+    "imagen": "imagen11.png",
+    "altura": 185.0,
+    "objetivoCliente": "Definir músculo"
+  },
+  {
+    "id": 12,
+    "peso": 78.2,
+    "imagen": "imagen12.png",
+    "altura": 175.5,
+    "objetivoCliente": "Perder peso"
+  },
+  {
+    "id": 13,
+    "peso": 67.5,
+    "imagen": "imagen13.png",
+    "altura": 168.0,
+    "objetivoCliente": "Ganar fuerza"
+  },
+  {
+    "id": 14,
+    "peso": 95.0,
+    "imagen": "imagen14.png",
+    "altura": 192.0,
+    "objetivoCliente": "Definir músculo"
+  },
+  {
+    "id": 15,
+    "peso": 70.0,
+    "imagen": "imagen15.png",
+    "altura": 170.0,
+    "objetivoCliente": "Ganar masa muscular"
+  }
+]
