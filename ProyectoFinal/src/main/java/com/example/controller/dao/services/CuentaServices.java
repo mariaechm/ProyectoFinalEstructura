@@ -1,5 +1,7 @@
 package com.example.controller.dao.services;
 
+import java.util.HashMap;
+
 import com.example.controller.dao.CuentaDao;
 import com.example.models.Cuenta;
 
@@ -46,5 +48,19 @@ public class CuentaServices {
         return this.obj.search(attribute, x);
     }
 
+
+    // AUTENTICACIÓN Y AUTORIZACIÓN =====================================================
+
+    public String validateCredentialsAndGetToken(String json) throws Exception {
+        return this.obj.validateCredentialsAndGetToken(json);
+    }
+
+    public HashMap<String,Object> getUserInfo(Integer cuentaId) throws Exception {
+        return this.obj.getUserInfo(cuentaId);
+    }
+
+    public HashMap<String,Object> registerNewUser(String json) throws Exception {
+        return this.obj.registerNewUser(json);
+    }
 }
 

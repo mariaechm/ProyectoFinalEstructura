@@ -10,13 +10,16 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.example.controller.auth.Secured;
 import com.example.controller.dao.services.PersonaServices;
+import com.example.models.enumerator.Rol;
 import com.example.rest.response.ResponseFactory;
 
 
 @Path("/persona")
 public class PersonaApi {
     
+    @Secured(rolesAllowed = {Rol.ADMINISTRADOR})
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/list")

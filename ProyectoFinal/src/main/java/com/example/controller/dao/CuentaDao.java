@@ -1,12 +1,15 @@
 package com.example.controller.dao;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.regex.Pattern;
 
+import com.example.controller.auth.JWTManager;
 import com.example.controller.dao.implement.AdapterDao;
 import com.example.controller.dao.implement.JsonFileManager;
 import com.example.controller.tda.list.LinkedList;
 import com.example.models.Cuenta;
+import com.example.models.Perfil;
 import com.example.models.Persona;
 
 public class CuentaDao extends AdapterDao<Cuenta> {
@@ -33,7 +36,8 @@ public class CuentaDao extends AdapterDao<Cuenta> {
     }
 
     public Cuenta saveCuenta() throws Exception {
-        this.getCuenta().setId(0);
+        String contrasena = this.getCuenta().getContrasena();
+        this.getCuenta().setContrasena(JWTManager.base64Encode(contrasena));
         this.getCuenta().setFechaCreacion(LocalDate.now().toString());
         validateData();
         this.getCuenta().setId(JsonFileManager.readAndUpdateCurrentIdOf(className));
@@ -62,10 +66,10 @@ public class CuentaDao extends AdapterDao<Cuenta> {
 
     public Boolean isThereAllFields() {
         if (this.getCuenta().getPersonaId() == null) return false;
+        if (this.getCuenta().getPerfilId() == null) return false;
         if (this.getCuenta().getCorreoElectronico() == null) return false;
         if (this.getCuenta().getContrasena() == null) return false;
         if (this.getCuenta().getFechaCreacion() == null) return false;
-        if (this.getCuenta().getId() == null) return false;
         return true;
     }
     
@@ -82,6 +86,7 @@ public class CuentaDao extends AdapterDao<Cuenta> {
         return true;
     } 
 
+    // Validar si existe una persona en registrada con el idPersona
     public Boolean existsPersonaWith(Integer idPersona) {
         try {
             Persona p = new PersonaDao().getPersonaById(idPersona);
@@ -94,9 +99,10 @@ public class CuentaDao extends AdapterDao<Cuenta> {
         }
     }
 
-    public Boolean existeCuentaWithPersonaId(Integer idPersona) {
+    // Validar si ya está registrada una cuenta con algún atributo que no debe duplicarse
+    public Boolean existeCuentaWith(String attribute, Object x) {
         try {
-            if (listAll().busquedaBinaria("PersonaId", idPersona) != null) 
+            if (listAll().busquedaBinaria(attribute, x) != null) 
                 return true;
         } catch (Exception e) {
             System.out.println("CuentaDao.existeCuentaWithPersona(Id) dice: " + e.getMessage());
@@ -113,13 +119,20 @@ public class CuentaDao extends AdapterDao<Cuenta> {
             throw new Exception("No existe registro de Persona con Id: " + personaId);
         
         if(!forUpdate) {
-        if (existeCuentaWithPersonaId(personaId))
+        if (existeCuentaWith("PersonaId",personaId))
             throw new Exception("Ya existe una cuenta asociada a IdPersona=" + personaId);
         }
         
         final String email = this.getCuenta().getCorreoElectronico();
         if (!isValidEmail(email))
-            throw new Exception("Email no válido");
+            throw new Exception("Email no válido");  // Bad Syntax
+
+        if(existeCuentaWith("CorreoElectronico", email)) 
+            throw new Exception("Ya existe una cuenta con el Email: " + email); // AlreadyExists
+
+        final Integer perfilId = this.getCuenta().getPerfilId();
+        if(existeCuentaWith("PerfilId", perfilId))
+            throw new Exception("Ya existe una cuenta asociada a IdPerfil=");
 
         final String password = this.getCuenta().getContrasena();
         if (!isValidPassword(password)) 
@@ -160,6 +173,66 @@ public class CuentaDao extends AdapterDao<Cuenta> {
         } else {
             return list.busquedaLinealBinaria(attribute, x).toArray();
         }
+    }
+
+    // AUTENTICACIÓN Y AUTORIZACIÓN =======================================================
+
+    public String validateCredentialsAndGetToken(String json) throws Exception {
+        Cuenta cuenta = this.g.fromJson(json, Cuenta.class);
+        Cuenta registered = listAll().busquedaBinaria("correoElectronico", cuenta.getCorreoElectronico()); 
+        if(registered != null) {
+            if(!registered.getContrasena().equals(JWTManager.base64Encode(cuenta.getContrasena()))) {
+                throw new Exception("Credenciales inválidas");
+            } else {
+                return JWTManager.createToken(registered, 60);
+            }
+        }
+
+        throw new Exception("Credenciales inválidas");
+    }
+
+    public HashMap<String,Object> getUserInfo(Integer cuentaId) throws Exception {
+        Cuenta cuenta = getCuentaById(cuentaId);
+        Persona persona = new PersonaDao().getPersonaById(cuenta.getPersonaId());
+        Perfil perfil = new PerfilDao().get(cuenta.getPerfilId());
+
+        HashMap<String,Object> map = new HashMap<>();
+
+        map.put("cuenta", cuenta);
+        map.put("persona", persona);
+        map.put("perfil",perfil);
+
+        return map;
+    }
+
+    public HashMap<String, Object> registerNewUser(String json) throws Exception {
+        try {
+            PersonaDao pd = new PersonaDao();
+            PerfilDao pfd = new PerfilDao();
+            
+            this.cuentaFromJson(json);
+
+            pd.personaFromJson(json);
+            pfd.setPerfil(g.fromJson(json, pfd.getPerfil().getClass())); // el peruano no ha puesto from json
+
+            pd.savePersona();
+            pfd.save();
+
+            this.getCuenta().setPerfilId(pfd.getPerfil().getId());
+            this.getCuenta().setPersonaId(pd.getPersona().getId());
+
+            this.saveCuenta();
+
+            HashMap<String, Object> res = new HashMap<>();
+            res.put("cuenta", this.getCuenta());
+            res.put("persona", pd.getPersona());
+            res.put("perfil", pfd.getPerfil());
+
+            return res;
+        } catch (Exception e) {
+            System.out.println("CuentaDao.registerNewUser() dice: " + e.getMessage());
+        }
+        throw new Exception("No se pudo completar el registro!");
     }
     
 }

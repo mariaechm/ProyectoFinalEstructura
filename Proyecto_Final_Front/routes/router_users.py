@@ -1,22 +1,27 @@
 from .router import *
+from .utils.decorator import *
 
 P_URL = f'{BASE_URL}/persona' 
 
 
-@router.route('/persona/list')
-def persona_list():
-    personas = requests.get(f'{P_URL}/list').json()['data']
+@router.route('/admin/users/list')
+@login_required
+def persona_list(headers,usr):
+    personas = requests.get(f'{P_URL}/list',headers=headers).json()['data']
+    cuentas = requests.get(f'{BASE_URL}/cuenta/list',headers=headers).json()['data']
     for i in range(0,len(personas)):
         personas[i]['numero'] = i + 1
-    return render_template('fragmento/persona/list.html', personas=personas)
+        personas[i]['correo'] = cuentas[i]['correoElectronico']
+    return render_template('fragmento/users_view/list.html', personas=personas, user=usr)
 
-@router.route('/persona/save')
-def persona_save():
-    e = requests.get(f'{P_URL}/enumerations').json()['data']
-    return render_template('fragmento/persona/save.html',e=e)
+@router.route('/register/user')
+@login_required
+def register_user(headers,usr):
+    e = requests.get(f'{P_URL}/enumerations',headers=headers).json()['data']
+    return render_template('fragmento/users_view/register.html',e=e, user=usr)
 
-@router.route('/persona/save/send',methods=['POST'])
-def persona_save_send():
+@router.route('/register/user/send',methods=['POST'])
+def register_user_send():
     response = requests.post(f'{P_URL}/save',json=request.form.to_dict(),headers={'Content Type':'application/json'})
     msg = [response.json()['status'],response.json()['info']]
     flash(f'{msg[0]}: {msg[1]}')

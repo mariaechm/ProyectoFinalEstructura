@@ -368,7 +368,7 @@ public class LinkedList<E> {
 
     // MERGE SORT
     private void merge(String atribute, E arr[], int left, int middle, int right, Integer tipoOrden) throws Exception {
-        Class<?> classs = this.header.getInfo().getClass(); 
+        Class<?> classs = (this.clazz == null) ? this.header.getInfo().getClass() : this.clazz; 
         
         int n1 = middle - left + 1; 
         int n2 = right - middle; 
@@ -502,7 +502,7 @@ public class LinkedList<E> {
     }
 
     
-    public E busquedaBinaria(String attribute, Object x) throws Exception {
+    public E busquedaBinaria(String attribute, Object x) {
         if (isEmpty()) return null; 
         try{
             E[] arr = this.toArray(); 

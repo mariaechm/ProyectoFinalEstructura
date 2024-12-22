@@ -30,9 +30,8 @@ public class PersonaDao extends AdapterDao<Persona> {
     }
 
     public Persona savePersona() throws Exception {
-        this.getPersona().setId(0); // Se establece un id provisional hasta validar todos los datos
         validateData();
-        this.getPersona().setId(JsonFileManager.readAndUpdateCurrentIdOf(className)); // Se coloca el id real
+        this.getPersona().setId(JsonFileManager.readAndUpdateCurrentIdOf(className)); 
         persist(persona);
         return this.persona;
     }
@@ -57,7 +56,6 @@ public class PersonaDao extends AdapterDao<Persona> {
     // VALIDADORES =============================================================================
 
     public Boolean isThereAllFields() {
-        if(this.getPersona().getId() == null) return false;
         if(this.getPersona().getApellido() == null) return false;
         if(this.getPersona().getNombre() == null) return false;
         if(this.getPersona().getCelular() == null) return false;
