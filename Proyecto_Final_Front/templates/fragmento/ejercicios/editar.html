@@ -49,6 +49,15 @@
                 <label for="descrip" class="form-label">Descripción del Ejercicio</label>
                 <textarea type="text" class="form-control" name="descrip" style="height: 150px;" required="">{{ ejercicio.descripcion }}</textarea>
             </div>
+
+            <div class="col-sm-6">
+                <label for="lbltipo" class="form-label">Grupo Muscular Objetivo</label>
+                <select class="form-select mb-3" required name="grupoMuscular">
+                    {% for item in list2 %}
+                        <option {% if item == ejercicio.grupoMuscularObjetivo %} selected {%endif%} value="{{ item }}">{{ item }}</option>
+                    {% endfor %}
+                </select>
+            </div>  
             
             <div class="form-inline">
                 <div class="col-sm-6">

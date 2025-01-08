@@ -18,11 +18,8 @@ def view_register_rutina():
     r = requests.get("http://localhost:8080/api/rutinas/objetivoRutina")
     print(r.json())
     data = r.json()["data"]
-    r1 = requests.get("http://localhost:8080/api/rutinas/grupoMuscularObjetivo")
-    print(r1.json())
-    data1 = r1.json()["data"]
     ejercicios = requests.get("http://localhost:8080/api/ejercicios/all").json()["data"]
-    return render_template('fragmento/rutinas/registro.html', list = data, list1 = data1, ejercicios=ejercicios)
+    return render_template('fragmento/rutinas/registro.html', list = data, ejercicios=ejercicios)
 
 
 @router_rutina.route('/admin/rutinas/save', methods=['POST'])
@@ -35,7 +32,6 @@ def save_rutina():
         "descripcion": form['descrip'],
         "nroEjercicios": form['nroE'],
         "idEjercicio": request.form.getlist("seleccionEjercicios"),
-        "grupoMuscularObjetivo": form['grupoMuscular'],
         "objetivoRutina": form['objR'],
     }
 
@@ -57,15 +53,12 @@ def view_edit_rutina(id):
     r = requests.get("http://localhost:8080/api/rutinas/objetivoRutina")
     print(r.json())
     data = r.json()["data"]
-    r1 = requests.get("http://localhost:8080/api/rutinas/grupoMuscularObjetivo")
-    print(r1.json())
-    data1 = r1.json()["data"]
     r2 = requests.get("http://localhost:8080/api/rutinas/get/"+id)
     print(r2.json())
     data2 = r2.json()["data"]
     ejercicios = requests.get("http://localhost:8080/api/ejercicios/all").json()["data"]
     if(r1.status_code == 200):
-        return render_template('fragmento/rutinas/editar.html', list = data, list1=data1, rutina=data2, ejercicios=ejercicios)
+        return render_template('fragmento/rutinas/editar.html', list = data, rutina=data2, ejercicios=ejercicios)
     else:
         flash(data1, category='error')
         return redirect("/admin/rutinas/list")
@@ -82,7 +75,6 @@ def update_rutina():
         "descripcion": form['descrip'],
         "nroEjercicios": form['nroE'],
         "idEjercicio": request.form.getlist("seleccionEjercicios"),
-        "grupoMuscularObjetivo": form['grupoMuscular'],
         "objetivoRutina": form['objR'],
     }
 

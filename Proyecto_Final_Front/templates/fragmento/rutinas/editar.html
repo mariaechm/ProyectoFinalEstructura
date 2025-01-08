@@ -28,21 +28,7 @@
                         <option {% if item == rutina.objetivoRutina%} selected {%endif%} value="{{ item }}">{{ item }}</option>
                     {% endfor %}
                 </select>
-            </div>
-
-            <div class="col-sm-6">
-                <label for="lbltipo" class="form-label">Grupo Muscular Objetivo</label>
-                <select class="form-select mb-3" required name="grupoMuscular">
-                    {% for item in list1 %}
-                        <option {% if item == rutina.grupoMuscularObjetivo %} selected {%endif%} value="{{ item }}">{{ item }}</option>
-                    {% endfor %}
-                </select>
-            </div>        
-
-            <div class="col-sm-6">
-                <label for="descrip" class="form-label">Descripción de la Rutina</label>
-                <textarea type="text" class="form-control" name="descrip" style="height: 150px;" required="">{{ rutina.descripcion }}</textarea>
-            </div>
+            </div>      
             
             <div class="col-sm-6">
                 <label for="lbltipo" class="form-label">Ejercicios</label>
@@ -51,6 +37,11 @@
                         <option {% if item == rutina.idEjercicio %} selected {%endif%} value="{{ ejercicio.id }}">{{ ejercicio.nombreEjercicio }}</option>
                     {% endfor %}
                 </select>
+            </div>
+
+            <div class="col-sm-6">
+                <label for="descrip" class="form-label">Descripción de la Rutina</label>
+                <textarea type="text" class="form-control" name="descrip" style="height: 150px;" required="">{{ rutina.descripcion }}</textarea>
             </div>
 
             <div class="form-inline">
