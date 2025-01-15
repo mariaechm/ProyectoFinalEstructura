@@ -42,8 +42,11 @@ public class RutinaDao extends AdapterDao<Rutina> {
             Object[] respuesta = new Object[lista.length];
             for(int i = 0; i < lista.length; i++) {
                 Ejercicio[] ejercicios = new Ejercicio[lista[i].getNroEjercicios()];
-                for(int j = 0; j < lista[i].getNroEjercicios(); j++) {
+                System.out.println(lista[i].getNroEjercicios());
+                if(ejercicios.length != 0) {
+                    for(int j = 0; j < lista[i].getNroEjercicios(); j++) {
                     ejercicios[j] = new EjercicioServices().getEjercicioById(lista[i].getIdEjercicio()[j]);
+                    }
                 }
                 HashMap<String, Object> mapa = new HashMap<>();
 
@@ -68,6 +71,7 @@ public class RutinaDao extends AdapterDao<Rutina> {
         if(!camposLlenos()) {
             throw new Exception("Los campos están vacíos, por favor completarlos.");
         }
+        this.getRutina().setNroEjercicios(this.getRutina().getIdEjercicio().length);
         this.getRutina().setId(JsonFileManager.readAndUpdateCurrentIdOf(className));    
         persist(rutina);
         return this.rutina;
@@ -78,6 +82,7 @@ public class RutinaDao extends AdapterDao<Rutina> {
         if(!camposLlenos()) {
             throw new Exception("Los campos están vacíos, por favor completarlos.");
         }
+        this.getRutina().setNroEjercicios(this.getRutina().getIdEjercicio().length);
         merge(this.getRutina(), id);
         return this.rutina;
     }
@@ -102,7 +107,6 @@ public class RutinaDao extends AdapterDao<Rutina> {
     public Boolean camposLlenos() {
         if(this.getRutina().getNombreRutina() == null) return false;
         if(this.getRutina().getDescripcion() == null) return false;
-        if(this.getRutina().getNroEjercicios() == 0) return false;
         if(this.getRutina().getIdEjercicio() == null) return false;
         if(this.getRutina().getObjetivoRutina() == null) return false;
         return true;

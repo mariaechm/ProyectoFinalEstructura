@@ -18,8 +18,9 @@ def view_register_rutina():
     r = requests.get("http://localhost:8080/api/rutinas/objetivoRutina")
     print(r.json())
     data = r.json()["data"]
+    rutinas = requests.get("http://localhost:8080/api/rutinas/all").json()["data"]
     ejercicios = requests.get("http://localhost:8080/api/ejercicios/all").json()["data"]
-    return render_template('fragmento/rutinas/registro.html', list = data, ejercicios=ejercicios)
+    return render_template('fragmento/rutinas/registro.html', list = data, rutinas=rutinas, ejercicios=ejercicios)
 
 
 @router_rutina.route('/admin/rutinas/save', methods=['POST'])
@@ -53,12 +54,13 @@ def view_edit_rutina(id):
     r = requests.get("http://localhost:8080/api/rutinas/objetivoRutina")
     print(r.json())
     data = r.json()["data"]
-    r2 = requests.get("http://localhost:8080/api/rutinas/get/"+id)
-    print(r2.json())
-    data2 = r2.json()["data"]
+    r1 = requests.get("http://localhost:8080/api/rutinas/get/"+id)
+    print(r1.json())
+    data1 = r1.json()["data"]
+    rutinas = requests.get("http://localhost:8080/api/rutinas/all").json()["data"]
     ejercicios = requests.get("http://localhost:8080/api/ejercicios/all").json()["data"]
     if(r1.status_code == 200):
-        return render_template('fragmento/rutinas/editar.html', list = data, rutina=data2, ejercicios=ejercicios)
+        return render_template('fragmento/rutinas/editar.html', list = data, rutina=data1, rutinas=rutinas, ejercicios=ejercicios)
     else:
         flash(data1, category='error')
         return redirect("/admin/rutinas/list")
@@ -108,3 +110,39 @@ def delete_rutina():
     else:
         flash("¡No se ha podido eliminar!", category='error')
         return redirect("/admin/rutinas/list")
+    
+
+@router_rutina.route('/admin/rutinas/sort/<atributo>/<orden>/<metodoOrden>')
+def order_rutina(atributo, orden, metodoOrden):
+    r = requests.get('http://localhost:8080/api/rutinas/sort/'+ atributo + '/' + orden + '/' + metodoOrden)
+    print(r.json())
+    rutinas = r.json()["data"]
+    i = 1
+    for rutina in rutinas:
+        rutina['numero'] = i
+        i+=1
+    return render_template('fragmento/rutinas/lista.html', rutinas = rutinas)
+
+
+@router_rutina.route('/admin/rutinas/search/<atributo>/<valor>')
+def search_rutina(atributo, valor):
+    r = requests.get('http://localhost:8080/api/rutinas/search/'+ atributo + '/' + valor)
+    print(r.json())
+    rutinas = r.json()["data"]
+    i = 1
+    for rutina in rutinas:
+        rutina['numero'] = i
+        i+=1
+    return render_template('fragmento/rutinas/lista.html', rutinas = rutinas)
+
+
+@router_rutina.route('/admin/rutinas/informacion/<id>')
+def info_rutina(id):
+    r = requests.get("http://localhost:8080/api/rutinas/get/"+id)
+    print(r.json())
+    data = r.json()["data"]
+    lista = []
+    for i in data["idEjercicio"]:
+        lista.append(requests.get("http://localhost:8080/api/ejercicios/get/"+str(i)).json()["data"])
+                
+    return render_template('fragmento/rutinas/informacion.html', rutina = data, ejercicios=lista)

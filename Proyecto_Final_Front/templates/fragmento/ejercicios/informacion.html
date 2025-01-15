@@ -10,21 +10,18 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="bg-secondary rounded h-100 p-4">
-            <h2 class="mb-4">{{ ejercicio.nombreEjercicio }}</h2>
-            <input type="hidden" value="{{ id }}" name="idE"/><br>
-            <div class="col-sm-6" style="display: flex;">
-                <img src="{{ ejercicio.imagen }}" style="height: 500px; width: 500px; margin-right: 100px;">
-                <div class="col-sm-6">
-                    <p class="card-text">{{ ejercicio.descripcion }}</p>
+            <h2 class="mb-4 text-center">{{ ejercicio.nombreEjercicio }}</h2>
+            <input type="hidden" value="{{ id }}" name="idE"/>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <img src="{{ ejercicio.imagen }}" class="img-fluid rounded" alt="Imagen del ejercicio">
+                </div>
+                <div class="col-md-12 mt-4">
+                    <p style="text-align: justify;">{{ ejercicio.descripcion }}</p>
                 </div>
             </div>
-            <br>
-            
-            <br>
-            <div class="">
-                  <div class="col-6">
-                      <a href="/admin/ejercicios/list" class="btn btn-warning rounded-pill">Regresar</a>
-                  </div>
+            <div class="mt-4 text-center">
+                <a href="/admin/ejercicios/list" class="btn btn-warning rounded-pill">Regresar a la lista de ejercicios</a>
             </div>
         </div>
       </div>
