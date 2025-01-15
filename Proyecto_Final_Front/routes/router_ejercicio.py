@@ -10,6 +10,7 @@ def list_ejercicio():
     for ejercicio in ejercicios:
         ejercicio['numero'] = i
         i += 1
+    #TO DO: LÓGICA PARA LA VISTA DE USUARIO
     return render_template('fragmento/ejercicios/lista.html', ejercicios = ejercicios)
 
 
@@ -43,11 +44,11 @@ def save_ejercicio():
     r = requests.post("http://localhost:8080/api/ejercicios/save", data = json.dumps(dataF), headers = headers)
     print(r.json())
     dat = r.json()
-    if r.status_code == 200:
+    if r.status_code == 201:
         flash("¡Se ha guardado correctamente!", category='info')
         return redirect("/admin/ejercicios/list")
     else:
-        flash(str(dat["data"]), category='error')
+        flash("¡No se ha podido completar la acción!", category='error')
         return redirect("/admin/ejercicios/list")
     
 
@@ -93,7 +94,7 @@ def update_ejercicio():
         flash("¡Se ha actualizado correctamente!", category='info')
         return redirect("/admin/ejercicios/list")
     else:
-        flash(str(dat["data"]), category='error')
+        flash("¡No se ha podido completar la acción!", category='error')
         return redirect("/admin/ejercicios/list")
     
 
@@ -111,7 +112,7 @@ def delete_ejercicio():
         flash("¡Se ha eliminado correctamente!", category='info')
         return redirect("/admin/ejercicios/list")
     else:
-        flash("¡No se ha podido eliminar!", category='error')
+        flash("¡No se ha podido completar la acción!", category='error')
         return redirect("/admin/ejercicios/list")
 
 

@@ -108,6 +108,7 @@ public class RutinaDao extends AdapterDao<Rutina> {
         if(this.getRutina().getNombreRutina() == null) return false;
         if(this.getRutina().getDescripcion() == null) return false;
         if(this.getRutina().getIdEjercicio() == null) return false;
+        if(this.getRutina().getNroEjercicios() == 0) return false;
         if(this.getRutina().getObjetivoRutina() == null) return false;
         return true;
     }

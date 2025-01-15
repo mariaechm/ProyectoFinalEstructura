@@ -10,6 +10,7 @@ def list_rutina():
     for rutina in rutinas:
         rutina['numero'] = i
         i += 1
+    #TO DO: LÓGICA PARA LA VISTA DE USUARIO
     return render_template('fragmento/rutinas/lista.html', rutinas = rutinas)
 
 
@@ -41,11 +42,11 @@ def save_rutina():
     print("***SELECCION EJERCICIOS***")
     print(request.form.getlist('seleccionEjercicios'))
     dat = r.json()
-    if r.status_code == 200:
+    if r.status_code == 201:
         flash("¡Se ha guardado correctamente!", category='info')
         return redirect("/admin/rutinas/list")
     else:
-        flash(str(dat["data"]), category='error')
+        flash("¡No se ha podido completar la acción!", category='error')
         return redirect("/admin/rutinas/list")
     
 
@@ -62,7 +63,7 @@ def view_edit_rutina(id):
     if(r1.status_code == 200):
         return render_template('fragmento/rutinas/editar.html', list = data, rutina=data1, rutinas=rutinas, ejercicios=ejercicios)
     else:
-        flash(data1, category='error')
+        flash("¡No se ha podido completar la acción!", category='error')
         return redirect("/admin/rutinas/list")
 
 
@@ -90,7 +91,7 @@ def update_rutina():
         flash("¡Se ha actualizado correctamente!", category='info')
         return redirect("/admin/rutinas/list")
     else:
-        flash(str(dat["data"]), category='error')
+        flash("¡No se ha podido completar la acción!", category='error')
         return redirect("/admin/rutinas/list")
     
 
@@ -108,7 +109,7 @@ def delete_rutina():
         flash("¡Se ha eliminado correctamente!", category='info')
         return redirect("/admin/rutinas/list")
     else:
-        flash("¡No se ha podido eliminar!", category='error')
+        flash("¡No se ha podido completar la acción!", category='error')
         return redirect("/admin/rutinas/list")
     
 
