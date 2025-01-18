@@ -78,15 +78,6 @@ public class ResponseFactory {
         Gson gson = new Gson();
         responseHashMap.put("status", "Error");
         responseHashMap.put("info",e.getMessage());
-
-       /*  if(e.getClass().equals(IdNotFoundException.class)
-        ) {
-            responseHashMap.put("recomendation","Ingrese un Id válido");
-            return Response.status(Status.BAD_REQUEST).entity(gson.toJson(responseHashMap)).build();
-        } else if (e.getClass().equals(EmptyFieldException.class)) {
-            responseHashMap.put("recomendation","Complete la información");
-            return Response.status(Status.BAD_REQUEST).entity(gson.toJson(responseHashMap)).build();
-        } */
         
         // TODO: add exception handlers (Para enviar respuestas en casos específicos)
 

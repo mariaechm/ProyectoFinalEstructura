@@ -22,7 +22,7 @@ public class AuthenticationFilter implements ContainerRequestFilter {
     public void filter(ContainerRequestContext containerRequestContext) {
         String currentPath = containerRequestContext.getUriInfo().getPath();
         
-        if(isFreePath(currentPath)) {
+        if(isFreePath(currentPath) || currentPath.startsWith("images")) {
             return;
         }
 

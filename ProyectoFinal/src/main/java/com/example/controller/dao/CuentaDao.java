@@ -1,6 +1,5 @@
 package com.example.controller.dao;
 
-import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.regex.Pattern;
 
@@ -38,7 +37,6 @@ public class CuentaDao extends AdapterDao<Cuenta> {
     public Cuenta saveCuenta() throws Exception {
         String contrasena = this.getCuenta().getContrasena();
         this.getCuenta().setContrasena(JWTManager.base64Encode(contrasena));
-        this.getCuenta().setFechaCreacion(LocalDate.now().toString());
         validateData();
         this.getCuenta().setId(JsonFileManager.readAndUpdateCurrentIdOf(className));
         persist(cuenta);
@@ -69,7 +67,6 @@ public class CuentaDao extends AdapterDao<Cuenta> {
         if (this.getCuenta().getPerfilId() == null) return false;
         if (this.getCuenta().getCorreoElectronico() == null) return false;
         if (this.getCuenta().getContrasena() == null) return false;
-        if (this.getCuenta().getFechaCreacion() == null) return false;
         return true;
     }
     
@@ -117,22 +114,22 @@ public class CuentaDao extends AdapterDao<Cuenta> {
         final Integer personaId = this.getCuenta().getPersonaId();
         if (!existsPersonaWith(personaId)) 
             throw new Exception("No existe registro de Persona con Id: " + personaId);
-        
-        if(!forUpdate) {
-        if (existeCuentaWith("PersonaId",personaId))
-            throw new Exception("Ya existe una cuenta asociada a IdPersona=" + personaId);
-        }
-        
+
         final String email = this.getCuenta().getCorreoElectronico();
         if (!isValidEmail(email))
-            throw new Exception("Email no válido");  // Bad Syntax
+            throw new Exception("Email no válido");  
+        
+        if(!forUpdate) {
+            if (existeCuentaWith("PersonaId",personaId))
+                throw new Exception("Ya existe una cuenta asociada a IdPersona=" + personaId);
 
-        if(existeCuentaWith("CorreoElectronico", email)) 
-            throw new Exception("Ya existe una cuenta con el Email: " + email); // AlreadyExists
+            if(existeCuentaWith("CorreoElectronico", email)) 
+                throw new Exception("Ya existe una cuenta con el Email: " + email); 
 
-        final Integer perfilId = this.getCuenta().getPerfilId();
-        if(existeCuentaWith("PerfilId", perfilId))
-            throw new Exception("Ya existe una cuenta asociada a IdPerfil=");
+            final Integer perfilId = this.getCuenta().getPerfilId();
+            if(existeCuentaWith("PerfilId", perfilId))
+                throw new Exception("Ya existe una cuenta asociada a IdPerfil=");
+        }
 
         final String password = this.getCuenta().getContrasena();
         if (!isValidPassword(password)) 
@@ -146,22 +143,22 @@ public class CuentaDao extends AdapterDao<Cuenta> {
     // BÚSQUEDA Y ORDENACIÓN ============================================================
 
     public Cuenta[] sort(String attribute, Integer orden, Integer method) throws Exception {
-    LinkedList<Cuenta> list = listAll();
-    switch (method) {
-        case 0:
-            list.quickSort(attribute, orden);
-            break;
-        case 1:
-            list.mergeSort(attribute, orden);
-            break;
-        case 2:
-            list.shellSort(attribute, orden);
-            break;
-    
-        default:
-            break;
-    }
-    return list.toArray();
+        LinkedList<Cuenta> list = listAll();
+        switch (method) {
+            case 0:
+                list.quickSort(attribute, orden);
+                break;
+            case 1:
+                list.mergeSort(attribute, orden);
+                break;
+            case 2:
+                list.shellSort(attribute, orden);
+                break;
+        
+            default:
+                break;
+        }
+        return list.toArray();
     }
     
     public Cuenta[] search(String attribute, String x) throws Exception {
@@ -170,6 +167,10 @@ public class CuentaDao extends AdapterDao<Cuenta> {
             return new Cuenta[] {
                 list.busquedaBinaria(attribute,x),
             }; 
+        } else if(attribute.equalsIgnoreCase("personaId") || attribute.equalsIgnoreCase("perfilId")) {
+            return new Cuenta[] {
+                list.busquedaBinaria(attribute, Integer.parseInt(x)),
+            };
         } else {
             return list.busquedaLinealBinaria(attribute, x).toArray();
         }
@@ -195,6 +196,7 @@ public class CuentaDao extends AdapterDao<Cuenta> {
         Cuenta cuenta = getCuentaById(cuentaId);
         Persona persona = new PersonaDao().getPersonaById(cuenta.getPersonaId());
         Perfil perfil = new PerfilDao().get(cuenta.getPerfilId());
+        perfil.setImagen("http://localhost:8080/api/images/" + perfil.getImagen());
 
         HashMap<String,Object> map = new HashMap<>();
 
@@ -205,22 +207,28 @@ public class CuentaDao extends AdapterDao<Cuenta> {
         return map;
     }
 
+    // TODO: IMPLEMENTAR MÉTODOS EN DAOS DE PERSONA, PERFIL Y ESTADÍSTICA
     public HashMap<String, Object> registerNewUser(String json) throws Exception {
         try {
             PersonaDao pd = new PersonaDao();
             PerfilDao pfd = new PerfilDao();
+            EstadisticaDao ed = new EstadisticaDao();
             
             this.cuentaFromJson(json);
-
             pd.personaFromJson(json);
-            pfd.setPerfil(g.fromJson(json, pfd.getPerfil().getClass())); // el peruano no ha puesto from json
+            //pfd.perfilWithGenericValues(); 
+            //ed.estadisticaWithGenericValues();
+
+            //pfd.getPerfil().setNickName(pd.getPersona().getNombre());
 
             pd.savePersona();
             pfd.save();
 
+            //ed.getEstadistica().setPerfilId(pfd.getPerfil().getId());
+            ed.save();
+
             this.getCuenta().setPerfilId(pfd.getPerfil().getId());
             this.getCuenta().setPersonaId(pd.getPersona().getId());
-
             this.saveCuenta();
 
             HashMap<String, Object> res = new HashMap<>();
@@ -229,10 +237,32 @@ public class CuentaDao extends AdapterDao<Cuenta> {
             res.put("perfil", pfd.getPerfil());
 
             return res;
+
         } catch (Exception e) {
             System.out.println("CuentaDao.registerNewUser() dice: " + e.getMessage());
         }
         throw new Exception("No se pudo completar el registro!");
     }
     
+    @SuppressWarnings("unchecked")
+    public Cuenta changePassword(String json) throws Exception {
+        HashMap<String, Object> map = this.g.fromJson(json, HashMap.class);
+        String newContrasena = map.get("newContrasena").toString();
+        Cuenta cuenta = this.g.fromJson(json, this.getCuenta().getClass());
+        System.out.println(cuenta);
+        Cuenta registered = get(cuenta.getId());
+
+        System.out.println(registered);
+
+        if(registered != null) {
+            if(registered.getContrasena().equals(JWTManager.base64Encode(cuenta.getContrasena()))) {
+                registered.setContrasena(JWTManager.base64Encode(newContrasena));
+                this.cuenta = registered;
+                updateCuenta();
+                return registered;
+            }
+        }
+
+        throw new Exception("Credenciales inválidas");
+    }
 }

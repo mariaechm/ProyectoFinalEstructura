@@ -46,4 +46,12 @@ public class AuthResource {
         return ResponseFactory.buildResponse(new CuentaServices(),"registerNewUser",json);
     }
 
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/change/password")
+    public Response changePassword(String json) {
+        return ResponseFactory.buildResponse(new CuentaServices(),"changePassword",json);
+    }
+
 }

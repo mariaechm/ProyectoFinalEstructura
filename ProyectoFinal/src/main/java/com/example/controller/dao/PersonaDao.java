@@ -33,6 +33,7 @@ public class PersonaDao extends AdapterDao<Persona> {
         validateData();
         this.getPersona().setId(JsonFileManager.readAndUpdateCurrentIdOf(className)); 
         persist(persona);
+        new EventoCrudManager().registrarEventoCrud("Se ha registrado la información personal");
         return this.persona;
     }
 
@@ -40,12 +41,14 @@ public class PersonaDao extends AdapterDao<Persona> {
         Integer id = this.getPersona().getId();
         validateData(true);
         merge(this.persona,id);
+        new EventoCrudManager().registrarEventoCrud("Se actualizó con éxito la información personal");
         return this.persona;
     }
 
     public Persona deletePersona(Integer id) throws Exception {
         Persona p = get(id);
         remove(id);
+        new EventoCrudManager().registrarEventoCrud("Se ha eliminado la información personal");
         return p;
     }
 

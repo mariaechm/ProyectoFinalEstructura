@@ -2,6 +2,7 @@ package com.example.rest;
 
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
+import org.glassfish.jersey.media.multipart.MultiPartFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 
 import com.example.controller.auth.AuthenticationFilter;
@@ -28,6 +29,7 @@ public class Main {
         // create a resource config that scans for JAX-RS resources and providers
         // in com.example.rest package
         final ResourceConfig rc = new ResourceConfig().packages("com.example.rest");
+        rc.register(MultiPartFeature.class);
         rc.register(AuthenticationFilter.class);
         rc.register(AuthorizationFilter.class);
 

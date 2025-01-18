@@ -62,5 +62,8 @@ public class CuentaServices {
     public HashMap<String,Object> registerNewUser(String json) throws Exception {
         return this.obj.registerNewUser(json);
     }
-}
 
+    public Cuenta changePassword(String json) throws Exception {
+        return this.obj.changePassword(json);
+    }
+}
