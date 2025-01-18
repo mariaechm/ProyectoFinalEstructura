@@ -12,11 +12,11 @@ import javax.ws.rs.core.Response;
 @Path("/images")
 public class ImageController {
 
-    private static final String IMAGE_DIR = "./images"; // Directorio donde se guardan las imágenes
+    private static final String IMAGE_DIR = "./images"; 
 
     @GET
     @Path("/{fileName}")
-    @Produces("image/*") // Cambia el tipo MIME según el formato de tu imagen
+    @Produces("image/*")
     public Response getImage(@PathParam("fileName") String fileName) {
         try {
             File file = new File(IMAGE_DIR, fileName);

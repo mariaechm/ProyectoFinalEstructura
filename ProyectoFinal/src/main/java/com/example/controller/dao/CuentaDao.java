@@ -216,7 +216,10 @@ public class CuentaDao extends AdapterDao<Cuenta> {
             
             this.cuentaFromJson(json);
             pd.personaFromJson(json);
+
+            //TODO: ESTOS METODOS
             //pfd.perfilWithGenericValues(); 
+
             //ed.estadisticaWithGenericValues();
 
             //pfd.getPerfil().setNickName(pd.getPersona().getNombre());
