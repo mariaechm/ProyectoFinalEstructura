@@ -5,6 +5,15 @@
 
 {% block content %}
 
+{% with messages = get_flashed_messages(with_categories=True)  %}
+  {% for message in messages %}
+    <div class="alert alert-{{ message[0] }} alert-dismissible fade show" role="alert">
+      {{ message[1] }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  {% endfor %}
+{% endwith %}
+
 <a href="/register/user">
   <button type="button" class="btn btn-warning m-2"> Registrar Nuevo Usuario</i></button>
 </a>
@@ -37,13 +46,10 @@
                       <td>{{ persona.correo }}</td>
                       <td>{{ persona.direccion }}</td>
                       <td>
-                        <a href="#/user/view_user/{{ persona.id }}">
+                        <a href="/view_user/{{ persona.id }}">
                           <button type="button" class="btn btn-square btn-warning m-2"><i class="fa fa-eye"></i></button>
                         </a>
-                        <a href="/persona/update/{{ persona.id }}">
-                          <button type="button" class="btn btn-square btn-info m-2"><i class="fa fa-pen"></i></button>
-                        </a>
-                        <a href="/persona/delete/{{ persona.id }}">
+                        <a href="#/user/delete/{{ persona.id }}">
                           <button type="button" class="btn btn-square btn-danger m-2"><i class="fa fa-trash"></i></button>
                         </a>
                       </td>
@@ -55,5 +61,11 @@
           </table>
       </div>
   </div>
-</div>
+</div> 
+
 {% endblock %}
+
+
+<!-- <a href="/user/update/{{ persona.id }}">
+  <button type="button" class="btn btn-square btn-info m-2"><i class="fa fa-pen"></i></button>
+</a> -->

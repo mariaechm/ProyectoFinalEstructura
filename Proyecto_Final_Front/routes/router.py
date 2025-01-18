@@ -7,10 +7,14 @@ BASE_URL = 'http://localhost:8080/api'
 
 router = Blueprint('router',__name__)
 
+@router.route('/')
+def index():
+    return redirect('/dashboard')
+
 @router.route('/dashboard')
-@login_required
+@login_required()
 def home(headers,usr):
-    return render_template('index.html')
+    return render_template('dashboard.html',user=usr)
 
 @router.route('/not_found')
 def not_found():
@@ -21,7 +25,9 @@ def not_found():
 @router.route('/login')
 @login_path
 def login():
-    return render_template('signin.html')
+    next = request.args.get('next')
+    print(next)
+    return render_template('signin.html',next=next or '')
 
 @router.route('/login/send',methods=['POST'])
 def login_send():
@@ -32,7 +38,9 @@ def login_send():
         return redirect('/login')
     
     session['token'] = response.json()['data']
-    return redirect('/admin')
+    next = request.form.to_dict()['next']
+    next = next if next != '' else None
+    return redirect(next or '/dashboard')
 
 @router.route('/logout')
 def logout_site():

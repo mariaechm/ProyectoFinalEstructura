@@ -36,6 +36,7 @@
                     </div>
                     <center><h3>Iniciar Sesión</h3></center><br>
                     <form method="post" action="/login/send">
+                        <input type="text" name="next" hidden value="{{ next }}">
                         <div class="form-floating mb-3">
                             <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="correoElectronico">
                             <label for="floatingInput">Email address</label>
