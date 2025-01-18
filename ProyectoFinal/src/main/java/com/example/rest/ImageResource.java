@@ -27,14 +27,9 @@ public class ImageResource {
                                     System.out.println("ImageResource.uploadImage()");
         try {
             
-            // Ruta donde guardar la imagen
             String uploadedFileLocation = "./images/" + fileDetail.getFileName();
 
-            // Guardar la imagen en el servidor
             saveToFile(uploadedInputStream, uploadedFileLocation);
-
-            // Opcional: Guardar la ruta o metadata en el archivo JSON
-            // Aquí añadirías lógica para actualizar tu archivo JSON.
 
             return Response.status(200).entity("Archivo subido correctamente a " + uploadedFileLocation).build();
         } catch (Exception e) {
@@ -42,8 +37,7 @@ public class ImageResource {
             return Response.status(500).entity("Error al subir el archivo").build();
         }
     }
-
-    // Método auxiliar para guardar el archivo en el disco
+    
     private void saveToFile(InputStream uploadedInputStream, String target) throws IOException {
         try (OutputStream out = new FileOutputStream(new File(target))) {
             int read;
