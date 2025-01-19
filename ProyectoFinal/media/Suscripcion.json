@@ -1,1 +1,26 @@
-[{"id":2,"fechaInicio":"12/12/2024","fechaFinalizacion":"12/12/2001","tipo":"DIA"},{"id":3,"fechaInicio":"12/12/2024","fechaFinalizacion":"12/12/2000","tipo":"MES"}]
+[
+  {
+    "id": 2,
+    "fechaInicio": "2025-11-30",
+    "fechaFinalizacion": "2025-12-07",
+    "tipo": "SEMANA",
+    "precio": 10.0,
+    "duracionDias": 7
+  },
+  {
+    "id": 3,
+    "fechaInicio": "2024-10-30",
+    "fechaFinalizacion": "2024-11-14",
+    "tipo": "MEDIO_MES",
+    "precio": 15.0,
+    "duracionDias": 15
+  },
+  {
+    "id": 4,
+    "fechaInicio": "2024-10-30",
+    "fechaFinalizacion": "2024-10-31",
+    "tipo": "DIA",
+    "precio": 3.0,
+    "duracionDias": 1
+  }
+]

@@ -7,6 +7,8 @@ public class Suscripcion {
     private String fechaInicio;
     private String fechaFinalizacion;
     private TipoSuscripcion tipo;
+    private Double precio;
+    private int duracionDias;
     
     public Integer getId() {
         return this.id;
@@ -24,7 +26,7 @@ public class Suscripcion {
         this.fechaInicio = fechaInicio;
     }
 
-    public String getFechaFinalizacion() {
+   public String getFechaFinalizacion() {
         return this.fechaFinalizacion;
     }
 
@@ -38,6 +40,22 @@ public class Suscripcion {
 
     public void setTipo(TipoSuscripcion tipo) {
         this.tipo = tipo;
+    }
+
+    public Double getPrecio() {
+        return this.precio;
+    }
+
+    public void setPrecio(Double precio) {
+        this.precio = precio;
+    }
+
+    public int getDuracionDias() {
+        return this.duracionDias;
+    }
+
+    public void setDuracionDias(int duracionDias) {
+        this.duracionDias = duracionDias;
     }
     
 }
