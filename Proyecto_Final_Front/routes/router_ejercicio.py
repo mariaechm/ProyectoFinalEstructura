@@ -2,8 +2,9 @@ from .router import *
 router_ejercicio = Blueprint('router_ejercicio',__name__)
 
 @router_ejercicio.route('/admin/ejercicios/list')
-def list_ejercicio():
-    r =requests.get("http://localhost:8080/api/ejercicios/all")
+@login_required()
+def list_ejercicio(headers,usr):
+    r =requests.get("http://localhost:8080/api/ejercicios/all",headers=headers)
     print(r.json())
     ejercicios = r.json()["data"]
     i = 1
@@ -11,7 +12,7 @@ def list_ejercicio():
         ejercicio['numero'] = i
         i += 1
     #TO DO: LÓGICA PARA LA VISTA DE USUARIO
-    return render_template('fragmento/ejercicios/lista.html', ejercicios = ejercicios)
+    return render_template('fragmento/ejercicios/lista.html',user=usr, ejercicios = ejercicios)
 
 
 @router_ejercicio.route('/admin/ejercicios/register')
