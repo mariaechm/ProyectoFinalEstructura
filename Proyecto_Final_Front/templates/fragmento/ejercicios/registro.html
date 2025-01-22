@@ -1,5 +1,10 @@
 {% extends 'blank.html' %}
-
+{% block rutinaDropDown %}
+  active
+{% endblock %}
+{% block ejercicio %}
+  active
+{% endblock %}
 {% block content %}
 
 <div class="pagetitle">
@@ -47,6 +52,15 @@
             <div class="col-sm-6">
                 <label for="descrip" class="form-label">Descripción del Ejercicio</label>
                 <textarea type="text" class="form-control" name="descrip" style="height: 150px;"></textarea>
+            </div>
+
+            <div class="col-sm-6">
+                <label for="lbltipo" class="form-label">Grupo Muscular Objetivo</label>
+                <select class="form-select mb-3" name="grupoMuscular" required>
+                    {% for item in list1 %}
+                        <option value="{{ item }}">{{ item }}</option>
+                    {% endfor %}
+                </select>
             </div>
             
             <div class="form-inline">

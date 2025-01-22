@@ -1,6 +1,5 @@
 package com.example.rest;
 
-import java.util.HashMap;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -9,9 +8,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.example.controller.dao.services.EjercicioServices;
+import com.example.rest.response.ResponseFactory;
 
 
 @Path("/ejercicios")
@@ -19,139 +17,73 @@ public class EjercicioApi {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/all")
-    public Response getAllEjercicios() throws Exception {
-        EjercicioServices es = new EjercicioServices();
-        HashMap<String,Object> responseMap = new HashMap<>();
-        ObjectMapper om = new ObjectMapper();
-
-        try {
-            responseMap.put("status","OK");
-            if(es.getAllEjercicios() == null) {
-                responseMap.put("data",new Object[0]);
-                return Response.ok(om.writeValueAsString(responseMap)).build();
-            }
-            responseMap.put("data",es.getAllEjercicios());
-            return Response.ok(om.writeValueAsString(responseMap)).build();
-        } catch (Exception e) {
-            e.printStackTrace();
-            responseMap.put("status","ERROR");
-            responseMap.put("data",e.getMessage());
-            return Response.status(Status.INTERNAL_SERVER_ERROR)
-                            .entity(om.writeValueAsString(responseMap)).build();
-        }
+    public Response getAll() {
+        return ResponseFactory.buildResponse(new EjercicioServices(), "getAllEjercicios");
     }
+
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/get/{id}")
+    public Response getById(@PathParam("id") Integer id) {
+        return ResponseFactory.buildResponse(new EjercicioServices(), "getEjercicioById", id);
+    }
+
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/save")
-    public Response saveEjercicio(String ejercicioJson) throws Exception {
-        EjercicioServices es = new EjercicioServices();
-        HashMap<String,Object> responseMap = new HashMap<>();
-        ObjectMapper om = new ObjectMapper();
-
-        try {
-            es.EjercicioFromJson(ejercicioJson);
-            es.saveEjercicio();
-            responseMap.put("status","OK");
-            responseMap.put("data",es.getEjercicio());
-            return Response.ok(om.writeValueAsString(responseMap)).build();
-        } catch (Exception e) {
-            e.printStackTrace();
-            responseMap.put("status","ERROR");
-            responseMap.put("data",e.getMessage());
-            return Response.status(Status.INTERNAL_SERVER_ERROR)
-                            .entity(om.writeValueAsString(responseMap)).build();
-        }
-    }
-
-    @POST
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/delete/{id}")
-    public Response deleteEjercicio(@PathParam("id") Integer id) throws Exception {
-        EjercicioServices es = new EjercicioServices();
-        HashMap<String,Object> responseMap = new HashMap<>();
-        ObjectMapper om = new ObjectMapper();
-
-        try {
-            responseMap.put("status","OK");
-            responseMap.put("data",es.getEjercicioById(id));
-            es.deleteEjercicio(id);
-            return Response.ok(om.writeValueAsString(responseMap)).build();
-        } catch (Exception e) {
-            e.printStackTrace();
-            
-            responseMap.put("status","ERROR");
-            responseMap.put("data",e.getMessage());
-            return Response.status(Status.INTERNAL_SERVER_ERROR)
-                            .entity(om.writeValueAsString(responseMap)).build();
-        }
-    }
-
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/get/{id}")
-    public Response getEjercicioById(@PathParam("id") Integer id) throws Exception {
-        EjercicioServices es = new EjercicioServices();
-        HashMap<String,Object> responseMap = new HashMap<>();
-        ObjectMapper om = new ObjectMapper();
-
-        try {
-            responseMap.put("status","OK");
-            responseMap.put("data",es.getEjercicioById(id));
-            return Response.ok(om.writeValueAsString(responseMap)).build();
-        } catch (Exception e) {
-            responseMap.put("status","ERROR");
-            responseMap.put("data",e.getMessage());
-            return Response.status(Status.INTERNAL_SERVER_ERROR)
-                            .entity(om.writeValueAsString(responseMap)).build();
-        }
+    public Response save(String ejercicioJson) {
+        return ResponseFactory.buildResponse(new EjercicioServices(), "saveEjercicio", ejercicioJson);
     }
 
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/update/")
-    public Response getAllEjercicios(String ejercicioJson) throws Exception {
-        EjercicioServices es = new EjercicioServices();
-        HashMap<String,Object> responseMap = new HashMap<>();
-        ObjectMapper om = new ObjectMapper();
-
-        try {
-            es.EjercicioFromJson(ejercicioJson);
-            es.update();
-            responseMap.put("status","OK");
-            responseMap.put("data",es.getEjercicio());
-            return Response.ok(om.writeValueAsString(responseMap)).build();
-        } catch (Exception e) {
-            responseMap.put("status","ERROR");
-            responseMap.put("data",e.getMessage());
-            return Response.status(Status.INTERNAL_SERVER_ERROR)
-                            .entity(om.writeValueAsString(responseMap)).build();
-        }
+    @Path("/update")
+    public Response update(String ejercicioJson){
+        return ResponseFactory.buildResponse(new EjercicioServices(), "updateEjercicio", ejercicioJson);
     }
+
+
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/delete/{id}")
+    public Response delete(@PathParam("id") Integer id) {
+        return ResponseFactory.buildResponse(new EjercicioServices(), "deleteEjercicio", id);
+    }
+
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/typeEjercicio")
-    public Response enumerations() throws Exception {
-        EjercicioServices es = new EjercicioServices();
-        HashMap<String,Object> responseMap = new HashMap<>();
-        ObjectMapper om = new ObjectMapper();
+    public Response tipoEjercicio() {
+        return ResponseFactory.buildResponse(new EjercicioServices(), "getTipos");
+    }
 
-        try {
-            responseMap.put("status", "OK");
-            responseMap.put("data",es.getTipos());
 
-            return Response.ok(om.writeValueAsString(responseMap)).build();
-        } catch (Exception e) {
-            e.printStackTrace();
-            responseMap.put("status", "ERROR");
-            responseMap.put("data", e.getMessage());
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/grupoMuscularObjetivo")
+    public Response getGrupoMuscularObjetivo() throws Exception {
+        return ResponseFactory.buildResponse(new EjercicioServices(), "getGrupos");
+    }
 
-            return Response.status(Status.INTERNAL_SERVER_ERROR)
-            .entity(responseMap).build();
-        }
+   
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("sort/{attribute}/{orden}/{method}")
+    public Response sort(@PathParam("attribute") String attribute, @PathParam("orden") Integer orden, @PathParam("method") Integer method) {
+        return ResponseFactory.buildResponse(new EjercicioServices(), "sort", attribute, orden, method);
+    }
+
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("search/{attribute}/{value}")
+    public Response search(@PathParam("attribute") String attribute, @PathParam("value") String value) {
+        return ResponseFactory.buildResponse(new EjercicioServices(), "search", attribute, value);
     }
 }
