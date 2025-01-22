@@ -5,7 +5,6 @@ public class Cuenta {
     
     private String correoElectronico;
     private String contrasena;
-    private String fechaCreacion;
 
     private Integer personaId;
     private Integer perfilId;
@@ -35,14 +34,6 @@ public class Cuenta {
 
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
-    }
-
-    public String getFechaCreacion() {
-        return this.fechaCreacion;
-    }
-
-    public void setFechaCreacion(String fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
     }
 
     public Integer getPersonaId() {
