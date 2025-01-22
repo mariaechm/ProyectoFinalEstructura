@@ -521,5 +521,3 @@ public class LinkedList<E> {
         return busquedaBinaria(arr, x, attribute); 
     }
 }
-
-

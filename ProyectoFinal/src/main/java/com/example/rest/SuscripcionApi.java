@@ -3,7 +3,6 @@ package com.example.rest;
 import java.util.HashMap;
 
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -12,7 +11,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-
 
 import com.example.controller.dao.services.SuscripcionServices;
 import com.example.models.enumerator.TipoSuscripcion;
@@ -49,8 +47,10 @@ public class SuscripcionApi {
         try {
 
             ssrv.getSuscripcion().setFechaInicio(map.get("fechaInicio").toString());
-            ssrv.getSuscripcion().setFechaFinalizacion(map.get("fechaFinalizacion").toString());
+            //ssrv.getSuscripcion().setFechaFinalizacion(map.get("fechaFinalizacion").toString());
             ssrv.getSuscripcion().setTipo((TipoSuscripcion.valueOf(map.get("tipo").toString())));
+            
+            
             
 
             ssrv.save();
@@ -69,7 +69,7 @@ public class SuscripcionApi {
     }
 
     @Path("/delete/{id}")
-    @DELETE
+    @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response delete(@PathParam("id") Integer id) { // Extraer el id de la URL {id}
@@ -105,13 +105,15 @@ public class SuscripcionApi {
         try {
             ssrv.getSuscripcion().setId(Integer.parseInt(map.get("id").toString()));
             ssrv.getSuscripcion().setFechaInicio(map.get("fechaInicio").toString());
-            ssrv.getSuscripcion().setFechaFinalizacion(map.get("fechaFinalizacion").toString());
+            //ssrv.getSuscripcion().setFechaFinalizacion(map.get("fechaFinalizacion").toString());
             ssrv.getSuscripcion().setTipo((TipoSuscripcion.valueOf(map.get("tipo").toString())));
+            //ssrv.getSuscripcion().setPrecio((TipoSuscripcion.valueOf(map.get("tipo").toString()).getPrecio()));
+            ssrv.getSuscripcion().setDuracionDias((TipoSuscripcion.valueOf(map.get("tipo").toString()).getDuracionDias()));
             
 
             ssrv.update();
             res.put("msg", "OK");
-            res.put("data", "Suscripcion Registarada");
+            res.put("data", "Suscripcion Modificada");
             return Response.ok(res).build();
 
         } catch (Exception e) {
