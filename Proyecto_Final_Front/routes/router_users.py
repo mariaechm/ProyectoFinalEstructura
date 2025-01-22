@@ -55,7 +55,7 @@ def persona_view(headers,usr,id):
     cuenta = requests.get(f'{BASE_URL}/cuenta/search/personaId/{persona['id']}',headers=headers).json()['data'][0]
     perfil = requests.get(f'{BASE_URL}/perfil/get/{cuenta["perfilId"]}',headers=headers).json()['data']
     perfil['imagen'] = f'{BASE_URL}/images/{perfil['imagen']}'
-    estadistica = requests.get(f'{BASE_URL}/estadistica/search/perfilId/{perfil["id"]}',headers=headers).json()['data'][0]
+    estadistica = requests.get(f'{BASE_URL}/estadistica/get/{cuenta['perfilId']}',headers=headers).json()['data']
     enums = requests.get(f'{P_URL}/enumerations',headers=headers).json()['data']
     return render_template('fragmento/users_view/user/view_user.html',user=usr,persona=persona,cuenta=cuenta,perfil=perfil,estadistica=estadistica, enums=enums)
 
@@ -113,6 +113,6 @@ def my_profile(headers,usr):
     cuenta = requests.get(f'{BASE_URL}/cuenta/search/personaId/{persona["id"]}',headers=headers).json()['data'][0]
     perfil = requests.get(f'{BASE_URL}/perfil/get/{cuenta["perfilId"]}',headers=headers).json()['data']
     perfil['imagen'] = f'{BASE_URL}/images/{perfil["imagen"]}'
-    estadistica = requests.get(f'{BASE_URL}/estadistica/search/perfilId/{perfil["id"]}',headers=headers).json()['data'][0]
+    estadistica = requests.get(f'{BASE_URL}/estadistica/get/{cuenta['perfilId']}',headers=headers).json()['data']
     enums = requests.get(f'{P_URL}/enumerations',headers=headers).json()['data']
     return render_template('fragmento/users_view/user/view_user.html',user=usr,persona=persona,cuenta=cuenta,perfil=perfil,estadistica=estadistica, enums=enums)
