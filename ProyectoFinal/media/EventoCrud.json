@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "fecha": "2025-01-08",
+    "hora": "6:43:33",
+    "descripcion": "Se ha registrado la información personal"
+  },
+  {
+    "id": 2,
+    "fecha": "2025-01-08",
+    "hora": "6:44:01",
+    "descripcion": "Se actualizó con éxito la información personal"
+  }
+]
