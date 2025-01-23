@@ -1,4 +1,5 @@
 package com.example.models;
+
 import com.example.models.enumerator.TipoSuscripcion;
 
 public class Suscripcion {
@@ -6,10 +7,16 @@ public class Suscripcion {
     private Integer id;
     private String fechaInicio;
     private String fechaFinalizacion;
-    private TipoSuscripcion tipo;
     private Double precio;
     private int duracionDias;
-    
+
+    private TipoSuscripcion tipo;
+
+    // Constructor vacio
+    public Suscripcion() {
+    }
+
+    // Getters y setters
     public Integer getId() {
         return this.id;
     }
@@ -34,14 +41,6 @@ public class Suscripcion {
         this.fechaFinalizacion = fechaFinalizacion;
     }
 
-    public TipoSuscripcion getTipo() {
-        return this.tipo;
-    }
-
-    public void setTipo(TipoSuscripcion tipo) {
-        this.tipo = tipo;
-    }
-
     public Double getPrecio() {
         return this.precio;
     }
@@ -56,6 +55,14 @@ public class Suscripcion {
 
     public void setDuracionDias(int duracionDias) {
         this.duracionDias = duracionDias;
+    }
+
+    public TipoSuscripcion getTipo() {
+        return this.tipo;
+    }
+
+    public void setTipo(TipoSuscripcion tipo) {
+        this.tipo = tipo;
     }
     
 }

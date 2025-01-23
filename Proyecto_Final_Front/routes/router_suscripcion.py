@@ -32,11 +32,11 @@ def suscripcion_save_send():
     r = requests.post("http://localhost:8080/api/suscripcion/save", data=json.dumps(dataF), headers=headers)
     print(r.json())
     dat = r.json()
-    if r.status_code == 200:
+    if r.status_code == 201:
         flash("¡Se ha guardado correctamente!", category='info')
         return redirect("/admin/suscripcion/list")
     else:
-        flash(str(dat["data"]), category='error')
+        flash("¡No se ha podido completar la acción!", category='error')
         return redirect("/admin/suscripcion/list")
 
 
@@ -67,7 +67,7 @@ def update_suscripcion_send():
         flash("¡Se ha actualizado correctamente!", category='info')
         return redirect("/admin/suscripcion/list")
     else:
-        flash(str(dat["data"]), category='error')
+        flash("¡No se ha podido completar la acción!", category='error')
         return redirect("/admin/suscripcion/list")
     
 
@@ -85,11 +85,12 @@ def delete_suscripcion():
         flash("¡Se ha eliminado correctamente!", category='info')
         return redirect("/admin/suscripcion/list")
     else:
-        flash("¡No se ha podido eliminar!", category='error')
+        flash("¡No se ha podido completar la acción!", category='error')
         return redirect("/admin/suscripcion/list")
 
 #ORDENACION
-router.route('/admin/suscricoion/sort/<atributo>/<orden>/<metodoOrden>')
+
+router.route('/admin/suscripcion/sort/<atributo>/<orden>/<metodoOrden>')
 def order_suscripcion(atributo, orden, metodoOrden):
     r = requests.get('http://localhost:8080/api/suscripcion/sort/'+ atributo + '/' + orden + '/' + metodoOrden)
     print(r.json())
@@ -98,7 +99,9 @@ def order_suscripcion(atributo, orden, metodoOrden):
     for suscripcion in suscripciones:
         suscripcion['numero'] = i
         i+=1
-    return render_template('fragmento/suscripcion/lista.html', suscripciones = suscripciones)
+    return render_template('fragmento/suscripcion/list.html', suscripciones = suscripciones)
+
+
 @router.route('/admin/suscripcion/search/<atributo>/<valor>')
 def search_suscripcion(atributo, valor):
     r = requests.get('http://localhost:8080/api/suscripcion/search/'+ atributo + '/' + valor)
@@ -108,5 +111,4 @@ def search_suscripcion(atributo, valor):
     for suscripcion in suscripciones:
         suscripcion['numero'] = i
         i+=1
-    return render_template('fragmento/suscripcion/lista.html', suscripciones = suscripciones)
-
+    return render_template('fragmento/sucripcion/lista.html', suscripciones = suscripciones)
