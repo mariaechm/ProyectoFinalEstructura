@@ -5,7 +5,7 @@
     "descripcion": "Ejercicio enfocado a la parte superior del pectoral.",
     "imagen": "https://strengthlevel.es/estandares-de-fuerza/press-de-banca-inclinado/kg",
     "tiempoDescanso": 4,
-    "nroSeries": 3,
+    "nroSeries": 1,
     "nroRepSerie": 8,
     "tipoEjercicio": "COMPUESTO"
   },
@@ -50,16 +50,6 @@
     "tipoEjercicio": "AISLADO"
   },
   {
-    "id": 9,
-    "nombreEjercicio": "Sentadilla Libre",
-    "descripcion": "Ejercicio para pierna en general.",
-    "imagen": "https://strengthlevel.es/estandares-de-fuerza/sentadilla/kg",
-    "tiempoDescanso": 5,
-    "nroSeries": 3,
-    "nroRepSerie": 8,
-    "tipoEjercicio": "COMPUESTO"
-  },
-  {
     "id": 10,
     "nombreEjercicio": "Sentadilla Hack",
     "descripcion": "Ejercicio enfocado a los cuádriceps.",
@@ -77,6 +67,16 @@
     "tiempoDescanso": 2,
     "nroSeries": 3,
     "nroRepSerie": 15,
+    "tipoEjercicio": "AISLADO"
+  },
+  {
+    "id": 9,
+    "nombreEjercicio": "YOU",
+    "descripcion": "GTKVTCRXH BHB NB N",
+    "imagen": "",
+    "tiempoDescanso": 1,
+    "nroSeries": 1,
+    "nroRepSerie": 1,
     "tipoEjercicio": "AISLADO"
   }
 ]

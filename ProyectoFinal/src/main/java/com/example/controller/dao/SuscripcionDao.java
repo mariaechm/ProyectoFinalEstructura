@@ -10,11 +10,13 @@ public class SuscripcionDao extends AdapterDao<Suscripcion> {
     private Suscripcion suscripcion;
     private LinkedList<Suscripcion> listAll;
 
+    //Constructor
     public SuscripcionDao(){
         super(Suscripcion.class);
 
     }
 
+    //Getters 
     public Suscripcion getSuscripcion(){
         if (suscripcion == null) {
             suscripcion = new Suscripcion();
@@ -22,7 +24,42 @@ public class SuscripcionDao extends AdapterDao<Suscripcion> {
         return this.suscripcion;
     }
 
-    public void setSuscripcion( Suscripcion Suscripcion){
+    //Metodos de acceso
+    public void SuscripcionFromJson(String SuscripcionJson) {
+        this.suscripcion = g.fromJson(SuscripcionJson, Suscripcion.class);
+    }
+
+    //Crud
+
+    public LinkedList <Suscripcion> getAllSuscripciones() throws Exception {
+        return this.listAll();
+    }
+
+   /* public Object[] listShowAll() throws Exception {
+        LinkedList<Suscripcion> suscripcionesList = getAllSuscripciones();
+        if (!suscripcionesList.isEmpty()) {
+            Suscripcion[] lista = suscripcionesList.toArray();
+            Object[] respuesta = new Object[lista.length];
+            for (int i = 0; i < lista.length; i++) {
+                Suscripcion suscripcion = lista[i];
+                HashMap<String, Object> mapa = new HashMap<>();
+                mapa.put("id", suscripcion.getId());
+                mapa.put("fechaInicio", suscripcion.getFechaInicio());
+                mapa.put("fechaFinalizacion", suscripcion.getFechaFinalizacion());
+                mapa.put("precio", suscripcion.getPrecio());
+                mapa.put("tipo", suscripcion.getTipo());
+                respuesta[i] = mapa;
+            }
+            return respuesta;
+        }
+        return new Object[]{};
+    }*/
+
+
+    public Suscripcion getSuscripcionById(Integer id) throws Exception {
+        return get(id);
+    }
+    /*public void setSuscripcion( Suscripcion Suscripcion){
         this.suscripcion = Suscripcion;
     }
 
@@ -32,13 +69,13 @@ public class SuscripcionDao extends AdapterDao<Suscripcion> {
         }
 
         return listAll;
-    }
+    }*/
 
-    public Suscripcion getById(Integer id) throws Exception {
+   /* public Suscripcion getById(Integer id) throws Exception {
         return get(id);
-    }
+    }*/
 
-    public Suscripcion save () throws Exception {
+    /*public Suscripcion save () throws Exception {
         Integer id = JsonFileManager.readAndUpdateCurrentIdOf(className);
         suscripcion.setDuracionDias(suscripcion.getTipo().getDuracionDias());
         suscripcion.setPrecio(suscripcion.getTipo().getPrecio());
@@ -49,28 +86,67 @@ public class SuscripcionDao extends AdapterDao<Suscripcion> {
         return this.getSuscripcion();
         
 
+    }*/
+
+    public Suscripcion save() throws Exception {
+        if(!camposLlenos()) {
+            throw new Exception("Los campos están vacíos, por favor completarlos.");
+        }
+        this.getSuscripcion().setId(JsonFileManager.readAndUpdateCurrentIdOf(className));
+        
+        suscripcion.setDuracionDias(suscripcion.getTipo().getDuracionDias());
+        suscripcion.setPrecio(suscripcion.getTipo().getPrecio());
+        suscripcion.setFechaFinalizacion(calcularFechaFinalizacion(suscripcion.getFechaInicio(), suscripcion.getTipo()));
+
+        this.persist(this.suscripcion);
+        this.listAll = listAll();
+        return this.getSuscripcion();
     }
 
-    public Suscripcion update() throws Exception {
+   /*public Suscripcion update() throws Exception {
         Integer id =  this.getSuscripcion().getId();
         suscripcion.setDuracionDias(suscripcion.getTipo().getDuracionDias());
         suscripcion.setFechaFinalizacion(calcularFechaFinalizacion(suscripcion.getFechaInicio(), suscripcion.getTipo()));
         return merge(this.suscripcion,id);
+    }*/
+
+    public Suscripcion update() throws Exception {
+        Integer id = this.getSuscripcion().getId();
+        if(!camposLlenos()) {
+            throw new Exception("Los campos están vacíos, por favor completarlos.");
+        }
+        suscripcion.setDuracionDias(suscripcion.getTipo().getDuracionDias());
+        suscripcion.setPrecio(suscripcion.getTipo().getPrecio());
+        suscripcion.setFechaFinalizacion(calcularFechaFinalizacion(suscripcion.getFechaInicio(), suscripcion.getTipo()));
+        merge(this.getSuscripcion(), id);
+        return this.suscripcion;
     }
 
-    public Suscripcion delete(Integer id) throws Exception{
+    /*public Suscripcion delete(Integer id) throws Exception{
         return remove(id);
-    }
+    }*/
        
+    public Suscripcion delete(Integer id) throws Exception {
+        Suscripcion suscripcion = get(id);
+        remove(id);
+        return suscripcion;
+    }
 
-    
+    //Enumerations
+    public TipoSuscripcion getTipoSuscripcion(String tipoSuscripcion) {
+        return TipoSuscripcion.valueOf(tipoSuscripcion);
+    }
+
+    public TipoSuscripcion[] getTipos() {
+        return TipoSuscripcion.values();
+    }
 
     //VALIDADORES
 
     public Boolean camposLlenos() {
-        if(this.getSuscripcion().getFechaInicio() == null) return false;
-        if(this.getSuscripcion().getTipo() == null) return false;
-        if(this.getSuscripcion().getId() == null) return false;
+            if (this.getSuscripcion().getFechaInicio() == null || this.getSuscripcion().getFechaInicio().isEmpty()) return false;
+            if (this.getSuscripcion().getTipo() == null) return false;
+           // if(this.getSuscripcion().getId() == null) return false;
         return true;
     }
 
@@ -134,6 +210,44 @@ public class SuscripcionDao extends AdapterDao<Suscripcion> {
             return false;
         }
         return true;
+    }
+
+
+    //Ordenar
+    public Suscripcion[] sort(String attribute, Integer orden, Integer method) throws Exception {
+        LinkedList<Suscripcion> list = listAll();
+        switch (method) {
+            case 0:
+                list.quickSort(attribute, orden);
+                break;
+            case 1:
+                list.mergeSort(attribute, orden);
+                break;
+            case 2:
+                list.shellSort(attribute, orden);
+                break;
+            default:
+                throw new Exception("Método de ordenamiento no válido");
+        }
+        return list.toArray();
+    }
+
+    //Buscar
+    public Suscripcion[] search(String attribute, String value) throws Exception {
+        LinkedList<Suscripcion> list = listAll();
+        try {
+            if(attribute.equalsIgnoreCase("fechaInicio")){ 
+                return list.buscarPorAtributo(attribute, value).toArray();
+            }else if (attribute.equalsIgnoreCase("fechaFinalizacion")){
+                return list.buscarPorAtributo(attribute, value).toArray();
+            } else if (attribute.equalsIgnoreCase("precio")) {
+                    return list.busquedaLinealBinaria (attribute, Double.parseDouble(value)).toArray();
+            } else {
+                return list.busquedaLinealBinaria(attribute, value).toArray();
+            }
+        } catch (Exception e) {
+            return new Suscripcion[] {};
+        }
     }
 }
 
