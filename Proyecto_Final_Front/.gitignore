@@ -1,2 +1,6 @@
 virtual/
 .gitignore
+
+__pycache__/
+routes/__pycache__/
+routes/utils/__pycache__/
