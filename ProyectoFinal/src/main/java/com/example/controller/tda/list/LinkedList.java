@@ -8,6 +8,7 @@ public class LinkedList<E> {
     private Node<E> header;
     private Node<E> last;
     private Integer size;
+    Class<?> clazz;
 
     // ORDENAMIENTO
     public static Integer ASC = 1;
@@ -18,6 +19,11 @@ public class LinkedList<E> {
         this.header = null;
         this.last = null;
         this.size = 0;
+    }
+
+    public LinkedList(Class<?> claxs) {
+        this();
+        this.clazz = claxs;
     }
 
     // GETTERS Y SETTERS
@@ -212,20 +218,21 @@ public class LinkedList<E> {
         return sb.toString();
     }
 
+    public Class<?> getClazz() {
+        return clazz;
+    }
+
     // CONVERTIR LA LISTA A UN ARREGLO
     @SuppressWarnings("unchecked")
     public E[] toArray() {
-        E[] matrix = null;
-        if (!isEmpty()) {
-            Class<?> clazz = header.getInfo().getClass(); // Class es una clase de java que permite obtener la clase de un objeto
-            matrix = (E[]) java.lang.reflect.Array.newInstance(clazz, size); // Casteo del arr de la clase que obtuve
-            Node<E> aux = header;
-            for (int i = 0; i < this.size; i++) {
-                matrix[i] = aux.getInfo();
-                aux = aux.getNext();
-            }
+        Class<?> clase = (this.clazz != null) ? this.clazz : this.header.getInfo().getClass();  
+        E[] array = (E[])Array.newInstance(clase, this.size);
+        Node<E> node = this.header;
+        for(int i = 0; i < this.size; i++) {
+            array[i] = node.getInfo();
+            node = node.getNext();
         }
-        return matrix;
+        return array;
     }
 
     // CONVERTIR UN ARREGLO A UNA LISTA
@@ -308,7 +315,7 @@ public class LinkedList<E> {
 
     
     public LinkedList<E> buscarPorAtributo(String attribute, Object x) throws Exception {
-        LinkedList<E> list = new LinkedList<>();
+        LinkedList<E> list = new LinkedList<>(this.clazz);
         if(isEmpty()) return list; 
         E[] array = this.toArray(); 
         for(int i = 0; i < array.length; i++) { 
@@ -361,7 +368,7 @@ public class LinkedList<E> {
 
     // MERGE SORT
     private void merge(String atribute, E arr[], int left, int middle, int right, Integer tipoOrden) throws Exception {
-        Class<?> classs = this.header.getInfo().getClass(); 
+        Class<?> classs = (this.clazz == null) ? this.header.getInfo().getClass() : this.clazz; 
         
         int n1 = middle - left + 1; 
         int n2 = right - middle; 
@@ -453,9 +460,8 @@ public class LinkedList<E> {
 
     //BUSQUEDA LINEAL BINARIA
     public LinkedList<E> busquedaLinealBinaria(String attribute, Object x) {
-        if(isEmpty()) return new LinkedList<>(); 
-        try {
-            this.mergeSort(attribute, 1); 
+        if(isEmpty()) return new LinkedList<>(this.clazz); 
+        try { 
             Integer indice = getIndice(attribute, x); 
             Integer i = indice.intValue(); 
             E objeto = get(indice); 
@@ -496,22 +502,22 @@ public class LinkedList<E> {
     }
 
     
-    public E busquedaBinaria(String attribute, Object x) throws Exception {
+    public E busquedaBinaria(String attribute, Object x) {
         if (isEmpty()) return null; 
         try{
             E[] arr = this.toArray(); 
+            mergeSort(attribute,arr,0,arr.length-1,ASC);
             return arr[busquedaBinaria(arr, x, attribute)]; 
         } catch (Exception e) {
-            e.printStackTrace();
-            throw new Exception("Objeto no encontrado");
+            System.out.println("LinkedList.busquedaBinaria() dice: " + e.getMessage());
+            return null;
         }
     }
 
     public Integer getIndice(String attribute, Object x) throws Exception {
         if (isEmpty()) return -1; 
-        E[] arr = this.toArray(); 
+        E[] arr = this.toArray();
+        mergeSort(attribute, arr, 0, arr.length-1, ASC);; 
         return busquedaBinaria(arr, x, attribute); 
     }
 }
-
-
