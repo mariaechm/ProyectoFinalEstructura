@@ -2,28 +2,22 @@
 {% block content %}
 
 <div class="pagetitle">
-    <h1>Guardar Perfil</h1>
+    <h1>Editar Perfil</h1>
 </div>
 <section class="seccion">
     <div class="row">
         <div class="col-lg-12">
             <div class="bg-secondary rounded h-100 p-4">
                 <div class="card-body">
-                  <h5 class="card-title">Registro De Perfil</h5>
+                  <h5 class="card-title">Editar Perfil</h5>
                   
-                  <!-- Custom Styled Validation with Tooltips -->
                 <form id="perfilForm" class="row g-3 needs-validation" method="POST" action="/admin/perfil/update" novalidate>
-                    <input type="hidden" name="id" value="{{ perfil.id }}" name="id"/>
+                    <input type="hidden" name="id" value="{{ perfil.id }}"/>
+                    
                     <div class="col-md-6">
-                        <label for="peso" class="form-label">Peso (kg)</label>
-                        <input type="number" id="peso" step="0.01" min="1" class="form-control" name="peso" required value="{{ perfil.peso }}">
-                        <div class="invalid-feedback">Por favor, ingresa un peso válido.</div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <label for="altura" class="form-label">Altura</label>
-                        <input type="number" id="altura" step="0.01" min="1" class="form-control" name="altura" required value="{{ perfil.altura }}">
-                        <div class="invalid-feedback">Por favor, ingresa una altura válida.</div>
+                        <label for="nickname" class="form-label">Nick Name</label>
+                        <input type="text" id="nickname" class="form-control" name="nickname" required value="{{ perfil.nickname }}">
+                        <div class="invalid-feedback">Por favor, ingresa un nickname válido.</div>
                     </div>
 
                     <div class="col-md-6">
@@ -36,6 +30,12 @@
                         <label for="objetivoCliente" class="form-label">Objetivo del Cliente</label>
                         <input type="text" id="objetivoCliente" class="form-control" name="objetivoCliente" required value="{{ perfil.objetivoCliente }}">
                         <div class="invalid-feedback">Por favor, ingresa un objetivo válido.</div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="fechaCreacion" class="form-label">Fecha de Creación</label>
+                        <input type="date" id="fechaCreacion" class="form-control" name="fechaCreacion" required value="{{ perfil.fechaCreacion }}">
+                        <div class="invalid-feedback">Por favor, ingresa una fecha válida.</div>
                     </div>
 
                     <div class="col-6">

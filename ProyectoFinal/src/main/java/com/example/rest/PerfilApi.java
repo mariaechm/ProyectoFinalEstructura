@@ -1,6 +1,5 @@
 package com.example.rest;
 
-
 import java.util.HashMap;
 
 import javax.ws.rs.Consumes;
@@ -15,15 +14,17 @@ import javax.ws.rs.core.Response.Status;
 
 import com.example.controller.dao.PerfilDao;
 import com.example.controller.dao.services.PerfilServices;
+import com.example.rest.response.ResponseFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Path("perfil")
 public class PerfilApi {
+
     @Path("/list")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllPerfiles() throws Exception {
-        HashMap<String,Object> map = new HashMap<>();
+        HashMap<String, Object> map = new HashMap<>();
         PerfilServices ps = new PerfilServices();
         map.put("msg", "OK");
         map.put("data", ps.listAll().toArray());
@@ -41,19 +42,19 @@ public class PerfilApi {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response save(HashMap map) {
-        HashMap<String,Object> res = new HashMap<>();
+        HashMap<String, Object> res = new HashMap<>();
 
         /// TODO
         /// VALIDACION
 
         PerfilDao ps = new PerfilDao();
-      
+
         try {
 
-            ps.getPerfil().setPeso(Float.parseFloat(map.get("peso").toString()));
+            ps.getPerfil().setNickName((map.get("nickName").toString()));
             ps.getPerfil().setImagen(map.get("imagen").toString());
-            ps.getPerfil().setAltura(Float.parseFloat(map.get("altura").toString()));
             ps.getPerfil().setObjetivoCliente(map.get("objetivoCliente").toString());
+            ps.getPerfil().setFechaCreacion(map.get("FechaCreacion").toString());
 
             ps.save();
             res.put("msg", "OK");
@@ -70,50 +71,52 @@ public class PerfilApi {
         }
 
     }
+
     @Path("/update")
-@POST
-@Consumes(MediaType.APPLICATION_JSON)
-@Produces(MediaType.APPLICATION_JSON)
-public Response update(HashMap map) {
-    HashMap<String, Object> res = new HashMap<>();
-    PerfilDao ps = new PerfilDao();
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response update(HashMap map) {
+        HashMap<String, Object> res = new HashMap<>();
+        PerfilDao ps = new PerfilDao();
 
-    try {
-        // Validar campos requeridos
-        if (map.get("peso") == null || map.get("altura") == null || 
-            map.get("imagen") == null || map.get("objetivoCliente") == null) {
-            throw new IllegalArgumentException("Todos los campos son obligatorios: peso, altura, imagen, objetivoCliente.");
+        try {
+            // Validar campos requeridos
+            if (map.get("nickName") == null || map.get("imagen") == null
+                    || map.get("objetivoCliente") == null || map.get("FechaCreacion") == null) {
+                throw new IllegalArgumentException("Todos los campos son obligatorios: nickName, imagen, objetivoCLiente, FechaCreacion.");
+            }
+
+            // Asignar valores
+            ps.getPerfil().setNickName((map.get("nickName").toString()));
+            ps.getPerfil().setImagen(map.get("imagen").toString());
+            ps.getPerfil().setObjetivoCliente(map.get("objetivoCliente").toString());
+            ps.getPerfil().setFechaCreacion(map.get("FechaCreacion").toString());
+
+            ps.update();
+
+            res.put("msg", "OK");
+            res.put("data", "Perfil actualizado correctamente");
+            ObjectMapper om = new ObjectMapper();
+            return Response.ok(om.writeValueAsString(res)).build();
+
+        } catch (IllegalArgumentException e) {
+            res.put("msg", "Error");
+            res.put("data", e.getMessage());
+            return Response.status(Status.BAD_REQUEST).entity(res).build();
+
+        } catch (Exception e) {
+            res.put("msg", "Error");
+            res.put("data", e.toString());
+            return Response.status(Status.BAD_REQUEST).entity(res).build();
         }
-
-        // Asignar valores
-        ps.getPerfil().setPeso(Float.parseFloat(map.get("peso").toString()));
-        ps.getPerfil().setImagen(map.get("imagen").toString());
-        ps.getPerfil().setAltura(Float.parseFloat(map.get("altura").toString()));
-        ps.getPerfil().setObjetivoCliente(map.get("objetivoCliente").toString());
-
-        ps.update();
-
-        res.put("msg", "OK");
-        res.put("data", "Perfil actualizado correctamente");
-        ObjectMapper om = new ObjectMapper();
-        return Response.ok(om.writeValueAsString(res)).build();
-
-    } catch (IllegalArgumentException e) {
-        res.put("msg", "Error");
-        res.put("data", e.getMessage());
-        return Response.status(Status.BAD_REQUEST).entity(res).build();
-
-    } catch (Exception e) {
-        res.put("msg", "Error");
-        res.put("data", e.toString());
-        return Response.status(Status.BAD_REQUEST).entity(res).build();
     }
-}
+
     @Path("/get/{id}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getId(@PathParam("id") Integer id) throws Exception{
-        HashMap<String,Object> map = new HashMap<>();
+    public Response getId(@PathParam("id") Integer id) throws Exception {
+        HashMap<String, Object> map = new HashMap<>();
         PerfilServices ps = new PerfilServices();
         try {
             ps.setPerfil(ps.get(id));
@@ -133,6 +136,11 @@ public Response update(HashMap map) {
         return Response.ok(om.writeValueAsString(map)).build();
     }
 
-    
-    
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/delete/{id}")
+    public Response delete(@PathParam("id") Integer id) throws Exception {
+        return ResponseFactory.buildResponse(new PerfilServices(), "deletePerfil", id);
+    }
+
 }
