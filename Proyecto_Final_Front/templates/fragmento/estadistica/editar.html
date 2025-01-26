@@ -12,7 +12,7 @@
                   <h5 class="card-title">Registro De Estadística</h5>
                   
                   <!-- Custom Styled Validation with Tooltips -->
-                <form id="statisticsForm" class="row g-3 needs-validation" method="POST" action="/admin/estadistica/update" novalidate>
+                <form id="statisticsForm" class="row g-3 needs-validation" method="POST" action="/estadistica/update" novalidate>
                     <input type = "hidden" name = "id" value = "{{ estadistica.id }}" name ="id"/>
                     <div class="col-md-6">
                         <label for="medidaEspalda" class="form-label">Medida Espalda</label>
@@ -55,7 +55,7 @@
                     </div>
 
                     <div class="col-6">
-                      <a href="/admin/estadistica" class="btn btn-danger rounded-pill">Cancelar</a>
+                      <a href="/estadistica" class="btn btn-danger rounded-pill">Cancelar</a>
                     </div>
                 </form>
             </div>

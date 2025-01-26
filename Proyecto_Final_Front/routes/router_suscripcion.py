@@ -76,6 +76,7 @@ def update_suscripcion_send():
 def suscripcion_delete(id):
     return render_template('fragmento/suscripcion/delete.html',id=id)
 
+<<<<<<< Updated upstream
 @router.route('/admin/suscripcion/delete', methods=['POST'])
 def delete_suscripcion():
     form = request.form.to_dict()
@@ -112,3 +113,11 @@ def search_suscripcion(atributo, valor):
         suscripcion['numero'] = i
         i+=1
     return render_template('fragmento/sucripcion/lista.html', suscripciones = suscripciones)
+=======
+@router.route('/suscripcion/delete/send',methods=['POST'])
+def suscripcion_delete_send():
+    response = requests.delete(f'{SCP_URL}/delete/{request.form.to_dict()["id"]}')
+    msg = [response.json()['status'],response.json()['info']]
+    flash(f'{msg[0]}: {msg[1]}')
+    return redirect('/suscripcion/list')
+>>>>>>> Stashed changes
