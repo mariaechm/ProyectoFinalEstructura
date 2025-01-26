@@ -32,7 +32,7 @@
 <div class="col-12">
   <div class="bg-secondary rounded h-100 p-4">
     <div class="form-inline">
-      <a href="/admin/rutinas/register">
+      <a href="/rutinas/register">
         <button type="button" class="btn btn-warning m-2"><i class="fa fa-plus"></i></button>
       </a>
       <select class="form-select" style="width: 250px;" id="atributo">
@@ -80,13 +80,13 @@
                 <td><center>{{ rutina.numero}}</td>
                 <td>{{ rutina.nombreRutina }}</td>
                 <td><center>{{ rutina.nroEjercicios }}</td>
-                <td><center><a href="/admin/rutinas/informacion/{{ rutina.id }}">Ver más</a></td>
+                <td><center><a href="/rutinas/informacion/{{ rutina.id }}">Ver más</a></td>
                 <td><center>{{ rutina.objetivoRutina }}</td>
                 <td>
-                  <a href="/admin/rutinas/edit/{{ rutina.id }}">
+                  <a href="/rutinas/edit/{{ rutina.id }}">
                     <button type="button" class="btn btn-square btn-info m-2"><i class="fa fa-pen"></i></button>
                   </a>
-                  <a href="/admin/rutinas/delete/{{ rutina.id }}">
+                  <a href="/rutinas/delete/{{ rutina.id }}">
                     <button type="button" class="btn btn-square btn-danger m-2"><i class="fa fa-trash"></i></button>
                   </a>
                 </td>
@@ -98,9 +98,9 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<a id="search" href="/admin/rutinas/list"></a>
+<a id="search" href="/rutinas/list"></a>
 <script>
-  const sortUrl = '/admin/rutinas/sort'
+  const sortUrl = '/rutinas/sort'
   function sortFunct(attr,ord) {
     const newHref = `${sortUrl}/${attr}/${ord}/${$('#sortMethod').val()}`;
     $('#sortA').attr('href',newHref) 
@@ -118,7 +118,7 @@
         alert("Ingrese un valor");
         return;
       } else {
-        $("#search").attr("href", "/admin/rutinas/search/" + atributo + "/" + texto);
+        $("#search").attr("href", "/rutinas/search/" + atributo + "/" + texto);
         $("#search")[0].click();
       }
     }

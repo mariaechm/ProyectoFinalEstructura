@@ -14,7 +14,7 @@
 <div class="col-12">
     <div class="bg-secondary rounded h-100 p-4">
         <h6 class="mb-4">Edición</h6>
-        <form class="row g-3 needs-validation" method="POST" action="/admin/rutinas/update" novalidate="">
+        <form class="row g-3 needs-validation" method="POST" action="/rutinas/update" novalidate="">
             <input type="hidden" value="{{ rutina.id }}" name="idR"/>
             <div class="col-sm-6">
                 <label for="validationCustom02" class="form-label">Nombre de la Rutina</label>
@@ -55,7 +55,7 @@
                 </div>
                 
                 <div class="col-sm-6">
-                    <a href="/admin/rutinas/list" class="btn btn-primary rounded-pill">Cancelar</a>
+                    <a href="/rutinas/list" class="btn btn-primary rounded-pill">Cancelar</a>
                 </div>
             </div>
         </form>
