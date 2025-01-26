@@ -32,9 +32,11 @@
 <div class="col-12">
   <div class="bg-secondary rounded h-100 p-4">
     <div class="form-inline">
-      <a href="/rutinas/register">
-        <button type="button" class="btn btn-warning m-2"><i class="fa fa-plus"></i></button>
-      </a>
+      {% if user.persona.rol == 'ADMINISTRADOR' %}
+        <a href="/rutinas/register">
+          <button type="button" class="btn btn-warning m-2"><i class="fa fa-plus"></i></button>
+        </a>
+      {% endif %}
       <select class="form-select" style="width: 250px;" id="atributo">
         <option value="nombreRutina">Nombre de la Rutina</option>
         <option value="nroEjercicios">Número de Ejercicios</option>
@@ -71,7 +73,9 @@
               <span onclick="sortFunct('objetivoRutina','1')">🡡</span> 
               <span onclick="sortFunct('objetivoRutina','0')">🡫</span>
             </th>
-            <th scope="col"><center>Acciones</th>
+            {% if user.persona.rol == 'ADMINISTRADOR' %}
+              <th scope="col"><center>Acciones</th>
+            {% endif %}
           </tr>
         </thead>
           <tbody>
@@ -82,14 +86,16 @@
                 <td><center>{{ rutina.nroEjercicios }}</td>
                 <td><center><a href="/rutinas/informacion/{{ rutina.id }}">Ver más</a></td>
                 <td><center>{{ rutina.objetivoRutina }}</td>
-                <td>
-                  <a href="/rutinas/edit/{{ rutina.id }}">
-                    <button type="button" class="btn btn-square btn-info m-2"><i class="fa fa-pen"></i></button>
-                  </a>
-                  <a href="/rutinas/delete/{{ rutina.id }}">
-                    <button type="button" class="btn btn-square btn-danger m-2"><i class="fa fa-trash"></i></button>
-                  </a>
-                </td>
+                {% if user.persona.rol == 'ADMINISTRADOR' %}
+                  <td>
+                    <a href="/rutinas/edit/{{ rutina.id }}">
+                      <button type="button" class="btn btn-square btn-info m-2"><i class="fa fa-pen"></i></button>
+                    </a>
+                    <a href="/rutinas/delete/{{ rutina.id }}">
+                      <button type="button" class="btn btn-square btn-danger m-2"><i class="fa fa-trash"></i></button>
+                    </a>
+                  </td>
+                {% endif %}
               </tr>
             {% endfor %}
           </tbody>

@@ -127,7 +127,7 @@ def delete_ejercicio(headers, usr):
 
 
 @router_ejercicio.route('/ejercicios/sort/<atributo>/<orden>/<metodoOrden>')
-@login_required(roles=['ADMINISTRADOR'])
+@login_required()
 def order_ejercicio(atributo, orden, metodoOrden, headers, usr):
     r = requests.get('http://localhost:8080/api/ejercicios/sort/'+ atributo + '/' + orden + '/' + metodoOrden, headers=headers)
     print(r.json())
@@ -140,7 +140,7 @@ def order_ejercicio(atributo, orden, metodoOrden, headers, usr):
 
 
 @router_ejercicio.route('/ejercicios/search/<atributo>/<valor>')
-@login_required(roles=['ADMINISTRADOR'])
+@login_required()
 def search_ejercicio(atributo, valor, headers, usr):
     r = requests.get('http://localhost:8080/api/ejercicios/search/'+ atributo + '/' + valor, headers=headers)
     print(r.json())
@@ -153,7 +153,7 @@ def search_ejercicio(atributo, valor, headers, usr):
 
 
 @router_ejercicio.route('/ejercicios/informacion/<id>')
-@login_required(roles=['ADMINISTRADOR'])
+@login_required()
 def info_ejercicio(headers,usr,id):
     r = requests.get("http://localhost:8080/api/ejercicios/get/"+id, headers=headers)
     print(r.json())
