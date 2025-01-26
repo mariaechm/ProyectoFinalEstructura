@@ -17,7 +17,7 @@ import com.example.controller.dao.PerfilDao;
 import com.example.controller.dao.services.PerfilServices;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@Path("perfil")
+@Path("/perfil")
 public class PerfilApi {
     @Path("/list")
     @GET

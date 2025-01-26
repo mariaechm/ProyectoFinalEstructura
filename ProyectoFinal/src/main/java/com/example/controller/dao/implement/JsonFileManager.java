@@ -38,7 +38,7 @@ public class JsonFileManager {
             }
             return sb.toString();
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("JsonFileManager.readFile(str) dice: " + e.getMessage());
             return "";
         }
     }

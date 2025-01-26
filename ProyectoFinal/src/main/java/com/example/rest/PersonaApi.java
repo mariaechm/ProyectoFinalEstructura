@@ -10,13 +10,16 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.example.controller.auth.Secured;
 import com.example.controller.dao.services.PersonaServices;
+import com.example.models.enumerator.Rol;
 import com.example.rest.response.ResponseFactory;
 
 
 @Path("/persona")
 public class PersonaApi {
     
+    @Secured(rolesAllowed = {Rol.ADMINISTRADOR})
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/list")
@@ -60,5 +63,22 @@ public class PersonaApi {
     @Path("/enumerations")
     public Response enumerations() {
         return ResponseFactory.buildResponse(new PersonaServices(),"enumerations");
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/sort/{attribute}/{orden}/{method}")
+    public Response sort(@PathParam("attribute") String attribute,
+                        @PathParam("orden") Integer orden,
+                        @PathParam("method") Integer method) 
+    {
+        return ResponseFactory.buildResponse(new PersonaServices(),"sort",attribute,orden,method);
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/search/{attribute}/{x}")
+    public Response enumerations(@PathParam("attribute") String attribute, @PathParam("x") String x) {
+        return ResponseFactory.buildResponse(new PersonaServices(),"search", attribute, x);
     }
 }

@@ -2,8 +2,9 @@ from .router import *
 router_rutina = Blueprint('router_rutina',__name__)
 
 @router_rutina.route('/admin/rutinas/list')
-def list_rutina():
-    r =requests.get("http://localhost:8080/api/rutinas/all")
+@login_required()
+def list_rutina(headers,usr):
+    r =requests.get("http://localhost:8080/api/rutinas/all",headers=headers)
     print(r.json())
     rutinas = r.json()["data"]
     i = 1
@@ -11,7 +12,7 @@ def list_rutina():
         rutina['numero'] = i
         i += 1
     #TO DO: LÓGICA PARA LA VISTA DE USUARIO
-    return render_template('fragmento/rutinas/lista.html', rutinas = rutinas)
+    return render_template('fragmento/rutinas/lista.html', user=usr,rutinas=rutinas)
 
 
 @router_rutina.route('/admin/rutinas/register')
@@ -22,7 +23,6 @@ def view_register_rutina():
     rutinas = requests.get("http://localhost:8080/api/rutinas/all").json()["data"]
     ejercicios = requests.get("http://localhost:8080/api/ejercicios/all").json()["data"]
     return render_template('fragmento/rutinas/registro.html', list = data, rutinas=rutinas, ejercicios=ejercicios)
-
 
 @router_rutina.route('/admin/rutinas/save', methods=['POST'])
 def save_rutina():
@@ -37,6 +37,8 @@ def save_rutina():
         "objetivoRutina": form['objR'],
     }
 
+    print("***********************************************8")
+    print(request.form.getlist('hola'))
     r = requests.post("http://localhost:8080/api/rutinas/save", data=json.dumps(dataF), headers=headers)
     print(r.json())
     print("***SELECCION EJERCICIOS***")

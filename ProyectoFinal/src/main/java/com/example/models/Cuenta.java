@@ -2,9 +2,12 @@ package com.example.models;
 
 public class Cuenta {
     private Integer id;
+    
     private String correoElectronico;
     private String contrasena;
-    private String fechaCreacion;
+
+    private Integer personaId;
+    private Integer perfilId;
 
     public Cuenta() {}
 
@@ -33,11 +36,20 @@ public class Cuenta {
         this.contrasena = contrasena;
     }
 
-    public String getFechaCreacion() {
-        return this.fechaCreacion;
+    public Integer getPersonaId() {
+        return personaId;
     }
 
-    public void setFechaCreacion(String fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
+    public void setPersonaId(Integer personaId) {
+        this.personaId = personaId;
     }
+
+    public Integer getPerfilId() {
+        return perfilId;
+    }
+
+    public void setPerfilId(Integer perfilId) {
+        this.perfilId = perfilId;
+    }
+    
 }

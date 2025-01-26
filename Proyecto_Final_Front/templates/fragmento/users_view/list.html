@@ -1,0 +1,71 @@
+{% extends 'blank.html' %}
+{% block title %}Usuarios{% endblock %}
+
+{% block usr_nav_class %}active{% endblock %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages(with_categories=True)  %}
+  {% for message in messages %}
+    <div class="alert alert-{{ message[0] }} alert-dismissible fade show" role="alert">
+      {{ message[1] }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  {% endfor %}
+{% endwith %}
+
+<a href="/register/user">
+  <button type="button" class="btn btn-warning m-2"> Registrar Nuevo Usuario</i></button>
+</a>
+
+
+<div class="container-fluid pt-4 px-4">
+  <div class="bg-secondary text-center rounded p-4">
+      <div class="d-flex align-items-center justify-content-between mb-4">
+          <h6 class="mb-0">LISTA DE USUARIOS</h6>
+      </div>
+      <div class="table-responsive">
+          <table class="table text-start align-middle table-bordered table-hover mb-0">
+              <thead>
+                  <tr class="text-white">
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Fecha Nacimiento</th>
+                    <th scope="col">Correo</th>
+                    <th scope="col">Dirección</th>
+                    <th scope="col">Acciones</th>
+                  </tr>
+              </thead>
+              <tbody>
+                {% for persona in personas %}
+                  {% if not persona.id == user.persona.id %}
+                    <tr>
+                      <td>{{ persona.numero }}</td>
+                      <td>{{ persona.nombre }} {{ persona.apellido }}</td>
+                      <td>{{ persona.fechaNacimiento }}</td>
+                      <td>{{ persona.correo }}</td>
+                      <td>{{ persona.direccion }}</td>
+                      <td>
+                        <a href="/view_user/{{ persona.id }}">
+                          <button type="button" class="btn btn-square btn-warning m-2"><i class="fa fa-eye"></i></button>
+                        </a>
+                        <a href="#/user/delete/{{ persona.id }}">
+                          <button type="button" class="btn btn-square btn-danger m-2"><i class="fa fa-trash"></i></button>
+                        </a>
+                      </td>
+                    </tr>
+                  {% endif %}
+                {% endfor %}
+                  
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div> 
+
+{% endblock %}
+
+
+<!-- <a href="/user/update/{{ persona.id }}">
+  <button type="button" class="btn btn-square btn-info m-2"><i class="fa fa-pen"></i></button>
+</a> -->

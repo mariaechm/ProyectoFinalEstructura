@@ -7,8 +7,7 @@ public class Perfil {
     private Float altura;
     private String objetivoCliente;
 
-    public Perfil() {
-    }
+    public Perfil() {}
 
     public Perfil(Integer id, Float peso, String imagen, Float altura, String objetivoCliente) {
         this.id = id;

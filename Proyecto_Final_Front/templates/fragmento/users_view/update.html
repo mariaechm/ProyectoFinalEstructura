@@ -1,0 +1,99 @@
+{% extends 'blank.html' %}
+{% block title %}Editar Usuario{% endblock %}
+{% block usr_nav_class %}active{% endblock %}
+{% block content %}
+<div class="col-12">
+  <div class="bg-secondary rounded h-100 p-4">
+    <h6 class="mb-4">Editar información</h6>
+    <form class="row g-3 needs-validation" method="POST" action="/user/update/send" novalidate>
+      <input type="number" name="id" value="{{persona.id}}" hidden>
+      <div class="col-sm-6">
+        <label for="validationCustom02" class="form-label">Nombre: </label>
+        <input type="text" class="form-control" name="nombre" value="{{ persona.nombre }}" required>
+      </div>
+
+      <div class="col-sm-6">
+        <label for="validationCustom02" class="form-label">Apellido: </label>
+        <input type="text" step="1" min="1" class="form-control" name="apellido" value="{{ persona.apellido }}">
+      </div>
+
+      <div class="col-sm-6">
+        <label for="lbltipo" class="form-label">Tipo Identificación: </label>
+        <select class="form-select mb-3" name="tipoIdentificacion" required>
+          {% for tipo in e.tipos %}
+          <option {% if persona.tipoIdentificacion==tipo %} selected {% endif %} value="{{ tipo }}">{{ tipo }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="col-sm-6">
+        <label for="validationCustom02" class="form-label">Identificación: </label>
+        <input type="text" step="1" min="1" class="form-control" value="{{ persona.identificacion }}"
+          name="identificacion">
+      </div>
+
+      <div class="col-sm-6">
+        <label for="validationCustom02" class="form-label">Celular: </label>
+        <input type="text" step="1" min="1" class="form-control" value="{{ persona.celular }}" name="celular">
+      </div>
+
+      <div class="col-sm-6">
+        <label for="validationCustom02" class="form-label">Dirección: </label>
+        <input type="text" step="1" min="1" class="form-control" value="{{ persona.direccion }}" name="direccion">
+      </div>
+
+      <div class="col-sm-6">
+        <label for="validationCustom02" class="form-label">Fecha de Nacimiento: </label>
+        <input type="text" step="1" min="1" class="form-control" value="{{ persona.fechaNacimiento }}"
+          name="fechaNacimiento">
+      </div>
+
+      <div class="col-sm-6">
+        <label for="lbltipo" class="form-label">Genero: </label>
+        <select class="form-select mb-3" name="genero" required>
+          {% for genero in e.generos %}
+          <option {% if persona.genero==genero %} selected {% endif %} value="{{ genero }}">{{ genero }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="col-sm-6">
+        <label for="lbltipo" class="form-label">Rol: </label>
+        <select class="form-select mb-3" name="rol" required>
+          {% for rol in e.roles %}
+            <option value="{{ rol }}">{{ rol }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="col-sm-6">
+        <label for="correoElectronico" class="form-label">Correo Electrónico: </label>
+        <input type="text" id="correoElectronico" class="form-control" name="correoElectronico">
+      </div>
+
+      <div class="col-sm-6">
+        <label for="contrasena" class="form-label">Contraseña: </label>
+        <input type="text" class="form-control" name="contrasena" id="contrasena">
+      </div>
+
+      <div class="col-sm-6">
+        <label for="objetivoCliente" class="form-label">Objetivo que desea alcanzar en el GYM: </label>
+        <input type="text" class="form-control" name="objetivoCliente" id="objetivoCliente">
+      </div>
+
+      <div class="col-sm-6">
+        <label for="image" class="form-label">Avatar: </label>
+        <input type="file" class="form-control" name="imagen" id="image">
+      </div>
+
+      <div class="col-12">
+        <button class="btn btn-success" type="submit">Actualizar</button>
+        <a href="/admin/users/list">
+          <button type="button" class="btn btn-primary">Cancelar</button>
+        </a>
+      </div>
+
+    </form>
+  </div>
+</div>
+{% endblock %}
