@@ -1,0 +1,45 @@
+{% extends 'blank.html' %}
+
+{% block content %}
+
+<div class="pagetitle">
+    <h1>Información de Suscripción</h1>
+</div>
+
+<div class="col-12">
+    <div class="bg-secondary rounded h-100 p-4">
+        <h6 class="mb-4">Edición</h6>
+        <form class="row g-3 needs-validation" method="POST" action="/admin/suscripcion/update/send/" novalidate>
+            <input type="hidden" value="{{ suscripcion.id}}" name="idS"/>
+            <div class="col-sm-6">
+                <label for="inputDate" class="form-label">Fecha de Inicio de Suscripción</label>
+                <input type="date" value="{{ suscripcion.fechaInicio}}" class="form-control" name="nameFechaI" required>
+            </div>
+                
+            <div class="col-sm-6">
+                <label for="inputDate" class="form-label">Fecha de Finalización</label>
+                <input type="date" value="{{ suscripcion.fechaFinalizacion}}" class="form-control" name="nameFechaF" required>
+            </div>
+            
+            <div class="col-sm-6">
+                <label for="lbltipo" class="form-label">Tipo de Suscripción</label>
+                <select class="form-select mb-3"required name="nameTipo">
+                    {% for tipo in e %}
+                        <option {% if tipo == suscripcion.tipo %} selected {% endif %} value="{{ tipo }}">{{ tipo }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <div class="form-inline">
+                <div class="col-sm-6">
+                    <button type="submit" class="btn btn-success rounded-pill">Guardar</button>
+                </div>
+                
+                <div class="col-sm-6">
+                    <a href="admin/suscripcion/list" class="btn btn-primary rounded-pill">Cancelar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock%}

@@ -49,4 +49,14 @@ public class PersonaServices {
         map.put("generos", Genero.values());
         return map;
     }
+
+    // BUSQUEDA Y ORDENACIÓN ==========================================================
+
+    public Persona[] sort(String attribute, Integer orden, Integer method) throws Exception {
+        return this.obj.sort(attribute,orden,method);
+    }
+    
+    public Persona[] search(String attribute, String x) throws Exception {
+        return this.obj.search(attribute, x);
+    }
 }

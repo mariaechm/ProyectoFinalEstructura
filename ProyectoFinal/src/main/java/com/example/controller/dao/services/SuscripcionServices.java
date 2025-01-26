@@ -1,47 +1,86 @@
 package com.example.controller.dao.services;
 
 import com.example.controller.dao.SuscripcionDao;
-import com.example.controller.tda.list.LinkedList;
 import com.example.models.Suscripcion;
 import com.example.models.enumerator.TipoSuscripcion;
 
 public class SuscripcionServices {
     private SuscripcionDao obj;
 
+    //Constructor
     public SuscripcionServices(){
-        obj = new SuscripcionDao();
+        this.obj = new SuscripcionDao();
     }
 
-    public Boolean save () throws Exception{
-        return obj.save();
-    }
-
-    public LinkedList listAll() {
+    
+   /*public LinkedList<Suscripcion> listAll() {
         return obj.getListAll();
-    }
+    }*/
 
+    //getters 
     public Suscripcion getSuscripcion() {
-        return obj.getSuscripcion();
+        return this.obj.getSuscripcion();
     }
 
-    public void setSuscripcion(Suscripcion suscripcion) {
+   /*public void setSuscripcion(Suscripcion suscripcion) {
         obj.setSuscripcion(suscripcion);
+    }*/
+
+    //Crud
+    public Suscripcion[] getAllSuscripciones() throws Exception{
+        return this.obj.getAllSuscripciones().toArray();
     }
 
-    public Suscripcion get(Integer id) throws Exception{
-        return obj.get(id);
+   /* public Object[] showListAll() throws Exception {
+        return this.obj.listShowAll();
+    }*/
+
+    
+    public Suscripcion getSuscripcionById(Integer id) throws Exception{
+        return this.obj.getSuscripcionById(id);
     }
 
-    public void update() throws Exception{
-        obj.update();
+    public Suscripcion save (String json) throws Exception{
+        this.obj.SuscripcionFromJson(json);
+        return this.obj.save();
+    }
+    /*public Suscripcion update() throws Exception{
+        return obj.update();
     }
 
-    public void delete(Integer id) throws Exception{
-        obj.delete(id);
+    public Suscripcion delete(Integer id) throws Exception{
+        return obj.delete(id);
+    }*/
+
+     public Suscripcion update (String json) throws Exception {
+        this.obj.SuscripcionFromJson(json);
+        return this.obj.update();
     }
 
-    public Suscripcion getById(Integer id) throws Exception{
-        return obj.getById(id);
+    public Suscripcion delete (Integer id) throws Exception {        
+        return this.obj.delete(id);
     }
     
+    //Enumerators
+    /*public TipoSuscripcion[] tiposSuscripcion() {
+        return TipoSuscripcion.values();
+    }*/
+
+    public TipoSuscripcion getTipoSuscripcion(String tipoSuscripcion) {
+        return obj.getTipoSuscripcion(tipoSuscripcion);
+    }
+
+    public TipoSuscripcion[] getTipos() {
+        return obj.getTipos();
+    }  
+    
+    // ORDENAR
+    public Suscripcion[] sort(String attribute, Integer orden, Integer method) throws Exception {
+        return this.obj.sort(attribute, orden, method);
+    }
+
+    // BUSCAR 
+    public Suscripcion[] search(String attribute, String value) throws Exception {
+        return this.obj.search(attribute, value);
+    }
 } 

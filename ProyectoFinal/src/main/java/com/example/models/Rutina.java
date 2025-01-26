@@ -1,6 +1,5 @@
 package com.example.models;
 
-import com.example.models.enumerator.GrupoMuscularObjetivo;
 import com.example.models.enumerator.ObjetivoRutina;
 
 public class Rutina {
@@ -10,7 +9,6 @@ public class Rutina {
     private int nroEjercicios;
     private Integer[] idEjercicio;
 
-    private GrupoMuscularObjetivo grupoMuscularObjetivo;
     private ObjetivoRutina objetivoRutina;
     
     // CONSTRUCTOR VACIO
@@ -55,14 +53,6 @@ public class Rutina {
 
     public void setIdEjercicio(Integer[] idEjercicio) {
         this.idEjercicio = idEjercicio;
-    }
-
-    public GrupoMuscularObjetivo getGrupoMuscularObjetivo() {
-        return this.grupoMuscularObjetivo;
-    }
-
-    public void setGrupoMuscularObjetivo(GrupoMuscularObjetivo grupoMuscularObjetivo) {
-        this.grupoMuscularObjetivo = grupoMuscularObjetivo;
     }
 
     public ObjetivoRutina getObjetivoRutina() {

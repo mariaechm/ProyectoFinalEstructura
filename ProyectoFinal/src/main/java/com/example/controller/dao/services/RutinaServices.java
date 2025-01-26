@@ -1,10 +1,7 @@
 package com.example.controller.dao.services;
 
-import java.lang.reflect.Array;
-
 import com.example.controller.dao.RutinaDao;
 import com.example.models.Rutina;
-import com.example.models.enumerator.GrupoMuscularObjetivo;
 import com.example.models.enumerator.ObjetivoRutina;
 
 public class RutinaServices {
@@ -20,49 +17,49 @@ public class RutinaServices {
         return this.obj.getRutina();
     }
 
-    public void RutinaFromJson(String RutinaJson) {
-        this.obj.RutinaFromJson(RutinaJson);
-    }
-
-    public Rutina[] getAllRutinas() throws Exception {
-        try {
-            return obj.getAllRutinas().toArray(); 
-        } catch (Exception e) {
-            return (Rutina[])Array.newInstance(Rutina.class, 0);
-        }
-    }
-
     // CRUD
+    public Rutina[] getAllRutinas() throws Exception {
+        return this.obj.getAllRutinas().toArray();
+    }
+
+    public Object[] showListAll() throws Exception {
+        return this.obj.listShowAll();
+    }
+
     public Rutina getRutinaById(Integer id) throws Exception {
         return this.obj.getRutinaById(id);
     }
 
-    public void saveRutina() throws Exception {
-        this.obj.saveRutina();
+    public Rutina saveRutina(String json) throws Exception {
+        this.obj.RutinaFromJson(json);
+        return this.obj.saveRutina();
     }
 
-    public void update() throws Exception {
-        this.obj.updateRutina();
+    public Rutina updateRutina(String json) throws Exception {
+        this.obj.RutinaFromJson(json);
+        return this.obj.updateRutina();
     }
 
-    public void deleteRutina(Integer id) throws Exception {        
-        this.obj.deleteRutina(id);
+    public Rutina deleteRutina(Integer id) throws Exception {        
+        return this.obj.deleteRutina(id);
     }
 
     // ENUMERACIONES
-    public GrupoMuscularObjetivo getGrupoMuscularObjetivo(String grupoMuscularObjetivo) {
-        return obj.getGrupoMuscularObjetivo(grupoMuscularObjetivo);
-    }
-
-    public GrupoMuscularObjetivo[] getGrupos() {
-        return obj.getGrupos();
-    }
-
     public ObjetivoRutina getObjetivoRutina(String objetivoRutina) {
         return obj.getObjetivoRutina(objetivoRutina);
     }
 
     public ObjetivoRutina[] getObjetivos() {
         return obj.getObjetivos();
+    }
+
+    // ORDENAR
+    public Rutina[] sort(String attribute, Integer orden, Integer method) throws Exception {
+        return this.obj.sort(attribute, orden, method);
+    }
+
+    // BUSCAR
+    public Rutina[] search(String attribute, String value) throws Exception {
+        return this.obj.search(attribute, value);
     }
 }

@@ -18,9 +18,11 @@ public class PerfilDao extends AdapterDao<Perfil> {
         }
         return this.perfil;
     }
+
     public void setPerfil(Perfil perfil) {
         this.perfil = perfil;
     }
+    
     public LinkedList getListAll() {
         if (listAll == null) {
             this.listAll = listAll();
