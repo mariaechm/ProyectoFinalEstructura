@@ -1,4 +1,6 @@
 from .router import *
+from .utils.decorator import *
+
 router_ejercicio = Blueprint('router_ejercicio',__name__)
 
 @router_ejercicio.route('/admin/ejercicios/list')
@@ -11,7 +13,8 @@ def list_ejercicio(headers,usr):
     for ejercicio in ejercicios:
         ejercicio['numero'] = i
         i += 1
-    #TO DO: LÓGICA PARA LA VISTA DE USUARIO
+    if usr["persona"]["rol"] == "ADMINISTRADOR":
+        return render_template('fragmento/ejercicios/listaUser.html',user=usr, ejercicios = ejercicios)
     return render_template('fragmento/ejercicios/lista.html',user=usr, ejercicios = ejercicios)
 
 
