@@ -11,7 +11,7 @@
                 <div class="card-body">
                   <h5 class="card-title">Editar Perfil</h5>
                   
-                <form id="perfilForm" class="row g-3 needs-validation" method="POST" action="/admin/perfil/update" novalidate>
+                <form id="perfilForm" class="row g-3 needs-validation" method="POST" action="/perfil/update" novalidate>
                     <input type="hidden" name="id" value="{{ perfil.id }}"/>
                     
                     <div class="col-md-6">
@@ -43,7 +43,7 @@
                     </div>
 
                     <div class="col-6">
-                      <a href="/admin/perfil" class="btn btn-danger rounded-pill">Cancelar</a>
+                      <a href="/perfil" class="btn btn-danger rounded-pill">Cancelar</a>
                     </div>
                 </form>
             </div>

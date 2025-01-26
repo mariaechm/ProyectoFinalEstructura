@@ -7,7 +7,7 @@ import json
 
 router_perfil = Blueprint('router_perfil', __name__)
 
-@router_perfil.route('/admin/perfil')
+@router_perfil.route('/perfil')
 def list_perfil():
     r = requests.get('http://localhost:8080/api/perfil/list')
     print(r.json())
@@ -18,7 +18,7 @@ def list_perfil():
         i += 1
     return render_template('fragmento/perfil/lista_perfiles.html', perfiles=perfiles)
 
-@router_perfil.route('/admin/perfil/save', methods=['POST'])
+@router_perfil.route('/perfil/save', methods=['POST'])
 def crear_perfil():
     headers = {'Content-Type': 'application/json'}
     form = request.form
@@ -34,13 +34,13 @@ def crear_perfil():
         flash('Perfil creado correctamente', 'success')
     else:
         flash('Error al crear el perfil', 'danger')
-    return redirect('/admin/perfil')
+    return redirect('/perfil')
 
-@router_perfil.route('/admin/perfil/registro')
+@router_perfil.route('/perfil/registro')
 def registro_perfil():
     return render_template('fragmento/perfil/guardar_perfil.html')
 
-@router_perfil.route('/admin/perfil/update', methods=['POST'])
+@router_perfil.route('/perfil/update', methods=['POST'])
 def update_perfil():
     headers = {'Content-Type': 'application/json'}
     form = request.form
@@ -57,9 +57,9 @@ def update_perfil():
         flash('Perfil actualizado correctamente', 'success')
     else:
         flash('Error al actualizar el perfil', 'danger')
-    return redirect('/admin/perfil')
+    return redirect('/perfil')
 
-@router_perfil.route('/admin/perfil/edit/<id>')
+@router_perfil.route('/perfil/edit/<id>')
 def editar_perfil(id):
     r = requests.get('http://localhost:8080/api/perfil/list')
     data = r.json()
@@ -70,13 +70,13 @@ def editar_perfil(id):
         return render_template('fragmento/perfil/editar_perfil.html', perfil=data1["data"], perfiles=data["data"])
     else:
         flash('Error al obtener el perfil', 'danger')
-    return redirect('/admin/perfil')
+    return redirect('/perfil')
 
-@router_perfil.route('/admin/perfil/delete/<id>', methods=['POST', 'GET'])
+@router_perfil.route('/perfil/delete/<id>', methods=['POST', 'GET'])
 def eliminar_perfil(id):
     r = requests.delete(f'http://localhost:8080/api/perfil/delete/{id}')
     if r.status_code == 200:
         flash('Perfil eliminado correctamente', 'success')
     else:
         flash('Error al eliminar el perfil', 'danger')
-    return redirect('/admin/perfil')
+    return redirect('/perfil')
