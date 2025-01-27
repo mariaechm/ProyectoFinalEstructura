@@ -12,17 +12,11 @@
                   <h5 class="card-title">Registro De Perfil</h5>
                   
                   <!-- Custom Styled Validation with Tooltips -->
-                <form id="perfilForm" class="row g-3 needs-validation" method="POST" action="/admin/perfil/save" novalidate>
+                <form id="perfilForm" class="row g-3 needs-validation" method="POST" action="/perfil/save" novalidate>
                     <div class="col-md-6">
-                        <label for="peso" class="form-label">Peso</label>
-                        <input type="number" id="peso" step="0.01" min="1" class="form-control" name="peso" required>
-                        <div class="invalid-feedback">Por favor, ingresa un peso válido.</div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <label for="altura" class="form-label">Altura</label>
-                        <input type="number" id="altura" step="0.01" min="1" class="form-control" name="altura" required>
-                        <div class="invalid-feedback">Por favor, ingresa una altura válida.</div>
+                        <label for="nickname" class="form-label">Nick Name</label>
+                        <input type="text" id="nickname" class="form-control" name="nickname" required>
+                        <div class="invalid-feedback">Por favor, ingresa su NickName (Nombre de usuario) válido.</div>
                     </div>
 
                     <div class="col-md-6">
@@ -37,12 +31,18 @@
                         <div class="invalid-feedback">Por favor, ingresa un objetivo válido.</div>
                     </div>
 
+                    <div class="col-md-6">
+                        <label for="fechaCreacion" class="form-label">Fecha de Creación</label>
+                        <input type="date" id="fechaCreacion" class="form-control" name="fechaCreacion" required>
+                        <div class="invalid-feedback">Por favor, ingresa una fecha de creación válida.</div>
+                    </div>
+
                     <div class="col-6">
                       <button class="btn btn-success rounded-pill" type="submit">Guardar</button>
                     </div>
 
                     <div class="col-6">
-                      <a href="/admin/perfil" class="btn btn-danger rounded-pill">Cancelar</a>
+                      <a href="/perfil" class="btn btn-danger rounded-pill">Cancelar</a>
                     </div>
                 </form>
             </div>
