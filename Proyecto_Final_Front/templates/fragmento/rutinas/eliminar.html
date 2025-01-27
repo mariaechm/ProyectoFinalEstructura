@@ -15,14 +15,14 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="bg-secondary rounded h-100 p-4">
-            <form method="POST" action="/admin/rutinas/remove" novalidate>
+            <form method="POST" action="/rutinas/remove" novalidate>
               <input type="hidden" value="{{ id }}" name="idR"/><br>
               <div class="alert alert-warning alert-dismissible fade show" role="alert">
                   <h4 class="alert-heading"><strong><center>¡¡¡ALERTA!!!</strong></h4>
                   <br><center>¡Esta acción no se podrá revertir!<br><center>¿Desea eliminar la rutina seleccionada?<br>
                   <div class="col-6">
                       <br><button class="btn btn-success rounded-pill" type="submit">Confirmar</button>
-                      <a href="/admin/rutinas/list" class="btn btn-primary rounded-pill">Cancelar</a>
+                      <a href="/rutinas/list" class="btn btn-primary rounded-pill">Cancelar</a>
                   </div>
               </div>
             </form>

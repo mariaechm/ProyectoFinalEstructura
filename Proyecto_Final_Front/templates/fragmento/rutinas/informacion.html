@@ -40,7 +40,7 @@
                             {% for ejercicio in ejercicios %}
                               <tr>
                                 <td>{{ ejercicio.nombreEjercicio }}</td>
-                                <td><center><a href="/admin/ejercicios/informacion/{{ ejercicio.id }}">Ver más</a></td>
+                                <td><center><a href="/ejercicios/informacion/{{ ejercicio.id }}">Ver más</a></td>
                                 <td><center>{{ ejercicio.tiempoDescanso }}</td>
                                 <td><center>{{ ejercicio.nroSeries }}</td>
                                 <td><center>{{ ejercicio.nroRepSerie }}</td>
@@ -51,7 +51,7 @@
                           </tbody>
                       </table>
                       <div class="mt-4 text-center">
-                        <a href="/admin/rutinas/list" class="btn btn-warning rounded-pill">Regresar</a>
+                        <a href="/rutinas/list" class="btn btn-warning rounded-pill">Regresar</a>
                     </div>
                 </div>
             </div>

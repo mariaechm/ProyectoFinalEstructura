@@ -1,0 +1,44 @@
+[
+  {
+    "id": 5,
+    "nombreEjercicio": "Press de Banca Inclinado con Mancuernas",
+    "descripcion": "Ejercicio que se enfoca en la parte superior del pectoral.",
+    "imagen": "https://eresfitness.com/press-de-banca-inclinado-con-mancuernas/",
+    "tiempoDescanso": 3,
+    "nroSeries": 3,
+    "nroRepSerie": 10,
+    "tipoEjercicio": "COMPUESTO"
+  },
+  {
+    "id": 6,
+    "nombreEjercicio": "Press de Banca Declinado con Mancuernas",
+    "descripcion": "Ejercicio que se enfoca en la parte inferior del pectoral.",
+    "imagen": "https://tumejorfisico.com/ejercicios-pecho/press-declinado-con-mancuernas/",
+    "tiempoDescanso": 3,
+    "nroSeries": 3,
+    "nroRepSerie": 10,
+    "tipoEjercicio": "COMPUESTO"
+  },
+  {
+    "id": 8,
+    "nombreEjercicio": "Aperturas con Mancuernas",
+    "descripcion": "Ejercicio de adducción de pectoral.",
+    "imagen": "https://static.strengthlevel.com/images/exercises/dumbbell-fly/dumbbell-fly-400.avif",
+    "tiempoDescanso": 2,
+    "nroSeries": 3,
+    "nroRepSerie": 12,
+    "tipoEjercicio": "AISLADO",
+    "grupoMuscularObjetivo": "PECHO"
+  },
+  {
+    "id": 34,
+    "nombreEjercicio": "Curl Martillo",
+    "descripcion": "Ejercicio para el desarrollo de los bíceps y tener brazos como los del ing de requisitos",
+    "imagen": "https://static.strengthlevel.com/images/exercises/incline-hammer-curl/incline-hammer-curl-400.avif",
+    "tiempoDescanso": 3,
+    "nroSeries": 3,
+    "nroRepSerie": 8,
+    "tipoEjercicio": "AISLADO",
+    "grupoMuscularObjetivo": "BICEPS"
+  }
+]
