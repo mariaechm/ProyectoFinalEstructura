@@ -27,8 +27,8 @@ def register_user(headers,usr):
 def register_user_send(headers,usr):
     data = request.form.to_dict()   
     response = requests.post(f'{BASE_URL}/auth/register',headers=headers,json=data)
-    ok = response.status_code == 200
-    flash(f'{"Éxito" if ok else "Error"}: {"Se ha actualizado el registro" if ok else "no se ha podido actualizar el registro"}')
+    msg = [response.json()['status'], response.json()['info']]
+    flash(f'{msg[0]}: {msg[1]}', category=msg[0])
     return redirect('/users/list')
 
 @router.route('/user/update/<int:id>')

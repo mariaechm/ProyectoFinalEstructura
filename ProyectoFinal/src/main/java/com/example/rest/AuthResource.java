@@ -47,6 +47,7 @@ public class AuthResource {
     }
 
     @POST
+    @Secured(rolesAllowed = {Rol.ADMINISTRADOR, Rol.CLIENTE})
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/change/password")

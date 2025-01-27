@@ -17,7 +17,7 @@
     "apellido": "Derbez",
     "identificacion": "7584638495",
     "celular": "0937485920",
-    "fechaNacimiento": "1994-06-15",
+    "fechaNacimiento": "1994-04-05",
     "direccion": "Av. Pio Jaramillo",
     "tipoIdentificacion": "CEDULA",
     "genero": "HOMBRE",
@@ -94,5 +94,17 @@
     "tipoIdentificacion": "CEDULA",
     "genero": "HOMBRE",
     "rol": "CLIENTE"
+  },
+  {
+    "id": 9,
+    "nombre": "Kylian",
+    "apellido": "Empapé",
+    "identificacion": "456678",
+    "celular": "0955746374",
+    "fechaNacimiento": "1985-08-19",
+    "direccion": "Av. Los paltas",
+    "tipoIdentificacion": "PASAPORTE",
+    "genero": "HOMBRE",
+    "rol": "ADMINISTRADOR"
   }
 ]

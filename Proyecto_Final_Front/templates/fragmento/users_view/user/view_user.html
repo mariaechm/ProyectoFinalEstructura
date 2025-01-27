@@ -1,6 +1,10 @@
 {% extends 'blank.html' %}
 {% block title %}User: {{ perfil.nickName }}{% endblock %}
 
+{% block custom_styles_js %}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+{% endblock %}
+
 {% block usr_nav_class %}active{% endblock %}
 
 {% block content %}
@@ -117,7 +121,7 @@
 
       <div class="tab-pane fade" id="nav-editar-perfil" role="tabpanel" aria-labelledby="nav-editar-perfil-tab">
         <h6>Editar información del Perfil</h6>
-        <form action="/user/update/send" method="post" enctype="multipart/form-data">
+        <form action="/user/update/send" method="post" enctype="multipart/form-data" id="perfil-update-form">
 
           <input hidden type="number" name="id" id="id-perfil" value="{{ perfil.id }}">
           <input hidden type="text" name="current-image" id="current-image" value="{{ perfil.imagen }}">
@@ -130,17 +134,17 @@
           </div>
 
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="nickName" placeholder="OsoMamado" name="nickName" value="{{ perfil.nickName }}">
+            <input type="text" class="form-control" id="nickName" placeholder="OsoMamado" name="nickName" value="{{ perfil.nickName }}" required>
             <label for="nickName">NickName</label>
           </div>
 
           <div class="form-floating">
-            <textarea class="form-control" placeholder="Leave a comment here" id="objetivoCliente" name="objetivoCliente" style="height: 150px;">{{ perfil.objetivoCliente }}</textarea>
+            <textarea required class="form-control" placeholder="Leave a comment here" id="objetivoCliente" name="objetivoCliente" style="height: 150px;">{{ perfil.objetivoCliente }}</textarea>
             <label for="objetivoCliente">Objetivo</label>
           </div><br>
 
           <div class="col-12">
-            <button class="btn btn-success" type="submit">Guardar Cambios</button>
+            <p class="btn btn-success" onclick="validateForm('perfil-update-form')">Guardar Cambios</p>
           </div>
 
         </form>
@@ -153,37 +157,37 @@
           <h6>Editar Datos Personales</h6>
         </div>
         
-        <form action="/user/update/persona" method="post">
+        <form action="/user/update/persona" method="post" id="persona-update-form">
 
           <input hidden type="number" name="id" id="id-persona" value="{{ persona.id }}">
 
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="nombre-persona" name="nombre" value="{{ persona.nombre }}">
+            <input type="text" class="form-control" id="nombre-persona" name="nombre" value="{{ persona.nombre }}" required>
             <label for="nombre-persona">Nombre</label>
           </div>
 
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="apellido-persona" name="apellido" value="{{ persona.apellido }}">
+            <input type="text" class="form-control" id="apellido-persona" name="apellido" value="{{ persona.apellido }}" required>
             <label for="apellido-persona">Apellido</label>
           </div>
 
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="celular-persona" name="celular" value="{{ persona.celular }}">
+            <input type="text" class="form-control" id="celular-persona" name="celular" value="{{ persona.celular }}" required>
             <label for="celular-persona">Celular</label>
           </div>
 
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="direccion-persona" name="direccion" value="{{ persona.direccion }}">
+            <input type="text" class="form-control" id="direccion-persona" name="direccion" value="{{ persona.direccion }}" required>
             <label for="direccion-persona">Dirección</label>
           </div>
 
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="identificacion-persona" name="identificacion" value="{{ persona.identificacion }}">
+            <input type="text" class="form-control" id="identificacion-persona" name="identificacion" value="{{ persona.identificacion }}" required>
             <label for="identificacion-persona">Identificación</label>
           </div>
 
           <div class="form-floating mb-3">
-            <input type="date" class="form-control" id="fechaNacimiento-persona" name="fechaNacimiento" value="{{ persona.fechaNacimiento }}">
+            <input type="date" class="form-control" id="fechaNacimiento-persona" name="fechaNacimiento" value="{{ persona.fechaNacimiento }}" style="background-color: black;" required>
             <label for="fechaNacimiento-persona">Fecha de Nacimiento</label>
           </div>
 
@@ -216,7 +220,7 @@
 
 
           <div class="col-12">
-            <button class="btn btn-success" type="submit">Guardar Cambios</button>
+            <p onclick="validateForm('persona-update-form')" class="btn btn-success" >Guardar Cambios</p>
           </div>
 
         </form>
@@ -236,21 +240,21 @@
 
           <div class="input-group mb-3">
             <span class="input-group-text" id="contrasena-anterior-addon">Contraseña anterior: </span>
-            <input type="password" class="form-control" id="contrasena-anterior" name="contrasena" aria-describedby="basic-addon3"><i class="fas fa-eye" id="tgp1" onclick="togglePassword('tgp1','contrasena-anterior')" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 1000;"></i>
+            <input type="password" class="form-control" required id="contrasena-anterior" name="contrasena" aria-describedby="basic-addon3"><i class="fas fa-eye" id="tgp1" onclick="togglePassword('tgp1','contrasena-anterior')" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 1000;"></i>
           </div>
 
           <div class="input-group mb-3">
             <span class="input-group-text" id="nueva-contrasena-1-addon">Nueva Contraseña:</span>
-            <input type="password" class="form-control" id="nueva-contrasena-1" aria-describedby="basic-addon3"><i class="fas fa-eye" id="tgp2" onclick="togglePassword('tgp2','nueva-contrasena-1')" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 1000;"></i>
+            <input type="password" class="form-control" required id="nueva-contrasena-1" aria-describedby="basic-addon3"><i class="fas fa-eye" id="tgp2" onclick="togglePassword('tgp2','nueva-contrasena-1')" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 1000;"></i>
           </div>
 
           <div class="input-group mb-3">
             <span class="input-group-text" id="nueva-contrasena-2-addon">Repita la nueva Contraseña:</span>           <!-- tgp = togglePassword in icons id -->
-            <input type="password" class="form-control" id="nueva-contrasena-2" aria-describedby="basic-addon3" name="newContrasena"><i class="fas fa-eye" id="tgp3" onclick="togglePassword('tgp3','nueva-contrasena-2')" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 1000;"></i>
+            <input type="password" class="form-control" required id="nueva-contrasena-2" aria-describedby="basic-addon3" name="newContrasena"><i class="fas fa-eye" id="tgp3" onclick="togglePassword('tgp3','nueva-contrasena-2')" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 1000;"></i>
           </div>
 
           <div class="col-12">
-            <button class="btn btn-success" id="btn-contrasena" onclick="validarContrasena()">Guardar Cambios</button>
+            <p class="btn btn-success" id="btn-contrasena" onclick="validateForm('form-contrasena')">Guardar Cambios</p>
           </div>
 
         </form>
@@ -266,6 +270,7 @@
 </div>
 
 </div>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
   // VALIDATE PASSWORD SCRIPT
   function validarContrasena(event) {
@@ -292,5 +297,21 @@
 
     eyeButton.classList.toggle('fa-eye-slash')
   }
+
+  // VALIDATION SCRIPT
+  function validateForm(formId) {
+    const form = document.getElementById(formId);
+    form.classList.add('was-validated');
+    if (form.checkValidity()) {
+        form.submit()
+    }
+  }
+
+  // DATE SCRIPT
+  document.addEventListener('DOMContentLoaded', function() {
+      flatpickr("#fechaNacimiento-persona", {
+          dateFormat: "Y-m-d",
+      });
+  });
 </script>
 {% endblock %}

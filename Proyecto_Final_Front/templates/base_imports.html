@@ -31,6 +31,10 @@
 
     <!-- Template Stylesheet -->
     <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet">
+
+    {% block custom_styles_js %}
+        
+    {% endblock %}
 </head>
 
 <body>
@@ -51,7 +55,5 @@
     <!-- Template Javascript -->
     <script src="{{ url_for('static',filename='js/main.js') }}"></script>
 </body>
-<body>
-    
-</body>
+
 </html>

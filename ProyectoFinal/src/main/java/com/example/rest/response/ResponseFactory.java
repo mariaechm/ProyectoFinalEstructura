@@ -8,8 +8,6 @@ import javax.ws.rs.core.Response.Status;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
-/* import com.example.controller.exception.EmptyFieldException;
-import com.example.controller.exception.IdNotFoundException; */
 
 public class ResponseFactory {
     
@@ -64,7 +62,7 @@ public class ResponseFactory {
         } catch (Exception e) {
             throw (Exception)e.getCause();
         }
-        if(methodName.contains("save")) 
+        if(methodName.contains("save") || methodName.contains("register")) 
             return buildResponseWithStatus(Status.CREATED, data,"Información guardada con éxito!");
         if(methodName.contains("update"))
             return buildResponseWithStatus(Status.OK, data,"Información actualizada con éxito!");

@@ -8,7 +8,7 @@
   },
   {
     "id": 2,
-    "nickName": "JuanshoDer",
+    "nickName": "Juan",
     "imagen": "juan.webp",
     "objetivoCliente": "Obtener mayor índice de masa muscular",
     "fechaCreacion": "2024-12-26"
@@ -17,7 +17,7 @@
     "id": 3,
     "nickName": "Pancho",
     "imagen": "f1.jpg",
-    "objetivoCliente": "\r\nHace unos meses decidí inscribirme en este gimnasio con el objetivo de mejorar mi salud y condición física general. Durante mucho tiempo había estado luchando con mi nivel de energía, mi resistencia y, sobre todo, con mi autoestima relacionada con mi cuerpo. Me di cuenta de que necesitaba un cambio, y no solo en mi rutina diaria, sino en mi enfoque hacia el ejercicio y la alimentación. Mi principal meta al comenzar en el gimnasio fue perder peso y ganar músculo, pero también tenía claro que quería lograr una mayor flexibilidad y mejorar mi postura. Desde que empecé a entrenar aquí, me he sentido muy apoyado por los entrenadores, quienes me han ayudado a diseñar un plan de entrenamiento personalizado, adaptado a mis capacidades y objetivos. Además, he aprendido mucho sobre cómo hacer ejercicios de manera correcta y evitar lesiones. Al principio, no fue fácil, pero a medida que avanzaba, mis niveles de motivación aumentaron. Cada sesión me siento más fuerte, tanto física como mentalmente. Mi objetivo es seguir mejorando mi resistencia cardiovascular, aumentar mi masa muscular y, finalmente, llegar a un nivel en el que me sienta completamente cómodo con mi cuerpo y mi salud. Estoy comprometido con mi progreso y con las recomendaciones de mis entrenadores, sabiendo que cada paso cuenta para alcanzar lo que me propongo.",
+    "objetivoCliente": "Hace unos meses decidí inscribirme en este gimnasio con el objetivo de mejorar mi salud y condición física general. Durante mucho tiempo había estado luchando con mi nivel de energía, mi resistencia y, sobre todo, con mi autoestima relacionada con mi cuerpo. Me di cuenta de que necesitaba un cambio, y no solo en mi rutina diaria, sino en mi enfoque hacia el ejercicio y la alimentación. Mi principal meta al comenzar en el gimnasio fue perder peso y ganar músculo, pero también tenía claro que quería lograr una mayor flexibilidad y mejorar mi postura. Desde que empecé a entrenar aquí, me he sentido muy apoyado por los entrenadores, quienes me han ayudado a diseñar un plan de entrenamiento personalizado, adaptado a mis capacidades y objetivos. Además, he aprendido mucho sobre cómo hacer ejercicios de manera correcta y evitar lesiones. Al principio, no fue fácil, pero a medida que avanzaba, mis niveles de motivación aumentaron. Cada sesión me siento más fuerte, tanto física como mentalmente. Mi objetivo es seguir mejorando mi resistencia cardiovascular, aumentar mi masa muscular y, finalmente, llegar a un nivel en el que me sienta completamente cómodo con mi cuerpo y mi salud. Estoy comprometido con mi progreso y con las recomendaciones de mis entrenadores, sabiendo que cada paso cuenta para alcanzar lo que me propongo.",
     "fechaCreacion": "2024-12-25"
   },
   {
@@ -30,7 +30,7 @@
   {
     "id": 5,
     "nickName": "JorgitoC",
-    "imagen": "jorge.png",
+    "imagen": "jorgexd.png",
     "objetivoCliente": ":v",
     "fechaCreacion": "2024-12-25"
   },
@@ -54,5 +54,12 @@
     "imagen": "Pepito-Mixto-copy-1.webp",
     "objetivoCliente": "Objetivo ...",
     "fechaCreacion": "2025-01-26"
+  },
+  {
+    "id": 9,
+    "nickName": "KIki",
+    "imagen": "user.png",
+    "objetivoCliente": "Objetivo ...",
+    "fechaCreacion": "2025-01-27"
   }
 ]

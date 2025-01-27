@@ -3,6 +3,10 @@
 
 {% block usr_nav_class %}active{% endblock %}
 
+{% block custom_styles_js %}
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.2.1/css/dataTables.dataTables.css" />
+{% endblock %}
+
 {% block content %}
 
 {% with messages = get_flashed_messages(with_categories=True)  %}
@@ -14,18 +18,20 @@
   {% endfor %}
 {% endwith %}
 
-<a href="/register/user">
-  <button type="button" class="btn btn-warning m-2"> Registrar Nuevo Usuario</i></button>
-</a>
-
 
 <div class="container-fluid pt-4 px-4">
   <div class="bg-secondary text-center rounded p-4">
-      <div class="d-flex align-items-center justify-content-between mb-4">
+    <div class="d-flex align-items-center justify-content-between mb-4">
           <h6 class="mb-0">LISTA DE USUARIOS</h6>
-      </div>
+    </div>
+    <div class="col-sm-2">
+      <a href="/register/user">
+        <button type="button" class="btn btn-warning m-2"> Registrar Nuevo Usuario</i></button>
+      </a>
+    </div><br>
+
       <div class="table-responsive">
-          <table class="table text-start align-middle table-bordered table-hover mb-0">
+          <table class="table table-dark display" id="dataTable">
               <thead>
                   <tr class="text-white">
                     <th scope="col">#</th>
@@ -62,10 +68,13 @@
       </div>
   </div>
 </div> 
+<script src="{{ url_for('static',filename='js/jquery-3.7.1.min.js' ) }}"></script>
+<script src="https://cdn.datatables.net/2.2.1/js/dataTables.js"></script>
+<script > 
+  let dataTable = new DataTable('#dataTable', {});
+  $(document).ready(function() {
+    $('#dataTable').DataTable();  
+  });
+</script>
 
 {% endblock %}
-
-
-<!-- <a href="/user/update/{{ persona.id }}">
-  <button type="button" class="btn btn-square btn-info m-2"><i class="fa fa-pen"></i></button>
-</a> -->

@@ -245,9 +245,8 @@ public class CuentaDao extends AdapterDao<Cuenta> {
             return res;
 
         } catch (Exception e) {
-            System.out.println("CuentaDao.registerNewUser() dice: " + e.getMessage());
+            throw new Exception("No se pudo completar el registro, " + e.getMessage());
         }
-        throw new Exception("No se pudo completar el registro!");
     }
     
     @SuppressWarnings("unchecked")

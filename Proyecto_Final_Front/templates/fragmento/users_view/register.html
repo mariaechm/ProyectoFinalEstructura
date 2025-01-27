@@ -1,11 +1,14 @@
 {% extends 'blank.html' %}
 {% block title %}Registrar nuevo Usuario{% endblock %}
 {% block usr_nav_class %}active{% endblock %}
+{% block custom_styles_js %}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+{% endblock %}
 {% block content %}
-<div class="col-12">
+<div class="container-fluid pt-4 px-4">
   <div class="bg-secondary rounded h-100 p-4">
     <h6 class="mb-4">Registrar nuevo Usuario</h6>
-    <form class="row g-3 needs-validation" method="POST" action="/register/user/send" novalidate>
+    <form class="row g-3 needs-validation" id="registrar-usuario" method="POST" action="/register/user/send" novalidate>
       <div class="col-sm-6">
         <label for="nombre" class="form-label">Nombre: </label>
         <input type="text" class="form-control" name="nombre" id="nombre" required>
@@ -13,7 +16,7 @@
 
       <div class="col-sm-6">
         <label for="apellido" class="form-label">Apellido: </label>
-        <input type="text" id="apellido" class="form-control" name="apellido">
+        <input type="text" id="apellido" class="form-control" name="apellido" required>
       </div>
 
       <div class="col-sm-6">
@@ -27,22 +30,22 @@
 
       <div class="col-sm-6">
         <label for="identificacion" class="form-label">Identificación: </label>
-        <input type="text" class="form-control" id="identificacion" name="identificacion">
+        <input type="text" class="form-control" id="identificacion" name="identificacion" required>
       </div>
 
       <div class="col-sm-6">
         <label for="celular" class="form-label">Celular: </label>
-        <input type="text" id="celular" class="form-control" name="celular">
+        <input type="text" id="celular" class="form-control" name="celular" required>
       </div>
 
       <div class="col-sm-6">
         <label for="direccion" class="form-label">Dirección: </label>
-        <input type="text" id="direccion" class="form-control" name="direccion">
+        <input type="text" id="direccion" class="form-control" name="direccion" required>
       </div>
 
       <div class="col-sm-6">
         <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento: </label>
-        <input type="date" id="fechaNacimiento" class="form-control" name="fechaNacimiento">
+        <input required type="date" id="fechaNacimiento" class="form-control" style="background-color: black;" name="fechaNacimiento">
       </div>
 
       <div class="col-sm-6">
@@ -65,12 +68,12 @@
 
       <div class="col-sm-6">
         <label for="correoElectronico" class="form-label">Correo Electrónico: </label>
-        <input type="text" id="correoElectronico" class="form-control" name="correoElectronico">
+        <input type="text" id="correoElectronico" class="form-control" name="correoElectronico" required>
       </div>
 
-      <div class="col-sm-6">
-        <label for="contrasena" class="form-label">Contraseña: </label>
-        <input type="password" class="form-control" name="contrasena" id="contrasena">
+      <label for="contrasena" class="form-label">Contraseña: </label>
+      <div class="form-floating mb-3 col-6">
+        <input type="password" class="form-control" required style="height: 3rem; padding-right: 2.5rem; padding-left: 1rem; line-height: 2rem;" name="contrasena" id="contrasena"><i class="fas fa-eye" id="togglePassword" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
       </div>
 
       <div class="col-12">
@@ -83,4 +86,35 @@
     </form>
   </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      flatpickr("#fechaNacimiento", {
+          dateFormat: "Y-m-d",
+      });
+  });
+
+  const togglePassword = document.getElementById('togglePassword');
+      const passwordField = document.getElementById('contrasena');
+
+      togglePassword.addEventListener('click', function () {
+
+          const type = passwordField.type === 'password' ? 'text' : 'password';
+          passwordField.type = type;
+
+          this.classList.toggle('fa-eye-slash');
+  });
+  (function () {
+      'use strict';
+      const form = document.getElementById('registrar-usuario');
+      form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+              event.preventDefault();
+              event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+      }, false);
+  })();
+</script>
+
 {% endblock %}
