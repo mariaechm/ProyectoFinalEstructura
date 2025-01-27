@@ -116,8 +116,8 @@
           <dt class="col-sm-4">Estatura:</dt>
           <dd class="col-sm-8">{{ estadistica.altura }} m</dd>
 
-          <dt class="col-sm-4">Índice de Masa corporal:</dt>
-          <dd class="col-sm-8">{{ estadistica.imc }}</dd>          
+<!--           <dt class="col-sm-4">Índice de Masa corporal:</dt>
+          <dd class="col-sm-8">{{ estadistica.imc }}</dd>      -->     
            
         </dl>
       </div>
@@ -239,18 +239,18 @@
           <input type="number" id="perfilId" name="perfilId" value="{{ perfil.id }}" hidden>
 
           <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon3">Contraseña anterior:</span>
-            <input type="text" class="form-control" id="contrasena-anterior" name="contrasena" aria-describedby="basic-addon3">
+            <span class="input-group-text" id="basic-addon3">Contraseña anterior: </span>
+            <input type="password" class="form-control" id="contrasena-anterior" name="contrasena" aria-describedby="basic-addon3"><i class="fas fa-eye" id="tgp1" onclick="togglePassword('tpg1','contrasena-anterior')" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
           </div>
 
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon3">Nueva Contraseña:</span>
-            <input type="text" class="form-control" id="nueva-contrasena-1" aria-describedby="basic-addon3">
+            <input type="password" class="form-control" id="nueva-contrasena-1" aria-describedby="basic-addon3"><i class="fas fa-eye" id="tgp2" onclick="togglePassword('tpg2','nueva-contrasena-1')" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
           </div>
 
           <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon3">Repita la nueva Contraseña:</span>
-            <input type="text" class="form-control" id="nueva-contrasena-2" aria-describedby="basic-addon3" name="newContrasena">
+            <span class="input-group-text" id="basic-addon3">Repita la nueva Contraseña:</span>           <!-- tgp = togglePassword in icons id -->
+            <input type="password" class="form-control" id="nueva-contrasena-2" aria-describedby="basic-addon3" name="newContrasena"><i class="fas fa-eye" id="tgp3" onclick="togglePassword('tpg3','nueva-contrasena-2')" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
           </div>
 
           <div class="col-12">
@@ -271,6 +271,7 @@
 
 </div>
 <script>
+  // VALIDATE PASSWORD SCRIPT
   function validarContrasena(event) {
     var contrasena1 = document.getElementById('nueva-contrasena-1').value;
     var contrasena2 = document.getElementById('nueva-contrasena-2').value;
@@ -284,5 +285,27 @@
   }
 
   document.getElementById('form-contrasena').addEventListener('submit',validarContrasena)
+
+  // TOGGLE PASSWORD SCRIPT
+  /* const togglePassword = document.getElementById('togglePassword1');
+  const passwordField = document.getElementById('floatingPassword');
+
+  togglePassword.addEventListener('click', function () {
+
+      const type = passwordField.type === 'password' ? 'text' : 'password';
+      passwordField.type = type;
+
+      this.classList.toggle('fa-eye-slash');
+  }); */
+
+  function togglePassword(eyeButtonId, passwordFieldId) {
+    const eyeButton = document.getElementById(eyeButtonId);
+    const passwordField = document.getElementById(passwordFieldId);
+
+    const type = passwordField.type === 'password' ? 'text' : 'password';
+    passwordField.type = type;
+
+    eyeButton.classList.toggle('fa-eye-slash')
+  }
 </script>
 {% endblock %}
