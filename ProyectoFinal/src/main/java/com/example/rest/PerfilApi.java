@@ -83,15 +83,16 @@ public class PerfilApi {
         try {
             // Validar campos requeridos
             if (map.get("nickName") == null || map.get("imagen") == null
-                    || map.get("objetivoCliente") == null || map.get("FechaCreacion") == null) {
-                throw new IllegalArgumentException("Todos los campos son obligatorios: nickName, imagen, objetivoCLiente, FechaCreacion.");
+                    || map.get("objetivoCliente") == null) {
+                throw new IllegalArgumentException("Todos los campos son obligatorios: nickName, imagen, objetivoCLiente.");
             }
 
             // Asignar valores
             ps.getPerfil().setNickName((map.get("nickName").toString()));
             ps.getPerfil().setImagen(map.get("imagen").toString());
             ps.getPerfil().setObjetivoCliente(map.get("objetivoCliente").toString());
-            ps.getPerfil().setFechaCreacion(map.get("FechaCreacion").toString());
+            ps.getPerfil().setFechaCreacion(ps.get(Integer.valueOf((String)map.get("id"))).getFechaCreacion());
+            ps.getPerfil().setId(Integer.valueOf((String)map.get("id")));
 
             ps.update();
 
@@ -103,11 +104,13 @@ public class PerfilApi {
         } catch (IllegalArgumentException e) {
             res.put("msg", "Error");
             res.put("data", e.getMessage());
+            e.printStackTrace();
             return Response.status(Status.BAD_REQUEST).entity(res).build();
 
         } catch (Exception e) {
             res.put("msg", "Error");
             res.put("data", e.toString());
+            e.printStackTrace();
             return Response.status(Status.BAD_REQUEST).entity(res).build();
         }
     }

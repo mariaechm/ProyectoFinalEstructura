@@ -2,7 +2,7 @@
   {
     "id": 1,
     "correoElectronico": "arnold.sw@example.com",
-    "contrasena": "YWRtaW5pc3RyYWRvcmVzX19HRw\u003d\u003d",
+    "contrasena": "YWRtaW5pc3RyYWRvcmVz",
     "personaId": 1,
     "perfilId": 1
   },
@@ -47,5 +47,12 @@
     "contrasena": "YWRtaW5pc3RyYWRvcmVz",
     "personaId": 7,
     "perfilId": 7
+  },
+  {
+    "id": 9,
+    "correoElectronico": "rommel.cl@example.com",
+    "contrasena": "YWRtaW5pc3RyYWRvcmVz",
+    "personaId": 8,
+    "perfilId": 8
   }
 ]

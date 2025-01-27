@@ -56,13 +56,12 @@ def persona_view(headers,usr,id):
     persona = response.json()['data']
     cuenta = requests.get(f'{BASE_URL}/cuenta/search/personaId/{persona['id']}',headers=headers).json()['data'][0]
     perfil = requests.get(f'{BASE_URL}/perfil/get/{cuenta["perfilId"]}',headers=headers).json()['data']
-    perfil['imagen'] = f'{BASE_URL}/images/{perfil['imagen']}'
     estadistica = requests.get(f'{BASE_URL}/estadistica/get/{cuenta['perfilId']}',headers=headers).json()['data']
     enums = requests.get(f'{P_URL}/enumerations',headers=headers).json()['data']
-    return render_template('fragmento/users_view/user/view_user.html',user=usr,persona=persona,cuenta=cuenta,perfil=perfil,estadistica=estadistica, enums=enums)
+    return render_template('fragmento/users_view/user/view_user.html',user=usr,persona=persona,cuenta=cuenta,perfil=perfil,estadistica=estadistica, enums=enums, my_profile=False)
 
 UPLOAD_FOLDER = 'static/img/user_profile/'
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'webp'}
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -71,7 +70,6 @@ def allowed_file(filename):
 @login_required()
 def perfil_update_send(headers,usr):
     data = request.form.to_dict()
-    print(request.files)
     if 'image' in request.files:
         file = request.files['image']
 
@@ -82,23 +80,17 @@ def perfil_update_send(headers,usr):
         files = {'image' : (file.filename, file.stream, file.mimetype)}
 
         if file and allowed_file(file.filename):
-            # Haz que el nombre del archivo sea seguro
             filename = secure_filename(file.filename)
-            # Guarda el archivo en el directorio 'uploads'
             file.save(os.path.join(UPLOAD_FOLDER, filename)) 
-
-    #response = requests.post(f'{BASE_URL}/image/upload',files=files,headers=headers)
-        
-    #if response.status_code == 200:
-            #data['imagen'] = file.filename
+            data['imagen'] = file.filename
 
     if not 'imagen' in data:
-        data['imagen'] = 'user.png'
+        data['imagen'] = data['current-image']
                                                    
     response = requests.post(f'{BASE_URL}/perfil/update',headers=headers,json=data)
     ok = response.status_code == 200
     flash(f'{"Éxito" if ok else "Error"}: {"Se ha actualizado el registro" if ok else "no se ha podido actualizar el registro"}')
-    return redirect('/users/list')
+    return redirect('/users/list' if (not 'my-profile' in data) else '/my_profile')
 
 @router.route('/change_password',methods=['POST'])
 @login_required()
@@ -126,7 +118,6 @@ def my_profile(headers,usr):
     persona = response.json()['data']
     cuenta = requests.get(f'{BASE_URL}/cuenta/search/personaId/{persona["id"]}',headers=headers).json()['data'][0]
     perfil = requests.get(f'{BASE_URL}/perfil/get/{cuenta["perfilId"]}',headers=headers).json()['data']
-    perfil['imagen'] = f'{BASE_URL}/images/{perfil["imagen"]}'
     estadistica = requests.get(f'{BASE_URL}/estadistica/get/{cuenta['perfilId']}',headers=headers).json()['data']
     enums = requests.get(f'{P_URL}/enumerations',headers=headers).json()['data']
-    return render_template('fragmento/users_view/user/view_user.html',user=usr,persona=persona,cuenta=cuenta,perfil=perfil,estadistica=estadistica, enums=enums)
+    return render_template('fragmento/users_view/user/view_user.html',user=usr,persona=persona,cuenta=cuenta,perfil=perfil,estadistica=estadistica, enums=enums, my_profile=True)
