@@ -1,5 +1,8 @@
 package com.example.rest;
 
+import java.io.IOException;
+import java.net.URI;
+
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.media.multipart.MultiPartFeature;
@@ -7,9 +10,6 @@ import org.glassfish.jersey.server.ResourceConfig;
 
 import com.example.controller.auth.AuthenticationFilter;
 import com.example.controller.auth.AuthorizationFilter;
-
-import java.io.IOException;
-import java.net.URI;
 
 /**
  * Main class.
