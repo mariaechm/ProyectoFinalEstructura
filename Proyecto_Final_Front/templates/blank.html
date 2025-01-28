@@ -31,16 +31,18 @@
       <div class="navbar-nav w-100">
         <a href="/" class="nav-item nav-link {% block dash_nav_class %}{% endblock %}"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
         {% if user.persona.rol == 'ADMINISTRADOR' %}
-          <a href="/admin/users/list" class="nav-item nav-link {% block usr_nav_class %}{% endblock %}"><i
+          <a href="/users/list" class="nav-item nav-link {% block usr_nav_class %}{% endblock %}"><i
           class="fa fa-users me-2"></i>Usuarios</a>
         {% endif %}
         <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle {% block rutinaDropDown %}{% endblock %}" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Rutinas de<br><center>Entrenamiento</center></a>
             <div class="dropdown-menu bg-transparent border-0">
-                <a href="/admin/rutinas/list" class="dropdown-item {% block rutina %}{% endblock %}">Rutinas</a>
-                <a href="/admin/ejercicios/list" class="dropdown-item {% block ejercicio %}{% endblock %}">Ejercicios</a>
+                <a href="/rutinas/list" class="dropdown-item {% block rutina %}{% endblock %}">Rutinas</a>
+                <a href="/ejercicios/list" class="dropdown-item {% block ejercicio %}{% endblock %}">Ejercicios</a>
             </div>
         </div>
+        <div class="navbar-nav w-100">
+          <a href="/suscripcion/list" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Suscripciones</a>
       </div>
     </nav>
   </div>
