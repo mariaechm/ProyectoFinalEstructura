@@ -152,44 +152,6 @@ public class SuscripcionDao extends AdapterDao<Suscripcion> {
         }
         return true;
     }
-
-
-    //Ordenar
-    public Suscripcion[] sort(String attribute, Integer orden, Integer method) throws Exception {
-        LinkedList<Suscripcion> list = listAll();
-        switch (method) {
-            case 0:
-                list.quickSort(attribute, orden);
-                break;
-            case 1:
-                list.mergeSort(attribute, orden);
-                break;
-            case 2:
-                list.shellSort(attribute, orden);
-                break;
-            default:
-                throw new Exception("Método de ordenamiento no válido");
-        }
-        return list.toArray();
-    }
-
-    //Buscar
-    public Suscripcion[] search(String attribute, String value) throws Exception {
-        LinkedList<Suscripcion> list = listAll();
-        try {
-            if(attribute.equalsIgnoreCase("fechaInicio")){ 
-                return list.buscarPorAtributo(attribute, value).toArray();
-            }else if (attribute.equalsIgnoreCase("fechaFinalizacion")){
-                return list.buscarPorAtributo(attribute, value).toArray();
-            } else if (attribute.equalsIgnoreCase("precio")) {
-                    return list.busquedaLinealBinaria (attribute, Double.parseDouble(value)).toArray();
-            } else {
-                return list.busquedaLinealBinaria(attribute, value).toArray();
-            }
-        } catch (Exception e) {
-            return new Suscripcion[] {};
-        }
-    }
 }
 
   

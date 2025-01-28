@@ -49,14 +49,4 @@ public class SuscripcionServices {
     public TipoSuscripcion[] getTipos() {
         return obj.getTipos();
     }  
-    
-    // ORDENAR
-    public Suscripcion[] sort(String attribute, Integer orden, Integer method) throws Exception {
-        return this.obj.sort(attribute, orden, method);
-    }
-
-    // BUSCAR 
-    public Suscripcion[] search(String attribute, String value) throws Exception {
-        return this.obj.search(attribute, value);
-    }
 } 
