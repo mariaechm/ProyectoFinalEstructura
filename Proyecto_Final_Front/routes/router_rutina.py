@@ -158,5 +158,6 @@ def info_rutina(id, headers, usr):
     data = r.json()["data"]
     lista = []
     for i in data["idEjercicio"]:
-        lista.append(requests.get("http://localhost:8080/api/ejercicios/get/"+str(i)).json()["data"], headers=headers)     
+        lista.append(requests.get("http://localhost:8080/api/ejercicios/get/"+str(i), headers=headers).json()["data"])
+       
     return render_template('fragmento/rutinas/informacion.html', rutina = data, ejercicios=lista, user=usr)
