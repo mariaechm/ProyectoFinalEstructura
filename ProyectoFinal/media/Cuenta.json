@@ -61,5 +61,12 @@
     "contrasena": "YWRtaW5pc3RyYWRvcmVz",
     "personaId": 9,
     "perfilId": 9
+  },
+  {
+    "id": 11,
+    "correoElectronico": "danner.cl@example.com",
+    "contrasena": "YWRtaW5pc3RyYWRvcmVz",
+    "personaId": 10,
+    "perfilId": 10
   }
 ]

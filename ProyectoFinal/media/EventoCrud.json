@@ -40,5 +40,11 @@
     "fecha": "2025-01-27",
     "hora": "1:16:50",
     "descripcion": "Se actualizó con éxito la información personal"
+  },
+  {
+    "id": 10,
+    "fecha": "2025-01-27",
+    "hora": "0:17:47",
+    "descripcion": "Se ha registrado la información personal"
   }
 ]

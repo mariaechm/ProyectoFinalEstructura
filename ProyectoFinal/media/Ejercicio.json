@@ -40,5 +40,16 @@
     "nroRepSerie": 8,
     "tipoEjercicio": "AISLADO",
     "grupoMuscularObjetivo": "BICEPS"
+  },
+  {
+    "id": 35,
+    "nombreEjercicio": "  ",
+    "descripcion": "adfsasdf",
+    "imagen": "http://fadfsdf",
+    "tiempoDescanso": 55,
+    "nroSeries": 5,
+    "nroRepSerie": 55,
+    "tipoEjercicio": "COMPUESTO",
+    "grupoMuscularObjetivo": "CUADRICEPS"
   }
 ]

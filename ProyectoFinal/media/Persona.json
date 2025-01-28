@@ -106,5 +106,17 @@
     "tipoIdentificacion": "PASAPORTE",
     "genero": "HOMBRE",
     "rol": "ADMINISTRADOR"
+  },
+  {
+    "id": 10,
+    "nombre": "Danner",
+    "apellido": "Álvarez",
+    "identificacion": "4578978965",
+    "celular": "0975644323",
+    "fechaNacimiento": "1991-05-08",
+    "direccion": "Groove Street",
+    "tipoIdentificacion": "CEDULA",
+    "genero": "HOMBRE",
+    "rol": "CLIENTE"
   }
 ]
