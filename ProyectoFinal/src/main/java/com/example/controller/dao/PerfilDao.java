@@ -52,5 +52,12 @@ public class PerfilDao extends AdapterDao<Perfil> {
         this.listAll = listAll(); 
         return true;
     }
+    
+    public Perfil deletePerfil(Integer id) throws Exception {
+    
+        Perfil perfil = get(id);
+        remove(id);
+        return perfil;
+    }
 
 }

@@ -69,7 +69,7 @@
               <tr>
                 <td><center>{{ ejercicio.numero}}</td>
                 <td>{{ ejercicio.nombreEjercicio }}</td>
-                <td><center><a href="/admin/ejercicios/informacion/{{ ejercicio.id }}">Ver más</a></td>
+                <td><center><a href="/ejercicios/informacion/{{ ejercicio.id }}">Ver más</a></td>
                 <td><center>{{ ejercicio.tiempoDescanso }}</td>
                 <td><center>{{ ejercicio.nroSeries }}</td>
                 <td><center>{{ ejercicio.nroRepSerie }}</td>
@@ -83,9 +83,9 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<a id="search" href="/admin/ejercicios/list"></a>
+<a id="search" href="/ejercicios/list"></a>
 <script>
-  const sortUrl = '/admin/ejercicios/sort'
+  const sortUrl = '/ejercicios/sort'
   function sortFunct(attr,ord) {
     const newHref = `${sortUrl}/${attr}/${ord}/${$('#sortMethod').val()}`;
     $('#sortA').attr('href',newHref) 
@@ -103,7 +103,7 @@
         alert("Ingrese un valor");
         return;
       } else {
-        $("#search").attr("href", "/admin/ejercicios/search/" + atributo + "/" + texto);
+        $("#search").attr("href", "/ejercicios/search/" + atributo + "/" + texto);
         $("#search")[0].click();
       }
     }

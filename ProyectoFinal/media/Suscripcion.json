@@ -134,5 +134,21 @@
     "precio": 25.0,
     "duracionDias": 30,
     "tipo": "MES"
+  },
+  {
+    "id": 19,
+    "fechaInicio": "2024-10-29",
+    "fechaFinalizacion": "2024-11-28",
+    "precio": 25.0,
+    "duracionDias": 30,
+    "tipo": "MES"
+  },
+  {
+    "id": 20,
+    "fechaInicio": "2024-10-29",
+    "fechaFinalizacion": "2024-11-28",
+    "precio": 25.0,
+    "duracionDias": 30,
+    "tipo": "MES"
   }
 ]

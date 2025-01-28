@@ -14,7 +14,7 @@
 <div class="col-12">
     <div class="bg-secondary rounded h-100 p-4">
         <h6 class="mb-4">Edición</h6>
-        <form class="row g-3 needs-validation" method="POST" action="/admin/rutinas/update" novalidate="">
+        <form class="row g-3 needs-validation" method="POST" action="/rutinas/update" novalidate="">
             <input type="hidden" value="{{ rutina.id }}" name="idR"/>
             <div class="col-sm-6">
                 <label for="validationCustom02" class="form-label">Nombre de la Rutina</label>
@@ -28,6 +28,11 @@
                         <option {% if item == rutina.objetivoRutina%} selected {%endif%} value="{{ item }}">{{ item }}</option>
                     {% endfor %}
                 </select>
+            </div>
+
+            <div class="col-sm-6">
+                <label for="descrip" class="form-label">Descripción de la Rutina</label>
+                <textarea type="text" class="form-control" name="descrip" style="height: 150px;" required="">{{ rutina.descripcion }}</textarea>
             </div>      
             
             <div class="col-sm-6">
@@ -37,11 +42,6 @@
                         <option {% if item == rutina.idEjercicio %} selected {%endif%} value="{{ ejercicio.id }}">{{ ejercicio.nombreEjercicio }}</option>
                     {% endfor %}
                 </select>
-            </div>
-
-            <div class="col-sm-6">
-                <label for="descrip" class="form-label">Descripción de la Rutina</label>
-                <textarea type="text" class="form-control" name="descrip" style="height: 150px;" required="">{{ rutina.descripcion }}</textarea>
             </div>
             
             <div class="col-sm-6">
@@ -55,7 +55,7 @@
                 </div>
                 
                 <div class="col-sm-6">
-                    <a href="/admin/rutinas/list" class="btn btn-primary rounded-pill">Cancelar</a>
+                    <a href="/rutinas/list" class="btn btn-primary rounded-pill">Cancelar</a>
                 </div>
             </div>
         </form>

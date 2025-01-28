@@ -14,30 +14,35 @@
 <div class="col-12">
     <div class="bg-secondary rounded h-100 p-4">
         <h6 class="mb-4">Registro</h6>
-        <form class="row g-3 needs-validation" method="POST" action="/admin/ejercicios/save" novalidate>
+        <form id="ejercicioForm" class="row g-3 needs-validation" method="POST" action="/ejercicios/save" novalidate>
             <div class="col-sm-6">
                 <label for="validationCustom02" class="form-label">Nombre del Ejercicio</label>
                 <input type="text" class="form-control" name="nombreE" required>
+                <div class="invalid-feedback">Por favor, ingrese un nombre para el ejercicio.</div>
             </div>
 
             <div class="col-sm-6">
                 <label for="validationCustom02" class="form-label">Tiempo de Descanso entre Series (Minutos)</label>
-                <input type="number" step="1" min="1" class="form-control" name="tiempoD">
+                <input type="number" step="1" min="1" class="form-control" name="tiempoD" required>
+                <div class="invalid-feedback">Por favor, ingrese un tiempo de descanso para el ejercicio.</div>
             </div>
 
             <div class="col-sm-6">
                 <label for="validationCustom02" class="form-label">Número de Series</label>
-                <input type="number" step="1" min="1" class="form-control" name="nroS">
+                <input type="number" step="1" min="1" class="form-control" name="nroS" required>
+                <div class="invalid-feedback">Por favor, ingrese un número de series para el ejercicio.</div>
             </div>
 
             <div class="col-sm-6">
                 <label for="validationCustom02" class="form-label">Número de Repeticiones por Serie</label>
-                <input type="number" step="1" min="1" class="form-control" name="nroRS">
+                <input type="number" step="1" min="1" class="form-control" name="nroRS" required>
+                <div class="invalid-feedback">Por favor, ingrese un numero de repeticiones para cada serie del ejercicio.</div>
             </div>
 
             <div class="col-sm-6">
                 <label for="validationCustom02" class="form-label">Imagen del Ejercicio (Enlace Web)</label>
                 <input type="url" class="form-control" name="img" required>
+                <div class="invalid-feedback">Por favor, ingrese un enlace web de la imagen del ejercicio.</div>
             </div>
             
             <div class="col-sm-6">
@@ -51,7 +56,8 @@
             
             <div class="col-sm-6">
                 <label for="descrip" class="form-label">Descripción del Ejercicio</label>
-                <textarea type="text" class="form-control" name="descrip" style="height: 150px;"></textarea>
+                <textarea type="text" class="form-control" name="descrip" style="height: 150px;" required></textarea>
+                <div class="invalid-feedback">Por favor, ingrese una descripción del ejercicio.</div>
             </div>
 
             <div class="col-sm-6">
@@ -69,10 +75,24 @@
                 </div>
                 
                 <div class="col-sm-6">
-                    <a href="/admin/ejercicios/list" class="btn btn-primary rounded-pill">Cancelar</a>
+                    <a href="/ejercicios/list" class="btn btn-primary rounded-pill">Cancelar</a>
                 </div>
             </div>
         </form>
     </div>
 </div>
+
+<script>
+    (function () {
+        'use strict';
+        const form = document.getElementById('ejercicioForm');
+        form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+        }, false);
+    })();
+</script>
 {% endblock%}

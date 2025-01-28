@@ -9,17 +9,17 @@
 <div class="col-12">
     <div class="bg-secondary rounded h-100 p-4">
         <h6 class="mb-4">Edición</h6>
-        <form class="row g-3 needs-validation" method="POST" action="/admin/suscripcion/update/send/" novalidate>
+        <form class="row g-3 needs-validation" method="POST" action="/suscripcion/update/send/" novalidate>
             <input type="hidden" value="{{ suscripcion.id}}" name="idS"/>
             <div class="col-sm-6">
                 <label for="inputDate" class="form-label">Fecha de Inicio de Suscripción</label>
                 <input type="date" value="{{ suscripcion.fechaInicio}}" class="form-control" name="nameFechaI" required>
             </div>
                 
-            <div class="col-sm-6">
+         <!-- <div class="col-sm-6">
                 <label for="inputDate" class="form-label">Fecha de Finalización</label>
                 <input type="date" value="{{ suscripcion.fechaFinalizacion}}" class="form-control" name="nameFechaF" required>
-            </div>
+            </div>-->
             
             <div class="col-sm-6">
                 <label for="lbltipo" class="form-label">Tipo de Suscripción</label>
@@ -42,4 +42,22 @@
         </form>
     </div>
 </div>
+
+<script>
+    // Obtener el select y el campo de número de suscripciones
+    const seleccionSuscripcion = document.getElementById('seleccionSuscripcion');
+    const nroE = document.getElementById('idNroE');
+
+    // Función para actualizar el número de suscripciones seleccionadas
+    function actualizarNumeroSuscripciones() {
+        const suscripcionesSeleccionadas = seleccionSuscripcion.selectedOptions.length; // Cuenta las opciones seleccionadas
+        nroE.value = suscripcionesSeleccionadas; // Actualiza el valor del campo
+    }
+
+    // Escuchar cambios en el select
+    seleccionSuscripcion.addEventListener('change', actualizarNumeroSuscripciones);
+
+    // Inicializar con el valor actual (en caso de que ya haya opciones seleccionadas)
+    actualizarNumeroSuscripciones();
+</script>
 {% endblock%}

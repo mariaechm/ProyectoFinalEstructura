@@ -14,10 +14,11 @@
 <div class="col-12">
     <div class="bg-secondary rounded h-100 p-4">
         <h6 class="mb-4">Registro</h6>
-        <form class="row g-3 needs-validation" method="POST" action="/admin/rutinas/save" novalidate>
+        <form id="rutinaForm" class="row g-3 needs-validation" method="POST" action="/rutinas/save" novalidate>
             <div class="col-sm-6">
                 <label for="validationCustom02" class="form-label">Nombre de la Rutina</label>
                 <input type="text" class="form-control" name="nombreR" required>
+                <div class="invalid-feedback">Por favor, ingrese un nombre para la rutina.</div>
             </div>
                      
             <div class="col-sm-6">
@@ -27,39 +28,28 @@
                         <option value="{{ item }}">{{ item }}</option>
                     {% endfor %}
                 </select>
-            </div>   
-            
-            <div class="col-sm-6">
-                <label for="lbltipo" class="form-label">Ejercicios</label>
-                <select id="seleccionEjercicios" name="seleccionEjercicios" class="form-select" multiple="">
-                    {% for ejercicio in ejercicios %}
-                        <option value="{{ ejercicio.id }}">{{ ejercicio.nombreEjercicio }}</option>
-                    {% endfor %}
-                </select>
             </div>
 
             <div class="col-sm-6">
                 <label for="descrip" class="form-label">Descripción de la Rutina</label>
-                <textarea type="text" class="form-control" name="descrip" style="height: 150px;"></textarea>
+                <textarea type="text" class="form-control" name="descrip" style="height: 150px;" required></textarea>
+                <div class="invalid-feedback">Por favor, ingrese una descripción de la rutina.</div>
+            </div>   
+            
+            <div class="col-sm-6">
+                <label for="lbltipo" class="form-label">Ejercicios</label>
+                <select id="seleccionEjercicios" name="seleccionEjercicios" class="form-select" multiple="" required>
+                    {% for ejercicio in ejercicios %}
+                        <option value="{{ ejercicio.id }}">{{ ejercicio.nombreEjercicio }}</option>
+                    {% endfor %}
+                </select>
+                <div class="invalid-feedback">Por favor, seleccione ejercicios para la rutina.</div>
             </div>            
 
-<<<<<<< HEAD
-            <select name="hola" class="form-select" multiple aria-label="multiple select example">
-                {% for persona in personas %}
-                    <option value="{{ persona.id }}">{{ persona.nombre }}</option>
-                {% endfor %}
-            </select>
-
-            <!-- <div class="col-sm-6">
-                <label for="validationCustom02" class="form-label">Ejercicios</label>
-                <input type="text" class="form-control" name="idE">
-            </div> -->
-=======
             <div class="col-sm-6">
                 <label for="validationCustom02" class="form-label">Número de Ejercicios</label>
                 <input id="idNroE" type="number" step="1" min="1" class="form-control" name="nroE" required readonly style="background-color: black;">
             </div>
->>>>>>> moduloRutinaEjercicio
 
             <div class="form-inline">
                 <div class="col-sm-6">
@@ -67,7 +57,7 @@
                 </div>
                 
                 <div class="col-sm-6">
-                    <a href="/admin/rutinas/list" class="btn btn-primary rounded-pill">Cancelar</a>
+                    <a href="/rutinas/list" class="btn btn-primary rounded-pill">Cancelar</a>
                 </div>
             </div>
         </form>
@@ -90,5 +80,19 @@
 
     // Inicializar con el valor actual (en caso de que ya haya opciones seleccionadas)
     actualizarNumeroEjercicios();
+</script>
+
+<script>
+    (function () {
+        'use strict';
+        const form = document.getElementById('rutinaForm');
+        form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+        }, false);
+    })();
 </script>
 {% endblock%}

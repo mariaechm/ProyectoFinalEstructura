@@ -1,0 +1,15 @@
+[
+  {
+    "id": 8,
+    "nombreRutina": "Rutina de brazo de Cbum",
+    "descripcion": "Rutina de brazo",
+    "nroEjercicios": 4,
+    "idEjercicio": [
+      5,
+      6,
+      8,
+      34
+    ],
+    "objetivoRutina": "HIPERTROFIA"
+  }
+]
