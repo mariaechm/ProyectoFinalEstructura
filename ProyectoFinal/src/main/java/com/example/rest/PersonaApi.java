@@ -17,10 +17,12 @@ import com.example.rest.response.ResponseFactory;
 
 
 @Path("/persona")
+@Secured(rolesAllowed = {Rol.ADMINISTRADOR})
 public class PersonaApi {
     
-    @Secured(rolesAllowed = {Rol.ADMINISTRADOR})
+    
     @GET
+    @Secured(rolesAllowed = {Rol.ADMINISTRADOR})
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/list")
     public Response getAll() {
@@ -28,6 +30,7 @@ public class PersonaApi {
     }
 
     @POST
+    @Secured(rolesAllowed = {Rol.ADMINISTRADOR})
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/save")
@@ -36,6 +39,7 @@ public class PersonaApi {
     }
 
     @GET
+    @Secured(rolesAllowed = {Rol.ADMINISTRADOR})
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/get/{id}")
     public Response get(@PathParam("id") Integer id) {
@@ -43,6 +47,7 @@ public class PersonaApi {
     }
 
     @POST
+    @Secured(rolesAllowed = {Rol.ADMINISTRADOR})
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/update")
@@ -51,6 +56,7 @@ public class PersonaApi {
     }
 
     @DELETE
+    @Secured(rolesAllowed = {Rol.ADMINISTRADOR})
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/delete/{id}")
@@ -59,6 +65,7 @@ public class PersonaApi {
     }
 
     @GET
+    @Secured(rolesAllowed = {Rol.ADMINISTRADOR})
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/enumerations")
     public Response enumerations() {
@@ -66,6 +73,7 @@ public class PersonaApi {
     }
 
     @GET
+    @Secured(rolesAllowed = {Rol.ADMINISTRADOR})
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/sort/{attribute}/{orden}/{method}")
     public Response sort(@PathParam("attribute") String attribute,
@@ -76,6 +84,7 @@ public class PersonaApi {
     }
 
     @GET
+    @Secured(rolesAllowed = {Rol.ADMINISTRADOR})
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/search/{attribute}/{x}")
     public Response enumerations(@PathParam("attribute") String attribute, @PathParam("x") String x) {

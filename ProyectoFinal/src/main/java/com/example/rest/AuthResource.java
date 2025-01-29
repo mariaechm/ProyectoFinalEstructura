@@ -29,6 +29,7 @@ public class AuthResource {
         return ResponseFactory.buildResponse(new CuentaServices(),"validateCredentialsAndGetToken", credentials);
     }
 
+    @Secured(rolesAllowed = {Rol.ADMINISTRADOR, Rol.CLIENTE})
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/usr/info")
