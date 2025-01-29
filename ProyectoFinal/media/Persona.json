@@ -10,5 +10,65 @@
     "tipoIdentificacion": "PASAPORTE",
     "genero": "HOMBRE",
     "rol": "ADMINISTRADOR"
+  },
+  {
+    "id": 2,
+    "nombre": "Fernando",
+    "apellido": "Ruiz",
+    "identificacion": "10958674",
+    "celular": "0975645348",
+    "fechaNacimiento": "2000-09-21",
+    "direccion": "Calle 18 de Noviembre y Bolivar",
+    "tipoIdentificacion": "PASAPORTE",
+    "genero": "HOMBRE",
+    "rol": "CLIENTE"
+  },
+  {
+    "id": 3,
+    "nombre": "Santiago",
+    "apellido": "Jimenez",
+    "identificacion": "9574857463547",
+    "celular": "0985746578",
+    "fechaNacimiento": "1998-09-06",
+    "direccion": "Detrás del SuperMaxi Loja",
+    "tipoIdentificacion": "RUC",
+    "genero": "HOMBRE",
+    "rol": "CLIENTE"
+  },
+  {
+    "id": 4,
+    "nombre": "Daniela",
+    "apellido": "Macas",
+    "identificacion": "1748374650",
+    "celular": "0985557463",
+    "fechaNacimiento": "2007-10-12",
+    "direccion": "San Cayetano bajo",
+    "tipoIdentificacion": "CEDULA",
+    "genero": "MUJER",
+    "rol": "CLIENTE"
+  },
+  {
+    "id": 5,
+    "nombre": "John",
+    "apellido": "Mercado",
+    "identificacion": "1154947364857",
+    "celular": "0998799675",
+    "fechaNacimiento": "1990-02-07",
+    "direccion": "La Argelia",
+    "tipoIdentificacion": "RUC",
+    "genero": "HOMBRE",
+    "rol": "CLIENTE"
+  },
+  {
+    "id": 6,
+    "nombre": "Ana",
+    "apellido": "Morocho",
+    "identificacion": "8857463485",
+    "celular": "0988796948",
+    "fechaNacimiento": "1999-07-14",
+    "direccion": "Sauces Norte",
+    "tipoIdentificacion": "CEDULA",
+    "genero": "MUJER",
+    "rol": "CLIENTE"
   }
 ]

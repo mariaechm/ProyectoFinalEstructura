@@ -23,6 +23,7 @@ jQuery(document).ready(function () {
         identificacion: {
           required: true,
           minlength: 6,
+          maxlength: 13,
           onlyNumbers: true
         },
         celular: {
@@ -61,7 +62,8 @@ jQuery(document).ready(function () {
         },
         identificacion: {
           required: "Por favor, ingresa una identificación válida",
-          minlength: "La identificación debe contener al menos 6 caracteres"
+          minlength: "La identificación debe contener al menos 6 caracteres",
+          maxlength: "La identificación debe como máximo 14 caracteres"
         },
         celular: {
           required: "Por favor, ingresa un número de celular",

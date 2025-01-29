@@ -39,7 +39,7 @@ public class PersonaApi {
     }
 
     @GET
-    @Secured(rolesAllowed = {Rol.ADMINISTRADOR})
+    @Secured(rolesAllowed = {Rol.ADMINISTRADOR, Rol.CLIENTE})
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/get/{id}")
     public Response get(@PathParam("id") Integer id) {
@@ -65,7 +65,7 @@ public class PersonaApi {
     }
 
     @GET
-    @Secured(rolesAllowed = {Rol.ADMINISTRADOR})
+    @Secured(rolesAllowed = {Rol.ADMINISTRADOR, Rol.CLIENTE})
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/enumerations")
     public Response enumerations() {

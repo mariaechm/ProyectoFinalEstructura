@@ -89,7 +89,7 @@ def perfil_update_send(headers,usr):
                                                    
     response = requests.post(f'{BASE_URL}/perfil/update',headers=headers,json=data)
     ok = response.status_code == 200
-    flash(f'{"Éxito" if ok else "Error"}: {"Se ha actualizado el registro" if ok else "no se ha podido actualizar el registro"}')
+    flash(f'{"Éxito" if ok else "Error"}: {"Se ha actualizado el registro" if ok else "no se ha podido actualizar el registro"}',category='success' if ok else 'error')
     return redirect('/users/list' if (not 'my-profile' in data) else '/my_profile')
 
 @router.route('/change_password',methods=['POST'])

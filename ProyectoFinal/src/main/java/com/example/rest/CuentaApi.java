@@ -83,7 +83,7 @@ public class CuentaApi {
     }
 
     @GET
-    @Secured(rolesAllowed = {Rol.ADMINISTRADOR})
+    @Secured(rolesAllowed = {Rol.ADMINISTRADOR, Rol.CLIENTE})
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/search/{attribute}/{x}")
     public Response enumerations(@PathParam("attribute") String attribute, @PathParam("x") String x) {
