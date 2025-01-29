@@ -5,7 +5,6 @@ SCP_URL = f'{BASE_URL}/suscripcion'
 
 #LIST
 @router.route('/suscripcion/list')
-
 def suscripcion_list(headers,users):
     suscripciones = requests.get(f'{SCP_URL}/list').json()['data']
     for i in range(0,len(suscripciones)):
@@ -22,7 +21,7 @@ def suscripcion_save(headers):
     return render_template('fragmento/suscripcion/save.html',e=e)
 
 
-@router.route('suscripcion/save/send',methods=['POST'])
+@router.route('/suscripcion/save/send',methods=['POST'])
 def suscripcion_save_send():
     headers = {'Content-Type': 'application/json'}
     form = request.form

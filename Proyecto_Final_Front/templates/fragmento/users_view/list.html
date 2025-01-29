@@ -3,9 +3,9 @@
 
 {% block usr_nav_class %}active{% endblock %}
 
-{% block custom_styles_js %}
-  <link rel="stylesheet" href="https://cdn.datatables.net/2.2.1/css/dataTables.dataTables.css" />
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">
+{% block custom_styles %}
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/datatables/dataTables.bootstrap4.min.css' ) }}" />
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/datatables/dataTables.dataTables.css' ) }}">
 
   <style>
     .dataTables_length select {
@@ -125,30 +125,33 @@
     </div>
 </div> 
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
+{% endblock %}
 
-<script> 
-  let dataTable = new DataTable('#dataTable', {
-    language: {
-      sProcessing: "Procesando...",
-      sLengthMenu: "Mostrar _MENU_ registros",
-      sSearch: "Buscar:",
-      sEmptyTable: "No hay datos disponibles en la tabla",
-      sZeroRecords: "No se han encontrado resultados",
-      info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
-      paginate: {
-        next: "Siguiente",
-        previous: "Anterior"
+{% block extra_js %}
+  <script src="{{ url_for('static',filename='js/jquery-3.6.0.min.js' ) }}"></script>
+  <script src="{{ url_for('static',filename='js/datatables/jquery.dataTables.min.js' ) }}"></script>
+  <script src="{{ url_for('static',filename='js/datatables/dataTables.bootstrap4.min.js' ) }}"></script>
+  
+
+  <script> 
+    let dataTable = new DataTable('#dataTable', {
+      language: {
+        sProcessing: "Procesando...",
+        sLengthMenu: "Mostrar _MENU_ registros",
+        sSearch: "Buscar:",
+        sEmptyTable: "No hay datos disponibles en la tabla",
+        sZeroRecords: "No se han encontrado resultados",
+        info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
+        paginate: {
+          next: "Siguiente",
+          previous: "Anterior"
+        }
       }
-    }
-  });
+    });
 
-  $(document).ready(function() {
-    $('#dataTable');  
-  }); 
+    $(document).ready(function() {
+      $('#dataTable');  
+    }); 
 
-</script>
-
+  </script>
 {% endblock %}

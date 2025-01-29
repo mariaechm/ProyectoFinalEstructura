@@ -1,8 +1,9 @@
 {% extends 'blank.html' %}
 {% block title %}User: {{ perfil.nickName }}{% endblock %}
 
-{% block custom_styles_js %}
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+{% block custom_styles %}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/flatpickr.min.css' ) }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/custom/validation.register.css' ) }}">
 {% endblock %}
 
 {% block usr_nav_class %}active{% endblock %}
@@ -61,7 +62,7 @@
     
     <div class="tab-content pt-3" id="nav-tabContent">
       <div class="tab-pane fade active show" id="nav-informacion-personal" role="tabpanel" aria-labelledby="nav-informacion-personal-tab">
-        <h6>Información Personal</h6>
+        <h5>Información Personal</h5>
         <dl class="row mb-0">
           <dt class="col-sm-4">Correo Electrónico:</dt>
           <dd class="col-sm-8">{{ cuenta.correoElectronico }}</dd>
@@ -93,7 +94,7 @@
       <div class="tab-pane fade" id="nav-estadisticas" role="tabpanel" aria-labelledby="nav-estadisticas-tab">
         
         <div class="d-flex align-items-center justify-content-between mb-4">
-          <h6>Estadísticas</h6>
+          <h5>Estadísticas</h5>
           <a href="/admin/estadistica/edit/{{ estadistica.id }}">Editar</a>
         </div>
 
@@ -120,31 +121,35 @@
       </div>
 
       <div class="tab-pane fade" id="nav-editar-perfil" role="tabpanel" aria-labelledby="nav-editar-perfil-tab">
-        <h6>Editar información del Perfil</h6>
-        <form action="/user/update/send" method="post" enctype="multipart/form-data" id="perfil-update-form">
+        <h5>Editar información del Perfil</h5> 
+
+        <form style="margin-top: 10px;" class="row g-3 needs-validation" action="/user/update/send" method="post" enctype="multipart/form-data" id="perfil-update-form" novalidate>
 
           <input hidden type="number" name="id" id="id-perfil" value="{{ perfil.id }}">
           <input hidden type="text" name="current-image" id="current-image" value="{{ perfil.imagen }}">
           <input type="checkbox" name="my-profile" id="my-profile" {% if my_profile == True %} checked {% endif %} hidden>  
           
-
-          <div class="mb-3">
-            <label for="image" class="form-label">Avatar:</label>
-            <input class="form-control bg-dark" type="file" name="image" id="image" accept="image/*">
+          <div class="col-12">
+            <div class="col-sm-12">
+              <label for="nickName" class="form-label">NickName </label>
+              <input type="text" class="form-control" id="nickName" name="nickName" value="{{ perfil.nickName }}">
+            </div>
           </div>
-
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="nickName" placeholder="OsoMamado" name="nickName" value="{{ perfil.nickName }}" required>
-            <label for="nickName">NickName</label>
-          </div>
-
-          <div class="form-floating">
-            <textarea required class="form-control" placeholder="Leave a comment here" id="objetivoCliente" name="objetivoCliente" style="height: 150px;">{{ perfil.objetivoCliente }}</textarea>
-            <label for="objetivoCliente">Objetivo</label>
-          </div><br>
 
           <div class="col-12">
-            <p class="btn btn-success" onclick="validateForm('perfil-update-form')">Guardar Cambios</p>
+            <div class="col-12">
+              <label for="image" class="form-label">Avatar: </label>
+              <input class="form-control bg-dark" type="file" name="image" id="image" accept="image/*">
+            </div>
+          </div>
+
+          <div class="col-sm-12">
+            <label for="objetivoCliente" class="form-label">Objetivo </label>
+            <textarea class="form-control" name="objetivoCliente" id="objetivoCliente">{{ perfil.objetivoCliente }}</textarea>
+          </div>
+
+          <div class="col-12">
+            <button type="submit" class="btn btn-success">Guardar Cambios</button>
           </div>
 
         </form>
@@ -154,41 +159,42 @@
       <div class="tab-pane fade" id="nav-editar-datos-personales" role="tabpanel" aria-labelledby="nav-editar-datos-personales-tab">
         
         <div class="d-flex align-items-center justify-content-between mb-4">
-          <h6>Editar Datos Personales</h6>
+          <h5>Editar Datos Personales</h5>
         </div>
         
-        <form action="/user/update/persona" method="post" id="persona-update-form">
+        <form action="/user/update/persona" class="row g-3 needs-validation" method="post" id="persona-update-form">
 
           <input hidden type="number" name="id" id="id-persona" value="{{ persona.id }}">
 
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="nombre-persona" name="nombre" value="{{ persona.nombre }}" required>
-            <label for="nombre-persona">Nombre</label>
+          <div class="col-sm-6">
+            <label for="nombre" class="form-label">Nombre: </label>
+            <input type="text" class="form-control" name="nombre" id="nombre" value="{{ persona.nombre }}">
           </div>
 
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="apellido-persona" name="apellido" value="{{ persona.apellido }}" required>
-            <label for="apellido-persona">Apellido</label>
+          <div class="col-sm-6">
+            <label for="apellido" class="form-label">Apellido: </label>
+            <input type="text" id="apellido" class="form-control" name="apellido" value="{{ persona.apellido }}">
           </div>
 
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="celular-persona" name="celular" value="{{ persona.celular }}" required>
-            <label for="celular-persona">Celular</label>
+          <div class="col-sm-6">
+            <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento: </label>
+            <input type="date" id="fechaNacimiento" class="form-control" style="background-color: black;"
+              name="fechaNacimiento" value="{{ persona.fechaNacimiento }}">
           </div>
 
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="direccion-persona" name="direccion" value="{{ persona.direccion }}" required>
-            <label for="direccion-persona">Dirección</label>
+          <div class="col-sm-6">
+            <label for="identificacion" class="form-label">Identificación: </label>
+            <input type="text" class="form-control" id="identificacion" name="identificacion" value="{{ persona.identificacion }}">
           </div>
 
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="identificacion-persona" name="identificacion" value="{{ persona.identificacion }}" required>
-            <label for="identificacion-persona">Identificación</label>
+          <div class="col-sm-12">
+            <label for="celular" class="form-label">Celular: </label>
+            <input type="text" id="celular" class="form-control" name="celular" value="{{ persona.celular }}">
           </div>
 
-          <div class="form-floating mb-3">
-            <input type="date" class="form-control" id="fechaNacimiento-persona" name="fechaNacimiento" value="{{ persona.fechaNacimiento }}" style="background-color: black;" required>
-            <label for="fechaNacimiento-persona">Fecha de Nacimiento</label>
+          <div class="col-sm-12">
+            <label for="direccion" class="form-label">Dirección: </label>
+            <input type="text" id="direccion" class="form-control" name="direccion" value="{{ persona.direccion }}">
           </div>
 
           <div class="col-sm-6">
@@ -220,7 +226,7 @@
 
 
           <div class="col-12">
-            <p onclick="validateForm('persona-update-form')" class="btn btn-success" >Guardar Cambios</p>
+            <button type="submit"  class="btn btn-success" >Guardar Cambios</button>
           </div>
 
         </form>
@@ -230,31 +236,45 @@
 
 
       <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-        <h6>Cambiar Contraseña</h6>
-        <form id="form-contrasena" action="/change_password" method="post">
+        <h5>Cambiar Contraseña</h5><br>
+
+        <form id="change-password-form" class="row g-3 needs-validation" action="/change_password" method="post">
 
           <input type="number" id="id-cuenta" name="id" value="{{ cuenta.id }}" hidden>
           <input type="text" id="correoElectronico" name="correoElectronico" value="{{ cuenta.correoElectronico }}" hidden>
           <input type="number" id="personaId" name="personaId" value="{{ persona.id }}" hidden>
           <input type="number" id="perfilId" name="perfilId" value="{{ perfil.id }}" hidden>
 
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="contrasena-anterior-addon">Contraseña anterior: </span>
-            <input type="password" class="form-control" required id="contrasena-anterior" name="contrasena" aria-describedby="basic-addon3"><i class="fas fa-eye" id="tgp1" onclick="togglePassword('tgp1','contrasena-anterior')" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 1000;"></i>
-          </div>
-
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="nueva-contrasena-1-addon">Nueva Contraseña:</span>
-            <input type="password" class="form-control" required id="nueva-contrasena-1" aria-describedby="basic-addon3"><i class="fas fa-eye" id="tgp2" onclick="togglePassword('tgp2','nueva-contrasena-1')" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 1000;"></i>
-          </div>
-
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="nueva-contrasena-2-addon">Repita la nueva Contraseña:</span>           <!-- tgp = togglePassword in icons id -->
-            <input type="password" class="form-control" required id="nueva-contrasena-2" aria-describedby="basic-addon3" name="newContrasena"><i class="fas fa-eye" id="tgp3" onclick="togglePassword('tgp3','nueva-contrasena-2')" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 1000;"></i>
+          <div class="col-12">
+            <div class="col-sm-6">
+              <label for="contrasena" class="form-label">Contraseña actual: </label>
+              <div class="input-container">
+                <input type="password" class="form-control" name="contrasena" id="contrasena">
+                <i class="fas fa-eye" id="tgp0" onclick="togglePassword('tgp0','contrasena')" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 1000;"></i>
+              </div>
+            </div>
           </div>
 
           <div class="col-12">
-            <p class="btn btn-success" id="btn-contrasena" onclick="validateForm('form-contrasena')">Guardar Cambios</p>
+            <div class="col-sm-6">
+              <label for="contrasena" class="form-label">Nueva contraseña: </label>
+              <div class="input-container">
+                <input type="password" class="form-control" name="nuevaContrasena1" id="nueva-contrasena-1">
+                <i class="fas fa-eye" id="tgp1" onclick="togglePassword('tgp1','nueva-contrasena-1')" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 1000;"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <label for="contrasena" class="form-label">Repita la nueva contraseña: </label>
+            <div class="input-container">
+              <input type="password" class="form-control" name="newContrasena" id="nueva-contrasena-2">
+              <i class="fas fa-eye" id="tgp2" onclick="togglePassword('tgp2','nueva-contrasena-2')" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 1000;"></i>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <button style="margin-top: 20px;" class="btn btn-success" id="btn-contrasena">Guardar Cambios</button>
           </div>
 
         </form>
@@ -270,48 +290,12 @@
 </div>
 
 </div>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<script>
-  // VALIDATE PASSWORD SCRIPT
-  function validarContrasena(event) {
-    var contrasena1 = document.getElementById('nueva-contrasena-1').value;
-    var contrasena2 = document.getElementById('nueva-contrasena-2').value;
 
-    if (contrasena1 != contrasena2) {
-      event.preventDefault();
-      alert('Las contraseñas no coinciden');
-      return false;
-    }
-    return true;
-  }
+{% endblock %}
 
-  document.getElementById('form-contrasena').addEventListener('submit',validarContrasena)
-
-  // TOGGLE PASSWORD SCRIPT
-  function togglePassword(eyeButtonId, passwordFieldId) {
-    const eyeButton = document.getElementById(eyeButtonId);
-    const passwordField = document.getElementById(passwordFieldId);
-  
-    const type = passwordField.type === 'password' ? 'text' : 'password';
-    passwordField.type = type;
-
-    eyeButton.classList.toggle('fa-eye-slash')
-  }
-
-  // VALIDATION SCRIPT
-  function validateForm(formId) {
-    const form = document.getElementById(formId);
-    form.classList.add('was-validated');
-    if (form.checkValidity()) {
-        form.submit()
-    }
-  }
-
-  // DATE SCRIPT
-  document.addEventListener('DOMContentLoaded', function() {
-      flatpickr("#fechaNacimiento-persona", {
-          dateFormat: "Y-m-d",
-      });
-  });
-</script>
+{% block extra_js %}
+<script src="{{ url_for('static',filename='js/flatpickr.js' ) }}"></script>
+<script src="{{ url_for('static',filename='js/jquery-3.6.0.min.js' ) }}"></script>
+<script src="{{ url_for('static',filename='js/jquery.validate.min.js' ) }}"></script>
+<script src="{{ url_for('static',filename='js/fragmento/user/view_user-validations.js' ) }}"></script>
 {% endblock %}
