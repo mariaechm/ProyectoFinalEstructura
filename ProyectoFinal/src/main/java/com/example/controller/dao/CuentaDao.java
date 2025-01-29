@@ -208,7 +208,7 @@ public class CuentaDao extends AdapterDao<Cuenta> {
         return map;
     }
 
-    // TODO: IMPLEMENTAR MÉTODOS EN DAOS DE PERSONA, PERFIL Y ESTADÍSTICA
+ 
     public HashMap<String, Object> registerNewUser(String json) throws Exception {
         try {
             PersonaDao pd = new PersonaDao();
@@ -220,17 +220,10 @@ public class CuentaDao extends AdapterDao<Cuenta> {
             pfd.setPerfil(new Perfil(0, pd.getPersona().getNombre(), "user.png", "Objetivo ...", LocalDateTime.now().toString().substring(0,10)));
             ed.setEstadistica(new Estadistica(0,0f,0f,0f,0f,0f,0f));
 
-            //TODO: ESTOS METODOS
-            //pfd.perfilWithGenericValues(); 
-
-            //ed.estadisticaWithGenericValues();
-
-            //pfd.getPerfil().setNickName(pd.getPersona().getNombre());
-
             pd.savePersona();
             pfd.save();
 
-            //ed.getEstadistica().setPerfilId(pfd.getPerfil().getId());
+
             ed.save();
 
             this.getCuenta().setPerfilId(pfd.getPerfil().getId());

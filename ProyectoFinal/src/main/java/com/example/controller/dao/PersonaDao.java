@@ -94,11 +94,8 @@ public class PersonaDao extends AdapterDao<Persona> {
             return false;
         }
 
-        // ano bisiesto
-        // Si es divisible para 4 pero no para cien, o si es divisible para cien pero también lo es para cuatrocientos
-        boolean leapYear =  ((yyyy%4 == 0 && yyyy%100 != 0) || (yyyy%100 ==0 && yyyy%400 == 0)); // Los envidiosos dirán que es chatgepete
+        boolean leapYear =  ((yyyy%4 == 0 && yyyy%100 != 0) || (yyyy%100 ==0 && yyyy%400 == 0)); 
         
-        // Dias de cada mes del ano
         final Integer[] monthDays = {31, (leapYear)?29:28,  31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
         if(yyyy < 1900) return false;
@@ -140,29 +137,24 @@ public class PersonaDao extends AdapterDao<Persona> {
     public void validateData(boolean forUpdate) throws Exception {
         LinkedList<Persona> list = listAll();
         
-        // Validar si alguno de los campos se enecuentra vacío 
         if (!isThereAllFields()) 
             throw new Exception("Los datos están incompletos, no se guardarán!");
         
         final String identificacion = this.getPersona().getIdentificacion();
         final TipoIdentificacion tipo = this.getPersona().getTipoIdentificacion();
         
-        // Solo si no es para actualizar (De lo contrario ocurrirá un error)
+
         if (!forUpdate) {
-            // Validar si se está intentando guardar una identifiación existente (datos duplicados)
             if (list.busquedaBinaria("identificacion", identificacion) != null)
                 throw new Exception("Ya existe una persona con identificación: " + identificacion);
         }
-        // Validar si la identificación es correcta
         if (!isValidIdent(identificacion,tipo)) 
             throw new Exception("Identificación no válida");
 
-        // Validar si la fecha es correcta
         final String date = this.getPersona().getFechaNacimiento();
         if (!isValidDate(date))
             throw new Exception("Fecha no válida");
         
-        // Validar si el número de celular es válido
         final String phone = this.getPersona().getCelular();
         if (!isValidPhone(phone))
             throw new Exception("Número de celular no válido");

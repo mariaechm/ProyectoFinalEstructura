@@ -11,13 +11,13 @@
 {% block content %}
 <div class="container-fluid pt-4 px-4">
 
-  {% with messages = get_flashed_messages(with_categories=True)  %}
-    {% for message in messages %}
-      <div class="alert alert-{{ message[0] }} alert-dismissible fade show" role="alert">
-        {{ message[1] }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-    {% endfor %}
+  {% with messages = get_flashed_messages(with_categories=True) %}
+  {% for message in messages %}
+  <div class="alert alert-{{ message[0] }} alert-dismissible fade show" role="alert">
+    {{ message[1] }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {% endfor %}
   {% endwith %}
 
 
@@ -39,29 +39,32 @@
 
     <nav>
       <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <button class="nav-link active" id="nav-informacion-personal-tab" data-bs-toggle="tab" data-bs-target="#nav-informacion-personal" type="button"
-          role="tab" aria-controls="nav-informacion-personal" aria-selected="true">Detalles</button>
+        <button class="nav-link active" id="nav-informacion-personal-tab" data-bs-toggle="tab"
+          data-bs-target="#nav-informacion-personal" type="button" role="tab" aria-controls="nav-informacion-personal"
+          aria-selected="true">Detalles</button>
 
-          <button class="nav-link" id="nav-estadisticas-tab" data-bs-toggle="tab" data-bs-target="#nav-estadisticas" type="button"
-          role="tab" aria-controls="nav-estadisticas" aria-selected="false">Estadísticas</button>
+        <button class="nav-link" id="nav-estadisticas-tab" data-bs-toggle="tab" data-bs-target="#nav-estadisticas"
+          type="button" role="tab" aria-controls="nav-estadisticas" aria-selected="false">Estadísticas</button>
 
-        <button class="nav-link" id="nav-editar-perfil-tab" data-bs-toggle="tab" data-bs-target="#nav-editar-perfil" type="button"
-          role="tab" aria-controls="nav-editar-perfil" aria-selected="false">Editar perfil</button>
+        <button class="nav-link" id="nav-editar-perfil-tab" data-bs-toggle="tab" data-bs-target="#nav-editar-perfil"
+          type="button" role="tab" aria-controls="nav-editar-perfil" aria-selected="false">Editar perfil</button>
 
         {% if user.persona.rol == 'ADMINISTRADOR' %}
-        <button class="nav-link" id="nav-editar-datos-personales-tab" data-bs-toggle="tab" data-bs-target="#nav-editar-datos-personales" type="button"
-          role="tab" aria-controls="nav-editar-datos-personales" aria-selected="false">Editar datos Personales</button>
+        <button class="nav-link" id="nav-editar-datos-personales-tab" data-bs-toggle="tab"
+          data-bs-target="#nav-editar-datos-personales" type="button" role="tab"
+          aria-controls="nav-editar-datos-personales" aria-selected="false">Editar datos Personales</button>
         {% endif %}
 
-          <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button"
+        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button"
           role="tab" aria-controls="nav-contact" aria-selected="false">Cambiar Contraseña</button>
 
       </div>
     </nav>
 
-    
+
     <div class="tab-content pt-3" id="nav-tabContent">
-      <div class="tab-pane fade active show" id="nav-informacion-personal" role="tabpanel" aria-labelledby="nav-informacion-personal-tab">
+      <div class="tab-pane fade active show" id="nav-informacion-personal" role="tabpanel"
+        aria-labelledby="nav-informacion-personal-tab">
         <h5>Información Personal</h5>
         <dl class="row mb-0">
           <dt class="col-sm-4">Correo Electrónico:</dt>
@@ -83,16 +86,16 @@
           <dd class="col-sm-8">{{ persona.genero }}</dd>
 
           <dt class="col-sm-4">Rol en el Sistema:</dt>
-          <dd class="col-sm-8">{{ persona.rol }}</dd>          
-          
+          <dd class="col-sm-8">{{ persona.rol }}</dd>
+
           <dt class="col-sm-4">Objetivo:</dt>
-          <dd class="col-sm-8">{{ perfil.objetivoCliente }}</dd>     
+          <dd class="col-sm-8">{{ perfil.objetivoCliente }}</dd>
         </dl>
       </div>
-      
+
 
       <div class="tab-pane fade" id="nav-estadisticas" role="tabpanel" aria-labelledby="nav-estadisticas-tab">
-        
+
         <div class="d-flex align-items-center justify-content-between mb-4">
           <h5>Estadísticas</h5>
           <a href="/admin/estadistica/edit/{{ estadistica.id }}">Editar</a>
@@ -116,19 +119,20 @@
 
           <dt class="col-sm-4">Estatura:</dt>
           <dd class="col-sm-8">{{ estadistica.altura }} m</dd>
-           
+
         </dl>
       </div>
 
       <div class="tab-pane fade" id="nav-editar-perfil" role="tabpanel" aria-labelledby="nav-editar-perfil-tab">
-        <h5>Editar información del Perfil</h5> 
+        <h5>Editar información del Perfil</h5>
 
-        <form style="margin-top: 10px;" class="row g-3 needs-validation" action="/user/update/send" method="post" enctype="multipart/form-data" id="perfil-update-form" novalidate>
+        <form style="margin-top: 10px;" class="row g-3 needs-validation" action="/user/update/send" method="post"
+          enctype="multipart/form-data" id="perfil-update-form" novalidate>
 
           <input hidden type="number" name="id" id="id-perfil" value="{{ perfil.id }}">
           <input hidden type="text" name="current-image" id="current-image" value="{{ perfil.imagen }}">
-          <input type="checkbox" name="my-profile" id="my-profile" {% if my_profile == True %} checked {% endif %} hidden>  
-          
+          <input type="checkbox" name="my-profile" id="my-profile" {% if my_profile==True %} checked {% endif %} hidden>
+
           <div class="col-12">
             <div class="col-sm-12">
               <label for="nickName" class="form-label">NickName </label>
@@ -145,7 +149,8 @@
 
           <div class="col-sm-12">
             <label for="objetivoCliente" class="form-label">Objetivo </label>
-            <textarea class="form-control" name="objetivoCliente" id="objetivoCliente">{{ perfil.objetivoCliente }}</textarea>
+            <textarea class="form-control" name="objetivoCliente"
+              id="objetivoCliente">{{ perfil.objetivoCliente }}</textarea>
           </div>
 
           <div class="col-12">
@@ -156,12 +161,13 @@
       </div>
 
       {% if user.persona.rol == 'ADMINISTRADOR' %}
-      <div class="tab-pane fade" id="nav-editar-datos-personales" role="tabpanel" aria-labelledby="nav-editar-datos-personales-tab">
-        
+      <div class="tab-pane fade" id="nav-editar-datos-personales" role="tabpanel"
+        aria-labelledby="nav-editar-datos-personales-tab">
+
         <div class="d-flex align-items-center justify-content-between mb-4">
           <h5>Editar Datos Personales</h5>
         </div>
-        
+
         <form action="/user/update/persona" class="row g-3 needs-validation" method="post" id="persona-update-form">
 
           <input hidden type="number" name="id" id="id-persona" value="{{ persona.id }}">
@@ -184,7 +190,8 @@
 
           <div class="col-sm-6">
             <label for="identificacion" class="form-label">Identificación: </label>
-            <input type="text" class="form-control" id="identificacion" name="identificacion" value="{{ persona.identificacion }}">
+            <input type="text" class="form-control" id="identificacion" name="identificacion"
+              value="{{ persona.identificacion }}">
           </div>
 
           <div class="col-sm-12">
@@ -201,7 +208,8 @@
             <label for="tipoIdentificacion" class="form-label">Tipo Identificación: </label>
             <select class="form-select mb-3" id="tipoIdentificacion" name="tipoIdentificacion" required>
               {% for tipo in enums.tipos %}
-              <option value="{{ tipo }}" {% if tipo == persona.tipoIdentificacion %} selected {% endif %}>{{ tipo }}</option>
+              <option value="{{ tipo }}" {% if tipo==persona.tipoIdentificacion %} selected {% endif %}>{{ tipo }}
+              </option>
               {% endfor %}
             </select>
           </div>
@@ -210,23 +218,23 @@
             <label for="genero" class="form-label">Genero: </label>
             <select class="form-select mb-3" name="genero" id="genero" required>
               {% for genero in enums.generos %}
-              <option value="{{ genero }}" {% if genero == persona.genero %} selected {% endif %}>{{ genero }}</option>
+              <option value="{{ genero }}" {% if genero==persona.genero %} selected {% endif %}>{{ genero }}</option>
               {% endfor %}
             </select>
           </div>
-    
+
           <div class="col-sm-6">
             <label for="rol" class="form-label">Rol: </label>
             <select class="form-select mb-3" id="rol" name="rol" required>
               {% for rol in enums.roles %}
-              <option value="{{ rol }}" {% if rol == persona.rol %} selected {% endif %}>{{ rol }}</option>
+              <option value="{{ rol }}" {% if rol==persona.rol %} selected {% endif %}>{{ rol }}</option>
               {% endfor %}
             </select>
           </div>
 
 
           <div class="col-12">
-            <button type="submit"  class="btn btn-success" >Guardar Cambios</button>
+            <button type="submit" class="btn btn-success">Guardar Cambios</button>
           </div>
 
         </form>
@@ -241,7 +249,8 @@
         <form id="change-password-form" class="row g-3 needs-validation" action="/change_password" method="post">
 
           <input type="number" id="id-cuenta" name="id" value="{{ cuenta.id }}" hidden>
-          <input type="text" id="correoElectronico" name="correoElectronico" value="{{ cuenta.correoElectronico }}" hidden>
+          <input type="text" id="correoElectronico" name="correoElectronico" value="{{ cuenta.correoElectronico }}"
+            hidden>
           <input type="number" id="personaId" name="personaId" value="{{ persona.id }}" hidden>
           <input type="number" id="perfilId" name="perfilId" value="{{ perfil.id }}" hidden>
 
@@ -250,7 +259,8 @@
               <label for="contrasena" class="form-label">Contraseña actual: </label>
               <div class="input-container">
                 <input type="password" class="form-control" name="contrasena" id="contrasena">
-                <i class="fas fa-eye" id="tgp0" onclick="togglePassword('tgp0','contrasena')" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 1000;"></i>
+                <i class="fas fa-eye" id="tgp0" onclick="togglePassword('tgp0','contrasena')"
+                  style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 1000;"></i>
               </div>
             </div>
           </div>
@@ -260,7 +270,8 @@
               <label for="contrasena" class="form-label">Nueva contraseña: </label>
               <div class="input-container">
                 <input type="password" class="form-control" name="nuevaContrasena1" id="nueva-contrasena-1">
-                <i class="fas fa-eye" id="tgp1" onclick="togglePassword('tgp1','nueva-contrasena-1')" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 1000;"></i>
+                <i class="fas fa-eye" id="tgp1" onclick="togglePassword('tgp1','nueva-contrasena-1')"
+                  style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 1000;"></i>
               </div>
             </div>
           </div>
@@ -269,7 +280,8 @@
             <label for="contrasena" class="form-label">Repita la nueva contraseña: </label>
             <div class="input-container">
               <input type="password" class="form-control" name="newContrasena" id="nueva-contrasena-2">
-              <i class="fas fa-eye" id="tgp2" onclick="togglePassword('tgp2','nueva-contrasena-2')" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 1000;"></i>
+              <i class="fas fa-eye" id="tgp2" onclick="togglePassword('tgp2','nueva-contrasena-2')"
+                style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 1000;"></i>
             </div>
           </div>
 
@@ -278,7 +290,7 @@
           </div>
 
         </form>
-        
+
       </div>
     </div>
 
@@ -287,10 +299,6 @@
 
 
 </div>
-</div>
-
-</div>
-
 {% endblock %}
 
 {% block extra_js %}
