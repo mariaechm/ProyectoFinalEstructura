@@ -140,6 +140,7 @@
         <form style="margin-top: 10px;" class="row g-3 needs-validation" action="/user/update/send" method="post"
           enctype="multipart/form-data" id="perfil-update-form" novalidate>
 
+          <input type="number" id="user-id-profile-update" name="userId" value="{{ cuenta.id }}" hidden> 
           <input hidden type="number" name="id" id="id-perfil" value="{{ perfil.id }}">
           <input hidden type="text" name="current-image" id="current-image" value="{{ perfil.imagen }}">
           <input type="checkbox" name="my-profile" id="my-profile" {% if my_profile==True %} checked {% endif %} hidden>
@@ -182,6 +183,8 @@
         <form action="/user/update/persona" class="row g-3 needs-validation" method="post" id="persona-update-form">
 
           <input hidden type="number" name="id" id="id-persona" value="{{ persona.id }}">
+          <input type="number" id="user-id-person-update" name="userId" value="{{ cuenta.id }}" hidden> 
+          <input type="checkbox" name="my-profile" id="my-profile" {% if my_profile==True %} checked {% endif %} hidden>
 
           <div class="col-sm-6">
             <label for="nombre" class="form-label">Nombre: </label>
@@ -258,6 +261,7 @@
         <h5>Cambiar Contraseña</h5><br>
 
         <form id="change-password-form" class="row g-3 needs-validation" action="/change_password" method="post">
+          <input type="checkbox" id="my-profile" name="my-profile" {% if my_profile==True %} checked {% endif %} hidden>
 
           <input type="number" id="id-cuenta" name="id" value="{{ cuenta.id }}" hidden>
           <input type="text" id="correoElectronico" name="correoElectronico" value="{{ cuenta.correoElectronico }}"

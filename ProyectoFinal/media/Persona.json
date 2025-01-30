@@ -49,12 +49,12 @@
   },
   {
     "id": 5,
-    "nombre": "John",
+    "nombre": "John Armando",
     "apellido": "Mercado",
     "identificacion": "1154947364857",
     "celular": "0998799675",
     "fechaNacimiento": "1990-02-07",
-    "direccion": "La Argelia",
+    "direccion": "La Argelia detrás de la UNL",
     "tipoIdentificacion": "RUC",
     "genero": "HOMBRE",
     "rol": "CLIENTE"

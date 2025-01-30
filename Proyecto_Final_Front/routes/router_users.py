@@ -90,17 +90,16 @@ def perfil_update_send(headers,usr):
     response = requests.post(f'{BASE_URL}/perfil/update',headers=headers,json=data)
     ok = response.status_code == 200
     flash(f'{"Éxito" if ok else "Error"}: {"Se ha actualizado el registro" if ok else "no se ha podido actualizar el registro"}',category='success' if ok else 'error')
-    return redirect('/users/list' if (not 'my-profile' in data) else '/my_profile')
+    return redirect(f'/view_user/{data['userId']}' if (not 'my-profile' in data) else '/my_profile')
 
 @router.route('/change_password',methods=['POST'])
 @login_required()
 def change_password(headers,usr):
     data = request.form.to_dict()
     response = requests.post(f'{BASE_URL}/auth/change/password',headers=headers,json=data)
-    print(response)
     ok = response.status_code == 200
-    flash(f'{"Éxito" if ok else "Error"}: {"Se ha actualizado la contraseña" if ok else "no se ha podido actualizar la contraseña"}')
-    return redirect('/users/list')
+    flash(f'{"Éxito" if ok else "Error"}: {"Se ha actualizado la contraseña" if ok else "no se ha podido actualizar la contraseña"}',category='success' if ok else 'error')
+    return redirect(f'/view_user/{data['id']}' if (not 'my-profile' in data) else '/my_profile')
 
 @router.route('/user/update/persona',methods=['POST'])
 @login_required()
@@ -108,8 +107,8 @@ def update_persona_send(headers,usr):
     data = request.form.to_dict()
     response = requests.post(f'{P_URL}/update',headers=headers,json=data)
     ok = response.status_code == 200
-    flash(f'{"Éxito" if ok else "Error"}: {"Se ha actualizado el registro" if ok else "no se ha podido actualizar el registro"}')
-    return redirect('/users/list')
+    flash(f'{"Éxito" if ok else "Error"}: {"Se ha actualizado el registro" if ok else "no se ha podido actualizar el registro"}',category='success' if ok else 'error')
+    return redirect(f'/view_user/{data['id']}' if (not 'my-profile' in data) else '/my_profile')
 
 @router.route('/my_profile')
 @login_required()
