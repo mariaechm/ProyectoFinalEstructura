@@ -37,6 +37,9 @@ public class PerfilDao extends AdapterDao<Perfil> {
         return true;
     }
     
+    public Perfil getPerfilById(Integer id) throws Exception {
+        return get(id);
+    }
     
     public Boolean update() throws Exception {
         if (getPerfil() == null) {

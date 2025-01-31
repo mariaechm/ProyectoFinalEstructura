@@ -44,17 +44,6 @@
     "grupoMuscularObjetivo": "BICEPS"
   },
   {
-    "id": 6,
-    "nombreEjercicio": "Extensión de triceps en polea alta",
-    "descripcion": "La extensión de triceps en polea alta es un ejercicio aislado que se enfoca en la contracción del triceps para mejorar su definición y fuerza.",
-    "imagen": "https://static.strengthlevel.com/images/exercises/bench-press/bench-press-800.jpg",
-    "tiempoDescanso": 1,
-    "nroSeries": 3,
-    "nroRepSerie": 15,
-    "tipoEjercicio": "AISLADO",
-    "grupoMuscularObjetivo": "TRICEPS"
-  },
-  {
     "id": 7,
     "nombreEjercicio": "Prensa de pierna",
     "descripcion": "La prensa de pierna es un ejercicio que trabaja los cuádriceps, glúteos y femorales al empujar una carga con las piernas.",
@@ -261,5 +250,16 @@
     "nroRepSerie": 12,
     "tipoEjercicio": "AISLADO",
     "grupoMuscularObjetivo": "ABDOMEN"
+  },
+  {
+    "id": 26,
+    "nombreEjercicio": "\"maria\"",
+    "descripcion": "Ni idea",
+    "imagen": "https://www.menshealth.com/es/fitness/a34712516/burpee-perfecto-como-hacer/",
+    "tiempoDescanso": 1,
+    "nroSeries": 4,
+    "nroRepSerie": 4,
+    "tipoEjercicio": "COMPUESTO",
+    "grupoMuscularObjetivo": "TRICEPS"
   }
 ]

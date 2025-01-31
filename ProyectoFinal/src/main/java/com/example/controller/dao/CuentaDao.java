@@ -219,10 +219,11 @@ public class CuentaDao extends AdapterDao<Cuenta> {
             pd.personaFromJson(json);
             pfd.setPerfil(new Perfil(0, pd.getPersona().getNombre(), "user.png", "Objetivo ...", LocalDateTime.now().toString().substring(0,10)));
             ed.setEstadistica(new Estadistica(0,0f,0f,0f,0f,0f,0f));
+            
 
             pd.savePersona();
             pfd.save();
-
+            ed.getEstadistica().setPerfilId(pfd.getPerfil().getId());
 
             ed.save();
 
@@ -262,5 +263,23 @@ public class CuentaDao extends AdapterDao<Cuenta> {
         }
 
         throw new Exception("La contraseña es incorrecta, no se actualizará!");
+    }
+
+    public void deleteUser(Integer id) {
+        try {
+            Cuenta _cuenta = get(id);
+            PersonaDao pd = new PersonaDao();
+            PerfilDao pfd = new PerfilDao();
+            EstadisticaDao ed = new EstadisticaDao();
+
+            pd.deletePersona(_cuenta.getPersonaId());
+            ed.deleteEstadistica(pfd.getPerfilById(_cuenta.getPerfilId()).getId());
+            pfd.deletePerfil(_cuenta.getPerfilId());
+            deleteCuenta(id);
+            
+        } catch (Exception e) {
+            System.out.println("CuentaDao.deleteUser() dice: " + e.getMessage());
+            throw new RuntimeException("No se pudo eliminar la cuenta");
+        }
     }
 }

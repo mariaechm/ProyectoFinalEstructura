@@ -7,38 +7,24 @@
     "fechaCreacion": "2025-01-07"
   },
   {
-    "id": 2,
-    "nickName": "Fernandaso",
-    "imagen": "user.png",
-    "objetivoCliente": "Objetivo del ingeniero francisco",
-    "fechaCreacion": "2025-01-29"
-  },
-  {
     "id": 3,
-    "nickName": "Santiago",
+    "nickName": "Juancho",
     "imagen": "user.png",
     "objetivoCliente": "Objetivo ...",
-    "fechaCreacion": "2025-01-29"
+    "fechaCreacion": "2025-01-30"
   },
   {
     "id": 4,
-    "nickName": "Daniela",
+    "nickName": "Horacio",
     "imagen": "user.png",
     "objetivoCliente": "Objetivo ...",
-    "fechaCreacion": "2025-01-29"
+    "fechaCreacion": "2025-01-30"
   },
   {
     "id": 5,
-    "nickName": "Johnsito Mamadito",
+    "nickName": "Daniela",
     "imagen": "user.png",
     "objetivoCliente": "Objetivo ...",
-    "fechaCreacion": "2025-01-29"
-  },
-  {
-    "id": 6,
-    "nickName": "Ana",
-    "imagen": "user.png",
-    "objetivoCliente": "Objetivo ...",
-    "fechaCreacion": "2025-01-29"
+    "fechaCreacion": "2025-01-30"
   }
 ]

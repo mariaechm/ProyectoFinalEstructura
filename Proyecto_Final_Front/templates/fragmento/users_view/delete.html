@@ -1,11 +1,29 @@
 {% extends 'blank.html' %}
+{% block title %}Eliminar registro{% endblock %}
+{% block usr_nav_class %}active{% endblock %}
 {% block content %}
-  <form action="/persona/delete/send" method="post">
-    <input type="number" name="id" value="{{id}}" hidden> 
-    <h2>Seguro que quiere eliminar?</h2>
-    <a href="/persona/list">
-      <button>Volver</button>
-    </a>
-    <button type="submit">eliminar</button>
-  </form>
+<div class="pagetitle">
+  <h1>Eliminar Usuario</h1>
+</div>
+
+<section class="section">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="bg-secondary rounded h-100 p-4">
+          <form method="POST" action="/user/delete/send" novalidate>
+            <input type="hidden" value="{{ id }}" name="id"/><br>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <h4 class="alert-heading"><strong><center>¡¡¡ALERTA!!!</strong></h4>
+                <br><center>¡Esta acción no se podrá revertir!<br><center>¿Desea eliminar el Usuario seleccionado?<br>
+                <div class="col-6">
+                    <br><button class="btn btn-success rounded-pill" type="submit">Confirmar</button>
+                    <a href="/users/list" class="btn btn-primary rounded-pill">Cancelar</a>
+                </div>
+            </div>
+          </form>
+      </div>
+    </div>
+  </div>
+</section>
+
 {% endblock %}

@@ -24,7 +24,7 @@ public class ResponseFactory {
     public static Response buildResponseWithStatus(Status status, Object object, String info) throws Exception {
         HashMap<String, Object> responseHashMap = new HashMap<>();
         ObjectMapper om = new ObjectMapper();
-        responseHashMap.put("status", "Succes");
+        responseHashMap.put("status", "success");
         responseHashMap.put("data", object);
         responseHashMap.put("info",info);
 
