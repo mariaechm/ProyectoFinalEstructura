@@ -142,11 +142,13 @@ jQuery('#document').ready(function() {
         },
         nuevaContrasena1: {
           required: true,
-          minlength: 8
+          minlength: 8,
+          maxlength: 50
         },
         newContrasena: {
           required: true,
           minlength: 8,
+          maxlength: 50,
           equalTo: '#nueva-contrasena-1'
         }
       },
@@ -157,11 +159,13 @@ jQuery('#document').ready(function() {
         },
         nuevaContrasena1: {
           required: "Por favor, ingrese la nueva contraseña",
-          minlength: "La contraseña nueva debe contener al menos 8 caracteres"
+          minlength: "La contraseña nueva debe contener al menos 8 caracteres",
+          maxlength: "La contraseña nueva debe contener como máximo 50 caracteres"
         },
         newContrasena: {
           required: "Repita la nueva contraseña",
           minlength: "La contraseña está incompleta",
+          maxlength: "La contraseña debe contener como máximo 50 caracteres",
           equalTo: "Las contraseñas no coinciden"
         }
       }

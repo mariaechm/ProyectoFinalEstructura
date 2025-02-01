@@ -103,8 +103,9 @@ def change_password(headers,usr):
     data = request.form.to_dict()
     response = requests.post(f'{BASE_URL}/auth/change/password',headers=headers,json=data)
     ok = response.status_code == 200
+    print(data)
     flash(f'{"Éxito" if ok else "Error"}: {"Se ha actualizado la contraseña" if ok else "no se ha podido actualizar la contraseña"}',category='success' if ok else 'error')
-    return redirect('/my_profile' if (eval(data['my-profile'])) else f'/view_user/{data['userId']}/{eval(data['admins'])}')
+    return redirect('/my_profile' if (eval(data['my-profile'])) else f'/view_user/{data['id']}/{eval(data['admins'])}')
 
 @router.route('/user/update/persona',methods=['POST'])
 @login_required()
