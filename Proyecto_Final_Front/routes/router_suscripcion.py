@@ -22,7 +22,7 @@ def suscripcion_save(headers):
     return render_template('fragmento/suscripcion/save.html',e=e)
 
 
-@router.route('suscripcion/save/send',methods=['POST'])
+@router.route('/suscripcion/save/send',methods=['POST'])
 def suscripcion_save_send():
     headers = {'Content-Type': 'application/json'}
     form = request.form

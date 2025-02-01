@@ -140,6 +140,10 @@ public class SuscripcionDao extends AdapterDao<Suscripcion> {
 
     //Validar si la fecha es válida
     private Boolean isFechaValida(String fechaInicio) {
+        if (!fechaInicio.matches("\\d{4}-\\d{2}-\\d{2}")) {
+            return false;
+        }
+
         String[] partes = fechaInicio.split("-");
         if (partes.length != 3) {
             return false;
@@ -147,7 +151,8 @@ public class SuscripcionDao extends AdapterDao<Suscripcion> {
         int anio = Integer.parseInt(partes[0]);
         int mes = Integer.parseInt(partes[1]);
         int dia = Integer.parseInt(partes[2]);
-        if (anio < 2023 || mes < 1 || mes > 12 || dia < 1 || dia > diasEnMes(mes, anio)) {
+
+        if (partes[0].length() != 4 || anio < 2023 || mes < 1 || mes > 12 || dia < 1 || dia > diasEnMes(mes, anio)) {
             return false;
         }
         return true;
