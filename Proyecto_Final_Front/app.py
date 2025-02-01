@@ -18,5 +18,6 @@ def create_app():
         app.register_blueprint(router_estadistica)       
         app.register_blueprint(router_perfil)
         
+        
     return app
 

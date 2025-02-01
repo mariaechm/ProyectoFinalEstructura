@@ -1,6 +1,7 @@
 package com.example.controller.dao;
 
 import com.example.controller.dao.implement.AdapterDao;
+import com.example.controller.dao.implement.JsonFileManager;
 import com.example.models.Estadistica;
 import com.example.controller.tda.list.LinkedList;
 
@@ -27,14 +28,21 @@ public class EstadisticaDao extends AdapterDao<Estadistica> {
         return listAll;
     }
     public Boolean save() throws Exception{
-        Integer id = getListAll().getSize() + 1;
+        Integer id = JsonFileManager.readAndUpdateCurrentIdOf(className);
         estadistica.setId(id);
         this.persist(this.estadistica);
         this.listAll = listAll();
         return true;
     }
+
     public Boolean update() throws Exception{
         this.merge(getEstadistica(),getEstadistica().getId());
+        this.listAll = listAll();
+        return true;
+    }
+
+    public Boolean deleteEstadistica(Integer id) throws Exception{
+        this.remove(id);
         this.listAll = listAll();
         return true;
     }

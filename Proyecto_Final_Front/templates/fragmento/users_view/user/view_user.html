@@ -1,23 +1,35 @@
 {% extends 'blank.html' %}
-{% block title %}User: {% endblock %}
+{% block title %}User: {{ full_user_info.perfil.nickName }}{% endblock %}
+
+{% block custom_styles %}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/flatpickr.min.css' ) }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/custom/validation.register.css' ) }}">
+{% endblock %}
 
 {% block usr_nav_class %}active{% endblock %}
 
 {% block content %}
 <div class="container-fluid pt-4 px-4">
 
-  <!-- <div class="row g-4">
-
-    <div class="col-sm-12 col-xl-6">
-      <div class="bg-secondary rounded h-100 p-4">
-
-        
-
-      </div>
-
-    </div> -->
-
-
+  {% with messages = get_flashed_messages(with_categories=True) %}
+  {% if messages %}
+    {% for message in messages %}
+      {% if message[0] == 'success' %}
+          <div class="alert alert-info alert-dismissible fade show" role="alert">
+            <h4 class="alert alert-heading"><strong>¡Éxito!</strong></h4>
+            <p>{{ message[1]}}</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+          </div>
+        {% else %}
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <h4 class="alert-heading"><strong>¡Error!</strong></h4>
+            <p>{{ message[1]}}</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+          </div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endwith %}
 
 
   <div class="bg-secondary rounded h-100 p-4">
@@ -25,12 +37,12 @@
     <div class="testimonial-item text-center">
 
       <img class="img-fluid rounded-circle mx-auto mb-4"
-        src="{{ perfil.imagen }}"
+        src="{{ url_for('static',filename='img/user_profile/' + full_user_info.perfil.imagen ) }}"
         style="width: 100px; height: 100px;">
 
-      <h5 class="mb-1">{{ perfil.nickName }}</h5>
-      <p>{{ persona.nombre }} {{ persona.apellido }}</p>
-      <p class="mb-0">Se unió el {{ perfil.fechaCreacion }}</p>
+      <h5 class="mb-1">{{ full_user_info.perfil.nickName }}</h5>
+      <p>{{ full_user_info.persona.nombre }} {{ full_user_info.persona.apellido }}</p>
+      <p class="mb-0">Se unió el {{ full_user_info.perfil.fechaCreacion }}</p>
 
     </div>
     <br>
@@ -38,164 +50,180 @@
 
     <nav>
       <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <button class="nav-link active" id="nav-informacion-personal-tab" data-bs-toggle="tab" data-bs-target="#nav-informacion-personal" type="button"
-          role="tab" aria-controls="nav-informacion-personal" aria-selected="true">Detalles</button>
+        <button class="nav-link active" id="nav-informacion-personal-tab" data-bs-toggle="tab"
+          data-bs-target="#nav-informacion-personal" type="button" role="tab" aria-controls="nav-informacion-personal"
+          aria-selected="true">Detalles</button>
 
-          <button class="nav-link" id="nav-estadisticas-tab" data-bs-toggle="tab" data-bs-target="#nav-estadisticas" type="button"
-          role="tab" aria-controls="nav-estadisticas" aria-selected="false">Estadísticas</button>
+        <button class="nav-link" id="nav-estadisticas-tab" data-bs-toggle="tab" data-bs-target="#nav-estadisticas"
+          type="button" role="tab" aria-controls="nav-estadisticas" aria-selected="false">Estadísticas</button>
 
-        <button class="nav-link" id="nav-editar-perfil-tab" data-bs-toggle="tab" data-bs-target="#nav-editar-perfil" type="button"
-          role="tab" aria-controls="nav-editar-perfil" aria-selected="false">Editar perfil</button>
+        <button class="nav-link" id="nav-editar-perfil-tab" data-bs-toggle="tab" data-bs-target="#nav-editar-perfil"
+          type="button" role="tab" aria-controls="nav-editar-perfil" aria-selected="false">Editar perfil</button>
 
         {% if user.persona.rol == 'ADMINISTRADOR' %}
-        <button class="nav-link" id="nav-editar-datos-personales-tab" data-bs-toggle="tab" data-bs-target="#nav-editar-datos-personales" type="button"
-          role="tab" aria-controls="nav-editar-datos-personales" aria-selected="false">Editar datos Personales</button>
+        <button class="nav-link" id="nav-editar-datos-personales-tab" data-bs-toggle="tab"
+          data-bs-target="#nav-editar-datos-personales" type="button" role="tab"
+          aria-controls="nav-editar-datos-personales" aria-selected="false">Editar datos personales</button>
         {% endif %}
 
-          <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button"
+        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button"
           role="tab" aria-controls="nav-contact" aria-selected="false">Cambiar Contraseña</button>
 
       </div>
     </nav>
 
-    
+
     <div class="tab-content pt-3" id="nav-tabContent">
-      <div class="tab-pane fade active show" id="nav-informacion-personal" role="tabpanel" aria-labelledby="nav-informacion-personal-tab">
-        <h6>Información Personal</h6>
+      <div class="tab-pane fade active show" id="nav-informacion-personal" role="tabpanel"
+        aria-labelledby="nav-informacion-personal-tab">
+        <h5>Información personal</h5>
         <dl class="row mb-0">
           <dt class="col-sm-4">Correo Electrónico:</dt>
-          <dd class="col-sm-8">{{ cuenta.correoElectronico }}</dd>
+          <dd class="col-sm-8">{{ full_user_info.cuenta.correoElectronico }}</dd>
 
           <dt class="col-sm-4">Celular:</dt>
-          <dd class="col-sm-8">{{ persona.celular }}</dd>
+          <dd class="col-sm-8">{{ full_user_info.persona.celular }}</dd>
 
           <dt class="col-sm-4">Dirección:</dt>
-          <dd class="col-sm-8">{{ persona.direccion }}</dd>
+          <dd class="col-sm-8">{{ full_user_info.persona.direccion }}</dd>
 
           <dt class="col-sm-4 text-truncate">Identificación: </dt>
-          <dd class="col-sm-8">{{ persona.identificacion }}</dd>
+          <dd class="col-sm-8">{{ full_user_info.persona.identificacion }}</dd>
 
           <dt class="col-sm-4">Fecha de Nacimiento:</dt>
-          <dd class="col-sm-8">{{ persona.fechaNacimiento }}</dd>
+          <dd class="col-sm-8">{{ full_user_info.persona.fechaNacimiento }}</dd>
 
           <dt class="col-sm-4">Genero:</dt>
-          <dd class="col-sm-8">{{ persona.genero }}</dd>
+          <dd class="col-sm-8">{{ full_user_info.persona.genero }}</dd>
 
           <dt class="col-sm-4">Rol en el Sistema:</dt>
-          <dd class="col-sm-8">{{ persona.rol }}</dd>          
-          
+          <dd class="col-sm-8">{{ full_user_info.persona.rol }}</dd>
+
           <dt class="col-sm-4">Objetivo:</dt>
-          <dd class="col-sm-8">{{ perfil.objetivoCliente }}</dd>     
+          <dd class="col-sm-8">{{ full_user_info.perfil.objetivoCliente }}</dd>
         </dl>
       </div>
-      
+
 
       <div class="tab-pane fade" id="nav-estadisticas" role="tabpanel" aria-labelledby="nav-estadisticas-tab">
-        
+
         <div class="d-flex align-items-center justify-content-between mb-4">
-          <h6>Estadísticas</h6>
-          <a href="/admin/estadistica/edit/{{ estadistica.id }}">Editar</a>
+          <h5>Estadísticas</h5>
+          <a href="/admin/estadistica/edit/{{ full_user_info.estadistica.id }}">Editar</a>
         </div>
 
         <dl class="row mb-0">
           <dt class="col-sm-4">Medidas de la Espalda:</dt>
-          <dd class="col-sm-8">{{ estadistica.medidaEspalda }} cm</dd>
+          <dd class="col-sm-8">{{ full_user_info.estadistica.medidaEspalda }} cm</dd>
 
           <dt class="col-sm-4">Medidas de pierna:</dt>
-          <dd class="col-sm-8">{{ estadistica.medidaPierna }} cm</dd>
+          <dd class="col-sm-8">{{ full_user_info.estadistica.medidaPierna }} cm</dd>
 
           <dt class="col-sm-4">Medidas de los Brazos:</dt>
-          <dd class="col-sm-8">{{ estadistica.medidaBrazo }} cm</dd>
+          <dd class="col-sm-8">{{ full_user_info.estadistica.medidaBrazo }} cm</dd>
 
           <dt class="col-sm-4 text-truncate">Medidas de la cintura: </dt>
-          <dd class="col-sm-8">{{ estadistica.medidaCintura }} cm</dd>
+          <dd class="col-sm-8">{{ full_user_info.estadistica.medidaCintura }} cm</dd>
 
           <dt class="col-sm-4">Peso:</dt>
-          <dd class="col-sm-8">{{ estadistica.peso }} kg</dd>
+          <dd class="col-sm-8">{{ full_user_info.estadistica.peso }} kg</dd>
 
           <dt class="col-sm-4">Estatura:</dt>
-          <dd class="col-sm-8">{{ estadistica.altura }} m</dd>
+          <dd class="col-sm-8">{{ full_user_info.estadistica.altura }} m</dd>
 
-          <dt class="col-sm-4">Índice de Masa corporal:</dt>
-          <dd class="col-sm-8">{{ estadistica.imc }}</dd>          
-           
         </dl>
       </div>
 
-      <div class="tab-pane fade" id="nav-editar-perfil" role="tabpanel" aria-labelledby="nav-editar-perfil-tab">
-        <h6>Editar información del Perfil</h6>
-        <form action="/user/update/send" method="post" enctype="multipart/form-data">
+      <div class="tab-pane fade" id="nav-editar-perfil" role="tabpanel" aria-labelledby="nav-editar-full_user_info.perfil-tab">
+        <h5>Editar información del perfil</h5>
 
-          <input hidden type="number" name="id" id="id" value="{{ perfil.id }}">
+        <form style="margin-top: 10px;" class="row g-3 needs-validation" action="/user/update/send" method="post"
+          enctype="multipart/form-data" id="perfil-update-form" novalidate>
 
-          <div class="mb-3">
-            <label for="image" class="form-label">Avatar:</label>
-            <input class="form-control bg-dark" type="file" name="image" id="image" accept="image/*">
-          </div>
-
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" placeholder="OsoMamado" name="nickName" value="{{ perfil.nickName }}">
-            <label for="floatingInput">NickName</label>
-          </div>
-
-          <div class="form-floating">
-            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="objetivoCliente" style="height: 150px;">{{ perfil.objetivoCliente }}</textarea>
-            <label for="floatingTextarea">Objetivo</label>
-          </div><br>
+          <input type="number" id="user-id-profile-update" name="userId" value="{{ full_user_info.cuenta.id }}" hidden> 
+          <input hidden type="number" name="id" id="id-perfil" value="{{ full_user_info.perfil.id }}">
+          <input hidden type="text" name="current-image" id="current-image" value="{{ full_user_info.perfil.imagen }}">
+          <input type="checkbox" name="my-profile" id="my-profile" {% if my_profile==True %} checked {% endif %} hidden>
 
           <div class="col-12">
-            <button class="btn btn-success" type="submit">Guardar Cambios</button>
+            <div class="col-sm-12">
+              <label for="nickName" class="form-label">NickName </label>
+              <input type="text" class="form-control" id="nickName" name="nickName" value="{{ full_user_info.perfil.nickName }}">
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="col-12">
+              <label for="image" class="form-label">Avatar: </label>
+              <input class="form-control bg-dark" type="file" name="image" id="image" accept="image/*">
+            </div>
+          </div>
+
+          <div class="col-sm-12">
+            <label for="objetivoCliente" class="form-label">Objetivo </label>
+            <textarea class="form-control" name="objetivoCliente"
+              id="objetivoCliente">{{ full_user_info.perfil.objetivoCliente }}</textarea>
+          </div>
+
+          <div class="col-12">
+            <button type="submit" class="btn btn-success">Guardar Cambios</button>
           </div>
 
         </form>
       </div>
 
       {% if user.persona.rol == 'ADMINISTRADOR' %}
-      <div class="tab-pane fade" id="nav-editar-datos-personales" role="tabpanel" aria-labelledby="nav-editar-datos-personales-tab">
-        
+      <div class="tab-pane fade" id="nav-editar-datos-personales" role="tabpanel"
+        aria-labelledby="nav-editar-datos-personales-tab">
+
         <div class="d-flex align-items-center justify-content-between mb-4">
-          <h6>Editar Datos Personales</h6>
+          <h5>Editar Datos personales</h5>
         </div>
-        
-        <form action="/user/update/persona" method="post">
 
-          <input hidden type="number" name="id" id="id" value="{{ persona.id }}">
+        <form action="/user/update/persona" class="row g-3 needs-validation" method="post" id="persona-update-form">
 
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" name="nombre" value="{{ persona.nombre }}">
-            <label for="floatingInput">Nombre</label>
+          <input hidden type="number" name="id" id="id-persona" value="{{ full_user_info.persona.id }}">
+          <input type="number" id="user-id-person-update" name="userId" value="{{ full_user_info.cuenta.id }}" hidden> 
+          <input type="checkbox" name="my-profile" id="my-profile" {% if my_profile==True %} checked {% endif %} hidden>
+
+          <div class="col-sm-6">
+            <label for="nombre" class="form-label">Nombre: </label>
+            <input type="text" class="form-control" name="nombre" id="nombre" value="{{ full_user_info.persona.nombre }}">
           </div>
 
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" name="apellido" value="{{ persona.apellido }}">
-            <label for="floatingInput">Apellido</label>
+          <div class="col-sm-6">
+            <label for="apellido" class="form-label">Apellido: </label>
+            <input type="text" id="apellido" class="form-control" name="apellido" value="{{ full_user_info.persona.apellido }}">
           </div>
 
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" name="celular" value="{{ persona.celular }}">
-            <label for="floatingInput">Celular</label>
+          <div class="col-sm-6">
+            <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento: </label>
+            <input type="date" id="fechaNacimiento" class="form-control" style="background-color: black;"
+              name="fechaNacimiento" value="{{ full_user_info.persona.fechaNacimiento }}">
           </div>
 
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" name="direccion" value="{{ persona.direccion }}">
-            <label for="floatingInput">Dirección</label>
+          <div class="col-sm-6">
+            <label for="identificacion" class="form-label">Identificación: </label>
+            <input type="text" class="form-control" id="identificacion" name="identificacion"
+              value="{{ full_user_info.persona.identificacion }}">
           </div>
 
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" name="identificacion" value="{{ persona.identificacion }}">
-            <label for="floatingInput">Identificación</label>
+          <div class="col-sm-12">
+            <label for="celular" class="form-label">Celular: </label>
+            <input type="text" id="celular" class="form-control" name="celular" value="{{ full_user_info.persona.celular }}">
           </div>
 
-          <div class="form-floating mb-3">
-            <input type="date" class="form-control" id="floatingInput" name="fechaNacimiento" value="{{ persona.fechaNacimiento }}">
-            <label for="floatingInput">Fecha de Nacimiento</label>
+          <div class="col-sm-12">
+            <label for="direccion" class="form-label">Dirección: </label>
+            <input type="text" id="direccion" class="form-control" name="direccion" value="{{ full_user_info.persona.direccion }}">
           </div>
 
           <div class="col-sm-6">
             <label for="tipoIdentificacion" class="form-label">Tipo Identificación: </label>
             <select class="form-select mb-3" id="tipoIdentificacion" name="tipoIdentificacion" required>
               {% for tipo in enums.tipos %}
-              <option value="{{ tipo }}">{{ tipo }}</option>
+              <option value="{{ tipo }}" {% if tipo==full_user_info.persona.tipoIdentificacion %} selected {% endif %}>{{ tipo }}
+              </option>
               {% endfor %}
             </select>
           </div>
@@ -204,23 +232,23 @@
             <label for="genero" class="form-label">Genero: </label>
             <select class="form-select mb-3" name="genero" id="genero" required>
               {% for genero in enums.generos %}
-              <option value="{{ genero }}">{{ genero }}</option>
+              <option value="{{ genero }}" {% if genero==full_user_info.persona.genero %} selected {% endif %}>{{ genero }}</option>
               {% endfor %}
             </select>
           </div>
-    
+
           <div class="col-sm-6">
             <label for="rol" class="form-label">Rol: </label>
             <select class="form-select mb-3" id="rol" name="rol" required>
               {% for rol in enums.roles %}
-              <option value="{{ rol }}">{{ rol }}</option>
+              <option value="{{ rol }}" {% if rol==full_user_info.persona.rol %} selected {% endif %}>{{ rol }}</option>
               {% endfor %}
             </select>
           </div>
 
 
           <div class="col-12">
-            <button class="btn btn-success" type="submit">Guardar Cambios</button>
+            <button type="submit" class="btn btn-success">Guardar Cambios</button>
           </div>
 
         </form>
@@ -230,35 +258,54 @@
 
 
       <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-        <h6>Cambiar Contraseña</h6>
-        <form id="form-contrasena" action="/change_password" method="post">
+        <h5>Cambiar Contraseña</h5><br>
 
-          <input type="number" id="id" name="id" value="{{ cuenta.id }}" hidden>
-          <input type="text" id="correoElectronico" name="correoElectronico" value="{{ cuenta.correoElectronico }}" hidden>
-          <input type="number" id="personaId" name="personaId" value="{{ persona.id }}" hidden>
-          <input type="number" id="perfilId" name="perfilId" value="{{ perfil.id }}" hidden>
+        <form id="change-password-form" class="row g-3 needs-validation" action="/change_password" method="post">
+          <input type="checkbox" id="my-profile" name="my-profile" {% if my_profile==True %} checked {% endif %} hidden>
 
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon3">Contraseña anterior:</span>
-            <input type="text" class="form-control" id="contrasena-anterior" name="contrasena" aria-describedby="basic-addon3">
-          </div>
+          <input type="number" id="id-cuenta" name="id" value="{{ full_user_info.cuenta.id }}" hidden>
+          <input type="text" id="correoElectronico" name="correoElectronico" value="{{ full_user_info.cuenta.correoElectronico }}"
+            hidden>
+          <input type="number" id="personaId" name="personaId" value="{{ full_user_info.persona.id }}" hidden>
+          <input type="number" id="perfilId" name="perfilId" value="{{ full_user_info.perfil.id }}" hidden>
 
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon3">Nueva Contraseña:</span>
-            <input type="text" class="form-control" id="nueva-contrasena-1" aria-describedby="basic-addon3">
-          </div>
-
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon3">Repita la nueva Contraseña:</span>
-            <input type="text" class="form-control" id="nueva-contrasena-2" aria-describedby="basic-addon3" name="newContrasena">
+          <div class="col-12">
+            <div class="col-sm-6">
+              <label for="contrasena" class="form-label">Contraseña actual: </label>
+              <div class="input-container">
+                <input type="password" class="form-control" name="contrasena" id="contrasena">
+                <i class="fas fa-eye" id="tgp0" onclick="togglePassword('tgp0','contrasena')"
+                  style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 1000;"></i>
+              </div>
+            </div>
           </div>
 
           <div class="col-12">
-            <button class="btn btn-success" id="btn-contrasena" onclick="validarContrasena()">Guardar Cambios</button>
+            <div class="col-sm-6">
+              <label for="contrasena" class="form-label">Nueva contraseña: </label>
+              <div class="input-container">
+                <input type="password" class="form-control" name="nuevaContrasena1" id="nueva-contrasena-1">
+                <i class="fas fa-eye" id="tgp1" onclick="togglePassword('tgp1','nueva-contrasena-1')"
+                  style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 1000;"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <label for="contrasena" class="form-label">Repita la nueva contraseña: </label>
+            <div class="input-container">
+              <input type="password" class="form-control" name="newContrasena" id="nueva-contrasena-2">
+              <i class="fas fa-eye" id="tgp2" onclick="togglePassword('tgp2','nueva-contrasena-2')"
+                style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 1000;"></i>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <button style="margin-top: 20px;" class="btn btn-success" id="btn-contrasena">Guardar Cambios</button>
           </div>
 
         </form>
-        
+
       </div>
     </div>
 
@@ -267,22 +314,11 @@
 
 
 </div>
-</div>
+{% endblock %}
 
-</div>
-<script>
-  function validarContrasena(event) {
-    var contrasena1 = document.getElementById('nueva-contrasena-1').value;
-    var contrasena2 = document.getElementById('nueva-contrasena-2').value;
-
-    if (contrasena1 != contrasena2) {
-      event.preventDefault();
-      alert('Las contraseñas no coinciden');
-      return false;
-    }
-    return true;
-  }
-
-  document.getElementById('form-contrasena').addEventListener('submit',validarContrasena)
-</script>
+{% block extra_js %}
+<script src="{{ url_for('static',filename='js/flatpickr.js' ) }}"></script>
+<script src="{{ url_for('static',filename='js/jquery-3.6.0.min.js' ) }}"></script>
+<script src="{{ url_for('static',filename='js/jquery.validate.min.js' ) }}"></script>
+<script src="{{ url_for('static',filename='js/fragmento/user/view_user-validations.js' ) }}"></script>
 {% endblock %}

@@ -1,51 +1,44 @@
 [
   {
     "id": 1,
-    "nickName": "Arnold",
-    "imagen": "GettyImages-143282183.webp",
-    "objetivoCliente": "Gestionar el Gimnasio",
+    "nickName": "ArnoldGYM",
+    "imagen": "f3bb9f59_2022.webp",
+    "objetivoCliente": "Gestionar el Gimnasio ARNOLD",
     "fechaCreacion": "2025-01-07"
   },
   {
-    "id": 2,
-    "nickName": "JuanshoDer",
-    "imagen": "juan.webp",
-    "objetivoCliente": "Obtener mayor índice de masa muscular",
-    "fechaCreacion": "2024-12-26"
-  },
-  {
     "id": 3,
-    "nickName": "Kerry",
-    "imagen": "f3bb9f59_2022.webp",
-    "objetivoCliente": "Objetivo ",
-    "fechaCreacion": "2024-12-25"
+    "nickName": "Juancho",
+    "imagen": "user.png",
+    "objetivoCliente": "Objetivo ...",
+    "fechaCreacion": "2025-01-30"
   },
   {
     "id": 4,
-    "nickName": "Juanito",
+    "nickName": "Horacio",
     "imagen": "user.png",
-    "objetivoCliente": "Objetivo de cliente",
-    "fechaCreacion": "2024-12-24"
+    "objetivoCliente": "Objetivo ...",
+    "fechaCreacion": "2025-01-30"
   },
   {
     "id": 5,
-    "nickName": "JorgitoC",
-    "imagen": "jorge.png",
-    "objetivoCliente": ":v",
-    "fechaCreacion": "2024-12-25"
-  },
-  {
-    "id": 6,
-    "nickName": "Elon ",
-    "imagen": "0x0.webp",
-    "objetivoCliente": "Objetivo de cliente",
-    "fechaCreacion": "2025-01-06"
+    "nickName": "Daniela",
+    "imagen": "user.png",
+    "objetivoCliente": "Objetivo ...",
+    "fechaCreacion": "2025-01-30"
   },
   {
     "id": 7,
-    "nickName": "Geovanny",
+    "nickName": "Kevin",
+    "imagen": "yop.png",
+    "objetivoCliente": "ESTAR bien mamado de todas las formas xd",
+    "fechaCreacion": "2025-01-31"
+  },
+  {
+    "id": 8,
+    "nickName": "Maximiliano de la Cruz",
     "imagen": "user.png",
-    "objetivoCliente": "Objetivo de cliente",
-    "fechaCreacion": "2025-01-08"
+    "objetivoCliente": "Objetivo ...",
+    "fechaCreacion": "2025-01-31"
   }
 ]

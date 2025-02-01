@@ -66,4 +66,9 @@ public class CuentaServices {
     public Cuenta changePassword(String json) throws Exception {
         return this.obj.changePassword(json);
     }
+
+    public void deleteUser(Integer id) {
+        this.obj.deleteUser(id);
+    }
 }
+

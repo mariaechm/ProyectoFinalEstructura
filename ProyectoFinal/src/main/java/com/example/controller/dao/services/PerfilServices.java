@@ -1,4 +1,3 @@
-
 package com.example.controller.dao.services;
 
 import com.example.controller.dao.PerfilDao;
@@ -6,10 +5,11 @@ import com.example.controller.tda.list.LinkedList;
 import com.example.models.Perfil;
 
 public class PerfilServices {
+
     private PerfilDao obj;
 
     public PerfilServices() {
-        obj = new PerfilDao();
+        this.obj = new PerfilDao();
     }
 
     public Boolean save() throws Exception {
@@ -30,6 +30,11 @@ public class PerfilServices {
 
     public Perfil get(Integer id) throws Exception {
         return obj.get(id);
+    }
+
+    public Perfil deletePerfil(Integer id) throws Exception {
+
+    return this.obj.deletePerfil(id);
     }
 
 }

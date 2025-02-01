@@ -14,6 +14,7 @@ public class Suscripcion {
 
     // Constructor vacio
     public Suscripcion() {
+        
     }
 
     // Getters y setters

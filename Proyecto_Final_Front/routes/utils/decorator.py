@@ -51,7 +51,7 @@ def login_required(roles=None):
 def login_path(funct):
     def login():
         if isTokenValid(in_login=True):
-            return redirect('/dashboard')
+            return redirect('/')
         return funct()
     login.__name__ = funct.__name__
     return login

@@ -10,7 +10,7 @@ public class Estadistica {
     private float peso;
     private float altura;
 
-
+    private Integer perfilId;
 
     public Estadistica(Integer id,  float medidaEspalda, float medidaPierna, float medidaBrazo, float medidaCintura, float peso, float altura) {
         this.id = id;
@@ -81,5 +81,13 @@ public class Estadistica {
     }
 
     public Estadistica() {
+    }
+
+    public Integer getPerfilId() {
+        return perfilId;
+    }
+
+    public void setPerfilId(Integer perfilId) {
+        this.perfilId = perfilId;
     }
 }
