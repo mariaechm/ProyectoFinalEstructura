@@ -36,30 +36,6 @@
     "rol": "CLIENTE"
   },
   {
-    "id": 5,
-    "nombre": "Daniela",
-    "apellido": "Abad",
-    "identificacion": "9586746574635",
-    "celular": "0989117647",
-    "fechaNacimiento": "2007-10-18",
-    "direccion": "cl. Venezuela y Brasil",
-    "tipoIdentificacion": "RUC",
-    "genero": "MUJER",
-    "rol": "CLIENTE"
-  },
-  {
-    "id": 7,
-    "nombre": "Kevin",
-    "apellido": "Nole",
-    "identificacion": "0000000000",
-    "celular": "0000000000",
-    "fechaNacimiento": "2006-05-21",
-    "direccion": "Plateado",
-    "tipoIdentificacion": "CEDULA",
-    "genero": "OTRO",
-    "rol": "CLIENTE"
-  },
-  {
     "id": 8,
     "nombre": "Maximiliano de la Cruz",
     "apellido": "Fernandez Córdoba",

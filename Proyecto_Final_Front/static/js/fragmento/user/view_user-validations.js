@@ -18,13 +18,28 @@ jQuery('#document').ready(function() {
       return this.optional(element) || !/^\s/.test(value);
     }, "No se permiten espacios al inicio");
 
+    jQuery.validator.addMethod("soloLetras", function(value, element) {
+        return this.optional(element) || /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(value);
+    }, "El campo solo puede contener letras y espacios.");
+
+    jQuery.validator.addMethod("direccionValida", function(value, element) {
+        return this.optional(element) || /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ\s,.-]+$/.test(value);
+    }, "La dirección solo puede contener letras, números, espacios y algunos caracteres especiales (.,-).");
+
+    jQuery.validator.addMethod("mayorDe15", function(value, element) {
+      if (this.optional(element)) return true; 
+      var fechaLimite = new Date();
+      fechaLimite.setFullYear(fechaLimite.getFullYear() - 15);
+      var fechaNacimiento = new Date(value);
+      return fechaNacimiento <= fechaLimite;
+    }, "No es posible registrar menores de 15 años en el sistema.");
+
     jQuery('#perfil-update-form').validate({
       rules: {
         nickName: {
           required: true,
           minlength: 3,
-          noInitialSpaces: true
-
+          noInitialSpaces: true,
         },
         objetivoCliente: {
           required: true,
@@ -40,7 +55,8 @@ jQuery('#document').ready(function() {
         },
         objetivoCliente: {
           required: "Por favor, ingrese el/los objetivo/s",
-          minlength: "El objetivo debe contener al menos 3 caracteres"
+          minlength: "El objetivo debe contener al menos 3 caracteres",
+          
         }
       }
     });
@@ -71,7 +87,7 @@ jQuery('#document').ready(function() {
         identificacion: {
           required: true,
           minlength: 6,
-          maxlength: 14, // REVISAR BIEN POR FAVOOOOOOOOR y en el registro de paso!!!
+          maxlength: 14, 
           onlyNumbers: true
         },
         fechaNacimiento: {
