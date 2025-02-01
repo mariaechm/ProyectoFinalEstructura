@@ -78,14 +78,20 @@ public class EjercicioDao extends AdapterDao<Ejercicio> {
     // VALIDACIONES
     public Boolean validations() throws Exception {
         if(!camposLlenos()) return false;
-        if(!checkNumbers()) return false;
-        if(!checkName()) return false;
-        if(!checkSpecialCharacters()) return false;
-        if(!checkLength()) return false;
-        if(!checkSameName()) return false;
+        try {
+            if(!checkNumbers()) return false;
+            if(!checkBlankSpaces()) return false;
+            if(!checkSpecialCharacters()) return false;
+            if(!checkLength()) return false;
+            if(!checkSameName()) return false;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
         return true;
     }
-
+    
+    // VALIR CAMPOS LLENOS
     public Boolean camposLlenos() throws Exception {
         if(this.getEjercicio().getNombreEjercicio() == null) {
             throw new Exception("El nombre del ejercicio no puede estar vacío");
@@ -121,10 +127,13 @@ public class EjercicioDao extends AdapterDao<Ejercicio> {
         return true; 
     }
 
-    // VALIDAR QUE LOS NOMBRES DE LOS EJERCICIOS NO EMPIECEN CON ESPACIOS EN BLANCO
-    public Boolean checkName() throws Exception {
+    // VALIDAR QUE EL NOMBRE Y DESCRIPCIÓN NO EMPIECEN CON BLANKSPACES
+    public Boolean checkBlankSpaces() throws Exception {
         if(this.getEjercicio().getNombreEjercicio().startsWith(" ")) {
             throw new Exception("El nombre del ejercicio no puede empezar con espacios en blanco");
+        }
+        if(this.getEjercicio().getDescripcion().startsWith(" ")) {
+            throw new Exception("La descripción del ejercicio no puede empezar con espacios en blanco");
         }
         return true;
     }
@@ -134,19 +143,19 @@ public class EjercicioDao extends AdapterDao<Ejercicio> {
         if(this.getEjercicio().getNombreEjercicio().matches(".*[!@#$%^&*()_+=\\[\\]{};':\"\\\\|,.<>\\/?].*")) {
             throw new Exception("El nombre del ejercicio no puede contener caracteres especiales");
         }
-        if(this.getEjercicio().getDescripcion().matches("*[!@#$^&*_+=\\[\\]{};':\"\\\\|<>\\/?]*")) {
+        if(this.getEjercicio().getDescripcion().matches("*[!@#$^&*_+=\\[\\]{};'\"\\\\|<>\\/?]*")) {
             throw new Exception("La descripción del ejercicio no puede contener caracteres especiales");
         }
         return true;
     }
 
-    //VALIDAR CANTIDAD DE CARACTERES
+    // VALIDAR CANTIDAD DE CARACTERES
     public Boolean checkLength() throws Exception {
-        if(this.getEjercicio().getNombreEjercicio().length() > 90) {
-            throw new Exception("El nombre del ejercicio no puede superar los 90 caracteres");
+        if(this.getEjercicio().getNombreEjercicio().length() < 5 || this.getEjercicio().getNombreEjercicio().length() > 90) {
+            throw new Exception("El nombre del ejercicio debe tener entre 5 y 90 caracteres");
         }
-        if(this.getEjercicio().getDescripcion().length() > 600) {
-            throw new Exception("La descripción del ejercicio no puede superar los 600 caracteres");
+        if(this.getEjercicio().getDescripcion().length() < 50 || this.getEjercicio().getDescripcion().length() > 600) {
+            throw new Exception("La descripción del ejercicio debe tener entre 50 y 600 caracteres");
         }
         return true;
     }
@@ -154,7 +163,7 @@ public class EjercicioDao extends AdapterDao<Ejercicio> {
     // VALIDAR QUE NO SE REPITAN LOS NOMBRES DE LOS EJERCICIOS
     public Boolean checkSameName() throws Exception {
         LinkedList<Ejercicio> list = listAll();
-        for(Ejercicio ejercicio : list.toList(null).toArray()) {
+        for(Ejercicio ejercicio : list.toArray()) {
             if(ejercicio.getNombreEjercicio().equalsIgnoreCase(this.getEjercicio().getNombreEjercicio())) {
                 throw new Exception("El nombre del ejercicio ya existe");
             }
