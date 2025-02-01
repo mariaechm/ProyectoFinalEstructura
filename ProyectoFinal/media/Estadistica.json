@@ -1,26 +1,13 @@
 [
   {
     "id": 1,
-<<<<<<< HEAD
     "medidaEspalda": 0.0,
     "medidaPierna": 0.0,
     "medidaBrazo": 0.0,
     "medidaCintura": 0.0,
     "peso": 0.0,
     "altura": 0.0,
-    "imc": 0.0,
     "perfilId": 1
-  },
-  {
-    "id": 2,
-    "medidaEspalda": 40.0,
-    "medidaPierna": 20.0,
-    "medidaBrazo": 34.2,
-    "medidaCintura": 40.0,
-    "peso": 140.3,
-    "altura": 1.73,
-    "imc": 0.0,
-    "perfilId": 2
   },
   {
     "id": 3,
@@ -30,7 +17,6 @@
     "medidaCintura": 0.0,
     "peso": 0.0,
     "altura": 0.0,
-    "imc": 0.0,
     "perfilId": 3
   },
   {
@@ -41,183 +27,46 @@
     "medidaCintura": 0.0,
     "peso": 0.0,
     "altura": 0.0,
-    "imc": 0.0,
     "perfilId": 4
   },
   {
-    "id": 5,
-    "medidaEspalda": 0.0,
-    "medidaPierna": 0.0,
-    "medidaBrazo": 0.0,
-    "medidaCintura": 0.0,
-    "peso": 0.0,
-    "altura": 0.0,
-    "imc": 0.0,
-    "perfilId": 5
-  },
-  {
-    "id": 6,
-    "medidaEspalda": 0.0,
-    "medidaPierna": 0.0,
-    "medidaBrazo": 0.0,
-    "medidaCintura": 0.0,
-    "peso": 0.0,
-    "altura": 0.0,
-    "imc": 0.0,
-    "perfilId": 6
-  },
-  {
-    "id": 7,
-    "medidaEspalda": 0.0,
-    "medidaPierna": 0.0,
-    "medidaBrazo": 0.0,
-    "medidaCintura": 0.0,
-    "peso": 0.0,
-    "altura": 0.0,
-    "imc": 0.0,
-    "perfilId": 7
-=======
-    "medidaEspalda": 41.5,
-    "medidaPierna": 50.2,
-    "medidaBrazo": 32.4,
-    "medidaCintura": 72.0,
-    "peso": 64.55,
-    "altura": 1.75
-  },
-  {
-    "id": 2,
-    "medidaEspalda": 41.5,
-    "medidaPierna": 50.2,
-    "medidaBrazo": 32.4,
-    "medidaCintura": 72.0,
-    "peso": 65.5,
-    "altura": 2.75
-  },
-  {
-    "id": 3,
-    "medidaEspalda": 41.5,
-    "medidaPierna": 50.2,
-    "medidaBrazo": 32.4,
-    "medidaCintura": 72.0,
-    "peso": 65.5,
-    "altura": 2.75
-  },
-  {
-    "id": 4,
-    "medidaEspalda": 41.5,
-    "medidaPierna": 50.2,
-    "medidaBrazo": 32.4,
-    "medidaCintura": 72.0,
-    "peso": 65.5,
-    "altura": 2.75
-  },
-  {
-    "id": 5,
-    "medidaEspalda": 41.5,
-    "medidaPierna": 50.2,
-    "medidaBrazo": 32.4,
-    "medidaCintura": 72.0,
-    "peso": 65.5,
-    "altura": 2.75
-  },
-  {
-    "id": 6,
-    "medidaEspalda": 41.5,
-    "medidaPierna": 50.2,
-    "medidaBrazo": 32.4,
-    "medidaCintura": 72.0,
-    "peso": 65.5,
-    "altura": 2.75
-  },
-  {
-    "id": 7,
-    "medidaEspalda": 41.5,
-    "medidaPierna": 54.2,
-    "medidaBrazo": 32.4,
-    "medidaCintura": 72.0,
-    "peso": 65.5,
-    "altura": 2.75
-  },
-  {
     "id": 8,
-    "medidaEspalda": 47.5,
-    "medidaPierna": 57.2,
-    "medidaBrazo": 37.4,
-    "medidaCintura": 77.0,
-    "peso": 65.5,
-    "altura": 2.75
+    "medidaEspalda": 0.0,
+    "medidaPierna": 0.0,
+    "medidaBrazo": 0.0,
+    "medidaCintura": 0.0,
+    "peso": 0.0,
+    "altura": 0.0,
+    "perfilId": 8
   },
   {
     "id": 9,
-    "medidaEspalda": 55.5,
-    "medidaPierna": 57.2,
-    "medidaBrazo": 37.4,
-    "medidaCintura": 77.0,
-    "peso": 65.5,
-    "altura": 2.75
+    "medidaEspalda": 0.0,
+    "medidaPierna": 0.0,
+    "medidaBrazo": 0.0,
+    "medidaCintura": 0.0,
+    "peso": 0.0,
+    "altura": 0.0,
+    "perfilId": 9
   },
   {
     "id": 10,
-    "medidaEspalda": 41.5,
-    "medidaPierna": 50.2,
-    "medidaBrazo": 32.4,
-    "medidaCintura": 72.0,
-    "peso": 65.5,
-    "altura": 2.75
+    "medidaEspalda": 0.0,
+    "medidaPierna": 0.0,
+    "medidaBrazo": 0.0,
+    "medidaCintura": 0.0,
+    "peso": 0.0,
+    "altura": 0.0,
+    "perfilId": 10
   },
   {
     "id": 11,
-    "medidaEspalda": 43.5,
-    "medidaPierna": 53.2,
-    "medidaBrazo": 32.4,
-    "medidaCintura": 72.0,
-    "peso": 65.5,
-    "altura": 2.75
-  },
-  {
-    "id": 12,
-    "medidaEspalda": 43.5,
-    "medidaPierna": 53.2,
-    "medidaBrazo": 32.4,
-    "medidaCintura": 72.0,
-    "peso": 65.5,
-    "altura": 2.75
-  },
-  {
-    "id": 13,
-    "medidaEspalda": 222.0,
-    "medidaPierna": 22.0,
-    "medidaBrazo": 22.0,
-    "medidaCintura": 22.0,
-    "peso": 22.0,
-    "altura": 22.0
-  },
-  {
-    "id": 14,
-    "medidaEspalda": 324.0,
-    "medidaPierna": 342.0,
-    "medidaBrazo": 324.0,
-    "medidaCintura": 22.0,
-    "peso": 222.0,
-    "altura": 324.0
-  },
-  {
-    "id": 15,
-    "medidaEspalda": 432.0,
-    "medidaPierna": 12.0,
-    "medidaBrazo": 12.0,
-    "medidaCintura": 12.0,
-    "peso": 21.0,
-    "altura": 21.0
-  },
-  {
-    "id": 16,
-    "medidaEspalda": 221.88,
-    "medidaPierna": 33.0,
-    "medidaBrazo": 21.95,
-    "medidaCintura": 21.97,
-    "peso": 21.99,
-    "altura": 22.1
->>>>>>> moduloSuscripcion
+    "medidaEspalda": 0.0,
+    "medidaPierna": 0.0,
+    "medidaBrazo": 0.0,
+    "medidaCintura": 0.0,
+    "peso": 0.0,
+    "altura": 0.0,
+    "perfilId": 11
   }
 ]

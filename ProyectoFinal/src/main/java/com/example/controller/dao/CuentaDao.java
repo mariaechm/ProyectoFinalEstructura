@@ -1,5 +1,6 @@
 package com.example.controller.dao;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.regex.Pattern;
 
@@ -8,6 +9,7 @@ import com.example.controller.dao.implement.AdapterDao;
 import com.example.controller.dao.implement.JsonFileManager;
 import com.example.controller.tda.list.LinkedList;
 import com.example.models.Cuenta;
+import com.example.models.Estadistica;
 import com.example.models.Perfil;
 import com.example.models.Persona;
 
@@ -111,6 +113,14 @@ public class CuentaDao extends AdapterDao<Cuenta> {
         if (!isThereAllFields())
             throw new Exception("Los datos están incompletos, no se guardarán");
 
+        if (!new PersonaDao().charsLength(this.getCuenta().getCorreoElectronico(), 3, 50)) {
+            throw new Exception("Correo Electrónico no válido, debe tener entre 3 y 50 caracteres");
+        }
+
+        if(!new PersonaDao().charsLength(this.getCuenta().getContrasena(), 8, 50)) {
+            throw new Exception("Contraseña no válida, debe tener al menos 8 caracteres");
+        }
+
         final Integer personaId = this.getCuenta().getPersonaId();
         if (!existsPersonaWith(personaId)) 
             throw new Exception("No existe registro de Persona con Id: " + personaId);
@@ -128,7 +138,7 @@ public class CuentaDao extends AdapterDao<Cuenta> {
 
             final Integer perfilId = this.getCuenta().getPerfilId();
             if(existeCuentaWith("PerfilId", perfilId))
-                throw new Exception("Ya existe una cuenta asociada a IdPerfil=");
+                throw new Exception("Ya existe una cuenta asociada a IdPerfil="+perfilId);
         }
 
         final String password = this.getCuenta().getContrasena();
@@ -196,7 +206,6 @@ public class CuentaDao extends AdapterDao<Cuenta> {
         Cuenta cuenta = getCuentaById(cuentaId);
         Persona persona = new PersonaDao().getPersonaById(cuenta.getPersonaId());
         Perfil perfil = new PerfilDao().get(cuenta.getPerfilId());
-        perfil.setImagen("http://localhost:8080/api/images/" + perfil.getImagen());
 
         HashMap<String,Object> map = new HashMap<>();
 
@@ -207,7 +216,7 @@ public class CuentaDao extends AdapterDao<Cuenta> {
         return map;
     }
 
-    // TODO: IMPLEMENTAR MÉTODOS EN DAOS DE PERSONA, PERFIL Y ESTADÍSTICA
+ 
     public HashMap<String, Object> registerNewUser(String json) throws Exception {
         try {
             PersonaDao pd = new PersonaDao();
@@ -216,18 +225,14 @@ public class CuentaDao extends AdapterDao<Cuenta> {
             
             this.cuentaFromJson(json);
             pd.personaFromJson(json);
-
-            //TODO: ESTOS METODOS
-            //pfd.perfilWithGenericValues(); 
-
-            //ed.estadisticaWithGenericValues();
-
-            //pfd.getPerfil().setNickName(pd.getPersona().getNombre());
+            pfd.setPerfil(new Perfil(0, pd.getPersona().getNombre(), "user.png", "Objetivo ...", LocalDateTime.now().toString().substring(0,10)));
+            ed.setEstadistica(new Estadistica(0,0f,0f,0f,0f,0f,0f));
+            
 
             pd.savePersona();
             pfd.save();
+            ed.getEstadistica().setPerfilId(pfd.getPerfil().getId());
 
-            //ed.getEstadistica().setPerfilId(pfd.getPerfil().getId());
             ed.save();
 
             this.getCuenta().setPerfilId(pfd.getPerfil().getId());
@@ -242,9 +247,8 @@ public class CuentaDao extends AdapterDao<Cuenta> {
             return res;
 
         } catch (Exception e) {
-            System.out.println("CuentaDao.registerNewUser() dice: " + e.getMessage());
+            throw new Exception("No se pudo completar el registro, " + e.getMessage());
         }
-        throw new Exception("No se pudo completar el registro!");
     }
     
     @SuppressWarnings("unchecked")
@@ -266,6 +270,24 @@ public class CuentaDao extends AdapterDao<Cuenta> {
             }
         }
 
-        throw new Exception("Credenciales inválidas");
+        throw new Exception("La contraseña es incorrecta, no se actualizará!");
+    }
+
+    public void deleteUser(Integer id) {
+        try {
+            Cuenta _cuenta = get(id);
+            PersonaDao pd = new PersonaDao();
+            PerfilDao pfd = new PerfilDao();
+            EstadisticaDao ed = new EstadisticaDao();
+
+            pd.deletePersona(_cuenta.getPersonaId());
+            ed.deleteEstadistica(pfd.getPerfilById(_cuenta.getPerfilId()).getId());
+            pfd.deletePerfil(_cuenta.getPerfilId());
+            deleteCuenta(id);
+            
+        } catch (Exception e) {
+            System.out.println("CuentaDao.deleteUser() dice: " + e.getMessage());
+            throw new RuntimeException("No se pudo eliminar la cuenta");
+        }
     }
 }

@@ -2,22 +2,21 @@ package com.example.models;
 
 public class Perfil {
     private Integer id;
-    private Float peso;
+    private String nickName;
     private String imagen;
-    private Float altura;
     private String objetivoCliente;
+    private String fechaCreacion;
 
     public Perfil() {}
 
-    public Perfil(Integer id, Float peso, String imagen, Float altura, String objetivoCliente) {
+    public Perfil(Integer id, String nickName, String imagen, String objetivoCliente, String fechaCreacion) {
         this.id = id;
-        this.peso = peso;
+        this.nickName = nickName;
         this.imagen = imagen;
-        this.altura = altura;
         this.objetivoCliente = objetivoCliente;
+        this.fechaCreacion = fechaCreacion;
     }
 
-    // Getters y Setters
     public Integer getId() {
         return id;
     }
@@ -26,12 +25,12 @@ public class Perfil {
         this.id = id;
     }
 
-    public Float getPeso() {
-        return peso;
+    public String getNickName() {
+        return nickName;
     }
 
-    public void setPeso(Float peso) {
-        this.peso = peso;
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
     }
 
     public String getImagen() {
@@ -42,14 +41,6 @@ public class Perfil {
         this.imagen = imagen;
     }
 
-    public Float getAltura() {
-        return altura;
-    }
-
-    public void setAltura(Float altura) {
-        this.altura = altura;
-    }
-
     public String getObjetivoCliente() {
         return objetivoCliente;
     }
@@ -57,4 +48,14 @@ public class Perfil {
     public void setObjetivoCliente(String objetivoCliente) {
         this.objetivoCliente = objetivoCliente;
     }
+
+    public String getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(String fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    
 }

@@ -1,31 +1,110 @@
 {% extends 'blank.html' %}
 {% block title %}Usuarios{% endblock %}
 
-{% block usr_nav_class %}active{% endblock %}
+{% set list_admin = 'active' if admin else '' %}
+{% set list_client = 'active' if not admin else '' %}
+
+
+{% block admin_nav_class %} {{ list_admin }} {% endblock %}
+{% block client_nav_class %} {{ list_client }} {% endblock %}
+
+
+
+{% block custom_styles %}
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/datatables/dataTables.bootstrap4.min.css' ) }}" />
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/datatables/dataTables.dataTables.css' ) }}">
+
+  <style>
+    .dataTables_length select {
+      background-color: #000 !important; 
+      color: #fff !important; 
+      border: 1px solid #444; 
+      border-radius: 5px; 
+      padding: 10px; 
+    }
+
+    .dataTables_length select:hover {
+      background-color: #333 !important;
+    }
+
+    .dataTables_length select:focus {
+      outline: none; 
+      border-color: #4CAF50; 
+    }
+    .dataTables_paginate .pagination .page-item {
+      margin: 0 5px; 
+    }
+
+    .dataTables_paginate .pagination .page-link {
+      background-color: black !important; 
+      color: white !important; 
+      border: 1px solid #666 !important; 
+      padding: 6px 12px;
+      border-radius: 5px; 
+      font-weight: bold; 
+    }
+
+    .dataTables_paginate .pagination .page-link:hover {
+      background-color: #444 !important;
+      color: white !important; 
+      border-color: #333 !important; 
+    }
+
+    .dataTables_paginate .pagination .next .page-link {
+      background-color: black !important;
+      color: white !important; 
+    }
+
+    .dataTables_paginate .pagination .previous .page-link {
+      background-color: black !important; 
+      color: white !important; 
+    }
+
+    .dataTables_paginate .pagination .active .page-link {
+      background-color: #f91111 !important;
+      color: white !important; 
+      border-color: #666 !important; 
+    }
+  </style>
+{% endblock %}
 
 {% block content %}
 
-{% with messages = get_flashed_messages(with_categories=True)  %}
-  {% for message in messages %}
-    <div class="alert alert-{{ message[0] }} alert-dismissible fade show" role="alert">
-      {{ message[1] }}
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-  {% endfor %}
+{% with messages = get_flashed_messages(with_categories=True) %}
+  {% if messages %}
+    {% for message in messages %}
+      {% if message[0] == 'success' %}
+          <div class="alert alert-info alert-dismissible fade show" role="alert">
+            <h4 class="alert alert-heading"><strong>¡Éxito!</strong></h4>
+            <p>{{ message[1]}}</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+          </div>
+        {% else %}
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <h4 class="alert-heading"><strong>¡Error!</strong></h4>
+            <p>{{ message[1]}}</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+          </div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
 {% endwith %}
 
-<a href="/register/user">
-  <button type="button" class="btn btn-warning m-2"> Registrar Nuevo Usuario</i></button>
-</a>
-
+{% set role = 'admin' if admin else 'cliente' %}
 
 <div class="container-fluid pt-4 px-4">
-  <div class="bg-secondary text-center rounded p-4">
-      <div class="d-flex align-items-center justify-content-between mb-4">
-          <h6 class="mb-0">LISTA DE USUARIOS</h6>
-      </div>
+  <div class="bg-secondary rounded h-100 p-4">
+    <div class="d-flex align-items-center justify-content-between mb-4">
+          <h4 class="mb-0">LISTA DE USUARIOS</h4>
+    </div>
+    <div class="col-sm-6">
+      <a href="/register/user/{{ role }}">
+        <button type="button" class="btn btn-warning m-2"> Registrar Nuevo Usuario</i></button>
+      </a>
+    </div><br>
+
       <div class="table-responsive">
-          <table class="table text-start align-middle table-bordered table-hover mb-0">
+          <table class="table table-dark display" id="dataTable">
               <thead>
                   <tr class="text-white">
                     <th scope="col">#</th>
@@ -46,10 +125,10 @@
                       <td>{{ persona.correo }}</td>
                       <td>{{ persona.direccion }}</td>
                       <td>
-                        <a href="/view_user/{{ persona.id }}">
+                        <a href="/view_user/{{ persona.id }}/{{ admin }}">
                           <button type="button" class="btn btn-square btn-warning m-2"><i class="fa fa-eye"></i></button>
                         </a>
-                        <a href="#/user/delete/{{ persona.id }}">
+                        <a href="/user/delete/{{ persona.id }}/{{ admin }}">
                           <button type="button" class="btn btn-square btn-danger m-2"><i class="fa fa-trash"></i></button>
                         </a>
                       </td>
@@ -60,12 +139,36 @@
               </tbody>
           </table>
       </div>
-  </div>
+    </div>
 </div> 
 
 {% endblock %}
 
+{% block extra_js %}
+  <script src="{{ url_for('static',filename='js/jquery-3.6.0.min.js' ) }}"></script>
+  <script src="{{ url_for('static',filename='js/datatables/jquery.dataTables.min.js' ) }}"></script>
+  <script src="{{ url_for('static',filename='js/datatables/dataTables.bootstrap4.min.js' ) }}"></script>
+  
 
-<!-- <a href="/user/update/{{ persona.id }}">
-  <button type="button" class="btn btn-square btn-info m-2"><i class="fa fa-pen"></i></button>
-</a> -->
+  <script> 
+    let dataTable = new DataTable('#dataTable', {
+      language: {
+        sProcessing: "Procesando...",
+        sLengthMenu: "Mostrar _MENU_ registros",
+        sSearch: "Buscar:",
+        sEmptyTable: "No hay datos disponibles en la tabla",
+        sZeroRecords: "No se han encontrado resultados",
+        info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
+        paginate: {
+          next: "Siguiente",
+          previous: "Anterior"
+        }
+      }
+    });
+
+    $(document).ready(function() {
+      $('#dataTable');  
+    }); 
+
+  </script>
+{% endblock %}

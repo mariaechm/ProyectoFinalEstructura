@@ -8,8 +8,6 @@ import javax.ws.rs.core.Response.Status;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
-/* import com.example.controller.exception.EmptyFieldException;
-import com.example.controller.exception.IdNotFoundException; */
 
 public class ResponseFactory {
     
@@ -17,6 +15,7 @@ public class ResponseFactory {
         HashMap<String, Object> responseHashMap = new HashMap<>();
         ObjectMapper om = new ObjectMapper();
         responseHashMap.put("status", "succes");
+        responseHashMap.put("info", "Operación realizada con éxito");
         responseHashMap.put("data", object);
 
         final String response = om.writeValueAsString(responseHashMap);
@@ -26,7 +25,7 @@ public class ResponseFactory {
     public static Response buildResponseWithStatus(Status status, Object object, String info) throws Exception {
         HashMap<String, Object> responseHashMap = new HashMap<>();
         ObjectMapper om = new ObjectMapper();
-        responseHashMap.put("status", "Succes");
+        responseHashMap.put("status", "success");
         responseHashMap.put("data", object);
         responseHashMap.put("info",info);
 
@@ -64,7 +63,7 @@ public class ResponseFactory {
         } catch (Exception e) {
             throw (Exception)e.getCause();
         }
-        if(methodName.contains("save")) 
+        if(methodName.contains("save") || methodName.contains("register")) 
             return buildResponseWithStatus(Status.CREATED, data,"Información guardada con éxito!");
         if(methodName.contains("update"))
             return buildResponseWithStatus(Status.OK, data,"Información actualizada con éxito!");
@@ -76,7 +75,7 @@ public class ResponseFactory {
     public static Response buildResponseWithException(Exception e) {
         HashMap<String,Object> responseHashMap = new HashMap<>();
         Gson gson = new Gson();
-        responseHashMap.put("status", "Error");
+        responseHashMap.put("status", "error");
         responseHashMap.put("info",e.getMessage());
         
         // TODO: add exception handlers (Para enviar respuestas en casos específicos)

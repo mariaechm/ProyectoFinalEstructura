@@ -93,4 +93,22 @@ public class Persona {
     public void setTipoIdentificacion(TipoIdentificacion tipoIdentificacion) {
         this.tipoIdentificacion = tipoIdentificacion;
     }
+
+
+    @Override
+    public String toString() {
+        return "{" +
+            " id='" + getId() + "'" +
+            ", nombre='" + getNombre() + "'" +
+            ", apellido='" + getApellido() + "'" +
+            ", identificacion='" + getIdentificacion() + "'" +
+            ", celular='" + getCelular() + "'" +
+            ", fechaNacimiento='" + getFechaNacimiento() + "'" +
+            ", direccion='" + getDireccion() + "'" +
+            ", tipoIdentificacion='" + getTipoIdentificacion() + "'" +
+            ", genero='" + getGenero() + "'" +
+            ", rol='" + getRol() + "'" +
+            "}";
+    }
+
 }

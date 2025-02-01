@@ -37,6 +37,9 @@ public class PerfilDao extends AdapterDao<Perfil> {
         return true;
     }
     
+    public Perfil getPerfilById(Integer id) throws Exception {
+        return get(id);
+    }
     
     public Boolean update() throws Exception {
         if (getPerfil() == null) {
@@ -51,6 +54,13 @@ public class PerfilDao extends AdapterDao<Perfil> {
         this.merge(getPerfil(), getPerfil().getId());
         this.listAll = listAll(); 
         return true;
+    }
+    
+    public Perfil deletePerfil(Integer id) throws Exception {
+    
+        Perfil perfil = get(id);
+        remove(id);
+        return perfil;
     }
 
 }

@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "nombreRutina": "xxx",
+    "descripcion": "xxx",
+    "nroEjercicios": 3,
+    "idEjercicio": [
+      1,
+      2,
+      4
+    ],
+    "objetivoRutina": "HIPERTROFIA"
+  }
+]

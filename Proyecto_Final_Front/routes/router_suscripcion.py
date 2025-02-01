@@ -5,7 +5,6 @@ SCP_URL = f'{BASE_URL}/suscripcion'
 
 #LIST
 @router.route('/suscripcion/list')
-
 def suscripcion_list(headers,users):
     suscripciones = requests.get(f'{SCP_URL}/list').json()['data']
     for i in range(0,len(suscripciones)):

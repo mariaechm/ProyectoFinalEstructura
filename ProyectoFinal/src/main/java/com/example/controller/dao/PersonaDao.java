@@ -1,5 +1,8 @@
 package com.example.controller.dao;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
+
 import com.example.controller.dao.implement.AdapterDao;
 import com.example.controller.dao.implement.JsonFileManager;
 import com.example.controller.tda.list.LinkedList;
@@ -59,6 +62,7 @@ public class PersonaDao extends AdapterDao<Persona> {
     // VALIDADORES =============================================================================
 
     public Boolean isThereAllFields() {
+        System.out.println(this.getPersona());
         if(this.getPersona().getApellido() == null) return false;
         if(this.getPersona().getNombre() == null) return false;
         if(this.getPersona().getCelular() == null) return false;
@@ -70,42 +74,44 @@ public class PersonaDao extends AdapterDao<Persona> {
         return true;
     }
 
+    public boolean charsLength(String str, Integer min, Integer max) {
+        return str.length() >= min && str.length() <= max;
+    }
+
     public Boolean isValidDate(String date) {
         final String[] components = date.split("-");
         
         if(components.length != 3) 
             return false;
-
+    
         final String year = components[0];
         final String month = components[1];
         final String day = components[2];
-
+    
         Integer yyyy = 0;
         Integer mm = 0; 
         Integer dd = 0; 
-
+    
         try {
             yyyy = Integer.parseInt(year);
             mm = Integer.parseInt(month); 
-            dd = Integer.parseInt(day); 
-        } catch (Exception e) {
-            System.out.println("Al Validar Fecha: " + e.getMessage());
+            dd = Integer.parseInt(day);
+        } catch (NumberFormatException e) {
             return false;
         }
-
-        // ano bisiesto
-        // Si es divisible para 4 pero no para cien, o si es divisible para cien pero también lo es para cuatrocientos
-        boolean leapYear =  ((yyyy%4 == 0 && yyyy%100 != 0) || (yyyy%100 ==0 && yyyy%400 == 0)); // Los envidiosos dirán que es chatgepete
-        
-        // Dias de cada mes del ano
-        final Integer[] monthDays = {31, (leapYear)?29:28,  31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-
-        if(yyyy < 1900) return false;
-        if(mm <= 0 || mm > 12) return false;
-        if(dd <= 0) return false;
-
-        if(dd > monthDays[mm-1]) return false;
-
+    
+        try {
+            LocalDate parsedDate = LocalDate.of(yyyy, mm, dd);
+            LocalDate currentDate = LocalDate.now();
+            LocalDate date15YearsAgo = currentDate.minusYears(15);
+    
+            if (parsedDate.isAfter(currentDate) || parsedDate.isAfter(date15YearsAgo)) {
+                return false;
+            }
+        } catch (DateTimeParseException | IllegalArgumentException e) {
+            return false;
+        }
+    
         return true;
     }
 
@@ -136,35 +142,61 @@ public class PersonaDao extends AdapterDao<Persona> {
         return validNumeric(phone);
     }
 
+    public Boolean isValidString(String str) {
+        return str.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+");
+    }
+
+    public Boolean isValidAddress(String address) {
+        return address.matches("[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.]+");
+    }
+
+
     public void validateData(boolean forUpdate) throws Exception {
         LinkedList<Persona> list = listAll();
         
-        // Validar si alguno de los campos se enecuentra vacío 
         if (!isThereAllFields()) 
             throw new Exception("Los datos están incompletos, no se guardarán!");
         
         final String identificacion = this.getPersona().getIdentificacion();
         final TipoIdentificacion tipo = this.getPersona().getTipoIdentificacion();
-        
-        // Solo si no es para actualizar (De lo contrario ocurrirá un error)
+
+        if (!charsLength(this.getPersona().getNombre(), 3, 50) || !isValidString(this.getPersona().getNombre())) {
+            throw new Exception("Nombre no válido");
+        } 
+
+        if(!charsLength(this.getPersona().getApellido(), 3, 50) || !isValidString(this.getPersona().getApellido())) {
+            throw new Exception("Apellido no válido");
+        }
+
+        if(!charsLength(this.getPersona().getDireccion(), 3, 100) || !isValidAddress(this.getPersona().getDireccion())) {
+            throw new Exception("Dirección no válida");
+        }
+
         if (!forUpdate) {
-            // Validar si se está intentando guardar una identifiación existente (datos duplicados)
             if (list.busquedaBinaria("identificacion", identificacion) != null)
                 throw new Exception("Ya existe una persona con identificación: " + identificacion);
         }
-        // Validar si la identificación es correcta
+
         if (!isValidIdent(identificacion,tipo)) 
             throw new Exception("Identificación no válida");
 
-        // Validar si la fecha es correcta
         final String date = this.getPersona().getFechaNacimiento();
         if (!isValidDate(date))
             throw new Exception("Fecha no válida");
         
-        // Validar si el número de celular es válido
         final String phone = this.getPersona().getCelular();
-        if (!isValidPhone(phone))
+        boolean phoneUnique;
+        
+        if (forUpdate) {
+            phoneUnique = true;
+        } else {
+            phoneUnique = list.buscarPorAtributo("celular", phone).isEmpty();
+        }
+        
+        listAll().buscarPorAtributo("celular", phone).isEmpty();
+        if (!isValidPhone(phone) || !phoneUnique) {
             throw new Exception("Número de celular no válido");
+        }            
     }  
     
     public void validateData() throws Exception {
