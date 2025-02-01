@@ -138,7 +138,7 @@ public class CuentaDao extends AdapterDao<Cuenta> {
 
             final Integer perfilId = this.getCuenta().getPerfilId();
             if(existeCuentaWith("PerfilId", perfilId))
-                throw new Exception("Ya existe una cuenta asociada a IdPerfil=");
+                throw new Exception("Ya existe una cuenta asociada a IdPerfil="+perfilId);
         }
 
         final String password = this.getCuenta().getContrasena();

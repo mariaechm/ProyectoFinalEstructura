@@ -33,5 +33,19 @@
     "contrasena": "YWRtaW5pc3RyYWRvcmVz",
     "personaId": 9,
     "perfilId": 9
+  },
+  {
+    "id": 10,
+    "correoElectronico": "ads.ad@example.com",
+    "contrasena": "Y29udHJhc2VuaWE\u003d",
+    "personaId": 10,
+    "perfilId": 10
+  },
+  {
+    "id": 11,
+    "correoElectronico": "jgraso.momos@example.com",
+    "contrasena": "YWRtaW5pc3RyYWRvcmVz",
+    "personaId": 11,
+    "perfilId": 11
   }
 ]

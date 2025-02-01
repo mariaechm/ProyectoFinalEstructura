@@ -57,6 +57,21 @@ def register_user_send(headers,usr):
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+def delete_unreferenced_images(headers):
+    personas = requests.get(f'{BASE_URL}/perfil/list', headers=headers).json()['data']
+    referenced_images = {persona['imagen'] for persona in personas if 'imagen' in persona}
+
+    referenced_images.add('user.png')
+
+    stored_images = set(os.listdir(UPLOAD_FOLDER))
+
+    unreferenced_images = stored_images - referenced_images
+
+    for image in unreferenced_images:
+        os.remove(os.path.join(UPLOAD_FOLDER, image))
+
+    return f"Deleted {len(unreferenced_images)} unreferenced images."
+
 @router.route('/user/update/send',methods=['POST'])
 @login_required()
 def perfil_update_send(headers,usr):
@@ -79,7 +94,8 @@ def perfil_update_send(headers,usr):
     response = requests.post(f'{BASE_URL}/perfil/update',headers=headers,json=data)
     ok = response.status_code == 200
     flash(f'{"Éxito" if ok else "Error"}: {"Se ha actualizado el registro" if ok else "no se ha podido actualizar el registro"}',category='success' if ok else 'error')
-    return redirect('/my_profile' if (eval(data['my-profile'])) else f'/view_user/{data['userId']}') 
+    print(delete_unreferenced_images(headers=headers))
+    return redirect('/my_profile' if (eval(data['my-profile'])) else f'/view_user/{data['userId']}/{eval(data['admins'])}') 
 
 @router.route('/change_password',methods=['POST'])
 @login_required()
@@ -88,7 +104,7 @@ def change_password(headers,usr):
     response = requests.post(f'{BASE_URL}/auth/change/password',headers=headers,json=data)
     ok = response.status_code == 200
     flash(f'{"Éxito" if ok else "Error"}: {"Se ha actualizado la contraseña" if ok else "no se ha podido actualizar la contraseña"}',category='success' if ok else 'error')
-    return redirect('/my_profile' if (eval(data['my-profile'])) else f'/view_user/{data['userId']}')
+    return redirect('/my_profile' if (eval(data['my-profile'])) else f'/view_user/{data['userId']}/{eval(data['admins'])}')
 
 @router.route('/user/update/persona',methods=['POST'])
 @login_required()
@@ -97,7 +113,7 @@ def update_persona_send(headers,usr):
     response = requests.post(f'{P_URL}/update',headers=headers,json=data)
     ok = response.status_code == 200
     flash(f'{"Éxito" if ok else "Error"}: {"Se ha actualizado el registro" if ok else "no se ha podido actualizar el registro"}',category='success' if ok else 'error')
-    return redirect('/my_profile' if (eval(data['my-profile'])) else f'/view_user/{data['userId']}')
+    return redirect('/my_profile' if (eval(data['my-profile'])) else f'/view_user/{data['userId']}/{eval(data['admins'])}')
 
 @router.route('/view_user/<int:id>/<admins>')
 @login_required(roles=['ADMINISTRADOR'])
@@ -109,7 +125,7 @@ def persona_view(headers,usr,id,admins:bool):
 
     enums = requests.get(f'{P_URL}/enumerations',headers=headers).json()['data']
 
-    full_user_info = {'persona': persona, 'cuenta': cuenta, 'perfil': perfil, 'estadistica': estadistica, 'my_profile': False, 'admins': admins }
+    full_user_info = {'persona': persona, 'cuenta': cuenta, 'perfil': perfil, 'estadistica': estadistica, 'my_profile': False, 'admins': eval(admins) }
 
     return render_template('fragmento/users_view/user/view_user.html', enums=enums, user=usr, full_user_info=full_user_info)
 
@@ -128,7 +144,7 @@ def my_profile(headers,usr):
     return render_template('fragmento/users_view/user/view_user.html',user=usr, full_user_info=full_user_info, enums=enums ,my_profile=True)
 
 @router.route('/user/delete/<int:id>/<admins>')
-@login_required()
+@login_required(roles=['ADMINISTRADOR'])
 def persona_delete(id,headers,usr,admins):
     return render_template('fragmento/users_view/delete.html', id=id, user=usr, admins=eval(admins))
 

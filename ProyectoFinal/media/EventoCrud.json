@@ -190,5 +190,71 @@
     "fecha": "2025-01-31",
     "hora": "2:00:25",
     "descripcion": "Se ha eliminado la información personal"
+  },
+  {
+    "id": 33,
+    "fecha": "2025-01-31",
+    "hora": "2:27:43",
+    "descripcion": "Se actualizó con éxito la información personal"
+  },
+  {
+    "id": 34,
+    "fecha": "2025-01-31",
+    "hora": "2:42:19",
+    "descripcion": "Se actualizó con éxito la información personal"
+  },
+  {
+    "id": 35,
+    "fecha": "2025-01-31",
+    "hora": "2:44:15",
+    "descripcion": "Se actualizó con éxito la información personal"
+  },
+  {
+    "id": 36,
+    "fecha": "2025-01-31",
+    "hora": "2:58:30",
+    "descripcion": "Se actualizó con éxito la información personal"
+  },
+  {
+    "id": 37,
+    "fecha": "2025-01-31",
+    "hora": "3:03:58",
+    "descripcion": "Se actualizó con éxito la información personal"
+  },
+  {
+    "id": 38,
+    "fecha": "2025-01-31",
+    "hora": "3:05:29",
+    "descripcion": "Se actualizó con éxito la información personal"
+  },
+  {
+    "id": 39,
+    "fecha": "2025-01-31",
+    "hora": "3:05:54",
+    "descripcion": "Se actualizó con éxito la información personal"
+  },
+  {
+    "id": 40,
+    "fecha": "2025-01-31",
+    "hora": "3:24:36",
+    "descripcion": "Se ha registrado la información personal"
+  },
+  {
+    "id": 41,
+    "fecha": "2025-01-31",
+    "hora": "3:27:47",
+    "descripcion": "Se ha registrado la información personal"
+  },
+  {
+    "id": 42,
+    "fecha": "2025-01-31",
+    "hora": "3:29:39",
+    "descripcion": "Se actualizó con éxito la información personal"
+  },
+  {
+    "id": 43,
+    "fecha": "2025-01-31",
+    "hora": "3:29:53",
+    "descripcion": "Se actualizó con éxito la información personal"
   }
 ]

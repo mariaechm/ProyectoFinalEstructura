@@ -2,36 +2,50 @@
   {
     "id": 1,
     "nickName": "ArnoldGYMs",
-    "imagen": "f1.jpg",
+    "imagen": "Pepito-Mixto-copy-1.webp",
     "objetivoCliente": "Gestionar el Gimnasio ARNOLD",
     "fechaCreacion": "2025-01-07"
   },
   {
     "id": 3,
     "nickName": "Juancho",
-    "imagen": "user.png",
+    "imagen": "imprueba.png",
     "objetivoCliente": "Objetivo ...",
     "fechaCreacion": "2025-01-30"
   },
   {
     "id": 4,
-    "nickName": "Horacio",
-    "imagen": "user.png",
+    "nickName": "Horacios",
+    "imagen": "f3bb9f59_2022.webp",
     "objetivoCliente": "Objetivo ...",
     "fechaCreacion": "2025-01-30"
   },
   {
     "id": 8,
-    "nickName": "Maximiliano Cruz",
-    "imagen": "user.png",
-    "objetivoCliente": "Objetivo",
+    "nickName": "___Kendry____Name",
+    "imagen": "jorgexd.png",
+    "objetivoCliente": "Objetivod",
     "fechaCreacion": "2025-01-31"
   },
   {
     "id": 9,
-    "nickName": "Administrador",
+    "nickName": "Kerry paes",
+    "imagen": "f1.jpg",
+    "objetivoCliente": "Objetivo ...",
+    "fechaCreacion": "2025-01-31"
+  },
+  {
+    "id": 10,
+    "nickName": "Ads",
     "imagen": "user.png",
     "objetivoCliente": "Objetivo ...",
+    "fechaCreacion": "2025-01-31"
+  },
+  {
+    "id": 11,
+    "nickName": "JGraso",
+    "imagen": "jotagraso.jpeg",
+    "objetivoCliente": "La Grasa es un Sentimiento",
     "fechaCreacion": "2025-01-31"
   }
 ]

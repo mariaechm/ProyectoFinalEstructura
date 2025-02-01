@@ -13,7 +13,7 @@
   },
   {
     "id": 3,
-    "nombre": "Juan",
+    "nombre": "Juansano",
     "apellido": "Solano",
     "identificacion": "985768",
     "celular": "0985768495",
@@ -37,8 +37,8 @@
   },
   {
     "id": 8,
-    "nombre": "Maximiliano de la Cruz",
-    "apellido": "Fernandez Córdoba",
+    "nombre": "Kendry  Tupac Mamani Chumpitasi",
+    "apellido": "Paez",
     "identificacion": "0000008765",
     "celular": "0987654678",
     "fechaNacimiento": "2004-07-10",
@@ -49,12 +49,36 @@
   },
   {
     "id": 9,
-    "nombre": "Administrador",
-    "apellido": "Administrando",
+    "nombre": "José",
+    "apellido": "Riofrío no riocaliente",
     "identificacion": "4578946254",
     "celular": "0324567800",
     "fechaNacimiento": "2005-05-26",
     "direccion": "Av 00 Calle",
+    "tipoIdentificacion": "CEDULA",
+    "genero": "HOMBRE",
+    "rol": "ADMINISTRADOR"
+  },
+  {
+    "id": 10,
+    "nombre": "Ads",
+    "apellido": "ads",
+    "identificacion": "4454578946",
+    "celular": "4569876598",
+    "fechaNacimiento": "1999-10-06",
+    "direccion": "4578965846",
+    "tipoIdentificacion": "CEDULA",
+    "genero": "HOMBRE",
+    "rol": "ADMINISTRADOR"
+  },
+  {
+    "id": 11,
+    "nombre": "JGraso",
+    "apellido": "Momos",
+    "identificacion": "8756483948",
+    "celular": "1234567890",
+    "fechaNacimiento": "1900-07-11",
+    "direccion": "La Grasa",
     "tipoIdentificacion": "CEDULA",
     "genero": "HOMBRE",
     "rol": "ADMINISTRADOR"
