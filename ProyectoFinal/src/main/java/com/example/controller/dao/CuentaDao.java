@@ -113,6 +113,14 @@ public class CuentaDao extends AdapterDao<Cuenta> {
         if (!isThereAllFields())
             throw new Exception("Los datos están incompletos, no se guardarán");
 
+        if (!new PersonaDao().charsLength(this.getCuenta().getCorreoElectronico(), 3, 50)) {
+            throw new Exception("Correo Electrónico no válido, debe tener entre 3 y 50 caracteres");
+        }
+
+        if(!new PersonaDao().charsLength(this.getCuenta().getContrasena(), 8, 50)) {
+            throw new Exception("Contraseña no válida, debe tener al menos 8 caracteres");
+        }
+
         final Integer personaId = this.getCuenta().getPersonaId();
         if (!existsPersonaWith(personaId)) 
             throw new Exception("No existe registro de Persona con Id: " + personaId);

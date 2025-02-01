@@ -67,7 +67,9 @@ jQuery(document).ready(function () {
         correoElectronico: {
           required: true,
           email: true,
-          noInitialSpaces: true
+          noInitialSpaces: true,
+          maxlength: 50,
+          minlength: 3
         },
         contrasena: {
           required: true,
@@ -106,7 +108,9 @@ jQuery(document).ready(function () {
         },
         correoElectronico: {
           required: "Por favor, ingresa un correo Electrónico",
-          email: "Por favor, ingresa un correo electrónico con el formato correcto"
+          email: "Por favor, ingresa un correo electrónico con el formato correcto",
+          minlength: "El correo electrónico debe contener al menos 3 caracteres",
+          maxlength: "El correo electrónico debe contener como máximo 50 caracteres"
         },
         contrasena: {
           required: "Por favor, ingresa la contraseña",
