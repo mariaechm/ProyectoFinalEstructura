@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "nickName": "ArnoldGYM",
+    "nickName": "ArnoldGYMs",
     "imagen": "f3bb9f59_2022.webp",
     "objetivoCliente": "Gestionar el Gimnasio ARNOLD",
     "fechaCreacion": "2025-01-07"
@@ -36,7 +36,14 @@
   },
   {
     "id": 8,
-    "nickName": "Maximiliano de la Cruz",
+    "nickName": "Maximiliano Cruz",
+    "imagen": "user.png",
+    "objetivoCliente": "Objetivo",
+    "fechaCreacion": "2025-01-31"
+  },
+  {
+    "id": 9,
+    "nickName": "Administrador",
     "imagen": "user.png",
     "objetivoCliente": "Objetivo ...",
     "fechaCreacion": "2025-01-31"

@@ -40,5 +40,12 @@
     "contrasena": "YWRtaW5pc3RyYWRvcmVz",
     "personaId": 8,
     "perfilId": 8
+  },
+  {
+    "id": 9,
+    "correoElectronico": "admin.admin@example.com",
+    "contrasena": "YWRtaW5pc3RyYWRvcmVz",
+    "personaId": 9,
+    "perfilId": 9
   }
 ]

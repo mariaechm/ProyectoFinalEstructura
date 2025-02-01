@@ -70,5 +70,17 @@
     "tipoIdentificacion": "CEDULA",
     "genero": "HOMBRE",
     "rol": "ADMINISTRADOR"
+  },
+  {
+    "id": 9,
+    "nombre": "Administrador",
+    "apellido": "Administrando",
+    "identificacion": "4578946254",
+    "celular": "0324567800",
+    "fechaNacimiento": "2005-05-26",
+    "direccion": "Av 00 Calle",
+    "tipoIdentificacion": "CEDULA",
+    "genero": "HOMBRE",
+    "rol": "ADMINISTRADOR"
   }
 ]

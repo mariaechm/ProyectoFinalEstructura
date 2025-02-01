@@ -90,13 +90,15 @@
   {% endif %}
 {% endwith %}
 
+{% set role = 'admin' if admin else 'cliente' %}
+
 <div class="container-fluid pt-4 px-4">
   <div class="bg-secondary rounded h-100 p-4">
     <div class="d-flex align-items-center justify-content-between mb-4">
           <h4 class="mb-0">LISTA DE USUARIOS</h4>
     </div>
     <div class="col-sm-6">
-      <a href="/register/user">
+      <a href="/register/user/{{ role }}">
         <button type="button" class="btn btn-warning m-2"> Registrar Nuevo Usuario</i></button>
       </a>
     </div><br>
@@ -123,10 +125,10 @@
                       <td>{{ persona.correo }}</td>
                       <td>{{ persona.direccion }}</td>
                       <td>
-                        <a href="/view_user/{{ persona.id }}">
+                        <a href="/view_user/{{ persona.id }}/{{ admin }}">
                           <button type="button" class="btn btn-square btn-warning m-2"><i class="fa fa-eye"></i></button>
                         </a>
-                        <a href="/user/delete/{{ persona.id }}">
+                        <a href="/user/delete/{{ persona.id }}/{{ admin }}">
                           <button type="button" class="btn btn-square btn-danger m-2"><i class="fa fa-trash"></i></button>
                         </a>
                       </td>
