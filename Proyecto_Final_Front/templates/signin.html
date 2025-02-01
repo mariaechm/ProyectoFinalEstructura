@@ -10,7 +10,6 @@
     </div>
     <!-- Spinner End -->
 
-
     <!-- Sign In Start -->
     <div class="container-fluid">
         <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
@@ -38,11 +37,11 @@
                     <form method="post" action="/login/send">
                         <input type="text" name="next" hidden value="{{ next }}">
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="correoElectronico">
+                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="correoElectronico" value="{{ correo or '' }}">
                             <label for="floatingInput">Correo electrónico</label>
                         </div>
                         <div class="form-floating mb-4">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="contrasena">
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="contrasena" value="{{ contrasena or '' }}">
                             <label for="floatingPassword">Contraseña</label>
                             <i class="fas fa-eye" id="togglePassword" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
                         </div>
