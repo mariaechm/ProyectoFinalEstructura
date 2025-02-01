@@ -154,5 +154,17 @@
     "fecha": "2025-01-30",
     "hora": "2:19:57",
     "descripcion": "Se ha eliminado la información personal"
+  },
+  {
+    "id": 27,
+    "fecha": "2025-01-31",
+    "hora": "2:22:06",
+    "descripcion": "Se ha registrado la información personal"
+  },
+  {
+    "id": 28,
+    "fecha": "2025-01-31",
+    "hora": "8:22:05",
+    "descripcion": "Se ha registrado la información personal"
   }
 ]

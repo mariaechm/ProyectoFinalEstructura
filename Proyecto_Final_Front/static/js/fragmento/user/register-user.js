@@ -8,17 +8,37 @@ jQuery(document).ready(function () {
       return this.optional(element) || !/^\s/.test(value);
     }, "No se permiten espacios al inicio");
 
+    jQuery.validator.addMethod("soloLetras", function(value, element) {
+        return this.optional(element) || /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(value);
+    }, "El campo solo puede contener letras y espacios.");
+
+    jQuery.validator.addMethod("direccionValida", function(value, element) {
+        return this.optional(element) || /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ\s,.-]+$/.test(value);
+    }, "La dirección solo puede contener letras, números, espacios y algunos caracteres especiales (.,-).");
+
+    jQuery.validator.addMethod("mayorDe15", function(value, element) {
+      if (this.optional(element)) return true; 
+      var fechaLimite = new Date();
+      fechaLimite.setFullYear(fechaLimite.getFullYear() - 15);
+      var fechaNacimiento = new Date(value);
+      return fechaNacimiento <= fechaLimite;
+    }, "No es posible registrar menores de 15 años en el sistema.");
+
     jQuery("#registrar-usuario").validate({
       rules: {
         nombre: {
           required: true,
           minlength: 3,
-          noInitialSpaces: true
+          noInitialSpaces: true,
+          soloLetras: true,
+          maxlength: 50
         },
         apellido: {
           required: true,
           minlength: 3,
-          noInitialSpaces: true
+          noInitialSpaces: true,
+          soloLetras: true,
+          maxlength: 50
         },
         identificacion: {
           required: true,
@@ -35,11 +55,14 @@ jQuery(document).ready(function () {
         direccion: {
           required: true,
           minlength: 3,
-          noInitialSpaces: true
+          noInitialSpaces: true,
+          direccionValida: true,
+          maxlength: 100
         },
         fechaNacimiento: {
           required: true,
-          date: true
+          date: true,
+          mayorDe15: true
         },
         correoElectronico: {
           required: true,
@@ -54,11 +77,13 @@ jQuery(document).ready(function () {
       messages: {
         nombre: {
           required: "Por favor, ingresa el/los nombre/s",
-          minlength: "El nombre debe contener al menos 3 caracteres"
+          minlength: "El nombre debe contener al menos 3 caracteres",
+          maxlength: "El nombre debe contener como máximo 50 caracteres"
         },
         apellido: {
           required: "Por favor, ingresa el/los apellido/s",
-          minlength: "El apellido debe contener al menos 3 caracteres"
+          minlength: "El apellido debe contener al menos 3 caracteres",
+          maxlength: "El apellido debe contener como máximo 50 caracteres"
         },
         identificacion: {
           required: "Por favor, ingresa una identificación válida",
@@ -72,7 +97,8 @@ jQuery(document).ready(function () {
         },
         direccion: {
           required: "Por favor, ingresa una dirección",
-          minlength: "La dirección debe contener al menos 3 caracteres"
+          minlength: "La dirección debe contener al menos 3 caracteres",
+          maxlength: "La dirección debe contener como máximo 100 caracteres"
         },
         fechaNacimiento: {
           required: "Por favor, ingresa una fecha Válida",

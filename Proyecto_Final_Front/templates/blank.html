@@ -35,8 +35,10 @@
         <a href="/" class="nav-item nav-link {% block dash_nav_class %}{% endblock %}"><i
             class="fa fa-tachometer-alt me-2"></i>Inicio</a>
         {% if user.persona.rol == 'ADMINISTRADOR' %}
-        <a href="/users/list" class="nav-item nav-link {% block usr_nav_class %}{% endblock %}"><i
-            class="fa fa-users me-2"></i>Usuarios</a>
+          <a href="/users/admin/list" class="nav-item nav-link {% block admin_nav_class %}{% endblock %}"><i
+            class="fa fa-lock me-2"></i>Administradores</a>
+          <a href="/users/client/list" class="nav-item nav-link {% block client_nav_class %}{% endblock %}"><i
+              class="fa fa-users me-2"></i>Clientes</a>
         {% endif %}
         <div class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle {% block rutinaDropDown %}{% endblock %}"

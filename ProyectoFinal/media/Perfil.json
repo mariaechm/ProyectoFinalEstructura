@@ -2,7 +2,7 @@
   {
     "id": 1,
     "nickName": "ArnoldGYM",
-    "imagen": "GettyImages-143282183.webp",
+    "imagen": "f3bb9f59_2022.webp",
     "objetivoCliente": "Gestionar el Gimnasio ARNOLD",
     "fechaCreacion": "2025-01-07"
   },
@@ -26,5 +26,19 @@
     "imagen": "user.png",
     "objetivoCliente": "Objetivo ...",
     "fechaCreacion": "2025-01-30"
+  },
+  {
+    "id": 7,
+    "nickName": "Kevin",
+    "imagen": "yop.png",
+    "objetivoCliente": "ESTAR bien mamado de todas las formas xd",
+    "fechaCreacion": "2025-01-31"
+  },
+  {
+    "id": 8,
+    "nickName": "Maximiliano de la Cruz",
+    "imagen": "user.png",
+    "objetivoCliente": "Objetivo ...",
+    "fechaCreacion": "2025-01-31"
   }
 ]

@@ -1,7 +1,14 @@
 {% extends 'blank.html' %}
 {% block title %}Usuarios{% endblock %}
 
-{% block usr_nav_class %}active{% endblock %}
+{% set list_admin = 'active' if admin else '' %}
+{% set list_client = 'active' if not admin else '' %}
+
+
+{% block admin_nav_class %} {{ list_admin }} {% endblock %}
+{% block client_nav_class %} {{ list_client }} {% endblock %}
+
+
 
 {% block custom_styles %}
   <link rel="stylesheet" href="{{ url_for('static',filename='css/datatables/dataTables.bootstrap4.min.css' ) }}" />

@@ -15,6 +15,7 @@ public class ResponseFactory {
         HashMap<String, Object> responseHashMap = new HashMap<>();
         ObjectMapper om = new ObjectMapper();
         responseHashMap.put("status", "succes");
+        responseHashMap.put("info", "Operación realizada con éxito");
         responseHashMap.put("data", object);
 
         final String response = om.writeValueAsString(responseHashMap);
@@ -74,7 +75,7 @@ public class ResponseFactory {
     public static Response buildResponseWithException(Exception e) {
         HashMap<String,Object> responseHashMap = new HashMap<>();
         Gson gson = new Gson();
-        responseHashMap.put("status", "Error");
+        responseHashMap.put("status", "error");
         responseHashMap.put("info",e.getMessage());
         
         // TODO: add exception handlers (Para enviar respuestas en casos específicos)

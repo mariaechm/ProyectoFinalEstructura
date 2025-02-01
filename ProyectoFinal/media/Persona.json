@@ -46,5 +46,29 @@
     "tipoIdentificacion": "RUC",
     "genero": "MUJER",
     "rol": "CLIENTE"
+  },
+  {
+    "id": 7,
+    "nombre": "Kevin",
+    "apellido": "Nole",
+    "identificacion": "0000000000",
+    "celular": "0000000000",
+    "fechaNacimiento": "2006-05-21",
+    "direccion": "Plateado",
+    "tipoIdentificacion": "CEDULA",
+    "genero": "OTRO",
+    "rol": "CLIENTE"
+  },
+  {
+    "id": 8,
+    "nombre": "Maximiliano de la Cruz",
+    "apellido": "Fernandez Córdoba",
+    "identificacion": "0000008765",
+    "celular": "0987654678",
+    "fechaNacimiento": "2004-07-10",
+    "direccion": "Juan Diego Veintimilla",
+    "tipoIdentificacion": "CEDULA",
+    "genero": "HOMBRE",
+    "rol": "ADMINISTRADOR"
   }
 ]

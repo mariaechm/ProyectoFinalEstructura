@@ -26,5 +26,19 @@
     "contrasena": "YWRtaW5pc3RyYWRvcmVz",
     "personaId": 5,
     "perfilId": 5
+  },
+  {
+    "id": 7,
+    "correoElectronico": "kevin.nole@unl.edu.ec",
+    "contrasena": "MTIzNDU2Nzg5MA\u003d\u003d",
+    "personaId": 7,
+    "perfilId": 7
+  },
+  {
+    "id": 8,
+    "correoElectronico": "maximiliano.ad@example.com",
+    "contrasena": "YWRtaW5pc3RyYWRvcmVz",
+    "personaId": 8,
+    "perfilId": 8
   }
 ]

@@ -1,5 +1,8 @@
 package com.example.controller.dao;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
+
 import com.example.controller.dao.implement.AdapterDao;
 import com.example.controller.dao.implement.JsonFileManager;
 import com.example.controller.tda.list.LinkedList;
@@ -71,39 +74,44 @@ public class PersonaDao extends AdapterDao<Persona> {
         return true;
     }
 
+    public boolean charsLength(String str, Integer min, Integer max) {
+        return str.length() >= min && str.length() <= max;
+    }
+
     public Boolean isValidDate(String date) {
         final String[] components = date.split("-");
         
         if(components.length != 3) 
             return false;
-
+    
         final String year = components[0];
         final String month = components[1];
         final String day = components[2];
-
+    
         Integer yyyy = 0;
         Integer mm = 0; 
         Integer dd = 0; 
-
+    
         try {
             yyyy = Integer.parseInt(year);
             mm = Integer.parseInt(month); 
-            dd = Integer.parseInt(day); 
-        } catch (Exception e) {
-            System.out.println("Al Validar Fecha: " + e.getMessage());
+            dd = Integer.parseInt(day);
+        } catch (NumberFormatException e) {
             return false;
         }
-
-        boolean leapYear =  ((yyyy%4 == 0 && yyyy%100 != 0) || (yyyy%100 ==0 && yyyy%400 == 0)); 
-        
-        final Integer[] monthDays = {31, (leapYear)?29:28,  31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-
-        if(yyyy < 1900) return false;
-        if(mm <= 0 || mm > 12) return false;
-        if(dd <= 0) return false;
-
-        if(dd > monthDays[mm-1]) return false;
-
+    
+        try {
+            LocalDate parsedDate = LocalDate.of(yyyy, mm, dd);
+            LocalDate currentDate = LocalDate.now();
+            LocalDate date15YearsAgo = currentDate.minusYears(15);
+    
+            if (parsedDate.isAfter(currentDate) || parsedDate.isAfter(date15YearsAgo)) {
+                return false;
+            }
+        } catch (DateTimeParseException | IllegalArgumentException e) {
+            return false;
+        }
+    
         return true;
     }
 
@@ -134,6 +142,15 @@ public class PersonaDao extends AdapterDao<Persona> {
         return validNumeric(phone);
     }
 
+    public Boolean isValidString(String str) {
+        return str.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+");
+    }
+
+    public Boolean isValidAddress(String address) {
+        return address.matches("[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ,.]+");
+    }
+
+
     public void validateData(boolean forUpdate) throws Exception {
         LinkedList<Persona> list = listAll();
         
@@ -142,12 +159,24 @@ public class PersonaDao extends AdapterDao<Persona> {
         
         final String identificacion = this.getPersona().getIdentificacion();
         final TipoIdentificacion tipo = this.getPersona().getTipoIdentificacion();
-        
+
+        if (!charsLength(this.getPersona().getNombre(), 3, 50) || !isValidString(this.getPersona().getNombre())) {
+            throw new Exception("Nombre no válido");
+        } 
+
+        if(!charsLength(this.getPersona().getApellido(), 3, 50) || !isValidString(this.getPersona().getApellido())) {
+            throw new Exception("Apellido no válido");
+        }
+
+        if(!charsLength(this.getPersona().getDireccion(), 3, 100) || !isValidAddress(this.getPersona().getDireccion())) {
+            throw new Exception("Dirección no válida");
+        }
 
         if (!forUpdate) {
             if (list.busquedaBinaria("identificacion", identificacion) != null)
                 throw new Exception("Ya existe una persona con identificación: " + identificacion);
         }
+
         if (!isValidIdent(identificacion,tipo)) 
             throw new Exception("Identificación no válida");
 
@@ -156,8 +185,18 @@ public class PersonaDao extends AdapterDao<Persona> {
             throw new Exception("Fecha no válida");
         
         final String phone = this.getPersona().getCelular();
-        if (!isValidPhone(phone))
+        boolean phoneUnique;
+        
+        if (forUpdate) {
+            phoneUnique = true;
+        } else {
+            phoneUnique = list.buscarPorAtributo("celular", phone).isEmpty();
+        }
+        
+        listAll().buscarPorAtributo("celular", phone).isEmpty();
+        if (!isValidPhone(phone) || !phoneUnique) {
             throw new Exception("Número de celular no válido");
+        }            
     }  
     
     public void validateData() throws Exception {

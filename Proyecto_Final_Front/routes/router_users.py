@@ -1,21 +1,41 @@
 from .router import *
 from .utils.decorator import *
 import os
-from flask import get_flashed_messages
 from werkzeug.utils import secure_filename
+
+UPLOAD_FOLDER = 'static/img/user_profile/'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'webp'}
 
 P_URL = f'{BASE_URL}/persona' 
 
-@router.route('/users/list')
+@router.route('/users/client/list')
 @login_required(roles=['ADMINISTRADOR'])
-def persona_list(headers,usr):
+def users_client_list(headers,usr):
     personas = requests.get(f'{P_URL}/list',headers=headers).json()['data']
     cuentas = requests.get(f'{BASE_URL}/cuenta/list',headers=headers).json()['data']
+    tabla = []
     for i in range(0,len(personas)):
-        personas[i]['numero'] = i + 1
-        personas[i]['correo'] = cuentas[i]['correoElectronico']
+        if personas[i]['rol'] == 'CLIENTE':
+            personas[i]['numero'] = i + 1
+            personas[i]['correo'] = cuentas[i]['correoElectronico']
+            tabla.append(personas[i])
+    personas = tabla
+    return render_template('fragmento/users_view/list.html', personas=personas, user=usr, admin=False)
 
-    return render_template('fragmento/users_view/list.html', personas=personas, user=usr)
+
+@router.route('/users/admin/list')
+@login_required(roles=['ADMINISTRADOR'])
+def admin_client_list(headers,usr):
+    personas = requests.get(f'{P_URL}/list',headers=headers).json()['data']
+    cuentas = requests.get(f'{BASE_URL}/cuenta/list',headers=headers).json()['data']
+    tabla = []
+    for i in range(0,len(personas)):
+        if personas[i]['rol'] == 'ADMINISTRADOR':
+            personas[i]['numero'] = i + 1
+            personas[i]['correo'] = cuentas[i]['correoElectronico']
+            tabla.append(personas[i])
+    personas = tabla
+    return render_template('fragmento/users_view/list.html', personas=personas, user=usr, admin=True)
 
 @router.route('/register/user')
 @login_required(roles=['ADMINISTRADOR'])
@@ -32,26 +52,19 @@ def register_user_send(headers,usr):
     flash(f'{msg[0]}: {msg[1]}', category=msg[0])
     return redirect('/users/list')
 
-@router.route('/user/update/<int:id>')
-@login_required(roles=['ADMINISTRADOR'])
-def persona_update(id,headers,usr):
-    persona = requests.get(f'{P_URL}/get/{id}',headers=headers).json()['data']
-    e = requests.get(f'{P_URL}/enumerations',headers=headers).json()['data']
-    return render_template('fragmento/users_view/update.html',persona=persona,e=e, user=usr)
-
 @router.route('/view_user/<int:id>')
 @login_required(roles=['ADMINISTRADOR'])
 def persona_view(headers,usr,id):
-    response = requests.get(f'{P_URL}/get/{id}',headers=headers)
-    persona = response.json()['data']
+    persona = requests.get(f'{P_URL}/get/{id}',headers=headers).json()['data']
     cuenta = requests.get(f'{BASE_URL}/cuenta/search/personaId/{persona['id']}',headers=headers).json()['data'][0]
     perfil = requests.get(f'{BASE_URL}/perfil/get/{cuenta["perfilId"]}',headers=headers).json()['data']
     estadistica = requests.get(f'{BASE_URL}/estadistica/get/{cuenta['perfilId']}',headers=headers).json()['data']
-    enums = requests.get(f'{P_URL}/enumerations',headers=headers).json()['data']
-    return render_template('fragmento/users_view/user/view_user.html',user=usr,persona=persona,cuenta=cuenta,perfil=perfil,estadistica=estadistica, enums=enums, my_profile=False)
 
-UPLOAD_FOLDER = 'static/img/user_profile/'
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'webp'}
+    enums = requests.get(f'{P_URL}/enumerations',headers=headers).json()['data']
+
+    full_user_info = {'persona': persona, 'cuenta': cuenta, 'perfil': perfil, 'estadistica': estadistica }
+
+    return render_template('fragmento/users_view/user/view_user.html', enums=enums, user=usr, full_user_info=full_user_info, my_profile=False)
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -66,8 +79,6 @@ def perfil_update_send(headers,usr):
         if file.name == '':
             flash('No se ha seleccionado un archivo')
             return redirect('/users/list')
-    
-        files = {'image' : (file.filename, file.stream, file.mimetype)}
 
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
@@ -103,13 +114,16 @@ def update_persona_send(headers,usr):
 @router.route('/my_profile')
 @login_required()
 def my_profile(headers,usr):
-    response = requests.get(f'{P_URL}/get/{usr["persona"]["id"]}',headers=headers)
-    persona = response.json()['data']
+    persona = requests.get(f'{P_URL}/get/{usr["persona"]["id"]}',headers=headers).json()['data']
     cuenta = requests.get(f'{BASE_URL}/cuenta/search/personaId/{persona["id"]}',headers=headers).json()['data'][0]
     perfil = requests.get(f'{BASE_URL}/perfil/get/{cuenta["perfilId"]}',headers=headers).json()['data']
     estadistica = requests.get(f'{BASE_URL}/estadistica/get/{cuenta['perfilId']}',headers=headers).json()['data']
+
     enums = requests.get(f'{P_URL}/enumerations',headers=headers).json()['data']
-    return render_template('fragmento/users_view/user/view_user.html',user=usr,persona=persona,cuenta=cuenta,perfil=perfil,estadistica=estadistica, enums=enums, my_profile=True)
+
+    full_user_info = {'persona': persona, 'cuenta': cuenta, 'perfil': perfil, 'estadistica': estadistica }
+
+    return render_template('fragmento/users_view/user/view_user.html',user=usr, full_user_info=full_user_info, enums=enums ,my_profile=True)
 
 @router.route('/user/delete/send',methods=['POST'])
 @login_required(roles=['ADMINISTRADOR'])
