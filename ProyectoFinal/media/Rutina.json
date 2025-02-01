@@ -3,10 +3,39 @@
     "id": 8,
     "nombreRutina": "Rutina de brazo de Cbum",
     "descripcion": "Rutina de brazo",
-    "nroEjercicios": 4,
+    "nroEjercicios": 1,
     "idEjercicio": [
-      5,
-      6,
+      5
+    ],
+    "objetivoRutina": "HIPERTROFIA"
+  },
+  {
+    "id": 9,
+    "nombreRutina": "Rutina de brazo del Ing Francisco",
+    "descripcion": "xd",
+    "nroEjercicios": 2,
+    "idEjercicio": [
+      8,
+      34
+    ],
+    "objetivoRutina": "HIPERTROFIA"
+  },
+  {
+    "id": 10,
+    "nombreRutina": "Rutina de brazo de Ronnie Coleman",
+    "descripcion": "si",
+    "nroEjercicios": 1,
+    "idEjercicio": [
+      34
+    ],
+    "objetivoRutina": "HIPERTROFIA"
+  },
+  {
+    "id": 11,
+    "nombreRutina": "              ",
+    "descripcion": "dea",
+    "nroEjercicios": 2,
+    "idEjercicio": [
       8,
       34
     ],

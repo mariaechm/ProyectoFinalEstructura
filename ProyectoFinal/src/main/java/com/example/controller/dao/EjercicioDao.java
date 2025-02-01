@@ -39,9 +39,7 @@ public class EjercicioDao extends AdapterDao<Ejercicio> {
     }
 
     public Ejercicio saveEjercicio() throws Exception {
-        if(!camposLlenos()) {
-            throw new Exception("Los campos están vacíos, por favor completarlos.");
-        }
+        validations();
         this.getEjercicio().setId(JsonFileManager.readAndUpdateCurrentIdOf(className));    
         persist(ejercicio);
         return this.ejercicio;
@@ -49,9 +47,7 @@ public class EjercicioDao extends AdapterDao<Ejercicio> {
 
     public Ejercicio updateEjercicio() throws Exception {
         Integer id = this.getEjercicio().getId();
-        if(!camposLlenos()) {
-            throw new Exception("Los campos están vacíos, por favor completarlos.");
-        }
+        validations();
         merge(this.getEjercicio(), id);
         return this.ejercicio;
     }
@@ -80,18 +76,92 @@ public class EjercicioDao extends AdapterDao<Ejercicio> {
     }
 
     // VALIDACIONES
-    public Boolean camposLlenos() {
-        if(this.getEjercicio().getNombreEjercicio() == null) return false;
-        if(this.getEjercicio().getDescripcion() == null) return false;
-        if(this.getEjercicio().getTiempoDescanso() == 0) return false;
-        if(this.getEjercicio().getNroSeries() == 0) return false;
-        if(this.getEjercicio().getNroRepSerie() == 0) return false;
-        if(this.getEjercicio().getTipoEjercicio() == null) return false;
-        if(this.getEjercicio().getGrupoMuscularObjetivo() == null) return false;
+    public Boolean validations() throws Exception {
+        if(!camposLlenos()) return false;
+        if(!checkNumbers()) return false;
+        if(!checkName()) return false;
+        if(!checkSpecialCharacters()) return false;
+        if(!checkLength()) return false;
+        if(!checkSameName()) return false;
         return true;
     }
 
+    public Boolean camposLlenos() throws Exception {
+        if(this.getEjercicio().getNombreEjercicio() == null) {
+            throw new Exception("El nombre del ejercicio no puede estar vacío");
+        } 
+        if(this.getEjercicio().getDescripcion() == null) {
+            throw new Exception("La descripción del ejercicio no puede estar vacía");
+        } 
+        if(this.getEjercicio().getTiempoDescanso() == 0.0) {
+            throw new Exception("El tiempo de descanso debe ser superior a 0");
+        } 
+        if(this.getEjercicio().getNroSeries() == 0) {
+            throw new Exception("El número de series debe ser superior a 0");
+        }
+        if(this.getEjercicio().getNroRepSerie() == 0) {
+            throw new Exception("El número de repeticiones por serie debe ser superior a 0");
+        }
+        if(this.getEjercicio().getTipoEjercicio() == null) {
+            throw new Exception("Seleccione un tipo de ejercicio");
+        } 
+        if(this.getEjercicio().getGrupoMuscularObjetivo() == null) {
+            throw new Exception("Seleccione un grupo muscular para el ejercicio");
+        }
+        return true;
+    }
+
+    // VALIDAR NÚMEROS
+    public Boolean checkNumbers() throws Exception {
+        if (this.getEjercicio().getNroRepSerie() <= 0 || this.getEjercicio().getNroRepSerie() > 30 ||
+            this.getEjercicio().getTiempoDescanso() < 0 || this.getEjercicio().getTiempoDescanso() > 6.00 ||
+            this.getEjercicio().getNroSeries() <= 0 || this.getEjercicio().getNroSeries() > 12) {
+            throw new Exception("Número inválido");
+        }
+        return true; 
+    }
+
+    // VALIDAR QUE LOS NOMBRES DE LOS EJERCICIOS NO EMPIECEN CON ESPACIOS EN BLANCO
+    public Boolean checkName() throws Exception {
+        if(this.getEjercicio().getNombreEjercicio().startsWith(" ")) {
+            throw new Exception("El nombre del ejercicio no puede empezar con espacios en blanco");
+        }
+        return true;
+    }
+
+    // VALIDAR CARACTERES ESPECIALES
+    public Boolean checkSpecialCharacters() throws Exception {
+        if(this.getEjercicio().getNombreEjercicio().matches(".*[!@#$%^&*()_+=\\[\\]{};':\"\\\\|,.<>\\/?].*")) {
+            throw new Exception("El nombre del ejercicio no puede contener caracteres especiales");
+        }
+        if(this.getEjercicio().getDescripcion().matches("*[!@#$^&*_+=\\[\\]{};':\"\\\\|<>\\/?]*")) {
+            throw new Exception("La descripción del ejercicio no puede contener caracteres especiales");
+        }
+        return true;
+    }
+
+    //VALIDAR CANTIDAD DE CARACTERES
+    public Boolean checkLength() throws Exception {
+        if(this.getEjercicio().getNombreEjercicio().length() > 90) {
+            throw new Exception("El nombre del ejercicio no puede superar los 90 caracteres");
+        }
+        if(this.getEjercicio().getDescripcion().length() > 600) {
+            throw new Exception("La descripción del ejercicio no puede superar los 600 caracteres");
+        }
+        return true;
+    }
     
+    // VALIDAR QUE NO SE REPITAN LOS NOMBRES DE LOS EJERCICIOS
+    public Boolean checkSameName() throws Exception {
+        LinkedList<Ejercicio> list = listAll();
+        for(Ejercicio ejercicio : list.toList(null).toArray()) {
+            if(ejercicio.getNombreEjercicio().equalsIgnoreCase(this.getEjercicio().getNombreEjercicio())) {
+                throw new Exception("El nombre del ejercicio ya existe");
+            }
+        }
+        return true;
+    }
+
     // ORDENAR
     public Ejercicio[] sort(String attribute, Integer orden, Integer method) throws Exception {
         LinkedList<Ejercicio> list = listAll();

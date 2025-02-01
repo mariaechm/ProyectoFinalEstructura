@@ -40,7 +40,6 @@
       <select class="form-select" style="width: 250px;" id="atributo">
         <option value="nombreRutina">Nombre de la Rutina</option>
         <option value="nroEjercicios">Número de Ejercicios</option>
-        <option value="objetivoRutina">Objetivo</option>
       </select>
             
       <input class="form-control" style="width: 150px;" id="texto" type="text">
@@ -69,10 +68,7 @@
               <span onclick="sortFunct('nroEjercicios','0')">🡫</span>
             </th>
             <th scope="col"><center>Ejercicios</th>
-            <th scope="col"><center>Objetivo
-              <span onclick="sortFunct('objetivoRutina','1')">🡡</span> 
-              <span onclick="sortFunct('objetivoRutina','0')">🡫</span>
-            </th>
+            <th scope="col"><center>Objetivo</th>
             {% if user.persona.rol == 'ADMINISTRADOR' %}
               <th scope="col"><center>Acciones</th>
             {% endif %}
