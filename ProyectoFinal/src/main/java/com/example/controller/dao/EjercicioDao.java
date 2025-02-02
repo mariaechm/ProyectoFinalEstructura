@@ -111,16 +111,14 @@ public class EjercicioDao extends AdapterDao<Ejercicio> {
         if(this.getEjercicio().getTipoEjercicio() == null) {
             throw new Exception("Seleccione un tipo de ejercicio");
         } 
-        if(this.getEjercicio().getGrupoMuscularObjetivo() == null) {
-            throw new Exception("Seleccione un grupo muscular para el ejercicio");
-        }
+        
         return true;
     }
 
     // VALIDAR NÚMEROS
     public Boolean checkNumbers() throws Exception {
         if (this.getEjercicio().getNroRepSerie() <= 0 || this.getEjercicio().getNroRepSerie() > 30 ||
-            this.getEjercicio().getTiempoDescanso() < 0 || this.getEjercicio().getTiempoDescanso() > 6.00 ||
+            this.getEjercicio().getTiempoDescanso() <= 0 || this.getEjercicio().getTiempoDescanso() > 6.00 ||
             this.getEjercicio().getNroSeries() <= 0 || this.getEjercicio().getNroSeries() > 12) {
             throw new Exception("Número inválido");
         }

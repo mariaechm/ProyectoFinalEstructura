@@ -10,5 +10,21 @@
       4
     ],
     "objetivoRutina": "HIPERTROFIA"
+  },
+  {
+    "id": 2,
+    "nombreRutina": "hola",
+    "descripcion": "xd",
+    "nroEjercicios": 7,
+    "idEjercicio": [
+      1,
+      2,
+      4,
+      5,
+      22,
+      23,
+      24
+    ],
+    "objetivoRutina": "RESISTENCIA"
   }
 ]
