@@ -46,6 +46,7 @@
 
         <button class="nav-link" id="nav-editar-perfil-tab" data-bs-toggle="tab" data-bs-target="#nav-editar-perfil" type="button"
           role="tab" aria-controls="nav-editar-perfil" aria-selected="false">Editar perfil</button>
+          
 
         {% if user.persona.rol == 'ADMINISTRADOR' %}
         <button class="nav-link" id="nav-editar-datos-personales-tab" data-bs-toggle="tab" data-bs-target="#nav-editar-datos-personales" type="button"
@@ -94,7 +95,8 @@
         
         <div class="d-flex align-items-center justify-content-between mb-4">
           <h6>Estadísticas</h6>
-          <a href="/admin/estadistica/edit/{{ estadistica.id }}">Editar</a>
+          <a href="/estadistica/edit/{{ estadistica.id }}">Editar</a>
+          <a href="/estadistica/pdf/{{ estadistica.id }}" class="btn btn-primary">Descargar PDF</a>
         </div>
 
         <dl class="row mb-0">
@@ -109,6 +111,9 @@
 
           <dt class="col-sm-4 text-truncate">Medidas de la cintura: </dt>
           <dd class="col-sm-8">{{ estadistica.medidaCintura }} cm</dd>
+          
+          <dt class = "col-sm-4">Medidas del Pecho:</dt>
+          <dd class="col-sm-8">{{ estadistica.medidaPecho }} cm</dd>
 
           <dt class="col-sm-4">Peso:</dt>
           <dd class="col-sm-8">{{ estadistica.peso }} kg</dd>

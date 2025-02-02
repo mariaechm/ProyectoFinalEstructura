@@ -22,7 +22,7 @@ def suscripcion_save(headers):
     return render_template('fragmento/suscripcion/save.html',e=e)
 
 
-@router.route('suscripcion/save/send',methods=['POST'])
+@router.route('/suscripcion/save/send',methods=['POST'])
 def suscripcion_save_send():
     headers = {'Content-Type': 'application/json'}
     form = request.form
@@ -81,9 +81,8 @@ def update_suscripcion_send():
 @login_required (roles=['ADMINISTRADOR'])
 def suscripcion_delete(id):
     return render_template('fragmento/suscripcion/delete.html',id=id)
-
-
 @router.route('/suscripcion/delete', methods=['POST'])
+@router.route('/admin/suscripcion/delete', methods=['POST'])
 def delete_suscripcion():
     form = request.form.to_dict()
     r = requests.delete("http://localhost:8080/api/suscripcion/delete/"+form['idS'])

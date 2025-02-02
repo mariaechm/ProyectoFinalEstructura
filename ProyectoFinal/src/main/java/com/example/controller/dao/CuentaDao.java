@@ -218,7 +218,7 @@ public class CuentaDao extends AdapterDao<Cuenta> {
             this.cuentaFromJson(json);
             pd.personaFromJson(json);
             pfd.setPerfil(new Perfil(0, pd.getPersona().getNombre(), "user.png", "Objetivo ...", LocalDateTime.now().toString().substring(0,10)));
-            ed.setEstadistica(new Estadistica(0,0f,0f,0f,0f,0f,0f));
+            ed.setEstadistica(new Estadistica(0, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0));
 
             //TODO: ESTOS METODOS
             //pfd.perfilWithGenericValues(); 

@@ -1,9 +1,11 @@
-from .router import *
+from .router import router
+from flask import render_template, request, flash, redirect
 from .utils.decorator import *
 import os
 from werkzeug.utils import secure_filename
 
-P_URL = f'{BASE_URL}/persona' 
+BASE_URL = 'http://localhost:8080/api' 
+P_URL =  f'{BASE_URL}/persona'
 
 @router.route('/users/list')
 @login_required(roles=['ADMINISTRADOR'])
@@ -44,7 +46,7 @@ def persona_delete(id):
 
 @router.route('/persona/delete/send',methods=['POST'])
 def persona_delete_send():
-    response = requests.delete(f'{P_URL}/delete/{request.form.to_dict()['id']}')
+    response = requests.delete(f'{P_URL}/delete/{request.form.to_dict()["id"]}')
     msg = [response.json()['status'],response.json()['info']]
     flash(f'{msg[0]}: {msg[1]}')
     return redirect('/persona/list')
@@ -54,9 +56,11 @@ def persona_delete_send():
 def persona_view(headers,usr,id):
     response = requests.get(f'{P_URL}/get/{id}',headers=headers)
     persona = response.json()['data']
-    cuenta = requests.get(f'{BASE_URL}/cuenta/search/personaId/{persona['id']}',headers=headers).json()['data'][0]
+    cuenta = requests.get(f'{BASE_URL}/cuenta/search/personaId/{persona["id"]}',headers=headers).json()['data'][0]
     perfil = requests.get(f'{BASE_URL}/perfil/get/{cuenta["perfilId"]}',headers=headers).json()['data']
-    estadistica = requests.get(f'{BASE_URL}/estadistica/get/{cuenta['perfilId']}',headers=headers).json()['data']
+    estadistica = requests.get(f'{BASE_URL}/estadistica/get/{cuenta["perfilId"]}',headers=headers).json()['data']
+    perfil['imagen'] = f'{BASE_URL}/images/{perfil["imagen"]}'
+    estadistica = requests.get(f'{BASE_URL}/estadistica/get/{cuenta["perfilId"]}',headers=headers).json()['data']
     enums = requests.get(f'{P_URL}/enumerations',headers=headers).json()['data']
     return render_template('fragmento/users_view/user/view_user.html',user=usr,persona=persona,cuenta=cuenta,perfil=perfil,estadistica=estadistica, enums=enums, my_profile=False)
 
@@ -118,6 +122,11 @@ def my_profile(headers,usr):
     persona = response.json()['data']
     cuenta = requests.get(f'{BASE_URL}/cuenta/search/personaId/{persona["id"]}',headers=headers).json()['data'][0]
     perfil = requests.get(f'{BASE_URL}/perfil/get/{cuenta["perfilId"]}',headers=headers).json()['data']
-    estadistica = requests.get(f'{BASE_URL}/estadistica/get/{cuenta['perfilId']}',headers=headers).json()['data']
+
+    estadistica = requests.get(f'{BASE_URL}/estadistica/get/{cuenta["perfilId"]}',headers=headers).json()['data']
+
+    perfil['imagen'] = f'{BASE_URL}/images/{perfil["imagen"]}'
+    estadistica = requests.get(f'{BASE_URL}/estadistica/get/{cuenta["perfilId"]}',headers=headers).json()['data']
+
     enums = requests.get(f'{P_URL}/enumerations',headers=headers).json()['data']
     return render_template('fragmento/users_view/user/view_user.html',user=usr,persona=persona,cuenta=cuenta,perfil=perfil,estadistica=estadistica, enums=enums, my_profile=True)

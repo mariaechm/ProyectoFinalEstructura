@@ -1,5 +1,7 @@
 from .router import *
 from .utils.decorator import *
+from flask import request
+
 router_rutina = Blueprint('router_rutina',__name__)
 
 @router_rutina.route('/rutinas/list') 

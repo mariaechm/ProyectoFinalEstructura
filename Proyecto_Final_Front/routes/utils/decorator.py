@@ -7,7 +7,7 @@ def isTokenValid(in_login=None):
     if not 'token' in session:
         return False
     
-    headers = {'Authorization' : f'Bearer {session['token']}'}
+    headers = {'Authorization' : f'Bearer {session["token"]}'}
     response = requests.get(f'{SW_URL}/auth/usr/info', headers=headers)
 
     unauthorized = response.status_code == 401
@@ -29,7 +29,7 @@ def login_required(roles=None):
         def getHeaders(*args,**kwargs):
             if not isTokenValid():
                 return redirect(url_for('router.login',next=request.url))
-            headers = {'Authorization' : f'Bearer {session['token']}'}
+            headers = {'Authorization' : f'Bearer {session["token"]}'}
             usr = requests.get(f'{SW_URL}/auth/usr/info', headers=headers).json()['data']
             c_role = usr['persona']['rol']
             kwargs['headers'] = headers

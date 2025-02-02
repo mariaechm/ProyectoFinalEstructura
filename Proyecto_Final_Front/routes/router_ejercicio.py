@@ -7,7 +7,7 @@ router_ejercicio = Blueprint('router_ejercicio',__name__)
 @login_required()
 def list_ejercicio(headers,usr):
     r =requests.get("http://localhost:8080/api/ejercicios/all",headers=headers)
-    print(r.json())
+    print(r)
     ejercicios = r.json()["data"]
     i = 1
     for ejercicio in ejercicios:
