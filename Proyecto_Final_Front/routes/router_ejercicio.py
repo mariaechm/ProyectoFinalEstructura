@@ -14,7 +14,6 @@ def list_ejercicio(headers,usr):
     #TO DO: LÓGICA PARA LA VISTA DE USUARIO
     return render_template('fragmento/ejercicios/lista.html',user=usr, ejercicios = ejercicios)
 
-
 @router_ejercicio.route('/admin/ejercicios/register')
 def view_register_ejercicio():
     r = requests.get("http://localhost:8080/api/ejercicios/typeEjercicio")

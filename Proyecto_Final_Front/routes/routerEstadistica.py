@@ -22,7 +22,7 @@ router_estadistica = Blueprint('router_estadistica',__name__)
 
 @router_estadistica.route('/estadistica')
 def list_estadistica():
-    r = requests.get('http://localhost:8081/api/estadistica/list')
+    r = requests.get('http://localhost:8080/api/estadistica/list')
     print(r.json())
     estadisticas = r.json()["data"]
     i = 1
@@ -37,7 +37,7 @@ def crear_estadistica():
     headers = {'Content-Type': 'application/json'}
     form = request.form
     data1 = {"medidaEspalda": form["medidaEspalda"], "medidaPierna": form["medidaPierna"], "medidaBrazo": form["medidaBrazo"], "medidaCintura":form["medidaCintura"], "peso": form["peso"], "altura": form["altura"]}
-    r = requests.post('http://localhost:8081/api/estadistica/save', json=data1)
+    r = requests.post('http://localhost:8080/api/estadistica/save', json=data1)
     print("aaa",data1)
     if r.status_code == 200:
         flash('Estadistica creada correctamente', 'success')
