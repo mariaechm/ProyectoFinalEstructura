@@ -1,23 +1,23 @@
 {% extends 'blank.html' %}
-{% block title %}User: {% endblock %}
+{% block title %}User: {{ perfil.nickName }}{% endblock %}
+
+{% block custom_styles_js %}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+{% endblock %}
 
 {% block usr_nav_class %}active{% endblock %}
 
 {% block content %}
 <div class="container-fluid pt-4 px-4">
 
-  <!-- <div class="row g-4">
-
-    <div class="col-sm-12 col-xl-6">
-      <div class="bg-secondary rounded h-100 p-4">
-
-        
-
+  {% with messages = get_flashed_messages(with_categories=True)  %}
+    {% for message in messages %}
+      <div class="alert alert-{{ message[0] }} alert-dismissible fade show" role="alert">
+        {{ message[1] }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
-
-    </div> -->
-
-
+    {% endfor %}
+  {% endwith %}
 
 
   <div class="bg-secondary rounded h-100 p-4">
@@ -25,7 +25,7 @@
     <div class="testimonial-item text-center">
 
       <img class="img-fluid rounded-circle mx-auto mb-4"
-        src="{{ perfil.imagen }}"
+        src="{{ url_for('static',filename='img/user_profile/' + perfil.imagen ) }}"
         style="width: 100px; height: 100px;">
 
       <h5 class="mb-1">{{ perfil.nickName }}</h5>
@@ -46,6 +46,7 @@
 
         <button class="nav-link" id="nav-editar-perfil-tab" data-bs-toggle="tab" data-bs-target="#nav-editar-perfil" type="button"
           role="tab" aria-controls="nav-editar-perfil" aria-selected="false">Editar perfil</button>
+          
 
         {% if user.persona.rol == 'ADMINISTRADOR' %}
         <button class="nav-link" id="nav-editar-datos-personales-tab" data-bs-toggle="tab" data-bs-target="#nav-editar-datos-personales" type="button"
@@ -94,7 +95,8 @@
         
         <div class="d-flex align-items-center justify-content-between mb-4">
           <h6>Estadísticas</h6>
-          <a href="/admin/estadistica/edit/{{ estadistica.id }}">Editar</a>
+          <a href="/estadistica/edit/{{ estadistica.id }}">Editar</a>
+          <a href="/estadistica/pdf/{{ estadistica.id }}" class="btn btn-primary">Descargar PDF</a>
         </div>
 
         <dl class="row mb-0">
@@ -109,24 +111,27 @@
 
           <dt class="col-sm-4 text-truncate">Medidas de la cintura: </dt>
           <dd class="col-sm-8">{{ estadistica.medidaCintura }} cm</dd>
+          
+          <dt class = "col-sm-4">Medidas del Pecho:</dt>
+          <dd class="col-sm-8">{{ estadistica.medidaPecho }} cm</dd>
 
           <dt class="col-sm-4">Peso:</dt>
           <dd class="col-sm-8">{{ estadistica.peso }} kg</dd>
 
           <dt class="col-sm-4">Estatura:</dt>
           <dd class="col-sm-8">{{ estadistica.altura }} m</dd>
-
-          <dt class="col-sm-4">Índice de Masa corporal:</dt>
-          <dd class="col-sm-8">{{ estadistica.imc }}</dd>          
            
         </dl>
       </div>
 
       <div class="tab-pane fade" id="nav-editar-perfil" role="tabpanel" aria-labelledby="nav-editar-perfil-tab">
         <h6>Editar información del Perfil</h6>
-        <form action="/user/update/send" method="post" enctype="multipart/form-data">
+        <form action="/user/update/send" method="post" enctype="multipart/form-data" id="perfil-update-form">
 
-          <input hidden type="number" name="id" id="id" value="{{ perfil.id }}">
+          <input hidden type="number" name="id" id="id-perfil" value="{{ perfil.id }}">
+          <input hidden type="text" name="current-image" id="current-image" value="{{ perfil.imagen }}">
+          <input type="checkbox" name="my-profile" id="my-profile" {% if my_profile == True %} checked {% endif %} hidden>  
+          
 
           <div class="mb-3">
             <label for="image" class="form-label">Avatar:</label>
@@ -134,17 +139,17 @@
           </div>
 
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" placeholder="OsoMamado" name="nickName" value="{{ perfil.nickName }}">
-            <label for="floatingInput">NickName</label>
+            <input type="text" class="form-control" id="nickName" placeholder="OsoMamado" name="nickName" value="{{ perfil.nickName }}" required>
+            <label for="nickName">NickName</label>
           </div>
 
           <div class="form-floating">
-            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="objetivoCliente" style="height: 150px;">{{ perfil.objetivoCliente }}</textarea>
-            <label for="floatingTextarea">Objetivo</label>
+            <textarea required class="form-control" placeholder="Leave a comment here" id="objetivoCliente" name="objetivoCliente" style="height: 150px;">{{ perfil.objetivoCliente }}</textarea>
+            <label for="objetivoCliente">Objetivo</label>
           </div><br>
 
           <div class="col-12">
-            <button class="btn btn-success" type="submit">Guardar Cambios</button>
+            <p class="btn btn-success" onclick="validateForm('perfil-update-form')">Guardar Cambios</p>
           </div>
 
         </form>
@@ -157,45 +162,45 @@
           <h6>Editar Datos Personales</h6>
         </div>
         
-        <form action="/user/update/persona" method="post">
+        <form action="/user/update/persona" method="post" id="persona-update-form">
 
-          <input hidden type="number" name="id" id="id" value="{{ persona.id }}">
+          <input hidden type="number" name="id" id="id-persona" value="{{ persona.id }}">
 
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" name="nombre" value="{{ persona.nombre }}">
-            <label for="floatingInput">Nombre</label>
+            <input type="text" class="form-control" id="nombre-persona" name="nombre" value="{{ persona.nombre }}" required>
+            <label for="nombre-persona">Nombre</label>
           </div>
 
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" name="apellido" value="{{ persona.apellido }}">
-            <label for="floatingInput">Apellido</label>
+            <input type="text" class="form-control" id="apellido-persona" name="apellido" value="{{ persona.apellido }}" required>
+            <label for="apellido-persona">Apellido</label>
           </div>
 
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" name="celular" value="{{ persona.celular }}">
-            <label for="floatingInput">Celular</label>
+            <input type="text" class="form-control" id="celular-persona" name="celular" value="{{ persona.celular }}" required>
+            <label for="celular-persona">Celular</label>
           </div>
 
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" name="direccion" value="{{ persona.direccion }}">
-            <label for="floatingInput">Dirección</label>
+            <input type="text" class="form-control" id="direccion-persona" name="direccion" value="{{ persona.direccion }}" required>
+            <label for="direccion-persona">Dirección</label>
           </div>
 
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" name="identificacion" value="{{ persona.identificacion }}">
-            <label for="floatingInput">Identificación</label>
+            <input type="text" class="form-control" id="identificacion-persona" name="identificacion" value="{{ persona.identificacion }}" required>
+            <label for="identificacion-persona">Identificación</label>
           </div>
 
           <div class="form-floating mb-3">
-            <input type="date" class="form-control" id="floatingInput" name="fechaNacimiento" value="{{ persona.fechaNacimiento }}">
-            <label for="floatingInput">Fecha de Nacimiento</label>
+            <input type="date" class="form-control" id="fechaNacimiento-persona" name="fechaNacimiento" value="{{ persona.fechaNacimiento }}" style="background-color: black;" required>
+            <label for="fechaNacimiento-persona">Fecha de Nacimiento</label>
           </div>
 
           <div class="col-sm-6">
             <label for="tipoIdentificacion" class="form-label">Tipo Identificación: </label>
             <select class="form-select mb-3" id="tipoIdentificacion" name="tipoIdentificacion" required>
               {% for tipo in enums.tipos %}
-              <option value="{{ tipo }}">{{ tipo }}</option>
+              <option value="{{ tipo }}" {% if tipo == persona.tipoIdentificacion %} selected {% endif %}>{{ tipo }}</option>
               {% endfor %}
             </select>
           </div>
@@ -204,7 +209,7 @@
             <label for="genero" class="form-label">Genero: </label>
             <select class="form-select mb-3" name="genero" id="genero" required>
               {% for genero in enums.generos %}
-              <option value="{{ genero }}">{{ genero }}</option>
+              <option value="{{ genero }}" {% if genero == persona.genero %} selected {% endif %}>{{ genero }}</option>
               {% endfor %}
             </select>
           </div>
@@ -213,14 +218,14 @@
             <label for="rol" class="form-label">Rol: </label>
             <select class="form-select mb-3" id="rol" name="rol" required>
               {% for rol in enums.roles %}
-              <option value="{{ rol }}">{{ rol }}</option>
+              <option value="{{ rol }}" {% if rol == persona.rol %} selected {% endif %}>{{ rol }}</option>
               {% endfor %}
             </select>
           </div>
 
 
           <div class="col-12">
-            <button class="btn btn-success" type="submit">Guardar Cambios</button>
+            <p onclick="validateForm('persona-update-form')" class="btn btn-success" >Guardar Cambios</p>
           </div>
 
         </form>
@@ -233,28 +238,28 @@
         <h6>Cambiar Contraseña</h6>
         <form id="form-contrasena" action="/change_password" method="post">
 
-          <input type="number" id="id" name="id" value="{{ cuenta.id }}" hidden>
+          <input type="number" id="id-cuenta" name="id" value="{{ cuenta.id }}" hidden>
           <input type="text" id="correoElectronico" name="correoElectronico" value="{{ cuenta.correoElectronico }}" hidden>
           <input type="number" id="personaId" name="personaId" value="{{ persona.id }}" hidden>
           <input type="number" id="perfilId" name="perfilId" value="{{ perfil.id }}" hidden>
 
           <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon3">Contraseña anterior:</span>
-            <input type="text" class="form-control" id="contrasena-anterior" name="contrasena" aria-describedby="basic-addon3">
+            <span class="input-group-text" id="contrasena-anterior-addon">Contraseña anterior: </span>
+            <input type="password" class="form-control" required id="contrasena-anterior" name="contrasena" aria-describedby="basic-addon3"><i class="fas fa-eye" id="tgp1" onclick="togglePassword('tgp1','contrasena-anterior')" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 1000;"></i>
           </div>
 
           <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon3">Nueva Contraseña:</span>
-            <input type="text" class="form-control" id="nueva-contrasena-1" aria-describedby="basic-addon3">
+            <span class="input-group-text" id="nueva-contrasena-1-addon">Nueva Contraseña:</span>
+            <input type="password" class="form-control" required id="nueva-contrasena-1" aria-describedby="basic-addon3"><i class="fas fa-eye" id="tgp2" onclick="togglePassword('tgp2','nueva-contrasena-1')" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 1000;"></i>
           </div>
 
           <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon3">Repita la nueva Contraseña:</span>
-            <input type="text" class="form-control" id="nueva-contrasena-2" aria-describedby="basic-addon3" name="newContrasena">
+            <span class="input-group-text" id="nueva-contrasena-2-addon">Repita la nueva Contraseña:</span>           <!-- tgp = togglePassword in icons id -->
+            <input type="password" class="form-control" required id="nueva-contrasena-2" aria-describedby="basic-addon3" name="newContrasena"><i class="fas fa-eye" id="tgp3" onclick="togglePassword('tgp3','nueva-contrasena-2')" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 1000;"></i>
           </div>
 
           <div class="col-12">
-            <button class="btn btn-success" id="btn-contrasena" onclick="validarContrasena()">Guardar Cambios</button>
+            <p class="btn btn-success" id="btn-contrasena" onclick="validateForm('form-contrasena')">Guardar Cambios</p>
           </div>
 
         </form>
@@ -270,7 +275,9 @@
 </div>
 
 </div>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
+  // VALIDATE PASSWORD SCRIPT
   function validarContrasena(event) {
     var contrasena1 = document.getElementById('nueva-contrasena-1').value;
     var contrasena2 = document.getElementById('nueva-contrasena-2').value;
@@ -284,5 +291,32 @@
   }
 
   document.getElementById('form-contrasena').addEventListener('submit',validarContrasena)
+
+  // TOGGLE PASSWORD SCRIPT
+  function togglePassword(eyeButtonId, passwordFieldId) {
+    const eyeButton = document.getElementById(eyeButtonId);
+    const passwordField = document.getElementById(passwordFieldId);
+  
+    const type = passwordField.type === 'password' ? 'text' : 'password';
+    passwordField.type = type;
+
+    eyeButton.classList.toggle('fa-eye-slash')
+  }
+
+  // VALIDATION SCRIPT
+  function validateForm(formId) {
+    const form = document.getElementById(formId);
+    form.classList.add('was-validated');
+    if (form.checkValidity()) {
+        form.submit()
+    }
+  }
+
+  // DATE SCRIPT
+  document.addEventListener('DOMContentLoaded', function() {
+      flatpickr("#fechaNacimiento-persona", {
+          dateFormat: "Y-m-d",
+      });
+  });
 </script>
 {% endblock %}

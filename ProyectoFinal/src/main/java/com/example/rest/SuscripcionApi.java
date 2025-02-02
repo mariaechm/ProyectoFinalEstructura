@@ -23,14 +23,7 @@ public class SuscripcionApi {
         return ResponseFactory.buildResponse(new SuscripcionServices(), "getAllSuscripciones");
 
     }
-
-   /* @Path("/showAll")
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response showListAll() {
-        return ResponseFactory.buildResponse(new SuscripcionServices(), "showListAll");
-    }*/
-
+    
     @Path("/save")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
@@ -71,20 +64,5 @@ public class SuscripcionApi {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getTipoSuscripcion() throws Exception {
         return ResponseFactory.buildResponse(new SuscripcionServices(),"getTipos");
-    }
-
-    @Path("sort/{attribute}/{orden}/{method}")
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response sort(@PathParam("attribute") String attribute, @PathParam("orden") Integer orden, @PathParam("method") Integer method) {
-        return ResponseFactory.buildResponse(new SuscripcionServices(), "sort", attribute, orden, method);
-    }
-
-
-    @Path("search/{attribute}/{value}")
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response search(@PathParam("attribute") String attribute, @PathParam("value") String value) {
-        return ResponseFactory.buildResponse(new SuscripcionServices(), "search", attribute, value);
     }    
 }

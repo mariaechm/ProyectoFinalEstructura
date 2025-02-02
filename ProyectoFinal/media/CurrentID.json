@@ -1,11 +1,22 @@
 {
-<<<<<<< HEAD
+
+  "currentCuentaId": 11,
+  "currentPerfilId": 10,
+  "currentRutinaId": 8,
+  "currentPersonaId": 10,
+  "currentSuscripcionId": 20,
+  "currentEjercicioId": 35,
+  "currentEventoCrudId": 10,
+  "currentEstadisticaId": 7,
+
+
   "currentCuentaId": 8,
   "currentPerfilId": 7,
   "currentPersonaId": 7,
   "currentEventoCrudId": 2,
-  "currentEstadisticaId": 7
-=======
+  "currentEstadisticaId": 7,
+
   "currentSuscripcionId": 20
->>>>>>> moduloSuscripcion
+
+
 }

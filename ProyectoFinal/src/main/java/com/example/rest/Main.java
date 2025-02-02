@@ -1,5 +1,8 @@
 package com.example.rest;
 
+import java.io.IOException;
+import java.net.URI;
+
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.media.multipart.MultiPartFeature;
@@ -8,16 +11,13 @@ import org.glassfish.jersey.server.ResourceConfig;
 import com.example.controller.auth.AuthenticationFilter;
 import com.example.controller.auth.AuthorizationFilter;
 
-import java.io.IOException;
-import java.net.URI;
-
 /**
  * Main class.
  *
  */
 public class Main {
     // Base URI the Grizzly HTTP server will listen on
-    public static final String BASE_URI = "http://localhost:8081/api/";
+    public static final String BASE_URI = "http://localhost:8080/api/";
 
     // http://localhost:8080/api/
 

@@ -1,5 +1,6 @@
 package com.example.controller.dao;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.regex.Pattern;
 
@@ -8,6 +9,7 @@ import com.example.controller.dao.implement.AdapterDao;
 import com.example.controller.dao.implement.JsonFileManager;
 import com.example.controller.tda.list.LinkedList;
 import com.example.models.Cuenta;
+import com.example.models.Estadistica;
 import com.example.models.Perfil;
 import com.example.models.Persona;
 
@@ -196,7 +198,6 @@ public class CuentaDao extends AdapterDao<Cuenta> {
         Cuenta cuenta = getCuentaById(cuentaId);
         Persona persona = new PersonaDao().getPersonaById(cuenta.getPersonaId());
         Perfil perfil = new PerfilDao().get(cuenta.getPerfilId());
-        perfil.setImagen("http://localhost:8080/api/images/" + perfil.getImagen());
 
         HashMap<String,Object> map = new HashMap<>();
 
@@ -216,6 +217,8 @@ public class CuentaDao extends AdapterDao<Cuenta> {
             
             this.cuentaFromJson(json);
             pd.personaFromJson(json);
+            pfd.setPerfil(new Perfil(0, pd.getPersona().getNombre(), "user.png", "Objetivo ...", LocalDateTime.now().toString().substring(0,10)));
+            ed.setEstadistica(new Estadistica(0, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0, 0));
 
             //TODO: ESTOS METODOS
             //pfd.perfilWithGenericValues(); 
@@ -242,9 +245,8 @@ public class CuentaDao extends AdapterDao<Cuenta> {
             return res;
 
         } catch (Exception e) {
-            System.out.println("CuentaDao.registerNewUser() dice: " + e.getMessage());
+            throw new Exception("No se pudo completar el registro, " + e.getMessage());
         }
-        throw new Exception("No se pudo completar el registro!");
     }
     
     @SuppressWarnings("unchecked")
@@ -266,6 +268,6 @@ public class CuentaDao extends AdapterDao<Cuenta> {
             }
         }
 
-        throw new Exception("Credenciales inválidas");
+        throw new Exception("La contraseña es incorrecta, no se actualizará!");
     }
 }

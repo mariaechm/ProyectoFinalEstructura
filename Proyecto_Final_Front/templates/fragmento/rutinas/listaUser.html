@@ -58,7 +58,7 @@
                 <td><center>{{ rutina.numero}}</td>
                 <td>{{ rutina.nombreRutina }}</td>
                 <td><center>{{ rutina.nroEjercicios }}</td>
-                <td><center><a href="/admin/rutinas/informacion/{{ rutina.id }}">Ver más</a></td>
+                <td><center><a href="/rutinas/informacion/{{ rutina.id }}">Ver más</a></td>
                 <td><center>{{ rutina.objetivoRutina }}</td>
               </tr>
             {% endfor %}
@@ -68,9 +68,9 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<a id="search" href="/admin/rutinas/list"></a>
+<a id="search" href="/rutinas/list"></a>
 <script>
-  const sortUrl = '/admin/rutinas/sort'
+  const sortUrl = '/rutinas/sort'
   function sortFunct(attr,ord) {
     const newHref = `${sortUrl}/${attr}/${ord}/${$('#sortMethod').val()}`;
     $('#sortA').attr('href',newHref) 
@@ -88,7 +88,7 @@
         alert("Ingrese un valor");
         return;
       } else {
-        $("#search").attr("href", "/admin/rutinas/search/" + atributo + "/" + texto);
+        $("#search").attr("href", "/rutinas/search/" + atributo + "/" + texto);
         $("#search")[0].click();
       }
     }

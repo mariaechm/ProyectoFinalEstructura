@@ -1,4 +1,5 @@
 from .router import *
+from flask import request
 
 P_URL = f'{BASE_URL}/persona' 
 

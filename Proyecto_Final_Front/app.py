@@ -12,11 +12,13 @@ def create_app():
         from routes.router_users import router
         from routes.router_suscripcion import router
         
+    
         app.register_blueprint(router)
         app.register_blueprint(router_ejercicio)
         app.register_blueprint(router_rutina)         
         app.register_blueprint(router_estadistica)       
         app.register_blueprint(router_perfil)
+        
         
     return app
 

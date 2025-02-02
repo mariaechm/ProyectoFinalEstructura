@@ -9,12 +9,12 @@ router = Blueprint('router',__name__)
 
 @router.route('/')
 def index():
-    return redirect('/dashboard')
+    return redirect('/inicio')
 
-@router.route('/dashboard')
+@router.route('/inicio')
 @login_required()
 def home(headers,usr):
-    return render_template('dashboard.html',user=usr)
+    return render_template('inicio.html',user=usr)
 
 @router.route('/not_found')
 def not_found():
@@ -40,7 +40,7 @@ def login_send():
     session['token'] = response.json()['data']
     next = request.form.to_dict()['next']
     next = next if next != '' else None
-    return redirect(next or '/dashboard')
+    return redirect(next or '/inicio')
 
 @router.route('/logout')
 def logout_site():
