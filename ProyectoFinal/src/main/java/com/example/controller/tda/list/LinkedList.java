@@ -358,7 +358,7 @@ public class LinkedList<E> {
 
   
     public LinkedList<E> quickSort(String attribute, Integer tipoOrden) throws Exception {
-        if (isEmpty()) return this; 
+        if (isEmpty()) return this;
         E[] arr = this.toArray(); 
         final Integer elementoMayor = arr.length - 1;
         final Integer elementoMenor = 0;
@@ -514,10 +514,19 @@ public class LinkedList<E> {
         }
     }
 
+    public String printArray(E[] arr) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < arr.length; i++) {
+            sb.append(arr[i]).append("\n");
+        }
+        return sb.toString();
+    }
+
     public Integer getIndice(String attribute, Object x) throws Exception {
         if (isEmpty()) return -1; 
         E[] arr = this.toArray();
-        mergeSort(attribute, arr, 0, arr.length-1, ASC);; 
+        mergeSort(attribute, arr, 0, arr.length-1, ASC);
+        printArray(arr);
         return busquedaBinaria(arr, x, attribute); 
     }
 }
