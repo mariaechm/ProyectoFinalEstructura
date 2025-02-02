@@ -22,6 +22,7 @@ def list_ejercicio(headers,usr):
 @login_required(roles=['ADMINISTRADOR'])
 def view_register_ejercicio(headers,usr):
     r = requests.get("http://localhost:8080/api/ejercicios/typeEjercicio", headers=headers)
+
     print(r.json())
     data = r.json()["data"]
     r1 = requests.get("http://localhost:8080/api/ejercicios/grupoMuscularObjetivo", headers=headers)
