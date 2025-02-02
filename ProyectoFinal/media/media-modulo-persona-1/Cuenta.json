@@ -1,0 +1,9 @@
+[
+  {
+    "id": 1,
+    "correoElectronico": "arnold.sw@example.com",
+    "contrasena": "YWRtaW5pc3RyYWRvcmVz",
+    "personaId": 1,
+    "perfilId": 1
+  }
+]
