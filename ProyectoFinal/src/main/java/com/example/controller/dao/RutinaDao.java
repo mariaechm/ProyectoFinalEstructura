@@ -195,9 +195,9 @@ public class RutinaDao extends AdapterDao<Rutina> {
             if(attribute.equalsIgnoreCase("nombreRutina")) {
                 return list.buscarPorAtributo(attribute, value).toArray();
             } else if (attribute.equalsIgnoreCase("nroEjercicios")) {
-                    return list.busquedaLinealBinaria(attribute, Integer.parseInt(value)).toArray();
+                    return list.buscarPorAtributo(attribute, Integer.parseInt(value)).toArray();
             } else {
-                return list.busquedaLinealBinaria(attribute, value).toArray();
+                return list.buscarPorAtributo(attribute, value).toArray();
             }
         } catch (Exception e) {
             return new Rutina[] {};

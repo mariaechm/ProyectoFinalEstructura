@@ -111,7 +111,9 @@ public class EjercicioDao extends AdapterDao<Ejercicio> {
         if(this.getEjercicio().getTipoEjercicio() == null) {
             throw new Exception("Seleccione un tipo de ejercicio");
         } 
-        
+        if(this.getEjercicio().getGrupoMuscularObjetivo() == null) {
+            throw new Exception("Seleccione un grupo muscular objetivo");
+        }        
         return true;
     }
 
@@ -195,11 +197,12 @@ public class EjercicioDao extends AdapterDao<Ejercicio> {
         try {
             if(attribute.equalsIgnoreCase("nombreEjercicio")) {
                 return list.buscarPorAtributo(attribute, value).toArray();
-            } else if (attribute.equalsIgnoreCase("nroSeries") || attribute.equalsIgnoreCase("nroRepSerie") ||
-                 attribute.equalsIgnoreCase("tiempoDescanso")) {
-                    return list.busquedaLinealBinaria(attribute, Integer.parseInt(value)).toArray();
+            } else if (attribute.equalsIgnoreCase("nroSeries") || attribute.equalsIgnoreCase("nroRepSerie")) {
+                return list.buscarPorAtributo(attribute, Integer.parseInt(value)).toArray();
+            } else if (attribute.equalsIgnoreCase("tiempoDescanso")) {
+                return list.buscarPorAtributo(attribute, Float.parseFloat(value)).toArray();
             } else {
-                return list.busquedaLinealBinaria(attribute, value).toArray();
+                return list.buscarPorAtributo(attribute, value).toArray();
             }
         } catch (Exception e) {
             return new Ejercicio[] {};

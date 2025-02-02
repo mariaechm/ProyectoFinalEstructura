@@ -52,7 +52,7 @@
     "nroSeries": 4,
     "nroRepSerie": 10,
     "tipoEjercicio": "COMPUESTO",
-    "grupoMuscularObjetivo": "CUADRICEPS"
+    "grupoMuscularObjetivo": "FEMORALES"
   },
   {
     "id": 8,
@@ -128,7 +128,8 @@
     "tiempoDescanso": 1.0,
     "nroSeries": 3,
     "nroRepSerie": 30,
-    "tipoEjercicio": "COMPUESTO"
+    "tipoEjercicio": "COMPUESTO",
+    "grupoMuscularObjetivo": "CUÁDRICEPS"
   },
   {
     "id": 15,
@@ -194,7 +195,7 @@
     "nroSeries": 4,
     "nroRepSerie": 12,
     "tipoEjercicio": "COMPUESTO",
-    "grupoMuscularObjetivo": "CUADRICEPS"
+    "grupoMuscularObjetivo": "CUÁDRICEPS"
   },
   {
     "id": 22,
