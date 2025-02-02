@@ -15,12 +15,12 @@
 <section class="section">
     <div class="row">
       <div class="col-lg-12">
-        <div class="bg-secondary rounded h-100 p-4">
+        <div class="container-fluid bg-secondary rounded h-100 p-4">
             <h2 class="mb-4 text-center">{{ ejercicio.nombreEjercicio }}</h2>
             <input type="hidden" value="{{ id }}" name="idE"/>
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <img src="{{ ejercicio.imagen }}" class="img-fluid rounded" alt="Imagen del ejercicio">
+                    <img src="{{ ejercicio.imagen }}" class="img-fluid rounded" alt="Imagen del ejercicio" style="height: auto;">
                 </div>
                 <div class="col-md-12 mt-4">
                     <p style="text-align: justify;">{{ ejercicio.descripcion }}</p>
