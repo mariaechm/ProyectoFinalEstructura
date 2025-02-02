@@ -22,17 +22,14 @@ router_estadistica = Blueprint('router_estadistica',__name__)
 
 
 @router_estadistica.route('/estadistica')
-
 @login_required()
 def list_estadistica(headers,usr):
     r = requests.get('http://localhost:8080/api/estadistica/list', headers=headers)
-
+    persona = requests.get('http://localhost:8080/api/persona/list/', headers=headers).json()['data']
     print(r.json())
     estadisticas = r.json()["data"]
-    i = 1
-    for estadistica in estadisticas:
-        estadistica["numero"] = i
-        i += 1
+    for i in range(0,len(persona)):
+        if persona[i]['id'] == estadisticas[i]['id']: estadisticas[i]['propietario'] = persona[i]['nombre']
     return render_template('fragmento/estadistica/lista.html', estadisticas=estadisticas, user=usr)
 
 

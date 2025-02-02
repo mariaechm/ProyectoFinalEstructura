@@ -28,7 +28,7 @@
         <table class="table table-dark">
             <thead>
                 <tr>
-                    <th scope="col">Nr</th>
+                    <th scope="col">Usuario</th>
                     <th scope="col"><center>Medida Espalda</th>
                     <th scope="col"><center>Medida Pierna</th>
                     <th scope="col"><center>Medida Brazo</th>
@@ -43,7 +43,7 @@
             <tbody>
                 {% for estadistica in estadisticas %}
                 <tr>
-                    <td>{{ estadistica.numero }}</td>
+                    <td>{{ estadistica.propietario }}</td>
                     <td><center>{{ estadistica.medidaEspalda }}</td>
                     <td><center>{{ estadistica.medidaPierna}}</td>
                     <td><center>{{ estadistica.medidaBrazo }}</td>
