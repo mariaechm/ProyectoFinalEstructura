@@ -124,9 +124,10 @@ def persona_view(headers,usr,id,admins:bool):
     perfil = requests.get(f'{BASE_URL}/perfil/get/{cuenta["perfilId"]}',headers=headers).json()['data']
     estadistica = requests.get(f'{BASE_URL}/estadistica/get/{cuenta['perfilId']}',headers=headers).json()['data']
 
+    suscripcion = requests.get(f'{BASE_URL}/suscripcion/get/{cuenta["perfilId"]}',headers=headers).json()['data']
     enums = requests.get(f'{P_URL}/enumerations',headers=headers).json()['data']
 
-    full_user_info = {'persona': persona, 'cuenta': cuenta, 'perfil': perfil, 'estadistica': estadistica, 'my_profile': False, 'admins': eval(admins) }
+    full_user_info = {'persona': persona, 'cuenta': cuenta, 'perfil': perfil, 'estadistica': estadistica, 'suscripcion' : suscripcion, 'my_profile': False, 'admins': eval(admins) }
 
     return render_template('fragmento/users_view/user/view_user.html', enums=enums, user=usr, full_user_info=full_user_info)
 
@@ -138,9 +139,11 @@ def my_profile(headers,usr):
     perfil = requests.get(f'{BASE_URL}/perfil/get/{cuenta["perfilId"]}',headers=headers).json()['data']
     estadistica = requests.get(f'{BASE_URL}/estadistica/get/{cuenta['perfilId']}',headers=headers).json()['data']
 
+    suscripcion = requests.get(f'{BASE_URL}/suscripcion/get/{cuenta["perfilId"]}',headers=headers).json()['data']
+
     enums = requests.get(f'{P_URL}/enumerations',headers=headers).json()['data']
 
-    full_user_info = {'persona': persona, 'cuenta': cuenta, 'perfil': perfil, 'estadistica': estadistica, 'my_profile': True }
+    full_user_info = {'persona': persona, 'cuenta': cuenta, 'perfil': perfil, 'estadistica': estadistica, 'suscripcion' : suscripcion, 'my_profile': True }
 
     return render_template('fragmento/users_view/user/view_user.html',user=usr, full_user_info=full_user_info, enums=enums ,my_profile=True)
 

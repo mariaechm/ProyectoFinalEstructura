@@ -324,31 +324,28 @@
 
       <div class="tab-pane fade" id="nav-suscripcion" role="tabpanel"
         aria-labelledby="nav-suscripcion-tab">
-        <h5>Estado de la Suscripción</h5>
+
+        <div class="d-flex align-items-center justify-content-between mb-4">
+          <h5>Suscripción</h5>
+             <a href="/suscripcion/update/{{ full_user_info.suscripcion.id }}">Editar</a>
+        </div>
+
         <dl class="row mb-0">
-          <dt class="col-sm-4">Correo Electrónico:</dt>
-          <dd class="col-sm-8">{{ full_user_info.cuenta.correoElectronico }}</dd>
+          <dt class="col-sm-4">Fecha de Inicio:</dt>
+          <dd class="col-sm-8">{{ full_user_info.suscripcion.fechaInicio }}</dd>
 
-          <dt class="col-sm-4">Celular:</dt>
-          <dd class="col-sm-8">{{ full_user_info.persona.celular }}</dd>
+          <dt class="col-sm-4"> Tipo de suscripción:</dt>
+          <dd class="col-sm-8">{{ full_user_info.suscripcion.tipo }}</dd>
 
-          <dt class="col-sm-4">Dirección:</dt>
-          <dd class="col-sm-8">{{ full_user_info.persona.direccion }}</dd>
+          <dt class="col-sm-4"> Numero de días:</dt>
+          <dd class="col-sm-8">{{ full_user_info.suscripcion.duracionDias }}</dd>
 
-          <dt class="col-sm-4 text-truncate">Identificación: </dt>
-          <dd class="col-sm-8">{{ full_user_info.persona.identificacion }}</dd>
+          <dt class="col-sm-4"> Fecha de Finalización:</dt>
+          <dd class="col-sm-8">{{ full_user_info.suscripcion.fechaFinalizacion }}</dd>
 
-          <dt class="col-sm-4">Fecha de Nacimiento:</dt>
-          <dd class="col-sm-8">{{ full_user_info.persona.fechaNacimiento }}</dd>
-
-          <dt class="col-sm-4">Genero:</dt>
-          <dd class="col-sm-8">{{ full_user_info.persona.genero }}</dd>
-
-          <dt class="col-sm-4">Rol en el Sistema:</dt>
-          <dd class="col-sm-8">{{ full_user_info.persona.rol }}</dd>
-
-          <dt class="col-sm-4">Objetivo:</dt>
-          <dd class="col-sm-8">{{ full_user_info.perfil.objetivoCliente }}</dd>
+          <dt class="col-sm-4"> Precio:</dt>
+          <dd class="col-sm-8">{{ full_user_info.suscripcion.precio }}</dd>
+          
         </dl>
       </div>
     </div>

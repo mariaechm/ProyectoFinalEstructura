@@ -3,18 +3,23 @@
 {% block content %}
 
 <div class="pagetitle">
-    <h1>Información de Suscripción</h1>
+    <h1>Editar Suscripcion</h1>
 </div>
 
-<div class="col-12">
-    <div class="bg-secondary rounded h-100 p-4">
-        <h6 class="mb-4">Edición</h6>
-        <form class="row g-3 needs-validation" method="POST" action=" /suscripcion/update/send/" novalidate>
-            <input type="hidden" value="{{ suscripcion.id}}" name="idS"/>
-            <div class="col-sm-6">
-                <label for="inputDate" class="form-label">Fecha de Inicio de Suscripción</label>
-                <input type="date" value="{{ suscripcion.fechaInicio}}" class="form-control" name="nameFechaI" required>
-            </div>
+</div>
+<section class="seccion">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="bg-secondary rounded h-100 p-4">
+                <div class="card-body">
+                  <h5 class="card-title">Editar Suscripción </h5>
+
+                <form class="row g-3 needs-validation" method="POST" action=" /suscripcion/update/send/" novalidate>
+                    <input type="hidden" value="{{ suscripcion.id}}" name="idS"/>
+                    <div class="col-sm-6">
+                        <label for="inputDate" class="form-label">Fecha de Inicio de Suscripción</label>
+                        <input type="date" value="{{ suscripcion.fechaInicio}}" class="form-control" name="nameFechaI" required>
+                    </div>
                 
          <!-- <div class="col-sm-6">
                 <label for="inputDate" class="form-label">Fecha de Finalización</label>
@@ -36,28 +41,14 @@
                 </div>
                 
                 <div class="col-sm-6">
-                    <a href="admin/suscripcion/list" class="btn btn-primary rounded-pill">Cancelar</a>
+                    <a href="suscripcion/list" class="btn btn-primary rounded-pill">Cancelar</a>
                 </div>
             </div>
+            <input type="number" id="id-cuenta" name="id" value="{{ user.cuenta.id }}" hidden>
+            <input type="text" id="my-profile" name="my-profile" value="{{ my_profile }}" hidden>
+            <input type="text" name="admins" id="admins" value="{{ admins }}" hidden>
         </form>
     </div>
 </div>
 
-<script>
-    // Obtener el select y el campo de número de suscripciones
-    const seleccionSuscripcion = document.getElementById('seleccionSuscripcion');
-    const nroE = document.getElementById('idNroE');
-
-    // Función para actualizar el número de suscripciones seleccionadas
-    function actualizarNumeroSuscripciones() {
-        const suscripcionesSeleccionadas = seleccionSuscripcion.selectedOptions.length; // Cuenta las opciones seleccionadas
-        nroE.value = suscripcionesSeleccionadas; // Actualiza el valor del campo
-    }
-
-    // Escuchar cambios en el select
-    seleccionSuscripcion.addEventListener('change', actualizarNumeroSuscripciones);
-
-    // Inicializar con el valor actual (en caso de que ya haya opciones seleccionadas)
-    actualizarNumeroSuscripciones();
-</script>
 {% endblock%}
