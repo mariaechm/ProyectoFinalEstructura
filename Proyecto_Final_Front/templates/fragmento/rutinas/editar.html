@@ -1,4 +1,5 @@
 {% extends 'blank.html' %}
+{% block title %}Editar Rutinas{% endblock %}
 {% block rutinaDropDown %}
   active
 {% endblock %}
@@ -6,7 +7,7 @@
   active
 {% endblock %}
 {% block content %}
-
+<title>Editar Rutina</title>
 <div class="pagetitle">
     <h1>Información de Rutinas</h1>
 </div>
@@ -25,7 +26,7 @@
                 <label for="lbltipo" class="form-label">Objetivo de la Rutina</label>
                 <select class="form-select mb-3" name="objR" required>
                     {% for item in list %}
-                        <option {% if item == rutina.objetivoRutina%} selected {%endif%} value="{{ item }}">{{ item }}</option>
+                        <option {% if item == rutina.objetivoRutina %} selected {%endif%} value="{{ item }}">{{ item }}</option>
                     {% endfor %}
                 </select>
             </div>
