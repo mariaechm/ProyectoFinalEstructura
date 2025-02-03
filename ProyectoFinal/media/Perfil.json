@@ -1,16 +1,9 @@
 [
   {
     "id": 1,
-    "nickName": "JGraso",
-    "imagen": "jotagraso.jpeg",
-    "objetivoCliente": "La Grasa es un Sentimiento",
-    "fechaCreacion": "2025-01-31"
-  },
-  {
-    "id": 2,
-    "nickName": "Daniela",
-    "imagen": "user.png",
-    "objetivoCliente": "Objetivo ...",
-    "fechaCreacion": "2025-02-01"
+    "nickName": "ArnoldGYM",
+    "imagen": "GettyImages-143282183.webp",
+    "objetivoCliente": "Gestionar el Gimnasio ARNOLD",
+    "fechaCreacion": "2025-01-07"
   }
 ]

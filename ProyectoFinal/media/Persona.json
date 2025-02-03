@@ -1,26 +1,14 @@
 [
   {
     "id": 1,
-    "nombre": "JGraso",
-    "apellido": "Momos",
-    "identificacion": "8756483948",
-    "celular": "1234567890",
-    "fechaNacimiento": "1900-07-11",
-    "direccion": "La Grasa",
-    "tipoIdentificacion": "CEDULA",
+    "nombre": "Arnold",
+    "apellido": "Schwarzenegger",
+    "identificacion": "018475839",
+    "celular": "8574638293",
+    "fechaNacimiento": "1947-07-30",
+    "direccion": "Austria",
+    "tipoIdentificacion": "PASAPORTE",
     "genero": "HOMBRE",
-    "rol": "ADMINISTRADOR"
-  },
-  {
-    "id": 2,
-    "nombre": "Daniela",
-    "apellido": "Cueva",
-    "identificacion": "0957485764",
-    "celular": "0984576893",
-    "fechaNacimiento": "2003-01-10",
-    "direccion": "Av. Universitaria",
-    "tipoIdentificacion": "CEDULA",
-    "genero": "MUJER",
     "rol": "ADMINISTRADOR"
   }
 ]

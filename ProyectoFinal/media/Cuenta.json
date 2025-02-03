@@ -1,16 +1,9 @@
 [
   {
     "id": 1,
-    "correoElectronico": "jgraso.momos@example.com",
+    "correoElectronico": "arnold.sw@example.com",
     "contrasena": "YWRtaW5pc3RyYWRvcmVz",
     "personaId": 1,
     "perfilId": 1
-  },
-  {
-    "id": 2,
-    "correoElectronico": "daniela.admin@example.com",
-    "contrasena": "YWRtaW5pc3RyYWRvcmVz",
-    "personaId": 2,
-    "perfilId": 2
   }
 ]
