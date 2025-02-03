@@ -54,7 +54,7 @@ def save_ejercicio(headers, usr):
         flash("¡Se ha guardado correctamente!", category='info')
         return redirect("/ejercicios/list")
     else:
-        flash("¡No se ha podido completar la acción!", category='error')
+        flash(r.json()['info'], category='error')
         return redirect("/ejercicios/list")
     
 
@@ -73,7 +73,7 @@ def view_edit_ejercicio(id, headers, usr):
     if(r1.status_code == 200):
         return render_template('fragmento/ejercicios/editar.html', list = data, ejercicio = data1, list2 = data2, user=usr)
     else:
-        flash(data1, category='error')
+        flash(r1.json()['info'], category='error')
         return redirect("/ejercicios/list")
 
 
@@ -102,7 +102,7 @@ def update_ejercicio(headers, usr):
         flash("¡Se ha actualizado correctamente!", category='info')
         return redirect("/ejercicios/list")
     else:
-        flash("¡No se ha podido completar la acción!", category='error')
+        flash(r.json()['info'], category='error')
         return redirect("/ejercicios/list")
     
 
@@ -122,7 +122,7 @@ def delete_ejercicio(headers, usr):
         flash("¡Se ha eliminado correctamente!", category='info')
         return redirect("/ejercicios/list")
     else:
-        flash("¡No se ha podido completar la acción!", category='error')
+        flash(r.json()['info'], category='error')
         return redirect("/ejercicios/list")
 
 

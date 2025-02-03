@@ -242,7 +242,6 @@ public class CuentaDao extends AdapterDao<Cuenta> {
             this.getCuenta().setPerfilId(JsonFileManager.readCurrentIDMap().get("currentPerfilId"));
             this.getCuenta().setPersonaId(JsonFileManager.readCurrentIDMap().get("currentPersonaId"));
             validateData();
-            this.getCuenta().setPersonaId(pd.getPersona().getId());
 
             pd.savePersona();
             pfd.save();

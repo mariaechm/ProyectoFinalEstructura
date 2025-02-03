@@ -92,14 +92,15 @@
 
 {% set role = 'admin' if admin else 'cliente' %}
 
+
 <div class="container-fluid pt-4 px-4">
   <div class="bg-secondary rounded h-100 p-4">
     <div class="d-flex align-items-center justify-content-between mb-4">
-          <h4 class="mb-0">LISTA DE USUARIOS</h4>
+          <h4 class="mb-0">LISTA DE {% if role == 'admin' %}ADMINISTRADORES{% else %}CLIENTES{% endif %}</h4>
     </div>
     <div class="col-sm-6">
       <a href="/register/user/{{ role }}">
-        <button type="button" class="btn btn-warning m-2"> Registrar Nuevo Usuario</button>
+        <button type="button" class="btn btn-warning m-2"><i class="fa fa-plus"></i></button>
       </a>
     </div><br>
 

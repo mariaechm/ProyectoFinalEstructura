@@ -1,5 +1,5 @@
 {% extends 'blank.html' %}
-{% block title %}User: {{ full_user_info.perfil.nickName }}{% endblock %}
+{% block title %}{{ full_user_info.perfil.nickName }}{% endblock %}
 
 {% block custom_styles %}
 <link rel="stylesheet" href="{{ url_for('static',filename='css/flatpickr.min.css' ) }}">
