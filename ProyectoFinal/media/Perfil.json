@@ -40,5 +40,26 @@
     "imagen": "user.png",
     "objetivoCliente": "Objetivo ...",
     "fechaCreacion": "2025-01-31"
+  },
+  {
+    "id": 9,
+    "nickName": "Gabriel",
+    "imagen": "user.png",
+    "objetivoCliente": "Objetivo ...",
+    "fechaCreacion": "2025-02-01"
+  },
+  {
+    "id": 10,
+    "nickName": "Eso",
+    "imagen": "user.png",
+    "objetivoCliente": "Objetivo ...",
+    "fechaCreacion": "2025-02-01"
+  },
+  {
+    "id": 11,
+    "nickName": "Armando",
+    "imagen": "user.png",
+    "objetivoCliente": "Objetivo ...",
+    "fechaCreacion": "2025-02-01"
   }
 ]

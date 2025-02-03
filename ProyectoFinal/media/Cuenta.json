@@ -40,5 +40,19 @@
     "contrasena": "YWRtaW5pc3RyYWRvcmVz",
     "personaId": 8,
     "perfilId": 8
+  },
+  {
+    "id": 9,
+    "correoElectronico": "gabriel.cevallos@unl.edu.ec",
+    "contrasena": "Z3JjbTA3MTcyNw\u003d\u003d",
+    "personaId": 9,
+    "perfilId": 9
+  },
+  {
+    "id": 10,
+    "correoElectronico": "armando.torres@example.com",
+    "contrasena": "YXJtYW5kbzEyMzQ\u003d",
+    "personaId": 11,
+    "perfilId": 11
   }
 ]

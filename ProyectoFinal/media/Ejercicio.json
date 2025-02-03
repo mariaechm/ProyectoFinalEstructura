@@ -1,12 +1,12 @@
 [
   {
     "id": 1,
-    "nombreEjercicio": "Sentadilla con barra",
+    "nombreEjercicio": "213234234234.2",
     "descripcion": "La sentadilla con barra es un ejercicio de fuerza que trabaja principalmente los músculos de las piernas y la parte baja del cuerpo.",
-    "imagen": "https://encrypted-tbn0.gstatic.com/images?q\u003dtbn:ANd9GcRYrz0ZoxMeu_FMOAKsSiwyLBPz04MgY90oAg\u0026s",
-    "tiempoDescanso": 2.0,
-    "nroSeries": 4,
-    "nroRepSerie": 8,
+    "imagen": "https://strengthlevel.es/estandares-de-fuerza/press-de-banca-inclinado/kg",
+    "tiempoDescanso": 0.4,
+    "nroSeries": 1,
+    "nroRepSerie": 30,
     "tipoEjercicio": "COMPUESTO",
     "grupoMuscularObjetivo": "TRAPECIOS"
   },
@@ -240,5 +240,27 @@
     "nroRepSerie": 12,
     "tipoEjercicio": "AISLADO",
     "grupoMuscularObjetivo": "ABDOMEN"
+  },
+  {
+    "id": 29,
+    "nombreEjercicio": "aaaaaaaaaaaaaaaaaa",
+    "descripcion": "xddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "imagen": "https://instagram.com",
+    "tiempoDescanso": 6.0,
+    "nroSeries": 12,
+    "nroRepSerie": 30,
+    "tipoEjercicio": "COMPUESTO",
+    "grupoMuscularObjetivo": "CUÁDRICEPS"
+  },
+  {
+    "id": 30,
+    "nombreEjercicio": "xdddddddcom",
+    "descripcion": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "imagen": "https://strengthlevel.es/estandares-de-fuerza/press-de-banca/kg",
+    "tiempoDescanso": 1.0,
+    "nroSeries": 11,
+    "nroRepSerie": 1,
+    "tipoEjercicio": "AISLADO",
+    "grupoMuscularObjetivo": "TRAPECIOS"
   }
 ]

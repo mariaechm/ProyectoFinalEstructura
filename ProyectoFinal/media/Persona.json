@@ -70,5 +70,41 @@
     "tipoIdentificacion": "CEDULA",
     "genero": "HOMBRE",
     "rol": "ADMINISTRADOR"
+  },
+  {
+    "id": 9,
+    "nombre": "Gabriel",
+    "apellido": "Cevallos",
+    "identificacion": "1150480257",
+    "celular": "0995687412",
+    "fechaNacimiento": "2006-02-17",
+    "direccion": "Juan José Peña",
+    "tipoIdentificacion": "CEDULA",
+    "genero": "HOMBRE",
+    "rol": "CLIENTE"
+  },
+  {
+    "id": 10,
+    "nombre": "Eso",
+    "apellido": "Tilin",
+    "identificacion": "1120356894",
+    "celular": "0999999999",
+    "fechaNacimiento": "1999-02-09",
+    "direccion": "Loja",
+    "tipoIdentificacion": "CEDULA",
+    "genero": "HOMBRE",
+    "rol": "ADMINISTRADOR"
+  },
+  {
+    "id": 11,
+    "nombre": "Armando",
+    "apellido": "Torres",
+    "identificacion": "1104328651",
+    "celular": "0998451230",
+    "fechaNacimiento": "1972-02-23",
+    "direccion": "Juan José Peña y Rocafuerte",
+    "tipoIdentificacion": "CEDULA",
+    "genero": "HOMBRE",
+    "rol": "ADMINISTRADOR"
   }
 ]
