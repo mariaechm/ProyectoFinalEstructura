@@ -1,0 +1,25 @@
+[
+  {
+    "id": 1,
+    "nombre": "Arnold",
+    "apellido": "Schwarzenegger",
+    "identificacion": "018475839",
+    "celular": "8574638293",
+    "fechaNacimiento": "1947-07-30",
+    "direccion": "Austria",
+    "genero": "HOMBRE",
+    "rol": "ADMINISTRADOR"
+  },
+  {
+    "id": 4,
+    "nombre": "Cerevro",
+    "apellido": "Aguado",
+    "identificacion": "8574657689",
+    "celular": "0985768574",
+    "fechaNacimiento": "2004-10-05",
+    "direccion": "José Joaquín de Olmedo y Juan Veintimilla",
+    "tipoIdentificacion": "CEDULA",
+    "genero": "HOMBRE",
+    "rol": "CLIENTE"
+  }
+]

@@ -1,0 +1,21 @@
+[
+  {
+    "id": 1,
+    "medidaEspalda": 0.0,
+    "medidaPierna": 0.0,
+    "medidaBrazo": 0.0,
+    "medidaCintura": 0.0,
+    "peso": 0.0,
+    "altura": 0.0
+  },
+  {
+    "id": 4,
+    "medidaEspalda": 0.0,
+    "medidaPierna": 0.0,
+    "medidaBrazo": 0.0,
+    "medidaCintura": 0.0,
+    "peso": 0.0,
+    "altura": 0.0,
+    "perfilId": 4
+  }
+]

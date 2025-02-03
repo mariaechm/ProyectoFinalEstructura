@@ -41,7 +41,6 @@ public class CuentaDao extends AdapterDao<Cuenta> {
     public Cuenta saveCuenta() throws Exception {
         String contrasena = this.getCuenta().getContrasena();
         this.getCuenta().setContrasena(JWTManager.base64Encode(contrasena));
-        validateData();
         this.getCuenta().setId(JsonFileManager.readAndUpdateCurrentIdOf(className));
         persist(cuenta);
         return this.cuenta;
@@ -49,7 +48,7 @@ public class CuentaDao extends AdapterDao<Cuenta> {
 
     public Cuenta updateCuenta() throws Exception {
         Integer id = this.getCuenta().getId();
-        validateData(true);
+        validateData(true,false);
         merge(this.cuenta,id);
         return this.cuenta;
     }
@@ -111,7 +110,7 @@ public class CuentaDao extends AdapterDao<Cuenta> {
         return false;
     }
 
-    public void validateData(boolean forUpdate) throws Exception {
+    public void validateData(boolean update, boolean register) throws Exception {
         if (!isThereAllFields())
             throw new Exception("Los datos están incompletos, no se guardarán");
 
@@ -124,14 +123,14 @@ public class CuentaDao extends AdapterDao<Cuenta> {
         }
 
         final Integer personaId = this.getCuenta().getPersonaId();
-        if (!existsPersonaWith(personaId)) 
+        if (!existsPersonaWith(personaId) && !register) 
             throw new Exception("No existe registro de Persona con Id: " + personaId);
 
         final String email = this.getCuenta().getCorreoElectronico();
         if (!isValidEmail(email))
             throw new Exception("Email no válido");  
         
-        if(!forUpdate) {
+        if(!update) {
             if (existeCuentaWith("PersonaId",personaId))
                 throw new Exception("Ya existe una cuenta asociada a IdPersona=" + personaId);
 
@@ -149,7 +148,7 @@ public class CuentaDao extends AdapterDao<Cuenta> {
     }
 
     public void validateData() throws Exception {
-        validateData(false);
+        validateData(false,true);
     }
 
     // BÚSQUEDA Y ORDENACIÓN ============================================================
@@ -192,7 +191,7 @@ public class CuentaDao extends AdapterDao<Cuenta> {
 
     public String validateCredentialsAndGetToken(String json) throws Exception {
         Cuenta cuenta = this.g.fromJson(json, Cuenta.class);
-        Cuenta registered = listAll().busquedaBinaria("correoElectronico", cuenta.getCorreoElectronico()); 
+        Cuenta registered = listAll().busquedaBinaria("correoElectronico", cuenta.getCorreoElectronico());
         if(registered != null) {
             if(!registered.getContrasena().equals(JWTManager.base64Encode(cuenta.getContrasena()))) {
                 throw new Exception("Credenciales inválidas");
@@ -200,7 +199,6 @@ public class CuentaDao extends AdapterDao<Cuenta> {
                 return JWTManager.createToken(registered, 60);
             }
         }
-
         throw new Exception("Credenciales inválidas");
     }
 
@@ -239,8 +237,8 @@ public class CuentaDao extends AdapterDao<Cuenta> {
             sd.SuscripcionFromJson(g.toJson(s));
 
             
-            this.getCuenta().setPerfilId(JsonFileManager.readCurrentIDMap().get("currentPerfilId"));
-            this.getCuenta().setPersonaId(JsonFileManager.readCurrentIDMap().get("currentPersonaId"));
+            this.getCuenta().setPerfilId(JsonFileManager.readCurrentIDMap().get("currentPerfilId") + 1);
+            this.getCuenta().setPersonaId(JsonFileManager.readCurrentIDMap().get("currentPersonaId") + 1);
             validateData();
 
             pd.savePersona();
