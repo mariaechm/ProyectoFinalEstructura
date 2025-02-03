@@ -1,37 +1,9 @@
 [
   {
     "id": 1,
-    "nickName": "GatoPeruano",
-    "imagen": "jua.webp",
-    "objetivoCliente": "Gestionar el Gimnasio Arnold Gym eterno padre de los gimnasios de loja",
+    "nickName": "ArnoldGYM",
+    "imagen": "user.png",
+    "objetivoCliente": "Gestionar el Gimnasio ARNOLD",
     "fechaCreacion": "2025-01-07"
-  },
-  {
-    "id": 2,
-    "nickName": "David",
-    "imagen": "user.png",
-    "objetivoCliente": "Objetivo ...",
-    "fechaCreacion": "2025-02-02"
-  },
-  {
-    "id": 3,
-    "nickName": "Armando",
-    "imagen": "user.png",
-    "objetivoCliente": "Objetivo ...",
-    "fechaCreacion": "2025-02-02"
-  },
-  {
-    "id": 4,
-    "nickName": "equisdenosepreguntenlealprofe",
-    "imagen": "user.png",
-    "objetivoCliente": "Objetivo ...",
-    "fechaCreacion": "2025-02-02"
-  },
-  {
-    "id": 5,
-    "nickName": "pancho",
-    "imagen": "user.png",
-    "objetivoCliente": "Objetivo ...",
-    "fechaCreacion": "2025-02-03"
   }
 ]
