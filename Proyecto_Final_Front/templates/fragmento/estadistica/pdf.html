@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reporte Estadística</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { text-align: center; color: #333; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+        th { background-color: #f4f4f4; }
+    </style>
+</head>
+<body>
+    <h1>Reporte de Estadística</h1>
+    <table>
+        <tr><th>Medida Espalda</th><td>{{ estadistica.medidaEspalda }}</td></tr>
+        <tr><th>Medida Pierna</th><td>{{ estadistica.medidaPierna }}</td></tr>
+        <tr><th>Medida Brazo</th><td>{{ estadistica.medidaBrazo }}</td></tr>
+        <tr><th>Medida Cintura</th><td>{{ estadistica.medidaCintura }}</td></tr>
+        <tr><th>Peso</th><td>{{ estadistica.peso }}</td></tr>
+        <tr><th>Altura</th><td>{{ estadistica.altura }}</td></tr>
+    </table>
+</body>
+</html>

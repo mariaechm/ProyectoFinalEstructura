@@ -227,7 +227,7 @@ public class CuentaDao extends AdapterDao<Cuenta> {
             this.cuentaFromJson(json);
             pd.personaFromJson(json);
             pfd.setPerfil(new Perfil(0, pd.getPersona().getNombre(), "user.png", "Objetivo ...", LocalDateTime.now().toString().substring(0,10)));
-            ed.setEstadistica(new Estadistica(0,0f,0f,0f,0f,0f,0f));
+            ed.setEstadistica(new Estadistica(0,0f,0f,0f,0f,0f,0f,0f));
             Suscripcion s = new Suscripcion();
             s.setFechaInicio(LocalDateTime.now().toString().substring(0,10));
             s.setFechaFinalizacion(LocalDateTime.now().plusDays(30).toString().substring(0,10));
@@ -235,6 +235,7 @@ public class CuentaDao extends AdapterDao<Cuenta> {
             s.setPrecio(TipoSuscripcion.DIA.getPrecio());
             s.setDuracionDias(TipoSuscripcion.DIA.getDuracionDias());
             sd.SuscripcionFromJson(g.toJson(s));
+
 
             
             this.getCuenta().setPerfilId(JsonFileManager.readCurrentIDMap().get("currentPerfilId") + 1);

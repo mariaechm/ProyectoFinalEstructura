@@ -63,8 +63,9 @@
         <button class="nav-link" id="nav-estadisticas-tab" data-bs-toggle="tab" data-bs-target="#nav-estadisticas"
           type="button" role="tab" aria-controls="nav-estadisticas" aria-selected="false">Estadísticas</button>
 
-        <button class="nav-link" id="nav-editar-perfil-tab" data-bs-toggle="tab" data-bs-target="#nav-editar-perfil"
-          type="button" role="tab" aria-controls="nav-editar-perfil" aria-selected="false">Editar perfil</button>
+        <button class="nav-link" id="nav-editar-perfil-tab" data-bs-toggle="tab" data-bs-target="#nav-editar-perfil" type="button"
+          role="tab" aria-controls="nav-editar-perfil" aria-selected="false">Editar perfil</button>
+
 
         {% if user.persona.rol == 'ADMINISTRADOR' %}
         <button class="nav-link" id="nav-editar-datos-personales-tab" data-bs-toggle="tab"
@@ -117,8 +118,9 @@
       <div class="tab-pane fade" id="nav-estadisticas" role="tabpanel" aria-labelledby="nav-estadisticas-tab">
 
         <div class="d-flex align-items-center justify-content-between mb-4">
-          <h5>Estadísticas</h5>
-          <a href="/admin/estadistica/edit/{{ full_user_info.estadistica.id }}">Editar</a>
+          <h6>Estadísticas</h6>
+          <a href="/estadistica/edit/{{ estadistica.id }}">Editar</a>
+          <a href="/estadistica/pdf/{{ estadistica.id }}" class="btn btn-primary">Descargar PDF</a>
         </div>
 
         <dl class="row mb-0">
@@ -132,7 +134,12 @@
           <dd class="col-sm-8">{{ full_user_info.estadistica.medidaBrazo }} cm</dd>
 
           <dt class="col-sm-4 text-truncate">Medidas de la cintura: </dt>
-          <dd class="col-sm-8">{{ full_user_info.estadistica.medidaCintura }} cm</dd>
+
+          <dd class="col-sm-8">{{ estadistica.medidaCintura }} cm</dd>
+          
+          <dt class = "col-sm-4">Medidas del Pecho:</dt>
+          <dd class="col-sm-8">{{ estadistica.medidaPecho }} cm</dd>
+
 
           <dt class="col-sm-4">Peso:</dt>
           <dd class="col-sm-8">{{ full_user_info.estadistica.peso }} kg</dd>

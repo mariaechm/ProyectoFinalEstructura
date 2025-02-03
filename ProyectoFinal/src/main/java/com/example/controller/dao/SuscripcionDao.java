@@ -35,58 +35,9 @@ public class SuscripcionDao extends AdapterDao<Suscripcion> {
         return this.listAll();
     }
 
-   /* public Object[] listShowAll() throws Exception {
-        LinkedList<Suscripcion> suscripcionesList = getAllSuscripciones();
-        if (!suscripcionesList.isEmpty()) {
-            Suscripcion[] lista = suscripcionesList.toArray();
-            Object[] respuesta = new Object[lista.length];
-            for (int i = 0; i < lista.length; i++) {
-                Suscripcion suscripcion = lista[i];
-                HashMap<String, Object> mapa = new HashMap<>();
-                mapa.put("id", suscripcion.getId());
-                mapa.put("fechaInicio", suscripcion.getFechaInicio());
-                mapa.put("fechaFinalizacion", suscripcion.getFechaFinalizacion());
-                mapa.put("precio", suscripcion.getPrecio());
-                mapa.put("tipo", suscripcion.getTipo());
-                respuesta[i] = mapa;
-            }
-            return respuesta;
-        }
-        return new Object[]{};
-    }*/
-
-
     public Suscripcion getSuscripcionById(Integer id) throws Exception {
         return get(id);
     }
-    /*public void setSuscripcion( Suscripcion Suscripcion){
-        this.suscripcion = Suscripcion;
-    }
-
-    public LinkedList<Suscripcion> getListAll(){
-        if (listAll == null) {
-            this.listAll = listAll();
-        }
-
-        return listAll;
-    }*/
-
-   /* public Suscripcion getById(Integer id) throws Exception {
-        return get(id);
-    }*/
-
-    /*public Suscripcion save () throws Exception {
-        Integer id = JsonFileManager.readAndUpdateCurrentIdOf(className);
-        suscripcion.setDuracionDias(suscripcion.getTipo().getDuracionDias());
-        suscripcion.setPrecio(suscripcion.getTipo().getPrecio());
-        suscripcion.setFechaFinalizacion(calcularFechaFinalizacion(suscripcion.getFechaInicio(), suscripcion.getTipo()));
-        suscripcion.setId(id);
-        this.persist(this.suscripcion);
-        this.listAll = listAll();
-        return this.getSuscripcion();
-        
-
-    }*/
 
     public Suscripcion save() throws Exception {
         if(!camposLlenos()) {
@@ -103,13 +54,6 @@ public class SuscripcionDao extends AdapterDao<Suscripcion> {
         return this.getSuscripcion();
     }
 
-   /*public Suscripcion update() throws Exception {
-        Integer id =  this.getSuscripcion().getId();
-        suscripcion.setDuracionDias(suscripcion.getTipo().getDuracionDias());
-        suscripcion.setFechaFinalizacion(calcularFechaFinalizacion(suscripcion.getFechaInicio(), suscripcion.getTipo()));
-        return merge(this.suscripcion,id);
-    }*/
-
     public Suscripcion update() throws Exception {
         Integer id = this.getSuscripcion().getId();
         if(!camposLlenos()) {
@@ -121,10 +65,6 @@ public class SuscripcionDao extends AdapterDao<Suscripcion> {
         merge(this.getSuscripcion(), id);
         return this.suscripcion;
     }
-
-    /*public Suscripcion delete(Integer id) throws Exception{
-        return remove(id);
-    }*/
        
     public Suscripcion delete(Integer id) throws Exception {
         Suscripcion suscripcion = get(id);

@@ -14,6 +14,8 @@ public class Suscripcion {
 
     private TipoSuscripcion tipo;
 
+    private Integer personaId;
+
     // Constructor vacio
     public Suscripcion() {
         
@@ -76,4 +78,11 @@ public class Suscripcion {
         this.personaId = personaId;
     }
     
+    public Integer getPersonaId() {
+        return this.personaId;
+    }
+
+    public void setPersonaId(Integer personaId) {
+        this.personaId = personaId;
+    }
 }

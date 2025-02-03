@@ -1,12 +1,16 @@
-from .router import *
+from .router import router
+from flask import render_template, request, flash, redirect
 from .utils.decorator import *
 import os
 from werkzeug.utils import secure_filename
+
 
 UPLOAD_FOLDER = 'static/img/user_profile/'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'webp'}
 
 P_URL = f'{BASE_URL}/persona' 
+
+
 
 @router.route('/users/client/list')
 @login_required(roles=['ADMINISTRADOR'])
@@ -53,7 +57,6 @@ def register_user_send(headers,usr):
     msg = [response.json()['status'], response.json()['info']]
     flash(f'{msg[0]}: {msg[1]}', category=msg[0])
     return redirect('/users/admin/list' if data['rol'] == 'ADMINISTRADOR' else '/users/client/list')
-
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -140,6 +143,7 @@ def my_profile(headers,usr):
     perfil = requests.get(f'{BASE_URL}/perfil/get/{cuenta["perfilId"]}',headers=headers).json()['data']
     estadistica = requests.get(f'{BASE_URL}/estadistica/get/{cuenta['perfilId']}',headers=headers).json()['data']
     suscripcion = requests.get(f'{BASE_URL}/suscripcion/get/{cuenta['personaId']}',headers=headers).json()['data']
+
 
     enums = requests.get(f'{P_URL}/enumerations',headers=headers).json()['data']
 
