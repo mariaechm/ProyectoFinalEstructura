@@ -331,29 +331,28 @@
 
       <div class="tab-pane fade" id="nav-suscripcion" role="tabpanel"
         aria-labelledby="nav-suscripcion-tab">
+
+
         <div class="d-flex align-items-center justify-content-between mb-4">
-          <h5>Estado de la Suscripción</h5>
-          {% if user.persona.rol == 'ADMINISTRADOR' %}
-            <a href="/admin/suscripcion/edit/{{ full_user_info.suscripcion.id }}">Editar</a>
-          {% endif %}
+          <h5>Suscripción</h5>
+             <a href="/suscripcion/update/{{ full_user_info.suscripcion.id }}">Editar</a>
         </div>
 
         <dl class="row mb-0">
           <dt class="col-sm-4">Fecha de Inicio:</dt>
           <dd class="col-sm-8">{{ full_user_info.suscripcion.fechaInicio }}</dd>
 
-          <dt class="col-sm-4">Fecha de Finalización:</dt>
-          <dd class="col-sm-8">{{ full_user_info.suscripcion.fechaFinalizacion }}</dd>
-
-          <dt class="col-sm-4">Tipo de Suscripcion:</dt>
+          <dt class="col-sm-4"> Tipo de suscripción:</dt>
           <dd class="col-sm-8">{{ full_user_info.suscripcion.tipo }}</dd>
 
-          <dt class="col-sm-4 text-truncate">Duración en días: </dt>
+          <dt class="col-sm-4"> Numero de días:</dt>
           <dd class="col-sm-8">{{ full_user_info.suscripcion.duracionDias }}</dd>
 
-          <dt class="col-sm-4">Precio:</dt>
-          <dd class="col-sm-8">{{ full_user_info.suscripcion.precio }}</dd>
+          <dt class="col-sm-4"> Fecha de Finalización:</dt>
+          <dd class="col-sm-8">{{ full_user_info.suscripcion.fechaFinalizacion }}</dd>
 
+          <dt class="col-sm-4"> Precio:</dt>
+          <dd class="col-sm-8">{{ full_user_info.suscripcion.precio }}</dd>
         </dl>
       </div>
     </div>

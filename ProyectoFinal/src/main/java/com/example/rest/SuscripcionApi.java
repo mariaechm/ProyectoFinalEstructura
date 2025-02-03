@@ -23,7 +23,7 @@ public class SuscripcionApi {
         return ResponseFactory.buildResponse(new SuscripcionServices(), "getAllSuscripciones");
 
     }
-    
+
     @Path("/save")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
@@ -64,5 +64,10 @@ public class SuscripcionApi {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getTipoSuscripcion() throws Exception {
         return ResponseFactory.buildResponse(new SuscripcionServices(),"getTipos");
+<<<<<<< HEAD
     }    
 }
+=======
+    }
+}
+>>>>>>> 915ee3dca30442e8e1c216a1dece7da62a2a76e4

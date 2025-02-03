@@ -65,7 +65,7 @@ public class SuscripcionDao extends AdapterDao<Suscripcion> {
         merge(this.getSuscripcion(), id);
         return this.suscripcion;
     }
-       
+    
     public Suscripcion delete(Integer id) throws Exception {
         Suscripcion suscripcion = get(id);
         remove(id);
@@ -139,6 +139,10 @@ public class SuscripcionDao extends AdapterDao<Suscripcion> {
 
     //Validar si la fecha es válida
     private Boolean isFechaValida(String fechaInicio) {
+        if (!fechaInicio.matches("\\d{4}-\\d{2}-\\d{2}")) {
+            return false;
+        }
+
         String[] partes = fechaInicio.split("-");
         if (partes.length != 3) {
             return false;
@@ -146,48 +150,11 @@ public class SuscripcionDao extends AdapterDao<Suscripcion> {
         int anio = Integer.parseInt(partes[0]);
         int mes = Integer.parseInt(partes[1]);
         int dia = Integer.parseInt(partes[2]);
-        if (anio < 2023 || mes < 1 || mes > 12 || dia < 1 || dia > diasEnMes(mes, anio)) {
+
+        if (partes[0].length() != 4 || anio < 2023 || mes < 1 || mes > 12 || dia < 1 || dia > diasEnMes(mes, anio)) {
             return false;
         }
         return true;
-    }
-
-
-    //Ordenar
-    public Suscripcion[] sort(String attribute, Integer orden, Integer method) throws Exception {
-        LinkedList<Suscripcion> list = listAll();
-        switch (method) {
-            case 0:
-                list.quickSort(attribute, orden);
-                break;
-            case 1:
-                list.mergeSort(attribute, orden);
-                break;
-            case 2:
-                list.shellSort(attribute, orden);
-                break;
-            default:
-                throw new Exception("Método de ordenamiento no válido");
-        }
-        return list.toArray();
-    }
-
-    //Buscar
-    public Suscripcion[] search(String attribute, String value) throws Exception {
-        LinkedList<Suscripcion> list = listAll();
-        try {
-            if(attribute.equalsIgnoreCase("fechaInicio")){ 
-                return list.buscarPorAtributo(attribute, value).toArray();
-            }else if (attribute.equalsIgnoreCase("fechaFinalizacion")){
-                return list.buscarPorAtributo(attribute, value).toArray();
-            } else if (attribute.equalsIgnoreCase("precio")) {
-                    return list.busquedaLinealBinaria (attribute, Double.parseDouble(value)).toArray();
-            } else {
-                return list.busquedaLinealBinaria(attribute, value).toArray();
-            }
-        } catch (Exception e) {
-            return new Suscripcion[] {};
-        }
     }
 }
 

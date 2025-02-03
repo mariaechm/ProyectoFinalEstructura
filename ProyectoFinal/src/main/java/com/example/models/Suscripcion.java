@@ -75,4 +75,5 @@ public class Suscripcion {
     public void setPersonaId(Integer personaId) {
         this.personaId = personaId;
     }
+    
 }
