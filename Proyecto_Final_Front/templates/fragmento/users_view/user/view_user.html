@@ -119,8 +119,8 @@
 
         <div class="d-flex align-items-center justify-content-between mb-4">
           <h6>Estadísticas</h6>
-          <a href="/estadistica/edit/{{ estadistica.id }}">Editar</a>
-          <a href="/estadistica/pdf/{{ estadistica.id }}" class="btn btn-primary">Descargar PDF</a>
+          <a href="/estadistica/edit/{{ full_user_info.estadistica.id }}">Editar</a>
+          <a href="/estadistica/pdf/{{ full_user_info.estadistica.id }}" class="btn btn-primary">Descargar PDF</a>
         </div>
 
         <dl class="row mb-0">
@@ -135,10 +135,10 @@
 
           <dt class="col-sm-4 text-truncate">Medidas de la cintura: </dt>
 
-          <dd class="col-sm-8">{{ estadistica.medidaCintura }} cm</dd>
+          <dd class="col-sm-8">{{ full_user_info.estadistica.medidaCintura }} cm</dd>
           
           <dt class = "col-sm-4">Medidas del Pecho:</dt>
-          <dd class="col-sm-8">{{ estadistica.medidaPecho }} cm</dd>
+          <dd class="col-sm-8">{{ full_user_info.estadistica.medidaPecho }} cm</dd>
 
 
           <dt class="col-sm-4">Peso:</dt>

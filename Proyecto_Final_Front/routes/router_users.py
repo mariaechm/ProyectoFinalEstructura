@@ -1,4 +1,4 @@
-from .router import router
+from .router import *
 from flask import render_template, request, flash, redirect
 from .utils.decorator import *
 import os

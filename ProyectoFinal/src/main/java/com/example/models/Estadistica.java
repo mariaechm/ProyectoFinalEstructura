@@ -23,8 +23,6 @@ public class Estadistica {
         this.peso = peso;
         this.altura = altura;
     }
-    public Estadistica() {
-    }
 
      // Getters and Setters
     
@@ -92,7 +90,6 @@ public class Estadistica {
         this.altura = altura;
     }
 
-<<<<<<< HEAD
     public Estadistica() {
     }
 
@@ -103,6 +100,5 @@ public class Estadistica {
     public void setPerfilId(Integer perfilId) {
         this.perfilId = perfilId;
     }
-=======
->>>>>>> moduloEstadistica
+
 }

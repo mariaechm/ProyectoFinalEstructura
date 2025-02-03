@@ -1,4 +1,6 @@
 {% extends 'blank.html' %}
+{% block title %}Estadisticas{% endblock %}
+{% block estadistica_nav_class %}active{% endblock %}
 {% block content %}
 {% with messages = get_flashed_messages(with_categories=True) %}
   {% if messages %}
