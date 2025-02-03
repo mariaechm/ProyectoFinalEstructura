@@ -15,7 +15,7 @@
 <div class="col-12">
   <div class="container-fluid bg-secondary rounded h-100 p-4">
     <div class="form-inline">
-      <select class="form-select" style="width: 250px;" id="atributo">
+      <select class="form-select w-100 w-md-auto m-2" style="width: 250px;" id="atributo">
         <option value="nombreEjercicio">Nombre del Ejercicio</option>
         <option value="tiempoDescanso">Tiempo de Descanso </option>
         <option value="nroSeries">Número de Series</option>
@@ -23,10 +23,10 @@
             
       <input class="form-control" style="width: 150px;" id="texto" type="text">
       <a>
-        <button type="button" class="btn btn-warning m-2" id="btn"><i class="fa fa-search" id="btn" title="Buscar"></i></button>
+        <button type="button" class="btn btn-warning m-2 w-100 w-md-auto" id="btn"><i class="fa fa-search" id="btn" title="Buscar"></i></button>
       </a>
       
-      <select class="form-select" style="width: 150px;" name="sortMethod" id="sortMethod">
+      <select class="form-select w-100 w-md-auto m-2" style="width: 150px;" name="sortMethod" id="sortMethod">
         <option value="0">Quick Sort</option> 
         <option value="1">Merge Sort</option>
         <option value="2">Shell Sort</option>
@@ -81,6 +81,7 @@
             {% endfor %}
           </tbody>
       </table>
+      <a href="/ejercicios/list" class="btn btn-warning rounded-pill">Regresar a la lista de ejercicios</a>
     </div>
   </div>
 </div>

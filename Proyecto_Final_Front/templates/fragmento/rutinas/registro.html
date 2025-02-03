@@ -6,6 +6,9 @@
 {% block rutina %}
   active
 {% endblock %}
+{% block custom_styles %}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/custom/validation.register.css' ) }}">
+{% endblock %}
 {% block content %}
 
 <div class="pagetitle">
@@ -19,7 +22,6 @@
             <div class="col-sm-6">
                 <label for="validationCustom02" class="form-label">Nombre de la Rutina</label>
                 <input type="text" class="form-control" name="nombreR" required>
-                <div class="invalid-feedback">Por favor, ingrese un nombre para la rutina.</div>
             </div>
                      
             <div class="col-sm-6">
@@ -34,7 +36,6 @@
             <div class="col-sm-6">
                 <label for="descrip" class="form-label">Descripción de la Rutina</label>
                 <textarea type="text" class="form-control" name="descrip" style="height: 150px;" required></textarea>
-                <div class="invalid-feedback">Por favor, ingrese una descripción de la rutina.</div>
             </div>   
             
             <div class="col-sm-6">
@@ -44,12 +45,11 @@
                         <option value="{{ ejercicio.id }}">{{ ejercicio.nombreEjercicio }}</option>
                     {% endfor %}
                 </select>
-                <div class="invalid-feedback">Por favor, seleccione ejercicios para la rutina.</div>
             </div>            
 
             <div class="col-sm-6">
                 <label for="validationCustom02" class="form-label">Número de Ejercicios</label>
-                <input id="idNroE" type="number" step="1" min="1" class="form-control" name="nroE" required readonly style="background-color: black;">
+                <input id="idNroE" type="number" step="1" class="form-control" name="nroE" required readonly style="background-color: black;">
             </div>
 
             <div class="form-inline">
@@ -82,18 +82,10 @@
     // Inicializar con el valor actual (en caso de que ya haya opciones seleccionadas)
     actualizarNumeroEjercicios();
 </script>
-
-<script>
-    (function () {
-        'use strict';
-        const form = document.getElementById('rutinaForm');
-        form.addEventListener('submit', function (event) {
-            if (!form.checkValidity()) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
-            form.classList.add('was-validated');
-        }, false);
-    })();
-</script>
 {% endblock%}
+
+{% block extra_js %}
+<script src="{{ url_for('static',filename='js/jquery-3.6.0.min.js' ) }}"></script>
+<script src="{{ url_for('static',filename='js/jquery.validate.min.js' ) }}"></script>
+<script src="{{ url_for('static',filename='js/fragmento/rutina/register-rutina.js' ) }}"></script>
+{% endblock %}

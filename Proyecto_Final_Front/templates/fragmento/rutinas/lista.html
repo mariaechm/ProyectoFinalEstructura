@@ -35,20 +35,20 @@
     <div class="form-inline">
       {% if user.persona.rol == 'ADMINISTRADOR' %}
         <a href="/rutinas/register">
-          <button type="button" class="btn btn-warning m-2"><i class="fa fa-plus"></i></button>
+          <button type="button" class="btn btn-warning m-2 w-100 w-md-auto"><i class="fa fa-plus"></i></button>
         </a>
       {% endif %}
-      <select class="form-select" style="width: 250px;" id="atributo">
+      <select class="form-select w-100 w-md-auto m-2" style="width: 250px;" id="atributo">
         <option value="nombreRutina">Nombre de la Rutina</option>
         <option value="nroEjercicios">Número de Ejercicios</option>
       </select>
             
       <input class="form-control" style="width: 150px;" id="texto" type="text">
       <a>
-        <button type="button" class="btn btn-warning m-2" id="btn"><i class="fa fa-search" id="btn" title="Buscar"></i></button>
+        <button type="button" class="btn btn-warning m-2 w-100 w-md-auto" id="btn"><i class="fa fa-search" id="btn" title="Buscar"></i></button>
       </a>
 
-      <select class="form-select" style="width: 150px;" name="sortMethod" id="sortMethod">
+      <select class="form-select w-100 w-md-auto m-2" style="width: 150px;" name="sortMethod" id="sortMethod">
         <option value="0">Quick Sort</option> 
         <option value="1">Merge Sort</option>
         <option value="2">Shell Sort</option>
@@ -101,6 +101,7 @@
             {% endfor %}
           </tbody>
       </table>
+      <a href="/rutinas/list" class="btn btn-warning rounded-pill">Regresar a la lista de rutinas</a>
     </div>
   </div>
 </div>

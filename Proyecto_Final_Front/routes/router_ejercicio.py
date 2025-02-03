@@ -73,7 +73,8 @@ def view_edit_ejercicio(id, headers, usr):
     if(r1.status_code == 200):
         return render_template('fragmento/ejercicios/editar.html', list = data, ejercicio = data1, list2 = data2, user=usr)
     else:
-        flash(data1, category='error')
+        msg = [r1.json()['status'], r1.json()['info']]
+        flash(f'{msg[0]}: {msg[1]}', category=msg[0])
         return redirect("/ejercicios/list")
 
 

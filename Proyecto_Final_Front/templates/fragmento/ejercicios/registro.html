@@ -6,6 +6,9 @@
 {% block ejercicio %}
   active
 {% endblock %}
+{% block custom_styles %}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/custom/validation.register.css' ) }}">
+{% endblock %}
 {% block content %}
 
 <div class="pagetitle">
@@ -19,31 +22,26 @@
             <div class="col-sm-6">
                 <label for="validationCustom02" class="form-label">Nombre del Ejercicio</label>
                 <input type="text" class="form-control" name="nombreE" required>
-                <div class="invalid-feedback">Por favor, ingrese un nombre para el ejercicio.</div>
             </div>
 
             <div class="col-sm-6">
                 <label for="validationCustom02" class="form-label">Tiempo de Descanso entre Series (Minutos)</label>
-                <input type="number" step="1" min="1" class="form-control" name="tiempoD" required>
-                <div class="invalid-feedback">Por favor, ingrese un tiempo de descanso para el ejercicio.</div>
+                <input type="number" step="0.1" class="form-control" name="tiempoD" required>
             </div>
 
             <div class="col-sm-6">
                 <label for="validationCustom02" class="form-label">Número de Series</label>
-                <input type="number" step="1" min="1" class="form-control" name="nroS" required>
-                <div class="invalid-feedback">Por favor, ingrese un número de series para el ejercicio.</div>
+                <input type="number" class="form-control" name="nroS" required>
             </div>
 
             <div class="col-sm-6">
                 <label for="validationCustom02" class="form-label">Número de Repeticiones por Serie</label>
-                <input type="number" step="1" min="1" class="form-control" name="nroRS" required>
-                <div class="invalid-feedback">Por favor, ingrese un numero de repeticiones para cada serie del ejercicio.</div>
+                <input type="number" class="form-control" name="nroRS" required>
             </div>
 
             <div class="col-sm-6">
                 <label for="validationCustom02" class="form-label">Imagen del Ejercicio (Enlace Web)</label>
                 <input type="url" class="form-control" name="img" required>
-                <div class="invalid-feedback">Por favor, ingrese un enlace web de la imagen del ejercicio.</div>
             </div>
             
             <div class="col-sm-6">
@@ -57,8 +55,7 @@
             
             <div class="col-sm-6">
                 <label for="descrip" class="form-label">Descripción del Ejercicio</label>
-                <textarea type="text" class="form-control" name="descrip" style="height: 150px;" required></textarea>
-                <div class="invalid-feedback">Por favor, ingrese una descripción del ejercicio.</div>
+                <textarea type="text" minlength="50" maxlength="600" class="form-control" name="descrip" style="height: 150px;" required></textarea>
             </div>
 
             <div class="col-sm-6">
@@ -83,17 +80,10 @@
     </div>
 </div>
 
-<script>
-    (function () {
-        'use strict';
-        const form = document.getElementById('ejercicioForm');
-        form.addEventListener('submit', function (event) {
-            if (!form.checkValidity()) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
-            form.classList.add('was-validated');
-        }, false);
-    })();
-</script>
 {% endblock%}
+
+{% block extra_js %}
+<script src="{{ url_for('static',filename='js/jquery-3.6.0.min.js' ) }}"></script>
+<script src="{{ url_for('static',filename='js/jquery.validate.min.js' ) }}"></script>
+<script src="{{ url_for('static',filename='js/fragmento/ejercicio/register-ejercicio.js' ) }}"></script>
+{% endblock %}
