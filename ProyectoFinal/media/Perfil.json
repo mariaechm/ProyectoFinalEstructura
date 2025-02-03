@@ -2,64 +2,8 @@
   {
     "id": 1,
     "nickName": "ArnoldGYM",
-    "imagen": "f3bb9f59_2022.webp",
+    "imagen": "GettyImages-143282183.webp",
     "objetivoCliente": "Gestionar el Gimnasio ARNOLD",
     "fechaCreacion": "2025-01-07"
-  },
-  {
-    "id": 3,
-    "nickName": "Juancho",
-    "imagen": "user.png",
-    "objetivoCliente": "Objetivo ...",
-    "fechaCreacion": "2025-01-30"
-  },
-  {
-    "id": 4,
-    "nickName": "Horacio",
-    "imagen": "user.png",
-    "objetivoCliente": "Objetivo ...",
-    "fechaCreacion": "2025-01-30"
-  },
-  {
-    "id": 5,
-    "nickName": "Daniela",
-    "imagen": "user.png",
-    "objetivoCliente": "Objetivo ...",
-    "fechaCreacion": "2025-01-30"
-  },
-  {
-    "id": 7,
-    "nickName": "Kevin",
-    "imagen": "yop.png",
-    "objetivoCliente": "ESTAR bien mamado de todas las formas xd",
-    "fechaCreacion": "2025-01-31"
-  },
-  {
-    "id": 8,
-    "nickName": "Maximiliano de la Cruz",
-    "imagen": "user.png",
-    "objetivoCliente": "Objetivo ...",
-    "fechaCreacion": "2025-01-31"
-  },
-  {
-    "id": 9,
-    "nickName": "Gabriel",
-    "imagen": "user.png",
-    "objetivoCliente": "Objetivo ...",
-    "fechaCreacion": "2025-02-01"
-  },
-  {
-    "id": 10,
-    "nickName": "Eso",
-    "imagen": "user.png",
-    "objetivoCliente": "Objetivo ...",
-    "fechaCreacion": "2025-02-01"
-  },
-  {
-    "id": 11,
-    "nickName": "Armando",
-    "imagen": "user.png",
-    "objetivoCliente": "Objetivo ...",
-    "fechaCreacion": "2025-02-01"
   }
 ]

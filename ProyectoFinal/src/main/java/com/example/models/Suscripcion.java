@@ -10,6 +10,8 @@ public class Suscripcion {
     private Double precio;
     private int duracionDias;
 
+    private Integer personaId;
+
     private TipoSuscripcion tipo;
 
     // Constructor vacio
@@ -64,6 +66,14 @@ public class Suscripcion {
 
     public void setTipo(TipoSuscripcion tipo) {
         this.tipo = tipo;
+    }
+
+    public Integer getPersonaId() {
+        return this.personaId;
+    }
+
+    public void setPersonaId(Integer personaId) {
+        this.personaId = personaId;
     }
     
 }

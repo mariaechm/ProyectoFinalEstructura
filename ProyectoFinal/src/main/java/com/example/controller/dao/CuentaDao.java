@@ -12,6 +12,8 @@ import com.example.models.Cuenta;
 import com.example.models.Estadistica;
 import com.example.models.Perfil;
 import com.example.models.Persona;
+import com.example.models.Suscripcion;
+import com.example.models.enumerator.TipoSuscripcion;
 
 public class CuentaDao extends AdapterDao<Cuenta> {
     private Cuenta cuenta;
@@ -113,6 +115,14 @@ public class CuentaDao extends AdapterDao<Cuenta> {
         if (!isThereAllFields())
             throw new Exception("Los datos están incompletos, no se guardarán");
 
+        if (!new PersonaDao().charsLength(this.getCuenta().getCorreoElectronico(), 3, 50)) {
+            throw new Exception("Correo Electrónico no válido, debe tener entre 3 y 50 caracteres");
+        }
+
+        if(!new PersonaDao().charsLength(this.getCuenta().getContrasena(), 8, 50)) {
+            throw new Exception("Contraseña no válida, debe tener al menos 8 caracteres");
+        }
+
         final Integer personaId = this.getCuenta().getPersonaId();
         if (!existsPersonaWith(personaId)) 
             throw new Exception("No existe registro de Persona con Id: " + personaId);
@@ -130,7 +140,7 @@ public class CuentaDao extends AdapterDao<Cuenta> {
 
             final Integer perfilId = this.getCuenta().getPerfilId();
             if(existeCuentaWith("PerfilId", perfilId))
-                throw new Exception("Ya existe una cuenta asociada a IdPerfil=");
+                throw new Exception("Ya existe una cuenta asociada a IdPerfil="+perfilId);
         }
 
         final String password = this.getCuenta().getContrasena();
@@ -214,16 +224,25 @@ public class CuentaDao extends AdapterDao<Cuenta> {
             PersonaDao pd = new PersonaDao();
             PerfilDao pfd = new PerfilDao();
             EstadisticaDao ed = new EstadisticaDao();
+            SuscripcionDao sd = new SuscripcionDao();
             
             this.cuentaFromJson(json);
             pd.personaFromJson(json);
             pfd.setPerfil(new Perfil(0, pd.getPersona().getNombre(), "user.png", "Objetivo ...", LocalDateTime.now().toString().substring(0,10)));
             ed.setEstadistica(new Estadistica(0,0f,0f,0f,0f,0f,0f));
-            
+            Suscripcion s = new Suscripcion();
+            s.setFechaInicio(LocalDateTime.now().toString().substring(0,10));
+            s.setFechaFinalizacion(LocalDateTime.now().plusDays(30).toString().substring(0,10));
+            s.setTipo(TipoSuscripcion.DIA);
+            s.setPrecio(TipoSuscripcion.DIA.getPrecio());
+            s.setDuracionDias(TipoSuscripcion.DIA.getDuracionDias());
+            sd.SuscripcionFromJson(g.toJson(s));
 
             pd.savePersona();
             pfd.save();
             ed.getEstadistica().setPerfilId(pfd.getPerfil().getId());
+            sd.getSuscripcion().setPersonaId(pd.getPersona().getId());
+            sd.save();
 
             ed.save();
 

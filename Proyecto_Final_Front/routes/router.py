@@ -25,9 +25,9 @@ def not_found():
 @router.route('/login')
 @login_path
 def login():
+    correo = request.args.get('correo')
     next = request.args.get('next')
-    print(next)
-    return render_template('signin.html',next=next or '')
+    return render_template('signin.html',next=next or '', correo=correo or '')
 
 @router.route('/login/send',methods=['POST'])
 def login_send():
@@ -35,7 +35,7 @@ def login_send():
     ok = response.status_code == 200
     if not ok:
         flash('Credenciales inválidas',category='info')
-        return redirect('/login')
+        return redirect(url_for('router.login',correo=request.form.get('correoElectronico')))
     
     session['token'] = response.json()['data']
     next = request.form.to_dict()['next']

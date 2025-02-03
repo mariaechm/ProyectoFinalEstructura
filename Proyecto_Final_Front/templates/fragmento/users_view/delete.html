@@ -1,6 +1,16 @@
 {% extends 'blank.html' %}
 {% block title %}Eliminar registro{% endblock %}
-{% block usr_nav_class %}active{% endblock %}
+
+
+{% set next = 'admin' if admins else 'client' %}
+
+{% set admin_class = 'active' if admins else '' %}
+{% set client_class = 'active' if not admins else '' %}
+
+{% block admin_nav_class %}{{ admin_class }}{% endblock %}
+{% block client_nav_class %}{{ client_class }}{% endblock %}
+
+
 {% block content %}
 <div class="pagetitle">
   <h1>Eliminar Usuario</h1>
@@ -12,12 +22,14 @@
       <div class="bg-secondary rounded h-100 p-4">
           <form method="POST" action="/user/delete/send" novalidate>
             <input type="hidden" value="{{ id }}" name="id"/><br>
+            <input type="text" name="admins" id="admins" value="{{ admins }}" hidden>
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
                 <h4 class="alert-heading"><strong><center>¡¡¡ALERTA!!!</strong></h4>
                 <br><center>¡Esta acción no se podrá revertir!<br><center>¿Desea eliminar el Usuario seleccionado?<br>
                 <div class="col-6">
                     <br><button class="btn btn-success rounded-pill" type="submit">Confirmar</button>
-                    <a href="/users/list" class="btn btn-primary rounded-pill">Cancelar</a>
+                    
+                    <a href="/users/{{ next }}/list" class="btn btn-primary rounded-pill">Cancelar</a>
                 </div>
             </div>
           </form>
