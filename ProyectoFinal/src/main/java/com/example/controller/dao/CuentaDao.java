@@ -12,6 +12,8 @@ import com.example.models.Cuenta;
 import com.example.models.Estadistica;
 import com.example.models.Perfil;
 import com.example.models.Persona;
+import com.example.models.Suscripcion;
+import com.example.models.enumerator.TipoSuscripcion;
 
 public class CuentaDao extends AdapterDao<Cuenta> {
     private Cuenta cuenta;
@@ -222,16 +224,25 @@ public class CuentaDao extends AdapterDao<Cuenta> {
             PersonaDao pd = new PersonaDao();
             PerfilDao pfd = new PerfilDao();
             EstadisticaDao ed = new EstadisticaDao();
+            SuscripcionDao sd = new SuscripcionDao();
             
             this.cuentaFromJson(json);
             pd.personaFromJson(json);
             pfd.setPerfil(new Perfil(0, pd.getPersona().getNombre(), "user.png", "Objetivo ...", LocalDateTime.now().toString().substring(0,10)));
             ed.setEstadistica(new Estadistica(0,0f,0f,0f,0f,0f,0f));
-            
+            Suscripcion s = new Suscripcion();
+            s.setFechaInicio(LocalDateTime.now().toString().substring(0,10));
+            s.setFechaFinalizacion(LocalDateTime.now().plusDays(30).toString().substring(0,10));
+            s.setTipo(TipoSuscripcion.DIA);
+            s.setPrecio(TipoSuscripcion.DIA.getPrecio());
+            s.setDuracionDias(TipoSuscripcion.DIA.getDuracionDias());
+            sd.SuscripcionFromJson(g.toJson(s));
 
             pd.savePersona();
             pfd.save();
             ed.getEstadistica().setPerfilId(pfd.getPerfil().getId());
+            sd.getSuscripcion().setPersonaId(pd.getPersona().getId());
+            sd.save();
 
             ed.save();
 

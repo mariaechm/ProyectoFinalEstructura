@@ -89,8 +89,7 @@ def perfil_update_send(headers,usr):
             data['imagen'] = file.filename
 
     if not 'imagen' in data:
-        data['imagen'] = data['current-image']
-                                                   
+        data['imagen'] = data['current-image']                                                 
     response = requests.post(f'{BASE_URL}/perfil/update',headers=headers,json=data)
     ok = response.status_code == 200
     flash(f'{"Éxito" if ok else "Error"}: {"Se ha actualizado el registro" if ok else "no se ha podido actualizar el registro"}',category='success' if ok else 'error')
@@ -123,9 +122,11 @@ def persona_view(headers,usr,id,admins:bool):
     cuenta = requests.get(f'{BASE_URL}/cuenta/search/personaId/{persona['id']}',headers=headers).json()['data'][0]
     perfil = requests.get(f'{BASE_URL}/perfil/get/{cuenta["perfilId"]}',headers=headers).json()['data']
     estadistica = requests.get(f'{BASE_URL}/estadistica/get/{cuenta['perfilId']}',headers=headers).json()['data']
+    suscripcion = requests.get(f'{BASE_URL}/suscripcion/get/{cuenta['personaId']}',headers=headers).json()['data']
 
     suscripcion = requests.get(f'{BASE_URL}/suscripcion/get/{cuenta["perfilId"]}',headers=headers).json()['data']
     enums = requests.get(f'{P_URL}/enumerations',headers=headers).json()['data']
+
 
     full_user_info = {'persona': persona, 'cuenta': cuenta, 'perfil': perfil, 'estadistica': estadistica, 'suscripcion' : suscripcion, 'my_profile': False, 'admins': eval(admins) }
 
@@ -138,6 +139,7 @@ def my_profile(headers,usr):
     cuenta = requests.get(f'{BASE_URL}/cuenta/search/personaId/{persona["id"]}',headers=headers).json()['data'][0]
     perfil = requests.get(f'{BASE_URL}/perfil/get/{cuenta["perfilId"]}',headers=headers).json()['data']
     estadistica = requests.get(f'{BASE_URL}/estadistica/get/{cuenta['perfilId']}',headers=headers).json()['data']
+    suscripcion = requests.get(f'{BASE_URL}/suscripcion/get/{cuenta['personaId']}',headers=headers).json()['data']
 
     suscripcion = requests.get(f'{BASE_URL}/suscripcion/get/{cuenta["perfilId"]}',headers=headers).json()['data']
 
