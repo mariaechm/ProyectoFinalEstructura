@@ -268,5 +268,41 @@
     "fecha": "2025-02-01",
     "hora": "0:27:25",
     "descripcion": "Se ha registrado la información personal"
+  },
+  {
+    "id": 46,
+    "fecha": "2025-02-01",
+    "hora": "1:38:45",
+    "descripcion": "Se ha registrado la información personal"
+  },
+  {
+    "id": 47,
+    "fecha": "2025-02-02",
+    "hora": "6:12:12",
+    "descripcion": "Se ha registrado la información personal"
+  },
+  {
+    "id": 48,
+    "fecha": "2025-02-02",
+    "hora": "6:33:42",
+    "descripcion": "Se ha eliminado la información personal"
+  },
+  {
+    "id": 49,
+    "fecha": "2025-02-02",
+    "hora": "6:33:45",
+    "descripcion": "Se ha eliminado la información personal"
+  },
+  {
+    "id": 50,
+    "fecha": "2025-02-02",
+    "hora": "6:33:48",
+    "descripcion": "Se ha eliminado la información personal"
+  },
+  {
+    "id": 51,
+    "fecha": "2025-02-02",
+    "hora": "6:49:12",
+    "descripcion": "Se ha registrado la información personal"
   }
 ]

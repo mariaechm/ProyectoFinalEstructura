@@ -42,6 +42,7 @@ def admin_client_list(headers,usr):
 def register_user(headers,usr,role):
     e = requests.get(f'{P_URL}/enumerations',headers=headers).json()['data']
     role = 'ADMINISTRADOR' if role == 'admin' else 'CLIENTE'
+    print(usr)
     return render_template('fragmento/users_view/register.html',e=e, user=usr, role=role)
 
 @router.route('/register/user/send',methods=['POST'])

@@ -12,15 +12,15 @@
     "rol": "ADMINISTRADOR"
   },
   {
-    "id": 2,
-    "nombre": "Daniela",
+    "id": 5,
+    "nombre": "Daniel",
     "apellido": "Cueva",
-    "identificacion": "0957485764",
-    "celular": "0984576893",
-    "fechaNacimiento": "2003-01-10",
-    "direccion": "Av. Universitaria",
+    "identificacion": "7564758695",
+    "celular": "8675847564",
+    "fechaNacimiento": "2001-02-12",
+    "direccion": "Av fasdfas",
     "tipoIdentificacion": "CEDULA",
-    "genero": "MUJER",
+    "genero": "HOMBRE",
     "rol": "ADMINISTRADOR"
   }
 ]

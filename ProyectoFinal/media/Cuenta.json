@@ -7,10 +7,10 @@
     "perfilId": 1
   },
   {
-    "id": 2,
-    "correoElectronico": "daniela.admin@example.com",
-    "contrasena": "YWRtaW5pc3RyYWRvcmVz",
-    "personaId": 2,
-    "perfilId": 2
+    "id": 5,
+    "correoElectronico": "aasdf@asdfas.com",
+    "contrasena": "YXNkZmFzZGZhc2RmYWFzZA\u003d\u003d",
+    "personaId": 5,
+    "perfilId": 5
   }
 ]

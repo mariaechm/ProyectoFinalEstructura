@@ -39,7 +39,7 @@
                 <label for="lbltipo" class="form-label">Ejercicios</label>
                 <select id="seleccionEjercicios" name="seleccionEjercicios" class="form-select" multiple="">
                     {% for ejercicio in ejercicios %}
-                        <option {% if item == rutina.idEjercicio %} selected {%endif%} value="{{ ejercicio.id }}">{{ ejercicio.nombreEjercicio }}</option>
+                        <option {% if ejercicio.id in rutina.idEjercicio %} selected {%endif%} value="{{ ejercicio.id }}">{{ ejercicio.nombreEjercicio }}</option>
                     {% endfor %}
                 </select>
             </div>
