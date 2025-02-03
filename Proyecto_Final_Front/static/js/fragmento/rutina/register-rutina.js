@@ -9,8 +9,8 @@ jQuery(document).ready(function () {
     }, "No se permiten espacios al inicio");
 
     jQuery.validator.addMethod("soloLetrasNumeros", function(value, element) {
-        return this.optional(element) || /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ\s,]+$/.test(value);
-    }, "El campo solo puede contener letras, números, espacios y algunos caracteres especiales (,)");
+        return this.optional(element) || /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ\s]+$/.test(value);
+    }, "El campo solo puede contener letras, números y espacios.");
 
     jQuery("#rutinaForm").validate({
       rules: {
