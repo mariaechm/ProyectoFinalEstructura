@@ -53,7 +53,7 @@ def save_rutina(headers, usr):
         flash("¡Se ha guardado correctamente!", category='info')
         return redirect("/rutinas/list")
     else:
-        flash("¡No se ha podido completar la acción!", category='error')
+        flash(r.json()['info'], category='error')
         return redirect("/rutinas/list")
     
 
@@ -71,7 +71,7 @@ def view_edit_rutina(id, headers, usr):
     if(r1.status_code == 200):
         return render_template('fragmento/rutinas/editar.html', list = data, rutina=data1, rutinas=rutinas, ejercicios=ejercicios, user=usr)
     else:
-        flash("¡No se ha podido completar la acción!", category='error')
+        flash(r1.json()['info'], category='error')
         return redirect("/rutinas/list")
 
 
@@ -100,7 +100,7 @@ def update_rutina(headers, usr):
         flash("¡Se ha actualizado correctamente!", category='info')
         return redirect("/rutinas/list")
     else:
-        flash("¡No se ha podido completar la acción!", category='error')
+        flash(r.json()['info'], category='error')
         return redirect("/rutinas/list")
     
 
@@ -120,7 +120,7 @@ def delete_rutina(headers, usr):
         flash("¡Se ha eliminado correctamente!", category='info')
         return redirect("/rutinas/list")
     else:
-        flash("¡No se ha podido completar la acción!", category='error')
+        flash(r.json()['info'], category='error')
         return redirect("/rutinas/list")
     
 
