@@ -7,17 +7,19 @@ public class Estadistica {
     private float medidaPierna;
     private float medidaBrazo;
     private float medidaCintura;
+    private float medidaPecho;
     private float peso;
     private float altura;
 
     private Integer perfilId;
 
-    public Estadistica(Integer id,  float medidaEspalda, float medidaPierna, float medidaBrazo, float medidaCintura, float peso, float altura) {
+    public Estadistica(Integer id,  float medidaEspalda, float medidaPierna, float medidaBrazo, float medidaCintura, float medidaPecho, float peso, float altura) {
         this.id = id;
         this.medidaEspalda = medidaEspalda;
         this.medidaPierna = medidaPierna;
         this.medidaBrazo = medidaBrazo;
         this.medidaCintura = medidaCintura;
+        this.medidaPecho = medidaPecho;
         this.peso = peso;
         this.altura = altura;
     }
@@ -64,6 +66,14 @@ public class Estadistica {
         this.medidaCintura = medidaCintura;
     }
 
+    public float getMedidaPecho() {
+        return medidaPecho;
+    }
+    
+    public void setMedidaPecho(float medidaPecho) {
+        this.medidaPecho = medidaPecho;
+    }
+
     public float getPeso() {
         return peso;
     }
@@ -90,4 +100,5 @@ public class Estadistica {
     public void setPerfilId(Integer perfilId) {
         this.perfilId = perfilId;
     }
+
 }

@@ -62,7 +62,6 @@ public class PersonaDao extends AdapterDao<Persona> {
     // VALIDADORES =============================================================================
 
     public Boolean isThereAllFields() {
-        System.out.println(this.getPersona());
         if(this.getPersona().getApellido() == null) return false;
         if(this.getPersona().getNombre() == null) return false;
         if(this.getPersona().getCelular() == null) return false;
@@ -104,8 +103,9 @@ public class PersonaDao extends AdapterDao<Persona> {
             LocalDate parsedDate = LocalDate.of(yyyy, mm, dd);
             LocalDate currentDate = LocalDate.now();
             LocalDate date15YearsAgo = currentDate.minusYears(15);
+            LocalDate date100YearsAgo = currentDate.minusYears(100);
     
-            if (parsedDate.isAfter(currentDate) || parsedDate.isAfter(date15YearsAgo)) {
+            if (parsedDate.isAfter(currentDate) || parsedDate.isAfter(date15YearsAgo) || parsedDate.isBefore(date100YearsAgo)) {
                 return false;
             }
         } catch (DateTimeParseException | IllegalArgumentException e) {
@@ -123,18 +123,15 @@ public class PersonaDao extends AdapterDao<Persona> {
         return true;
     }
 
-    public Boolean isValidIdent(String ident, TipoIdentificacion tipo) {
+    public void isValidIdent(String ident, TipoIdentificacion tipo) {
         final int len = ident.length();
-        if(tipo.equals(TipoIdentificacion.CEDULA))
-            if(len != 10) return false;
-
-        if(tipo.equals(TipoIdentificacion.PASAPORTE))
-            if(len < 6 || len > 9) return false;
+        if (tipo.equals(TipoIdentificacion.CEDULA))
+            if(len != 10) throw new IllegalArgumentException("Identificación inválida, Cédula debe tener 10 dígitos");
         
-        if(tipo.equals(TipoIdentificacion.RUC))
-            if(len != 13) return false;
+        if (tipo.equals(TipoIdentificacion.RUC))
+            if(len != 13) throw new IllegalArgumentException("Identificación inválida, RUC debe tener 13 dígitos");
         
-        return validNumeric(ident);
+        if (!validNumeric(ident)) throw new IllegalArgumentException("Identificación inválida, Solo se permiten dígitos numéricos");
     }
 
     public Boolean isValidPhone(String phone) {
@@ -177,8 +174,7 @@ public class PersonaDao extends AdapterDao<Persona> {
                 throw new Exception("Ya existe una persona con identificación: " + identificacion);
         }
 
-        if (!isValidIdent(identificacion,tipo)) 
-            throw new Exception("Identificación no válida");
+        isValidIdent(identificacion, tipo);
 
         final String date = this.getPersona().getFechaNacimiento();
         if (!isValidDate(date))

@@ -17,7 +17,7 @@ import com.example.controller.auth.AuthorizationFilter;
  */
 public class Main {
     // Base URI the Grizzly HTTP server will listen on
-    public static final String BASE_URI = "http://localhost:8080/api";
+    public static final String BASE_URI = "http://localhost:8080/api/";
 
     // http://localhost:8080/api/
 

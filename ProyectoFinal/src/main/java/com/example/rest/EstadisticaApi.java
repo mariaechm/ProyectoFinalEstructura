@@ -58,6 +58,7 @@ public class EstadisticaApi {
             ps.getEstadistica().setMedidaPierna(Float.parseFloat(map.get("medidaPierna").toString()));
             ps.getEstadistica().setMedidaBrazo(Float.parseFloat(map.get("medidaBrazo").toString()));
             ps.getEstadistica().setMedidaCintura(Float.parseFloat(map.get("medidaCintura").toString()));
+            ps.getEstadistica().setMedidaPecho(Float.parseFloat(map.get("medidaPecho").toString()));
             ps.getEstadistica().setPeso(Float.parseFloat(map.get("peso").toString()));
             ps.getEstadistica().setAltura(Float.parseFloat(map.get("altura").toString()));
             
@@ -98,6 +99,7 @@ public class EstadisticaApi {
             ps.getEstadistica().setMedidaPierna(Float.parseFloat(map.get("medidaPierna").toString()));
             ps.getEstadistica().setMedidaBrazo(Float.parseFloat(map.get("medidaBrazo").toString()));
             ps.getEstadistica().setMedidaCintura(Float.parseFloat(map.get("medidaCintura").toString()));
+            ps.getEstadistica().setMedidaPecho(Float.parseFloat(map.get("medidaPecho").toString()));
             ps.getEstadistica().setPeso(Float.parseFloat(map.get("peso").toString()));
             ps.getEstadistica().setAltura(Float.parseFloat(map.get("altura").toString()));
             

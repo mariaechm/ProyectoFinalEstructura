@@ -1,7 +1,7 @@
 package com.example.models.enumerator;
 
 public enum TipoIdentificacion {
-    CEDULA("CEDULA"), PASAPORTE("PASAPORTE"), RUC("RUC");
+    CEDULA("CEDULA"), RUC("RUC");
 
     private final String name;
 
