@@ -26,5 +26,12 @@
     "imagen": "user.png",
     "objetivoCliente": "Objetivo ...",
     "fechaCreacion": "2025-02-02"
+  },
+  {
+    "id": 5,
+    "nickName": "pancho",
+    "imagen": "user.png",
+    "objetivoCliente": "Objetivo ...",
+    "fechaCreacion": "2025-02-03"
   }
 ]

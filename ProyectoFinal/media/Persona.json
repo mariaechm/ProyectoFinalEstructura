@@ -46,5 +46,17 @@
     "tipoIdentificacion": "CEDULA",
     "genero": "MUJER",
     "rol": "ADMINISTRADOR"
+  },
+  {
+    "id": 5,
+    "nombre": "pancho",
+    "apellido": "riofrio",
+    "identificacion": "1122445577",
+    "celular": "0998451230",
+    "fechaNacimiento": "2002-02-09",
+    "direccion": "catamayo",
+    "tipoIdentificacion": "CEDULA",
+    "genero": "HOMBRE",
+    "rol": "CLIENTE"
   }
 ]

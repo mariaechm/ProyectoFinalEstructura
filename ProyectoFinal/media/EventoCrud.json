@@ -16,5 +16,11 @@
     "fecha": "2025-02-02",
     "hora": "0:38:23",
     "descripcion": "Se ha registrado la información personal"
+  },
+  {
+    "id": 4,
+    "fecha": "2025-02-03",
+    "hora": "7:49:33",
+    "descripcion": "Se ha registrado la información personal"
   }
 ]

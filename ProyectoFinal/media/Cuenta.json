@@ -19,5 +19,12 @@
     "contrasena": "ZGlncmVmNzc3",
     "personaId": 3,
     "perfilId": 3
+  },
+  {
+    "id": 4,
+    "correoElectronico": "pancho@example.com",
+    "contrasena": "Y2F0YW1heW9jaG9uZ28\u003d",
+    "personaId": 5,
+    "perfilId": 5
   }
 ]

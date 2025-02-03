@@ -1,10 +1,10 @@
 {
-  "currentCuentaId": 3,
-  "currentPerfilId": 4,
-  "currentPersonaId": 4,
-  "currentSuscripcionId": 1,
+  "currentCuentaId": 4,
+  "currentPerfilId": 5,
+  "currentPersonaId": 5,
+  "currentSuscripcionId": 2,
   "currentRutinaId": 1,
-  "currentEjercicioId": 12,
-  "currentEventoCrudId": 3,
-  "currentEstadisticaId": 4
+  "currentEjercicioId": 13,
+  "currentEventoCrudId": 4,
+  "currentEstadisticaId": 5
 }

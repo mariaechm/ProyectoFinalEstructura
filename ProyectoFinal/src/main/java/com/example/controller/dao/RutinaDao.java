@@ -142,13 +142,13 @@ public class RutinaDao extends AdapterDao<Rutina> {
 
     // VALIDAR CARACTERES ESPECIALES
     public Boolean checkSpecialCharacters() throws Exception {
-        String regex = "^[a-zA-Z0-9 ,áéíóúÁÉÍÓÚñÑ]+$";
+        String regex = "^[a-zA-Z0-9 áéíóúÁÉÍÓÚñÑ]+$";
     
         if (!this.getRutina().getNombreRutina().matches(regex)) {
             throw new Exception("El nombre de la rutina solo puede contener letras, números y espacios.");
         }
         if (!this.getRutina().getDescripcion().matches(regex)) {
-            throw new Exception("La descripción de la rutina solo puede contener letras, números, espacios y comas.");
+            throw new Exception("La descripción de la rutina solo puede contener letras, números y espacios.");
         }
         return true;
     }
