@@ -62,7 +62,6 @@ public class PersonaDao extends AdapterDao<Persona> {
     // VALIDADORES =============================================================================
 
     public Boolean isThereAllFields() {
-        System.out.println(this.getPersona());
         if(this.getPersona().getApellido() == null) return false;
         if(this.getPersona().getNombre() == null) return false;
         if(this.getPersona().getCelular() == null) return false;

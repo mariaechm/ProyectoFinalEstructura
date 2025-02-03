@@ -238,6 +238,12 @@ public class CuentaDao extends AdapterDao<Cuenta> {
             s.setDuracionDias(TipoSuscripcion.DIA.getDuracionDias());
             sd.SuscripcionFromJson(g.toJson(s));
 
+            
+            this.getCuenta().setPerfilId(JsonFileManager.readCurrentIDMap().get("currentPerfilId"));
+            this.getCuenta().setPersonaId(JsonFileManager.readCurrentIDMap().get("currentPersonaId"));
+            validateData();
+            this.getCuenta().setPersonaId(pd.getPersona().getId());
+
             pd.savePersona();
             pfd.save();
             ed.getEstadistica().setPerfilId(pfd.getPerfil().getId());
@@ -246,8 +252,7 @@ public class CuentaDao extends AdapterDao<Cuenta> {
 
             ed.save();
 
-            this.getCuenta().setPerfilId(pfd.getPerfil().getId());
-            this.getCuenta().setPersonaId(pd.getPersona().getId());
+            
             this.saveCuenta();
 
             HashMap<String, Object> res = new HashMap<>();
