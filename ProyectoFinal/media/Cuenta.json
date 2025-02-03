@@ -5,5 +5,47 @@
     "contrasena": "YWRtaW5pc3RyYWRvcmVz",
     "personaId": 1,
     "perfilId": 1
+  },
+  {
+    "id": 2,
+    "correoElectronico": "administrado.admin@example.com",
+    "contrasena": "YWRtaW5pc3RyYWRvcmVz",
+    "personaId": 2,
+    "perfilId": 2
+  },
+  {
+    "id": 3,
+    "correoElectronico": "girberto.admin@example.com",
+    "contrasena": "YWRtaW5pc3RyYWRvcmVz",
+    "personaId": 3,
+    "perfilId": 3
+  },
+  {
+    "id": 5,
+    "correoElectronico": "jundi.admin@example.com",
+    "contrasena": "YWRtaW5pc3RyYWRvcmVz",
+    "personaId": 5,
+    "perfilId": 5
+  },
+  {
+    "id": 6,
+    "correoElectronico": "little.john.client@example.com",
+    "contrasena": "YWRtaW5pc3RyYWRvcmVz",
+    "personaId": 6,
+    "perfilId": 6
+  },
+  {
+    "id": 7,
+    "correoElectronico": "daniela.cl@example.com",
+    "contrasena": "YWRtaW5pc3RyYWRvcmVz",
+    "personaId": 7,
+    "perfilId": 7
+  },
+  {
+    "id": 8,
+    "correoElectronico": "jara@cesar.com",
+    "contrasena": "YWRtaW5pc3RyYWRvcmVz",
+    "personaId": 8,
+    "perfilId": 8
   }
 ]

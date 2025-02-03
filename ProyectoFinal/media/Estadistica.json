@@ -1,11 +1,78 @@
 [
   {
     "id": 1,
-    "medidaEspalda": 0.0,
-    "medidaPierna": 0.0,
-    "medidaBrazo": 0.0,
-    "medidaCintura": 0.0,
-    "peso": 0.0,
-    "altura": 0.0
+    "medidaEspalda": 110.0,
+    "medidaPierna": 100.0,
+    "medidaBrazo": 100.0,
+    "medidaCintura": 100.0,
+    "medidaPecho": 200.0,
+    "peso": 200.0,
+    "altura": 200.0
+  },
+  {
+    "id": 2,
+    "medidaEspalda": 100.0,
+    "medidaPierna": 100.0,
+    "medidaBrazo": 100.0,
+    "medidaCintura": 100.0,
+    "medidaPecho": 100.0,
+    "peso": 100.0,
+    "altura": 100.0,
+    "perfilId": 2
+  },
+  {
+    "id": 3,
+    "medidaEspalda": 1.0,
+    "medidaPierna": 1.0,
+    "medidaBrazo": 1.0,
+    "medidaCintura": 1.0,
+    "medidaPecho": 1.0,
+    "peso": 1.0,
+    "altura": 1.0,
+    "perfilId": 3
+  },
+  {
+    "id": 5,
+    "medidaEspalda": 1.0,
+    "medidaPierna": 1.0,
+    "medidaBrazo": 1.0,
+    "medidaCintura": 1.0,
+    "medidaPecho": 1.0,
+    "peso": 1.0,
+    "altura": 1.0,
+    "perfilId": 5
+  },
+  {
+    "id": 6,
+    "medidaEspalda": 1.0,
+    "medidaPierna": 1.0,
+    "medidaBrazo": 1.0,
+    "medidaCintura": 1.0,
+    "medidaPecho": 1.0,
+    "peso": 1.0,
+    "altura": 1.0,
+    "perfilId": 6
+  },
+  {
+    "id": 7,
+    "medidaEspalda": 1.0,
+    "medidaPierna": 1.0,
+    "medidaBrazo": 1.0,
+    "medidaCintura": 1.0,
+    "medidaPecho": 1.0,
+    "peso": 1.0,
+    "altura": 1.0,
+    "perfilId": 7
+  },
+  {
+    "id": 8,
+    "medidaEspalda": 210.0,
+    "medidaPierna": 210.0,
+    "medidaBrazo": 1.0,
+    "medidaCintura": 1.0,
+    "medidaPecho": 1.0,
+    "peso": 1.0,
+    "altura": 1.0,
+    "perfilId": 8
   }
 ]

@@ -5,5 +5,47 @@
     "imagen": "user.png",
     "objetivoCliente": "Gestionar el Gimnasio ARNOLD",
     "fechaCreacion": "2025-01-07"
+  },
+  {
+    "id": 2,
+    "nickName": "Administrador",
+    "imagen": "user.png",
+    "objetivoCliente": "Objetivo ...",
+    "fechaCreacion": "2025-02-03"
+  },
+  {
+    "id": 3,
+    "nickName": "Girberto",
+    "imagen": "user.png",
+    "objetivoCliente": "Objetivo ...",
+    "fechaCreacion": "2025-02-03"
+  },
+  {
+    "id": 5,
+    "nickName": "Jundillo",
+    "imagen": "user.png",
+    "objetivoCliente": "Objetivo ...",
+    "fechaCreacion": "2025-02-03"
+  },
+  {
+    "id": 6,
+    "nickName": "Little",
+    "imagen": "user.png",
+    "objetivoCliente": "Objetivo ...",
+    "fechaCreacion": "2025-02-03"
+  },
+  {
+    "id": 7,
+    "nickName": "Daniela",
+    "imagen": "user.png",
+    "objetivoCliente": "Objetivo ...",
+    "fechaCreacion": "2025-02-03"
+  },
+  {
+    "id": 8,
+    "nickName": "Alexis Muhammad",
+    "imagen": "user.png",
+    "objetivoCliente": "Objetivo ...",
+    "fechaCreacion": "2025-02-03"
   }
 ]

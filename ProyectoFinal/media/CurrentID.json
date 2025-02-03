@@ -1,7 +1,8 @@
 {
-  "currentCuentaId": 1,
-  "currentPerfilId": 1,
-  "currentPersonaId": 1,
-  "currentSuscripcionId": 1,
-  "currentEstadisticaId": 1
+  "currentCuentaId": 8,
+  "currentPerfilId": 8,
+  "currentPersonaId": 8,
+  "currentSuscripcionId": 8,
+  "currentEventoCrudId": 8,
+  "currentEstadisticaId": 8
 }
