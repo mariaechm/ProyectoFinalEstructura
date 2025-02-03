@@ -103,8 +103,9 @@ public class PersonaDao extends AdapterDao<Persona> {
             LocalDate parsedDate = LocalDate.of(yyyy, mm, dd);
             LocalDate currentDate = LocalDate.now();
             LocalDate date15YearsAgo = currentDate.minusYears(15);
+            LocalDate date100YearsAgo = currentDate.minusYears(100);
     
-            if (parsedDate.isAfter(currentDate) || parsedDate.isAfter(date15YearsAgo)) {
+            if (parsedDate.isAfter(currentDate) || parsedDate.isAfter(date15YearsAgo) || parsedDate.isBefore(date100YearsAgo)) {
                 return false;
             }
         } catch (DateTimeParseException | IllegalArgumentException e) {
