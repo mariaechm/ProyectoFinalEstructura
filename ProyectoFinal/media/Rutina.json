@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "nombreRutina": "Rutina de brazo de Cbum",
+    "descripcion": "Rutina para dessarrollar el biceps y se trabaja 2 veces a la semana para el crecimiento muscular",
+    "nroEjercicios": 1,
+    "idEjercicio": [
+      1
+    ],
+    "objetivoRutina": "HIPERTROFIA"
+  }
+]

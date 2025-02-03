@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1,
+    "nombreEjercicio": "Curl Martillo",
+    "descripcion": "Este ejercicio se utiliza para desarrollar el biceps en extension y flexion de codo",
+    "imagen": "https://static.strengthlevel.com/images/exercises/incline-hammer-curl/incline-hammer-curl-400.avif",
+    "tiempoDescanso": 3.0,
+    "nroSeries": 3,
+    "nroRepSerie": 10,
+    "tipoEjercicio": "COMPUESTO",
+    "grupoMuscularObjetivo": "BICEPS"
+  }
+]

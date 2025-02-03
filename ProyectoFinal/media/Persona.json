@@ -10,5 +10,41 @@
     "tipoIdentificacion": "PASAPORTE",
     "genero": "HOMBRE",
     "rol": "ADMINISTRADOR"
+  },
+  {
+    "id": 2,
+    "nombre": "Armando",
+    "apellido": "Torres",
+    "identificacion": "1104328651",
+    "celular": "0999645847",
+    "fechaNacimiento": "1970-02-20",
+    "direccion": "Juan José Peña y Rocafuerte",
+    "tipoIdentificacion": "CEDULA",
+    "genero": "HOMBRE",
+    "rol": "ADMINISTRADOR"
+  },
+  {
+    "id": 3,
+    "nombre": "Gabriel",
+    "apellido": "Cevallos",
+    "identificacion": "1122445577",
+    "celular": "0990921661",
+    "fechaNacimiento": "1956-02-17",
+    "direccion": "catamayo",
+    "tipoIdentificacion": "CEDULA",
+    "genero": "HOMBRE",
+    "rol": "CLIENTE"
+  },
+  {
+    "id": 4,
+    "nombre": "Sandra",
+    "apellido": "Medina",
+    "identificacion": "1102902631",
+    "celular": "0998451230",
+    "fechaNacimiento": "1971-02-26",
+    "direccion": "Union Lojana",
+    "tipoIdentificacion": "CEDULA",
+    "genero": "MUJER",
+    "rol": "CLIENTE"
   }
 ]

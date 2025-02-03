@@ -5,5 +5,26 @@
     "imagen": "user.png",
     "objetivoCliente": "Gestionar el Gimnasio ARNOLD",
     "fechaCreacion": "2025-01-07"
+  },
+  {
+    "id": 2,
+    "nickName": "Armando",
+    "imagen": "user.png",
+    "objetivoCliente": "Objetivo ...",
+    "fechaCreacion": "2025-02-03"
+  },
+  {
+    "id": 3,
+    "nickName": "Gabriel",
+    "imagen": "user.png",
+    "objetivoCliente": "Objetivo ...",
+    "fechaCreacion": "2025-02-03"
+  },
+  {
+    "id": 4,
+    "nickName": "Sandra",
+    "imagen": "user.png",
+    "objetivoCliente": "Objetivo ...",
+    "fechaCreacion": "2025-02-03"
   }
 ]

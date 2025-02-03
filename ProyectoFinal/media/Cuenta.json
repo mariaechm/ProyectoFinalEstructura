@@ -5,5 +5,26 @@
     "contrasena": "YWRtaW5pc3RyYWRvcmVz",
     "personaId": 1,
     "perfilId": 1
+  },
+  {
+    "id": 2,
+    "correoElectronico": "armando.torres@example.com",
+    "contrasena": "YXJtYW5kbzEyMzQ\u003d",
+    "personaId": 2,
+    "perfilId": 2
+  },
+  {
+    "id": 3,
+    "correoElectronico": "pancho@example.com",
+    "contrasena": "MTIzNDU2Nzg\u003d",
+    "personaId": 3,
+    "perfilId": 3
+  },
+  {
+    "id": 4,
+    "correoElectronico": "sandra@example.com",
+    "contrasena": "c2FuZHJhMTIzNA\u003d\u003d",
+    "personaId": 4,
+    "perfilId": 4
   }
 ]
