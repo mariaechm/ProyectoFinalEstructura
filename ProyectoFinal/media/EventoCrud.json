@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "fecha": "2025-02-02",
+    "hora": "0:25:03",
+    "descripcion": "Se ha registrado la información personal"
+  },
+  {
+    "id": 2,
+    "fecha": "2025-02-02",
+    "hora": "0:34:16",
+    "descripcion": "Se ha registrado la información personal"
+  },
+  {
+    "id": 3,
+    "fecha": "2025-02-02",
+    "hora": "0:38:23",
+    "descripcion": "Se ha registrado la información personal"
+  }
+]

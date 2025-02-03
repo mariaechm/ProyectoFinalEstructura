@@ -10,5 +10,41 @@
     "tipoIdentificacion": "PASAPORTE",
     "genero": "HOMBRE",
     "rol": "ADMINISTRADOR"
+  },
+  {
+    "id": 2,
+    "nombre": "David",
+    "apellido": "Paccha",
+    "identificacion": "1154782369",
+    "celular": "0979751633",
+    "fechaNacimiento": "2006-02-22",
+    "direccion": "Belén, donde comen perro y david lo vende",
+    "tipoIdentificacion": "CEDULA",
+    "genero": "OTRO",
+    "rol": "CLIENTE"
+  },
+  {
+    "id": 3,
+    "nombre": "Armando",
+    "apellido": "Torres",
+    "identificacion": "1150480257001",
+    "celular": "1234567890",
+    "fechaNacimiento": "1890-02-12",
+    "direccion": "Juan José Peña y Rocafuerte",
+    "tipoIdentificacion": "RUC",
+    "genero": "HOMBRE",
+    "rol": "CLIENTE"
+  },
+  {
+    "id": 4,
+    "nombre": "equisdenosepreguntenlealprofe",
+    "apellido": "sisepodia",
+    "identificacion": "1234567890",
+    "celular": "0995687412",
+    "fechaNacimiento": "1952-02-14",
+    "direccion": "Juan José Peña",
+    "tipoIdentificacion": "CEDULA",
+    "genero": "MUJER",
+    "rol": "ADMINISTRADOR"
   }
 ]
