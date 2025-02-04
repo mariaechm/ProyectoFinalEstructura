@@ -134,6 +134,7 @@ def generar_pdf(id, headers, usr):
     pdf.drawString(100, 750, "Reporte de Estadística")
 
     # Datos de la estadística
+    
     pdf.setFont("Helvetica", 12)
     pdf.drawString(100, 700, f"Medida Espalda: {estadistica['medidaEspalda']} cm")
     pdf.drawString(100, 680, f"Medida Pierna: {estadistica['medidaPierna']} cm")
