@@ -133,12 +133,12 @@
   },
   {
     "id": 12,
-    "nombre": "Kendry",
-    "apellido": "Paez",
+    "nombre": "Michael",
+    "apellido": "Johnson",
     "identificacion": "0987654321",
     "celular": "0987654321",
     "fechaNacimiento": "1985-09-22",
-    "direccion": "Catamayo nomás",
+    "direccion": "Estados Unidos",
     "tipoIdentificacion": "CEDULA",
     "genero": "HOMBRE",
     "rol": "ADMINISTRADOR"
@@ -1004,54 +1004,6 @@
     "fechaNacimiento": "1986-05-12",
     "direccion": "Escocia",
     "tipoIdentificacion": "CEDULA",
-    "genero": "MUJER",
-    "rol": "CLIENTE"
-  },
-  {
-    "id": 85,
-    "nombre": "Hola Juan ",
-    "apellido": "Antony ",
-    "identificacion": "7586758475643",
-    "celular": "7564758697",
-    "fechaNacimiento": "1940-02-19",
-    "direccion": "Av. Pio Jaramillo",
-    "tipoIdentificacion": "RUC",
-    "genero": "HOMBRE",
-    "rol": "CLIENTE"
-  },
-  {
-    "id": 86,
-    "nombre": "asdf",
-    "apellido": "asdfasdf",
-    "identificacion": "8675647586",
-    "celular": "0000000000",
-    "fechaNacimiento": "2005-02-14",
-    "direccion": "Av. Occidental",
-    "tipoIdentificacion": "CEDULA",
-    "genero": "HOMBRE",
-    "rol": "ADMINISTRADOR"
-  },
-  {
-    "id": 88,
-    "nombre": "Gabriel",
-    "apellido": "Cevallos",
-    "identificacion": "4578945612",
-    "celular": "1245789643",
-    "fechaNacimiento": "1940-02-15",
-    "direccion": "Inválido",
-    "tipoIdentificacion": "CEDULA",
-    "genero": "MUJER",
-    "rol": "CLIENTE"
-  },
-  {
-    "id": 89,
-    "nombre": "afdas",
-    "apellido": "asdfasdf",
-    "identificacion": "9867564534444",
-    "celular": "7465869786",
-    "fechaNacimiento": "2005-02-15",
-    "direccion": "Av. Pio Jaramillo",
-    "tipoIdentificacion": "RUC",
     "genero": "MUJER",
     "rol": "CLIENTE"
   }

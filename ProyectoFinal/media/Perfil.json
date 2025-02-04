@@ -8,7 +8,7 @@
   },
   {
     "id": 2,
-    "nickName": "Oso mamado",
+    "nickName": "JaneFit",
     "imagen": "user.png",
     "objetivoCliente": "Mantener un estilo de vida saludable",
     "fechaCreacion": "2025-02-15"
@@ -78,8 +78,8 @@
   },
   {
     "id": 12,
-    "nickName": "xxXKendryXxx",
-    "imagen": "f1.jpg",
+    "nickName": "MichaelGym",
+    "imagen": "user.png",
     "objetivoCliente": "Ganar fuerza y resistencia",
     "fechaCreacion": "2025-11-05"
   },
@@ -586,33 +586,5 @@
     "imagen": "user.png",
     "objetivoCliente": "Mantener una vida saludable",
     "fechaCreacion": "2025-11-25"
-  },
-  {
-    "id": 85,
-    "nickName": "Hola Juan ",
-    "imagen": "user.png",
-    "objetivoCliente": "Objetivo ...",
-    "fechaCreacion": "2025-02-03"
-  },
-  {
-    "id": 86,
-    "nickName": "asdf",
-    "imagen": "user.png",
-    "objetivoCliente": "Objetivo ...",
-    "fechaCreacion": "2025-02-03"
-  },
-  {
-    "id": 88,
-    "nickName": "Gabriel",
-    "imagen": "user.png",
-    "objetivoCliente": "Objetivo ...",
-    "fechaCreacion": "2025-02-03"
-  },
-  {
-    "id": 89,
-    "nickName": "afdas",
-    "imagen": "user.png",
-    "objetivoCliente": "Objetivo ...",
-    "fechaCreacion": "2025-02-03"
   }
 ]

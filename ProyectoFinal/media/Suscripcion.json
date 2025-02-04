@@ -2,26 +2,26 @@
   {
     "id": 1,
     "fechaInicio": "2024-01-23",
-    "fechaFinalizacion": "2024-02-07",
-    "precio": 15.0,
-    "duracionDias": 15,
-    "tipo": "MEDIO_MES"
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
   },
   {
     "id": 2,
-    "fechaInicio": "2025-02-15",
-    "fechaFinalizacion": "2025-03-02",
-    "precio": 15.0,
-    "duracionDias": 15,
-    "tipo": "MEDIO_MES"
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
   },
   {
     "id": 3,
-    "fechaInicio": "2025-05-23",
-    "fechaFinalizacion": "2025-06-07",
-    "precio": 15.0,
-    "duracionDias": 15,
-    "tipo": "MEDIO_MES"
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
   },
   {
     "id": 4,
@@ -258,10 +258,10 @@
   {
     "id": 33,
     "fechaInicio": "2024-01-23",
-    "fechaFinalizacion": "2024-01-30",
-    "precio": 10.0,
-    "duracionDias": 7,
-    "tipo": "SEMANA"
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
   },
   {
     "id": 34,
@@ -669,51 +669,6 @@
     "fechaFinalizacion": "2024-01-24",
     "precio": 3.0,
     "duracionDias": 1,
-    "tipo": "DIA"
-  },
-  {
-    "id": 85,
-    "fechaInicio": "2025-02-03",
-    "fechaFinalizacion": "2025-02-04",
-    "precio": 3.0,
-    "duracionDias": 1,
-    "personaId": 85,
-    "tipo": "DIA"
-  },
-  {
-    "id": 86,
-    "fechaInicio": "2025-02-03",
-    "fechaFinalizacion": "2025-02-04",
-    "precio": 3.0,
-    "duracionDias": 1,
-    "personaId": 86,
-    "tipo": "DIA"
-  },
-  {
-    "id": 87,
-    "fechaInicio": "2025-02-03",
-    "fechaFinalizacion": "2025-02-04",
-    "precio": 3.0,
-    "duracionDias": 1,
-    "personaId": 87,
-    "tipo": "DIA"
-  },
-  {
-    "id": 88,
-    "fechaInicio": "2025-02-03",
-    "fechaFinalizacion": "2025-02-04",
-    "precio": 3.0,
-    "duracionDias": 1,
-    "personaId": 88,
-    "tipo": "DIA"
-  },
-  {
-    "id": 89,
-    "fechaInicio": "2025-02-03",
-    "fechaFinalizacion": "2025-02-04",
-    "precio": 3.0,
-    "duracionDias": 1,
-    "personaId": 89,
     "tipo": "DIA"
   }
 ]
