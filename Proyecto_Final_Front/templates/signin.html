@@ -3,13 +3,12 @@
 {% block main_content %}
 <div class="container-fluid position-relative d-flex p-0">
     <!-- Spinner Start -->
-    <!-- <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
             <span class="sr-only">Loading...</span>
         </div>
-    </div> -->
+    </div>
     <!-- Spinner End -->
-
 
     <!-- Sign In Start -->
     <div class="container-fluid">
@@ -27,7 +26,7 @@
             <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
                 <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
                     <div class="d-flex align-items-center justify-content-between mb-3">
-                        <!-- <a href="/admin" class="">
+                        <!-- <a href="/" class="">
                             <h3 class="text-primary">Iniciar Sesión</h3>
                         </a> -->
                         
@@ -38,12 +37,12 @@
                     <form method="post" action="/login/send">
                         <input type="text" name="next" hidden value="{{ next }}">
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="correoElectronico">
-                            <label for="floatingInput">Email address</label>
+                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="correoElectronico" value="{{ correo or '' }}">
+                            <label for="floatingInput">Correo electrónico</label>
                         </div>
                         <div class="form-floating mb-4">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="contrasena">
-                            <label for="floatingPassword">Password</label>
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="contrasena" value="{{ contrasena or '' }}">
+                            <label for="floatingPassword">Contraseña</label>
                             <i class="fas fa-eye" id="togglePassword" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
                         </div>
                         
@@ -74,10 +73,11 @@
 
         this.classList.toggle('fa-eye-slash');
     });
+
 </script>
 
 <!-- JavaScript Libraries -->
-<script src="{{ url_for('static',filename='https://code.jquery.com/jquery-3.4.1.min.js' ) }}"></script>
+<!-- <script src="{{ url_for('static',filename='https://code.jquery.com/jquery-3.4.1.min.js' ) }}"></script>
 <script src="{{ url_for('static',filename='https://code.jquery.com/jquery-3.4.1.min.js' ) }}x"></script>
 <script src="{{ url_for('static',filename='lib/chart/chart.min.js' ) }}"></script>
 <script src="{{ url_for('static',filename='lib/easing/easing.min.js' ) }}"></script>
@@ -85,9 +85,27 @@
 <script src="{{ url_for('static',filename='lib/owlcarousel/owl.carousel.min.js' ) }}"></script>
 <script src="{{ url_for('static',filename='lib/tempusdominus/js/moment.min.js' ) }}"></script>
 <script src="{{ url_for('static',filename='lib/tempusdominus/js/moment-timezone.min.js' ) }}"></script>
-<script src="{{ url_for('static',filename='lib/tempusdominus/js/tempusdominus-bootstrap-4.min.' ) }}js"></script>
+<script src="{{ url_for('static',filename='lib/tempusdominus/js/tempusdominus-bootstrap-4.min.' ) }}js"></script> -->
 
 <!-- Template Javascript -->
-<script src="{{url_for('static',filename='js/main.js')}}"></script>
+<!-- <script src="{{url_for('static',filename='js/main.js')}}"></script> -->
+<script src="{{ url_for('static',filename='js/jquery-3.6.0.min.js' ) }}"></script>
+<script>
+  $(document).ready(function () {
+    var spinner = function () {
+      setTimeout(function () {
+        if ($('#spinner').length > 0) {
+          $('#spinner').removeClass('show');
+        }
+      }, 40);
+    };
+    spinner();
+
+    $('.sidebar-toggler').click(function () {
+      $('.sidebar, .content').toggleClass("open");
+      return false;
+    });
+  });
+</script>
 {% endblock %}
 

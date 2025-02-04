@@ -1,12 +1,12 @@
 [
   {
     "id": 1,
-    "medidaEspalda": 52.5,
-    "medidaPierna": 23.12,
-    "medidaBrazo": 16.4,
-    "medidaCintura": 40.0,
-    "medidaPecho": 34.2,
-    "peso": 50.0,
-    "altura": 1.74
+    "medidaEspalda": 70.0,
+    "medidaPierna": 70.0,
+    "medidaBrazo": 60.0,
+    "medidaCintura": 80.0,
+    "medidaPecho": 70.0,
+    "peso": 250.0,
+    "altura": 220.0
   }
 ]

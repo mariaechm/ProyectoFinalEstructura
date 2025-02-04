@@ -135,13 +135,13 @@ def generar_pdf(id, headers, usr):
 
     # Datos de la estadística
     pdf.setFont("Helvetica", 12)
-    pdf.drawString(100, 700, f"Medida Espalda: {estadistica['medidaEspalda']}")
-    pdf.drawString(100, 680, f"Medida Pierna: {estadistica['medidaPierna']}")
-    pdf.drawString(100, 660, f"Medida Brazo: {estadistica['medidaBrazo']}")
-    pdf.drawString(100, 640, f"Medida Cintura: {estadistica['medidaCintura']}")
-    pdf.drawString(100, 620, f"Medida Pecho: {estadistica['medidaPecho']}")
-    pdf.drawString(100, 600, f"Peso: {estadistica['peso']}")  
-    pdf.drawString(100, 580, f"Altura: {estadistica['altura']}") 
+    pdf.drawString(100, 700, f"Medida Espalda: {estadistica['medidaEspalda']} cm")
+    pdf.drawString(100, 680, f"Medida Pierna: {estadistica['medidaPierna']} cm")
+    pdf.drawString(100, 660, f"Medida Brazo: {estadistica['medidaBrazo']} cm")
+    pdf.drawString(100, 640, f"Medida Cintura: {estadistica['medidaCintura']} cm")
+    pdf.drawString(100, 620, f"Medida Pecho: {estadistica['medidaPecho']} cm")
+    pdf.drawString(100, 600, f"Peso: {estadistica['peso']} kg")  
+    pdf.drawString(100, 580, f"Altura: {estadistica['altura']}cm") 
 
     # Insertar el gráfico en el PDF
     pdf.drawImage(image, 100, 300, width=300, height=200)

@@ -7,7 +7,6 @@ import com.example.models.Ejercicio;
 import com.example.models.enumerator.GrupoMuscularObjetivo;
 import com.example.models.enumerator.TipoEjercicio;
 
-
 public class EjercicioDao extends AdapterDao<Ejercicio> {
     private Ejercicio ejercicio;
 
@@ -18,7 +17,7 @@ public class EjercicioDao extends AdapterDao<Ejercicio> {
 
     // GETTER
     public Ejercicio getEjercicio() {
-        if(this.ejercicio == null) {
+        if (this.ejercicio == null) {
             this.ejercicio = new Ejercicio();
         }
         return this.ejercicio;
@@ -39,19 +38,15 @@ public class EjercicioDao extends AdapterDao<Ejercicio> {
     }
 
     public Ejercicio saveEjercicio() throws Exception {
-        if(!camposLlenos()) {
-            throw new Exception("Los campos están vacíos, por favor completarlos.");
-        }
-        this.getEjercicio().setId(JsonFileManager.readAndUpdateCurrentIdOf(className));    
+        validations(false);
+        this.getEjercicio().setId(JsonFileManager.readAndUpdateCurrentIdOf(className));
         persist(ejercicio);
         return this.ejercicio;
     }
 
     public Ejercicio updateEjercicio() throws Exception {
         Integer id = this.getEjercicio().getId();
-        if(!camposLlenos()) {
-            throw new Exception("Los campos están vacíos, por favor completarlos.");
-        }
+        validations(true);
         merge(this.getEjercicio(), id);
         return this.ejercicio;
     }
@@ -66,11 +61,11 @@ public class EjercicioDao extends AdapterDao<Ejercicio> {
     public GrupoMuscularObjetivo getGrupoMuscularObjetivo(String grupoMuscularObjetivo) {
         return GrupoMuscularObjetivo.valueOf(grupoMuscularObjetivo);
     }
-    
+
     public GrupoMuscularObjetivo[] getGrupos() {
         return GrupoMuscularObjetivo.values();
     }
-    
+
     public TipoEjercicio getTipoEjercicio(String tipoEjercicio) {
         return TipoEjercicio.valueOf(tipoEjercicio);
     }
@@ -80,18 +75,107 @@ public class EjercicioDao extends AdapterDao<Ejercicio> {
     }
 
     // VALIDACIONES
-    public Boolean camposLlenos() {
-        if(this.getEjercicio().getNombreEjercicio() == null) return false;
-        if(this.getEjercicio().getDescripcion() == null) return false;
-        if(this.getEjercicio().getTiempoDescanso() == 0) return false;
-        if(this.getEjercicio().getNroSeries() == 0) return false;
-        if(this.getEjercicio().getNroRepSerie() == 0) return false;
-        if(this.getEjercicio().getTipoEjercicio() == null) return false;
-        if(this.getEjercicio().getGrupoMuscularObjetivo() == null) return false;
+    public Boolean validations(Boolean actualizacion) throws Exception {
+        if (!camposLlenos())
+            return false;
+        if (!checkNumbers())
+            return false;
+        if (!checkBlankSpaces())
+            return false;
+        if (!checkSpecialCharacters())
+            return false;
+        if (!checkLength())
+            return false;
+        if (!actualizacion) {
+            if (!checkSameName())
+                return false;
+        }
         return true;
     }
 
+    // VALIR CAMPOS LLENOS
+    public Boolean camposLlenos() throws Exception {
+        if (this.getEjercicio().getNombreEjercicio() == null) {
+            throw new Exception("El nombre del ejercicio no puede estar vacío");
+        }
+        if (this.getEjercicio().getDescripcion() == null) {
+            throw new Exception("La descripción del ejercicio no puede estar vacía");
+        }
+        if (this.getEjercicio().getTiempoDescanso() == 0.0) {
+            throw new Exception("El tiempo de descanso debe ser superior a 0");
+        }
+        if (this.getEjercicio().getNroSeries() == 0) {
+            throw new Exception("El número de series debe ser superior a 0");
+        }
+        if (this.getEjercicio().getNroRepSerie() == 0) {
+            throw new Exception("El número de repeticiones por serie debe ser superior a 0");
+        }
+        if (this.getEjercicio().getTipoEjercicio() == null) {
+            throw new Exception("Seleccione un tipo de ejercicio");
+        }
+        if (this.getEjercicio().getGrupoMuscularObjetivo() == null) {
+            throw new Exception("Seleccione un grupo muscular objetivo");
+        }
+        return true;
+    }
+
+    // VALIDAR NÚMEROS
+    public Boolean checkNumbers() throws Exception {
+        if (this.getEjercicio().getNroRepSerie() <= 0 || this.getEjercicio().getNroRepSerie() > 30 ||
+                this.getEjercicio().getTiempoDescanso() <= 0 || this.getEjercicio().getTiempoDescanso() > 6.00 ||
+                this.getEjercicio().getNroSeries() <= 0 || this.getEjercicio().getNroSeries() > 12) {
+            throw new Exception("Número inválido");
+        }
+        return true;
+    }
+
+    // VALIDAR QUE EL NOMBRE Y DESCRIPCIÓN NO EMPIECEN CON BLANKSPACES
+    public Boolean checkBlankSpaces() throws Exception {
+        if (this.getEjercicio().getNombreEjercicio().startsWith(" ")) {
+            throw new Exception("El nombre del ejercicio no puede empezar con espacios en blanco");
+        }
+        if (this.getEjercicio().getDescripcion().startsWith(" ")) {
+            throw new Exception("La descripción del ejercicio no puede empezar con espacios en blanco");
+        }
+        return true;
+    }
+
+    // VALIDAR CARACTERES ESPECIALES
+    public Boolean checkSpecialCharacters() throws Exception {
+        String regex = "^[a-zA-Z0-9 ,áéíóúÁÉÍÓÚñÑ]+$";
     
+        if (!this.getEjercicio().getNombreEjercicio().matches(regex)) {
+            throw new Exception("El nombre del ejercicio solo puede contener letras, números y espacios.");
+        }
+        if (!this.getEjercicio().getDescripcion().matches(regex)) {
+            throw new Exception("La descripción del ejercicio solo puede contener letras, números, espacios y comas.");
+        }
+        return true;
+    }
+
+    // VALIDAR CANTIDAD DE CARACTERES
+    public Boolean checkLength() throws Exception {
+        if (this.getEjercicio().getNombreEjercicio().length() < 5
+                || this.getEjercicio().getNombreEjercicio().length() > 90) {
+            throw new Exception("El nombre del ejercicio debe tener entre 5 y 90 caracteres");
+        }
+        if (this.getEjercicio().getDescripcion().length() < 50 || this.getEjercicio().getDescripcion().length() > 600) {
+            throw new Exception("La descripción del ejercicio debe tener entre 50 y 600 caracteres");
+        }
+        return true;
+    }
+
+    // VALIDAR QUE NO SE REPITAN LOS NOMBRES DE LOS EJERCICIOS
+    public Boolean checkSameName() throws Exception {
+        LinkedList<Ejercicio> list = listAll();
+        for (Ejercicio ejercicio : list.toArray()) {
+            if (ejercicio.getNombreEjercicio().equalsIgnoreCase(this.getEjercicio().getNombreEjercicio())) {
+                throw new Exception("El nombre del ejercicio ya existe");
+            }
+        }
+        return true;
+    }
+
     // ORDENAR
     public Ejercicio[] sort(String attribute, Integer orden, Integer method) throws Exception {
         LinkedList<Ejercicio> list = listAll();
@@ -111,18 +195,18 @@ public class EjercicioDao extends AdapterDao<Ejercicio> {
         return list.toArray();
     }
 
-
     // BUSCAR
     public Ejercicio[] search(String attribute, String value) throws Exception {
         LinkedList<Ejercicio> list = listAll();
         try {
-            if(attribute.equalsIgnoreCase("nombreEjercicio")) {
+            if (attribute.equalsIgnoreCase("nombreEjercicio")) {
                 return list.buscarPorAtributo(attribute, value).toArray();
-            } else if (attribute.equalsIgnoreCase("nroSeries") || attribute.equalsIgnoreCase("nroRepSerie") ||
-                 attribute.equalsIgnoreCase("tiempoDescanso")) {
-                    return list.busquedaLinealBinaria(attribute, Integer.parseInt(value)).toArray();
+            } else if (attribute.equalsIgnoreCase("nroSeries") || attribute.equalsIgnoreCase("nroRepSerie")) {
+                return list.buscarPorAtributo(attribute, Integer.parseInt(value)).toArray();
+            } else if (attribute.equalsIgnoreCase("tiempoDescanso")) {
+                return list.buscarPorAtributo(attribute, Float.parseFloat(value)).toArray();
             } else {
-                return list.busquedaLinealBinaria(attribute, value).toArray();
+                return list.buscarPorAtributo(attribute, value).toArray();
             }
         } catch (Exception e) {
             return new Ejercicio[] {};

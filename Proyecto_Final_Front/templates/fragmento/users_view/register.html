@@ -1,43 +1,17 @@
 {% extends 'blank.html' %}
 {% block title %}Registrar nuevo Usuario{% endblock %}
-{% block usr_nav_class %}active{% endblock %}
-{% block custom_styles_js %}
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-  <!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<!-- jQuery Validation Plugin -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
-
-<style>
-  .error {
-    color: red; 
-    font-size: 0.875rem;
-    margin-top: 5px;
-  }
-
-  .input-container {
-    position: relative;
-    height: 40px; 
-  }
-
-  #togglePassword {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-  }
-
-  button[type="submit"], button[type="button"] {
-    position: sticky;
-    margin-top: 20px;
-    bottom: 15px; 
-    z-index: 1;  
-  }
-</style>
-
+{% block custom_styles %}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/flatpickr.min.css' ) }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/custom/validation.register.css' ) }}">
 {% endblock %}
+
+{% set client_class = 'active' if role == 'CLIENTE' else '' %}
+{% set admin_class = 'active' if role == 'ADMINISTRADOR' else '' %}
+
+{% block admin_nav_class %}{{ admin_class }}{% endblock %}
+{% block client_nav_class %}{{ client_class }}{% endblock %}
+
 {% block content %}
 <div class="container-fluid pt-4 px-4">
   <div class="bg-secondary rounded h-100 p-4">
@@ -45,6 +19,9 @@
       <h4 class="mb-0">REGISTRAR USUARIO EN EL SISTEMA</h4>
     </div>
     <form class="row g-3 needs-validation" id="registrar-usuario" method="POST" action="/register/user/send" novalidate>
+
+      <input type="text" name="rol" id="role" value="{{ role }}" hidden>
+
       <div class="col-sm-6">
         <label for="nombre" class="form-label">Nombre: </label>
         <input type="text" class="form-control" name="nombre" id="nombre">
@@ -81,7 +58,8 @@
 
       <div class="col-sm-6">
         <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento: </label>
-        <input type="date" id="fechaNacimiento" class="form-control" style="background-color: black;" name="fechaNacimiento">
+        <input type="date" id="fechaNacimiento" class="form-control" style="background-color: black;"
+          name="fechaNacimiento">
       </div>
 
       <div class="col-sm-6">
@@ -93,31 +71,33 @@
         </select>
       </div>
 
-      <div class="col-sm-6">
+      <!-- <div class="col-sm-6" hidden>
         <label for="rol" class="form-label">Rol: </label>
         <select class="form-select mb-3" id="rol" name="rol" required>
           {% for rol in e.roles %}
           <option value="{{ rol }}">{{ rol }}</option>
           {% endfor %}
         </select>
-      </div>
+      </div> -->
 
       <div class="col-sm-6">
         <label for="correoElectronico" class="form-label">Correo Electrónico: </label>
-        <input type="text" id="correoElectronico" class="form-control" name="correoElectronico" >
+        <input type="text" id="correoElectronico" class="form-control" name="correoElectronico">
       </div>
 
       <div class="col-sm-6">
         <label for="contrasena" class="form-label">Contraseña: </label>
-        <div class="input-container" >
+        <div class="input-container">
           <input type="password" class="form-control" name="contrasena" id="contrasena">
-          <i class="fas fa-eye" id="togglePassword" style="position: absolute; right: 15px; top: 55%; transform: translateY(-50%); cursor: pointer;"></i>
+          <i class="fas fa-eye" id="togglePassword"
+            style="position: absolute; right: 15px; top: 55%; transform: translateY(-50%); cursor: pointer;"></i>
         </div>
       </div>
 
       <div class="col-12">
-          <button class="btn btn-success" type="submit">Registrar</button>
-        <a href="/admin/users/list">
+        <button class="btn btn-success" type="submit">Registrar</button>
+        {% set path = 'admin' if role == 'ADMINISTRADOR' else 'client' %}
+        <a href="/users/{{ path }}/list">
           <button type="button" class="btn btn-primary" style="margin-left: 20px;">Cancelar</button>
         </a>
       </div>
@@ -126,115 +106,11 @@
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+{% endblock %}
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-      flatpickr("#fechaNacimiento", {
-          dateFormat: "Y-m-d",
-      });
-  });
-
-  const togglePassword = document.getElementById('togglePassword');
-      const passwordField = document.getElementById('contrasena');
-
-      togglePassword.addEventListener('click', function () {
-
-          const type = passwordField.type === 'password' ? 'text' : 'password';
-          passwordField.type = type;
-
-          this.classList.toggle('fa-eye-slash');
-  });
-
-  jQuery(document).ready(function() {
-
-      $.validator.addMethod("onlyNumbers", function(value, element) {
-      return this.optional(element) || /^[0-9]+$/.test(value);
-      }, "Por favor ingresa solo números");
-
-      $.validator.addMethod("noInitialSpaces", function(value, element) {
-      return this.optional(element) || !/^\s/.test(value); // Verifica que no haya espacios al inicio
-      }, "No se permiten espacios al inicio");
-
-      jQuery("#registrar-usuario").validate({
-        rules: {
-          nombre: {
-            required: true,
-            minlength: 3,
-            noInitialSpaces: true
-          },
-          apellido: {
-            required: true,
-            minlength: 3,
-            noInitialSpaces: true
-          },
-          identificacion: {
-            required: true,
-            minlength: 6,
-            onlyNumbers: true
-          },
-          celular: {
-            required: true,
-            minlength: 10,
-            maxlength: 10,
-            onlyNumbers: true
-          },
-          direccion: {
-            required: true,
-            minlength: 3,
-            noInitialSpaces: true
-          },
-          fechaNacimiento: {
-            required: true,
-            date:true
-          },
-          correoElectronico: {
-            required: true,
-            email: true,
-            noInitialSpaces: true
-          },
-          contrasena: {
-            required:true,
-            minlength: 8
-          }
-        },
-        messages: {
-          nombre: {
-            required: "Por favor, ingresa el/los nombre/s",
-            minlength: "El nombre debe contener al menos 3 caracteres"
-          },
-          apellido: {
-            required: "Por favor, ingresa el/los apellido/s",
-            minlength: "El apellido debe contener al menos 3 caracteres"
-          },
-          identificacion: {
-            required: "Por favor, ingresa una identificación válida",
-            minlength: "La identificación debe contener al menos 6 caracteres"
-          },
-          celular: {
-            required: "Por favor, ingresa un número de celular",
-            minlength: "El número de celular debe contener 10 caracteres",
-            maxlength: "El número de celular debe contener 10 caracteres"
-          },
-          direccion: {
-            required: "Por favor, ingresa una dirección",
-            minlength: "La dirección debe contener al menos 3 caracteres"
-          },
-          fechaNacimiento: {
-            required: "Por favor, ingresa una fecha Válida",
-            date: "Por favor, ingresa una fecha Válida"
-          },
-          correoElectronico: {
-            required: "Por favor, ingresa un correo Electrónico",
-            email: "Por favor, ingresa un correo electrónico con el formato correcto"
-          },
-          contrasena: {
-            required:"Por favor, ingresa la contraseña",
-            minlength: "La contraseña debe contener al menos 8 caracteres"
-          }
-        }
-      });
-    });
-</script>
-
+{% block extra_js %}
+<script src="{{ url_for('static',filename='js/flatpickr.js' ) }}"></script>
+<script src="{{ url_for('static',filename='js/jquery-3.6.0.min.js' ) }}"></script>
+<script src="{{ url_for('static',filename='js/jquery.validate.min.js' ) }}"></script>
+<script src="{{ url_for('static',filename='js/fragmento/user/register-user.js' ) }}"></script>
 {% endblock %}

@@ -8,7 +8,7 @@ public class Ejercicio {
     private String nombreEjercicio;
     private String descripcion;
     private String imagen;
-    private int tiempoDescanso;
+    private Float tiempoDescanso;
     private int nroSeries;
     private int nroRepSerie;
 
@@ -51,11 +51,11 @@ public class Ejercicio {
         this.imagen = imagen;
     }
 
-    public int getTiempoDescanso() {
+    public Float getTiempoDescanso() {
         return this.tiempoDescanso;
     }
 
-    public void setTiempoDescanso(int tiempoDescanso) {
+    public void setTiempoDescanso(Float tiempoDescanso) {
         this.tiempoDescanso = tiempoDescanso;
     }
     
