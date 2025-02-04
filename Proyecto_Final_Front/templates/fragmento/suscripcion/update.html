@@ -1,13 +1,14 @@
 {% extends 'blank.html' %}
 
+{% block title %}Editar suscripción{% endblock %}
+
 {% block content %}
 
 <div class="pagetitle">
-    <h1>Editar Suscripcion</h1>
+    <h1>Editar suscripcion</h1>
 </div>
 
-</div>
-<section class="seccion">
+<section class="section">
     <div class="row">
         <div class="col-lg-12">
             <div class="bg-secondary rounded h-100 p-4">
@@ -21,10 +22,6 @@
                         <input type="date" value="{{ suscripcion.fechaInicio}}" class="form-control" name="nameFechaI" required>
                     </div>
                 
-         <!-- <div class="col-sm-6">
-                <label for="inputDate" class="form-label">Fecha de Finalización</label>
-                <input type="date" value="{{ suscripcion.fechaFinalizacion}}" class="form-control" name="nameFechaF" required>
-            </div>-->
             
             <div class="col-sm-6">
                 <label for="lbltipo" class="form-label">Tipo de Suscripción</label>
@@ -49,6 +46,7 @@
             <input type="text" name="admins" id="admins" value="{{ admins }}" hidden>
         </form>
     </div>
-</div>
+</section>
+
 
 {% endblock%}

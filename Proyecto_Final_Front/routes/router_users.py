@@ -20,7 +20,7 @@ def users_client_list(headers,usr):
     tabla = []
     for i in range(0,len(personas)):
         if personas[i]['rol'] == 'CLIENTE':
-            personas[i]['numero'] = i + 1
+            personas[i]['numero'] = len(tabla) + 1
             personas[i]['correo'] = cuentas[i]['correoElectronico']
             tabla.append(personas[i])
     personas = tabla
@@ -35,7 +35,7 @@ def admin_client_list(headers,usr):
     tabla = []
     for i in range(0,len(personas)):
         if personas[i]['rol'] == 'ADMINISTRADOR':
-            personas[i]['numero'] = i + 1
+            personas[i]['numero'] = len(tabla) + 1
             personas[i]['correo'] = cuentas[i]['correoElectronico']
             tabla.append(personas[i])
     personas = tabla
