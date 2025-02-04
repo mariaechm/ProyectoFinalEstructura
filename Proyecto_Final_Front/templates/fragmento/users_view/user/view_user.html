@@ -335,7 +335,7 @@
 
         <div class="d-flex align-items-center justify-content-between mb-4">
           <h5>Suscripción</h5>
-             <a href="/suscripcion/update/{{ full_user_info.suscripcion.id }}">Editar</a>
+             <a href="/suscripcion/update/{{ full_user_info.suscripcion.id }}/{% if my_profile %}True{% else %}False{% endif %}/{% if full_user_info.admins %}True{% else %}False{% endif %}">Editar</a>
         </div>
 
         <dl class="row mb-0">

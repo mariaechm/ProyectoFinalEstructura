@@ -89,6 +89,24 @@ public class RutinaDao extends AdapterDao<Rutina> {
         return rutina;
     }
 
+    //eliminar un ejercicio de la rutina
+    public Rutina deleteEjercicio(Integer idRutina, Integer idEjercicio) throws Exception {
+        Rutina rutina = get(idRutina);
+        Integer[] ejercicios = rutina.getIdEjercicio();
+        Integer[] newEjercicios = new Integer[ejercicios.length - 1];
+        int j = 0;
+        for (int i = 0; i < ejercicios.length; i++) {
+            if (ejercicios[i] != idEjercicio) {
+                newEjercicios[j] = ejercicios[i];
+                j++;
+            }
+        }
+        rutina.setIdEjercicio(newEjercicios);
+        rutina.setNroEjercicios(newEjercicios.length);
+        merge(rutina, idRutina);
+        return rutina;
+    }
+
     // ENUMERACIONES
     public ObjetivoRutina getObjetivoRutina(String objetivoRutina) {
         return ObjetivoRutina.valueOf(objetivoRutina);

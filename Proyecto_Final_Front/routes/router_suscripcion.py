@@ -4,14 +4,14 @@ from .utils.decorator import *
 SCP_URL = f'{BASE_URL}/suscripcion' 
 
 #UPDATE
-@router.route('/suscripcion/update/<int:id>')
+@router.route('/suscripcion/update/<int:id>/<my_profile>/<admins>')
 @login_required(roles = ['ADMINISTRADOR'])
-def suscripcion_update(id, headers,usr):
+def suscripcion_update(id, headers,usr,my_profile,admins):
     headers["Content-Type"] = "application/json"
     suscripcion = requests.get(f'{SCP_URL}/get/{id}', headers=headers).json()['data']
     #print(suscripcion)
     e = requests.get(f'{SCP_URL}/tipoSuscripcion',headers=headers).json()['data']
-    return render_template('fragmento/suscripcion/update.html',suscripcion=suscripcion,e=e, user=usr, admis=usr['persona']['rol'] == 'ADMINISTRADOR', my_profile=True)
+    return render_template('fragmento/suscripcion/update.html',suscripcion=suscripcion,e=e, user=usr, admis=usr['persona']['rol'] == 'ADMINISTRADOR', my_profile=my_profile, admins=admins)
 
 
 @router.route('/suscripcion/update/send/', methods=['POST'])

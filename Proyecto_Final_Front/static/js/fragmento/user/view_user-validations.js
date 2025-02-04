@@ -45,6 +45,7 @@ jQuery('#document').ready(function() {
         objetivoCliente: {
           required: true,
           minlength: 3,
+          maxlength: 500,
           noInitialSpaces: true
         }
       },

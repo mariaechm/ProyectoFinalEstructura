@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "nombreRutina": "Rutina de brazo de Cbum",
+    "descripcion": "Rutina para dessarrollar el biceps y se trabaja 2 veces a la semana para el crecimiento muscular",
+    "nroEjercicios": 3,
+    "idEjercicio": [
+      2,
+      3,
+      4
+    ],
+    "objetivoRutina": "HIPERTROFIA"
+  },
+  {
+    "id": 3,
+    "nombreRutina": "Rutina de Runitas",
+    "descripcion": "La Rutina de Runitas está diseñada para mejorar fuerza y resistencia con un enfoque equilibrado en todo el cuerpo Inspirada en la constancia y el esfuerzo diario esta rutina incluye ejercicios compuestos y accesorios para maximizar resultados",
+    "nroEjercicios": 3,
+    "idEjercicio": [
+      2,
+      3,
+      4
+    ],
+    "objetivoRutina": "RESISTENCIA"
+  },
+  {
+    "id": 4,
+    "nombreRutina": "Rutina de Pecho y Tríceps",
+    "descripcion": "Rutina enfocada en desarrollar la fuerza y masa muscular en el pecho y los tríceps",
+    "nroEjercicios": 3,
+    "idEjercicio": [2, 9, 15],
+    "objetivoRutina": "HIPERTROFIA"
+  },
+  {
+    "id": 5,
+    "nombreRutina": "Rutina de Piernas Completa",
+    "descripcion": "Rutina para fortalecer y definir las piernas trabajando cuadriceps femorales y glúteos",
+    "nroEjercicios": 4,
+    "idEjercicio": [3, 14, 18, 19],
+    "objetivoRutina": "FUERZA"
+  },
+  {
+    "id": 6,
+    "nombreRutina": "Rutina de Espalda y Bíceps",
+    "descripcion": "Ejercicios clave para desarrollar la espalda y los bíceps con un enfoque en fuerza y resistencia",
+    "nroEjercicios": 3,
+    "idEjercicio": [8, 12, 11],
+    "objetivoRutina": "POWERBUILDING"
+  },
+  {
+    "id": 7,
+    "nombreRutina": "Rutina de Hombros y Core",
+    "descripcion": "Sesión para mejorar la estabilidad la fuerza del core y la definición de los hombros",
+    "nroEjercicios": 3,
+    "idEjercicio": [7, 16, 13],
+    "objetivoRutina": "RESISTENCIA"
+  },
+  {
+    "id": 8,
+    "nombreRutina": "Rutina Full Body",
+    "descripcion": "Entrenamiento de cuerpo completo para mejorar fuerza resistencia y composición corporal",
+    "nroEjercicios": 5,
+    "idEjercicio": [2, 3, 4, 8, 15],
+    "objetivoRutina": "POWERBUILDING"
+  }
+]
