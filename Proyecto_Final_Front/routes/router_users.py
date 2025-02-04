@@ -98,7 +98,7 @@ def perfil_update_send(headers,usr):
     ok = response.status_code == 200
     flash(f'{"Éxito" if ok else "Error"}: {"Se ha actualizado el registro" if ok else "no se ha podido actualizar el registro"}',category='success' if ok else 'error')
     print(delete_unreferenced_images(headers=headers))
-    return redirect('/my_profile' if (eval(data['my-profile'])) else f'/view_user/{data['userId']}/{eval(data['admins'])}') 
+    return redirect('/my_profile' if (eval(data['my-profile'])) else f'/view_user/{data["userId"]}/{eval(data["admins"])}') 
 
 @router.route('/change_password',methods=['POST'])
 @login_required()
@@ -108,7 +108,7 @@ def change_password(headers,usr):
     ok = response.status_code == 200
     print(data)
     flash(f'{"Éxito" if ok else "Error"}: {"Se ha actualizado la contraseña" if ok else "no se ha podido actualizar la contraseña"}',category='success' if ok else 'error')
-    return redirect('/my_profile' if (eval(data['my-profile'])) else f'/view_user/{data['id']}/{eval(data['admins'])}')
+    return redirect('/my_profile' if (eval(data['my-profile'])) else f'/view_user/{data["id"]}/{eval(data["admins"])}')
 
 @router.route('/user/update/persona',methods=['POST'])
 @login_required()
@@ -117,16 +117,16 @@ def update_persona_send(headers,usr):
     response = requests.post(f'{P_URL}/update',headers=headers,json=data)
     ok = response.status_code == 200
     flash(f'{"Éxito" if ok else "Error"}: {"Se ha actualizado el registro" if ok else "no se ha podido actualizar el registro"}',category='success' if ok else 'error')
-    return redirect('/my_profile' if (eval(data['my-profile'])) else f'/view_user/{data['userId']}/{eval(data['admins'])}')
+    return redirect('/my_profile' if (eval(data['my-profile'])) else f'/view_user/{data["userId"]}/{eval(data["admins"])}')
 
 @router.route('/view_user/<int:id>/<admins>')
 @login_required(roles=['ADMINISTRADOR'])
 def persona_view(headers,usr,id,admins:bool):
     persona = requests.get(f'{P_URL}/get/{id}',headers=headers).json()['data']
-    cuenta = requests.get(f'{BASE_URL}/cuenta/search/personaId/{persona['id']}',headers=headers).json()['data'][0]
+    cuenta = requests.get(f'{BASE_URL}/cuenta/search/personaId/{persona["id"]}',headers=headers).json()['data'][0]
     perfil = requests.get(f'{BASE_URL}/perfil/get/{cuenta["perfilId"]}',headers=headers).json()['data']
-    estadistica = requests.get(f'{BASE_URL}/estadistica/get/{cuenta['perfilId']}',headers=headers).json()['data']
-    suscripcion = requests.get(f'{BASE_URL}/suscripcion/get/{cuenta['personaId']}',headers=headers).json()['data']
+    estadistica = requests.get(f'{BASE_URL}/estadistica/get/{cuenta["perfilId"]}',headers=headers).json()['data']
+    suscripcion = requests.get(f'{BASE_URL}/suscripcion/get/{cuenta["personaId"]}',headers=headers).json()['data']
 
     suscripcion = requests.get(f'{BASE_URL}/suscripcion/get/{cuenta["perfilId"]}',headers=headers).json()['data']
     enums = requests.get(f'{P_URL}/enumerations',headers=headers).json()['data']
@@ -142,8 +142,8 @@ def my_profile(headers,usr):
     persona = requests.get(f'{P_URL}/get/{usr["persona"]["id"]}',headers=headers).json()['data']
     cuenta = requests.get(f'{BASE_URL}/cuenta/search/personaId/{persona["id"]}',headers=headers).json()['data'][0]
     perfil = requests.get(f'{BASE_URL}/perfil/get/{cuenta["perfilId"]}',headers=headers).json()['data']
-    estadistica = requests.get(f'{BASE_URL}/estadistica/get/{cuenta['perfilId']}',headers=headers).json()['data']
-    suscripcion = requests.get(f'{BASE_URL}/suscripcion/get/{cuenta['personaId']}',headers=headers).json()['data']
+    estadistica = requests.get(f'{BASE_URL}/estadistica/get/{cuenta["perfilId"]}',headers=headers).json()['data']
+    suscripcion = requests.get(f'{BASE_URL}/suscripcion/get/{cuenta["personaId"]}',headers=headers).json()['data']
 
     enums = requests.get(f'{P_URL}/enumerations',headers=headers).json()['data']
 
@@ -160,7 +160,7 @@ def persona_delete(id,headers,usr,admins):
 @login_required(roles=['ADMINISTRADOR'])
 def delete_user(headers,usr):
     data = request.form.to_dict()
-    response = requests.delete(f'{BASE_URL}/auth/delete/{data['id']}',headers=headers)
+    response = requests.delete(f'{BASE_URL}/auth/delete/{data["id"]}',headers=headers)
     ok = response.status_code == 200
     flash(f'{"Éxito" if ok else "Error"}: {"Se ha eliminado el registro" if ok else "no se ha podido eliminar el registro"}',category='success' if ok else 'error')
     return redirect('/users/admin/list' if eval(data['admins']) else '/users/client/list')

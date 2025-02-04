@@ -31,9 +31,9 @@ def update_suscripcion_send(headers,usr):
     dat = r.json()
     if r.status_code == 200:
         flash("¡Se ha actualizado correctamente!", category='success')
-        return redirect('/my_profile' if (eval(form['my-profile'])) else f'/view_user/{form['id']}/{eval(form['admins'])}')
+        return redirect('/my_profile' if (eval(form['my-profile'])) else f'/view_user/{form["id"]}/{eval(form["admins"])}')
     else:
         flash("¡No se ha podido completar la acción!", category='error')
-        return redirect('/my_profile' if (eval(form['my-profile'])) else f'/view_user/{form['id']}/{eval(form['admins'])}')
+        return redirect('/my_profile' if (eval(form['my-profile'])) else f'/view_user/{form["id"]}/{eval(form["admins"])}')
     
 
