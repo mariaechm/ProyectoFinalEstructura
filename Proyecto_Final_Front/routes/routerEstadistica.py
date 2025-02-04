@@ -63,7 +63,6 @@ def update_estadistica(headers,usr):
     form = request.form
     data1 = { "id": form ["id"],"medidaEspalda": form["medidaEspalda"], "medidaPierna": form["medidaPierna"], "medidaBrazo": form["medidaBrazo"], "medidaCintura":form["medidaCintura"],"medidaPecho":form["medidaPecho"], "peso": form["peso"], "altura": form["altura"]}
     r = requests.post('http://localhost:8080/api/estadistica/update', data = json.dumps(data1), headers=headers)
-    print("aaa",data1)
     if r.status_code == 200:
         flash('Estadistica actualizada correctamente', 'success')
         return redirect('/estadistica')

@@ -6,5 +6,669 @@
     "precio": 3.0,
     "duracionDias": 1,
     "tipo": "DIA"
+  },
+  {
+    "id": 2,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 3,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 4,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 5,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 6,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 7,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 8,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 9,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 10,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 11,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 12,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 13,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 14,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 15,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 16,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 17,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 18,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 19,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 20,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 21,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 22,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 23,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 24,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 25,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 26,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 27,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 28,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 29,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 30,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 31,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 32,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 33,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 34,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 35,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 36,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 37,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 38,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 39,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 40,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 41,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 42,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 43,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 44,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 45,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 46,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 47,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 48,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 49,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 50,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 51,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 52,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 53,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 54,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 55,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 56,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 57,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 58,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 59,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 60,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 61,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 62,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 63,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 64,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 65,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 66,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 67,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 68,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 69,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 70,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 71,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 72,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 73,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 74,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 75,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 76,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 77,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 78,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 79,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 80,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 81,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 82,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 83,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
+  },
+  {
+    "id": 84,
+    "fechaInicio": "2024-01-23",
+    "fechaFinalizacion": "2024-01-24",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "tipo": "DIA"
   }
 ]
