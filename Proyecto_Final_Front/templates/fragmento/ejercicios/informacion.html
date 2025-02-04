@@ -1,0 +1,37 @@
+{% extends 'blank.html' %}
+{% block title %}Información de Ejercicios{% endblock %}
+{% block rutinaDropDown %}
+  active
+{% endblock %}
+{% block ejercicio %}
+  active
+{% endblock %}
+{% block content %}
+
+<div class="pagetitle">
+    <h1>Información del Ejercicio</h1>
+</div>
+
+<section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="container-fluid bg-secondary rounded h-100 p-4">
+            <h2 class="mb-4 text-center">{{ ejercicio.nombreEjercicio }}</h2>
+            <input type="hidden" value="{{ id }}" name="idE"/>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <img src="{{ ejercicio.imagen }}" class="img-fluid rounded" alt="Imagen del ejercicio" style="height: auto;">
+                </div>
+                <div class="col-md-12 mt-4">
+                    <p style="text-align: justify;">{{ ejercicio.descripcion }}</p>
+                </div>
+            </div>
+            <div class="mt-4 text-center">
+                <a href="/ejercicios/list" class="btn btn-warning rounded-pill">Regresar a la lista de ejercicios</a>
+            </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+{% endblock %}

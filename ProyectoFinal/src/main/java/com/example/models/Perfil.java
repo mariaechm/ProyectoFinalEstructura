@@ -7,8 +7,7 @@ public class Perfil {
     private String objetivoCliente;
     private String fechaCreacion;
 
-    public Perfil() {
-    }
+    public Perfil() {}
 
     public Perfil(Integer id, String nickName, String imagen, String objetivoCliente, String fechaCreacion) {
         this.id = id;

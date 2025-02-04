@@ -1,0 +1,26 @@
+.error {
+    color: red;
+    font-size: 0.875rem;
+    margin-top: 5px;
+}
+
+.input-container {
+    position: relative;
+    height: 40px;
+}
+
+#togglePassword {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+button[type="submit"],
+button[type="button"] {
+    position: sticky;
+    margin-top: 20px;
+    bottom: 15px;
+    z-index: 1;
+}

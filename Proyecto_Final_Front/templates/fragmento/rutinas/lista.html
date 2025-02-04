@@ -1,0 +1,136 @@
+{% extends 'blank.html'%}
+{% block title %}Rutinas{% endblock %}
+{% block rutinaDropDown %}
+  active
+{% endblock %}
+{% block rutina %}
+  active
+{% endblock %}
+{% block content %}
+{% with messages = get_flashed_messages(with_categories=True) %}
+  {% if messages %}
+    {% for message in messages %}
+      {% if message[0] == 'info' %}
+          <div class="alert alert-info alert-dismissible fade show" role="alert">
+            <h4 class="alert-heading"><strong>¡Éxito!</strong></h4>
+            <p>{{ message[1]}}</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+          </div>
+        {% else %}
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <h4 class="alert-heading"><strong>¡Error!</strong></h4>
+            <p>{{ message[1]}}</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+          </div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<div class="pagetitle">
+  <h1>Lista de Rutinas</h1>
+</div>
+
+<div class="col-12">
+  <div class="container-fluid bg-secondary rounded h-100 p-4">
+    <div class="form-inline">
+      {% if user.persona.rol == 'ADMINISTRADOR' %}
+        <a href="/rutinas/register">
+          <button type="button" class="btn btn-warning m-2 w-100 w-md-auto"><i class="fa fa-plus"></i></button>
+        </a>
+      {% endif %}
+      <select class="form-select w-100 w-md-auto m-2" style="width: 250px;" id="atributo">
+        <option value="nombreRutina">Nombre de la Rutina</option>
+        <option value="nroEjercicios">Número de Ejercicios</option>
+      </select>
+            
+      <input class="form-control" style="width: 150px;" id="texto" type="text">
+      <a>
+        <button type="button" class="btn btn-warning m-2 w-100 w-md-auto" id="btn"><i class="fa fa-search" id="btn" title="Buscar"></i></button>
+      </a>
+
+      <select class="form-select w-100 w-md-auto m-2" style="width: 150px;" name="sortMethod" id="sortMethod">
+        <option value="0">Quick Sort</option> 
+        <option value="1">Merge Sort</option>
+        <option value="2">Shell Sort</option>
+      </select>
+    
+      <a hidden href="#" id="sortA"></a> 
+    </div>
+    <div class="table-responsive">
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col"><center>Nro</th>
+            <th scope="col">Rutina
+              <span onclick="sortFunct('nombreRutina','1')">🡡</span> 
+              <span onclick="sortFunct('nombreRutina','0')">🡫</span>
+            </th>
+            <th scope="col"><center>Número de Ejercicios
+              <span onclick="sortFunct('nroEjercicios','1')">🡡</span> 
+              <span onclick="sortFunct('nroEjercicios','0')">🡫</span>
+            </th>
+            <th scope="col"><center>Ejercicios</th>
+            <th scope="col"><center>Objetivo
+              <span onclick="sortFunct('objetivoRutina','1')">🡡</span> 
+              <span onclick="sortFunct('objetivoRutina','0')">🡫</span>
+            </th>
+            {% if user.persona.rol == 'ADMINISTRADOR' %}
+              <th scope="col"><center>Acciones</th>
+            {% endif %}
+          </tr>
+        </thead>
+          <tbody>
+            {% for rutina in rutinas %}
+              <tr>
+                <td><center>{{ rutina.numero}}</td>
+                <td>{{ rutina.nombreRutina }}</td>
+                <td><center>{{ rutina.nroEjercicios }}</td>
+                <td><center><a href="/rutinas/informacion/{{ rutina.id }}">Ver más</a></td>
+                <td><center>{{ rutina.objetivoRutina }}</td>
+                {% if user.persona.rol == 'ADMINISTRADOR' %}
+                  <td>
+                    <a href="/rutinas/edit/{{ rutina.id }}">
+                      <button type="button" class="btn btn-square btn-info m-2"><i class="fa fa-pen"></i></button>
+                    </a>
+                    <a href="/rutinas/delete/{{ rutina.id }}">
+                      <button type="button" class="btn btn-square btn-danger m-2"><i class="fa fa-trash"></i></button>
+                    </a>
+                  </td>
+                {% endif %}
+              </tr>
+            {% endfor %}
+          </tbody>
+      </table>
+      <a href="/rutinas/list" class="btn btn-warning rounded-pill">Regresar a la lista de rutinas</a>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<a id="search" href="/rutinas/list"></a>
+<script>
+  const sortUrl = '/rutinas/sort'
+  function sortFunct(attr,ord) {
+    const newHref = `${sortUrl}/${attr}/${ord}/${$('#sortMethod').val()}`;
+    $('#sortA').attr('href',newHref) 
+    console.log($('#sortA').attr('href'))
+    $('#sortA')[0].click()
+  }
+  $(document).ready(function () {
+    $("#btn").click(function () {
+      search();
+    });
+    function search() {
+      var texto = $("#texto").val();
+      var atributo = $("#atributo").val();
+      if (texto == "") {
+        alert("Ingrese un valor");
+        return;
+      } else {
+        $("#search").attr("href", "/rutinas/search/" + atributo + "/" + texto);
+        $("#search")[0].click();
+      }
+    }
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends 'blank.html' %}
+{% block title %}Editar Rutinas{% endblock %}
+{% block rutinaDropDown %}
+  active
+{% endblock %}
+{% block rutina %}
+  active
+{% endblock %}
+{% block custom_styles %}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/custom/validation.register.css' ) }}">
+{% endblock %}
+{% block content %}
+<title>Editar Rutina</title>
+<div class="pagetitle">
+    <h1>Información de Rutinas</h1>
+</div>
+
+<div class="col-12">
+    <div class="container-fluid bg-secondary rounded h-100 p-4">
+        <h6 class="mb-4">Edición</h6>
+        <form id="rutinaForm" class="row g-3 needs-validation" method="POST" action="/rutinas/update" novalidate="">
+            <input type="hidden" value="{{ rutina.id }}" name="idR"/>
+            <div class="col-sm-6">
+                <label for="validationCustom02" class="form-label">Nombre de la Rutina</label>
+                <input type="text" class="form-control" name="nombreR" required value="{{ rutina.nombreRutina }}">
+            </div>
+
+            <div class="col-sm-6">
+                <label for="lbltipo" class="form-label">Objetivo de la Rutina</label>
+                <select class="form-select mb-3" name="objR" required>
+                    {% for item in list %}
+                        <option {% if item == rutina.objetivoRutina %} selected {%endif%} value="{{ item }}">{{ item }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="col-sm-6">
+                <label for="descrip" class="form-label">Descripción de la Rutina</label>
+                <textarea type="text" class="form-control" name="descrip" style="height: 150px;" required="">{{ rutina.descripcion }}</textarea>
+            </div>      
+            
+            <div class="col-sm-6">
+                <label for="lbltipo" class="form-label">Ejercicios</label>
+                <select id="seleccionEjercicios" name="seleccionEjercicios" class="form-select" multiple="">
+                    {% for ejercicio in ejercicios %}
+                        <option {% if ejercicio.id in rutina.idEjercicio %} selected {%endif%} value="{{ ejercicio.id }}">{{ ejercicio.nombreEjercicio }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <div class="col-sm-6">
+                <label for="validationCustom02" class="form-label">Número de Ejercicios</label>
+                <input id="idNroE" type="number" step="1" class="form-control" name="nroE" required readonly style="background-color: black;">
+            </div>
+
+            <div class="form-inline">
+                <div class="col-sm-6">
+                    <button type="submit" class="btn btn-success rounded-pill">Guardar</button>
+                </div>
+                
+                <div class="col-sm-6">
+                    <a href="/rutinas/list" class="btn btn-primary rounded-pill">Cancelar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Obtener el select y el campo de número de ejercicios
+    const seleccionEjercicios = document.getElementById('seleccionEjercicios');
+    const nroE = document.getElementById('idNroE');
+
+    function actualizarNumeroEjercicios() {
+        const ejerciciosSeleccionados = seleccionEjercicios.selectedOptions.length; 
+        nroE.value = ejerciciosSeleccionados; 
+    }
+
+    seleccionEjercicios.addEventListener('change', actualizarNumeroEjercicios);
+    actualizarNumeroEjercicios();
+</script>
+{% endblock%}
+
+{% block extra_js %}
+<script src="{{ url_for('static',filename='js/jquery-3.6.0.min.js' ) }}"></script>
+<script src="{{ url_for('static',filename='js/jquery.validate.min.js' ) }}"></script>
+<script src="{{ url_for('static',filename='js/fragmento/rutina/register-rutina.js' ) }}"></script>
+{% endblock %}

@@ -1,0 +1,124 @@
+{% extends 'blank.html' %}
+{% block content %}
+
+{% with messages = get_flashed_messages(with_categories=True) %}
+  {% if messages %}
+    {% for message in messages %}
+      {% if message[0] == 'info' %}
+          <div class="alert alert-info alert-dismissible fade show" role="alert">
+            <h4 class="alert-heading"><strong>¡Éxito!</strong></h4>
+            <p>{{ message[1]}}</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+          </div>
+        {% else %}
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <h4 class="alert-heading"><strong>¡Error!</strong></h4>
+            <p>{{ message[1]}}</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+          </div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+<div class="pagetitle">
+    <h1>Lista de Suscripciones</h1>
+</div>
+
+<div class="col-12">
+    <div class="bg-secondary rounded h-100 p-4">
+      <div class="form-inline">
+      <a href="/admin/suscripcion/save">
+        <button type="button" class="btn btn-warning m-2"><i class="fa fa-plus"></i></button>
+      </a>
+        <select class="form-select" style="width: 250px;" id="atributo">
+          <option value="fechaInicio">Fecha de Inicio</option>
+          <option value="fechaFinalizacion">Fecha de Finalizacion</option>
+          <option value="precio">Precio</option>
+        </select>
+
+         <input class="form-control" style="width: 150px;" id="texto" type="text">
+        <a>
+          <button type="button" class="btn btn-warning m-2" id="btn"><i class="fa fa-search" id="btn" title="Buscar"></i></button>
+        </a>
+
+        <select class="form-select" style="width: 150px;" name="sortMethod" id="sortMethod">
+          <option value="0">Quick Sort</option> 
+          <option value="1">Merge Sort</option>
+          <option value="2">Shell Sort</option>
+        </select>
+
+        <a hidden href="#" id="sortA"></a> 
+
+    </div>
+      <table class="table table-dark">
+            <thead>
+                <tr>
+                  <th scope="col">Nro</th>
+                  <th scope="col">Fecha de Inicio</th>
+                    <span onclick="sortFunct('fechaInicio','1')">🡡</span> 
+                    <span onclick="sortFunct('fechaInicio','0')">🡫</span>
+                  </th>
+                  <th scope="col">Fecha de Finalización</th>
+                    <span onclick="sortFunct('fechaFinalizacion','1')">🡡</span> 
+                    <span onclick="sortFunct('fechaFinalizacion','0')">🡫</span>
+                  </th>
+                  <th scope="col">Tipo de Suscripción</th>
+                  <th scope="col">Precio</th>
+                    <span onclick="sortFunct('precio','1')">🡡</span> 
+                    <span onclick="sortFunct('precio','0')">🡫</span>
+                  </th>
+                  <th scope="col">Acciones</th> 
+                </tr>
+            </thead>
+            <tbody>
+              {% for suscripcion in suscripciones %}
+              <tr>
+                <td>{{ suscripcion.numero }}</td>
+                <td>{{ suscripcion.fechaInicio }}</td>
+                <td>{{ suscripcion.fechaFinalizacion }}</td>
+                <td>{{ suscripcion.tipo }}</td>
+                <td>{{ suscripcion.precio }}</td>
+                <td>
+                  <a href="/admin/suscripcion/update/{{ suscripcion.id }}">
+                    <button type="button" class="btn btn-square btn-info m-2"><i class="fa fa-pen"></i></button>
+                  </a>
+                  <a href="/admin/suscripcion/delete/{{ suscripcion.id }}">
+                    <button type="button" class="btn btn-square btn-danger m-2"><i class="fa fa-trash"></i></button>
+                  </a>
+                </td>
+              </tr>
+             {% endfor %}
+              </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<a id="search" href="/admin/suscripcion/list"></a>
+<script>
+  const sortUrl = '/admin/suscripcion/sort'
+  function sortFunct(attr,ord) {
+    const newHref = `${sortUrl}/${attr}/${ord}/${$('#sortMethod').val()}`;
+    $('#sortA').attr('href',newHref) 
+    console.log($('#sortA').attr('href'))
+    $('#sortA')[0].click()
+  }
+  $(document).ready(function () {
+    $("#btn").click(function () {
+      search();
+    });
+    function search() {
+      var texto = $("#texto").val();
+      var atributo = $("#atributo").val();
+      if (texto == "") {
+        alert("Ingrese un valor");
+        return;
+      } else {
+        $("#search").attr("href", "/admin/suscripcion/search/" + atributo + "/" + texto);
+        $("#search")[0].click();
+      }
+    }
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends 'blank.html' %}
+{% block title %}Registrar Ejercicios{% endblock %}
+{% block rutinaDropDown %}
+  active
+{% endblock %}
+{% block ejercicio %}
+  active
+{% endblock %}
+{% block custom_styles %}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/custom/validation.register.css' ) }}">
+{% endblock %}
+{% block content %}
+
+<div class="pagetitle">
+    <h1>Información de Ejercicios</h1>
+</div>
+
+<div class="col-12">
+    <div class="container-fluid bg-secondary rounded h-100 p-4">
+        <h6 class="mb-4">Registro</h6>
+        <form id="ejercicioForm" class="row g-3 needs-validation" method="POST" action="/ejercicios/save" novalidate>
+            <div class="col-sm-6">
+                <label for="validationCustom02" class="form-label">Nombre del Ejercicio</label>
+                <input type="text" class="form-control" name="nombreE" required>
+            </div>
+
+            <div class="col-sm-6">
+                <label for="validationCustom02" class="form-label">Tiempo de Descanso entre Series (Minutos)</label>
+                <input type="number" step="0.1" class="form-control" name="tiempoD" required>
+            </div>
+
+            <div class="col-sm-6">
+                <label for="validationCustom02" class="form-label">Número de Series</label>
+                <input type="number" class="form-control" name="nroS" required>
+            </div>
+
+            <div class="col-sm-6">
+                <label for="validationCustom02" class="form-label">Número de Repeticiones por Serie</label>
+                <input type="number" class="form-control" name="nroRS" required>
+            </div>
+
+            <div class="col-sm-6">
+                <label for="validationCustom02" class="form-label">Imagen del Ejercicio (Enlace Web)</label>
+                <input type="url" class="form-control" name="img" required>
+            </div>
+            
+            <div class="col-sm-6">
+                <label for="lbltipo" class="form-label">Tipo de Ejercicio</label>
+                <select class="form-select mb-3" name="tipoE" required>
+                    {% for item in list %}
+                        <option value="{{ item }}">{{ item }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <div class="col-sm-6">
+                <label for="descrip" class="form-label">Descripción del Ejercicio</label>
+                <textarea type="text" minlength="50" maxlength="600" class="form-control" name="descrip" style="height: 150px;" required></textarea>
+            </div>
+
+            <div class="col-sm-6">
+                <label for="lbltipo" class="form-label">Grupo Muscular Objetivo</label>
+                <select class="form-select mb-3" name="grupoMuscular" required>
+                    {% for item in list1 %}
+                        <option value="{{ item }}">{{ item }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <div class="form-inline">
+                <div class="col-sm-6">
+                    <button type="submit" class="btn btn-success rounded-pill">Guardar</button>
+                </div>
+                
+                <div class="col-sm-6">
+                    <a href="/ejercicios/list" class="btn btn-primary rounded-pill">Cancelar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock%}
+
+{% block extra_js %}
+<script src="{{ url_for('static',filename='js/jquery-3.6.0.min.js' ) }}"></script>
+<script src="{{ url_for('static',filename='js/jquery.validate.min.js' ) }}"></script>
+<script src="{{ url_for('static',filename='js/fragmento/ejercicio/register-ejercicio.js' ) }}"></script>
+{% endblock %}

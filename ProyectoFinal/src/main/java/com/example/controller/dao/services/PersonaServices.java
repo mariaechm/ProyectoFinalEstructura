@@ -1,5 +1,6 @@
-/* 
 package com.example.controller.dao.services;
+
+import java.util.HashMap;
 
 import com.example.controller.dao.PersonaDao;
 import com.example.models.Persona;
@@ -19,40 +20,43 @@ public class PersonaServices {
         return this.obj.getPersona();
     }
 
-    public void setPersona(Persona persona) {
-        this.obj.setPersona(persona);
+    public Persona[] getAllPersonas() {
+        return this.obj.getAllPersonas();
     }
 
     public Persona getPersonaById(Integer id) throws Exception {
         return this.obj.getPersonaById(id);
     }
 
-    public String getPersonaJsonById(Integer id) throws Exception {
-        return this.obj.getPersonaJsonById(id);
+    public Persona savePersona(String json) throws Exception {
+        this.obj.personaFromJson(json);
+        return this.obj.savePersona();
     }
 
-    public Boolean save() throws Exception {
-        return this.obj.save();
+    public Persona updatePersona(String json) throws Exception {
+        this.obj.personaFromJson(json);
+        return this.obj.updatePersona();
     }
 
-    public void update(Persona persona) throws Exception {
-        this.obj.updatePersona(persona);
+    public Persona deletePersona(Integer id) throws Exception {
+        return this.obj.deletePersona(id);
     }
 
-    public void delete(Integer id) throws Exception {
-        this.obj.deletePersona(id);
+    public HashMap<String,Object> enumerations() {
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("tipos", TipoIdentificacion.values());
+        map.put("roles", Rol.values());
+        map.put("generos", Genero.values());
+        return map;
     }
 
-    public Genero[] generos() {
-        return this.obj.generos();
-    }
+    // BUSQUEDA Y ORDENACIÓN ==========================================================
 
-    public Rol[] roles() {
-        return this.obj.roles();
+    public Persona[] sort(String attribute, Integer orden, Integer method) throws Exception {
+        return this.obj.sort(attribute,orden,method);
     }
     
-    public TipoIdentificacion[] tiposIdentificacion() {
-        return this.obj.tiposIdentificaion();
+    public Persona[] search(String attribute, String x) throws Exception {
+        return this.obj.search(attribute, x);
     }
 }
- */

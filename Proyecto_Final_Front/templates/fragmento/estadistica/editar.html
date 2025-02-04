@@ -1,0 +1,89 @@
+{% extends 'blank.html' %}
+{% block content %}
+
+<div class="pagetitle">
+    <h1>Informacion De Estadísticas</h1>
+</div>
+<section class="seccion">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="bg-secondary rounded h-100 p-4">
+                <div class="card-body">
+                  <h5 class="card-title">Informacion</h5>
+                  
+                  <!-- Custom Styled Validation with Tooltips -->
+                <form id="statisticsForm" class="row g-3 needs-validation" method="POST" action="/estadistica/update" novalidate>
+                    <input type = "hidden" name = "id" value = "{{ estadistica.id }}">
+                    <div class="col-md-6">
+                        <label for="medidaEspalda" class="form-label">Medida Espalda</label>
+                        <input type="number" id="medidaEspalda" step="0.01" min="1" class="form-control" name="medidaEspalda" required value = "{{estadistica.medidaEspalda}}"> 
+                        <div class="invalid-feedback">Por favor, ingresa un valor válido para la medida de la espalda.</div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="medidaPierna" class="form-label">Medida Pierna</label>
+                        <input type="number" id="medidaPierna" step="0.01" min="1" class="form-control" name="medidaPierna" required value = "{{estadistica.medidaPierna}}" > 
+                        <div class="invalid-feedback">Por favor, ingresa un valor válido para la medida de la pierna.</div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="medidaBrazo" class="form-label">Medida Brazo</label>
+                        <input type="number" id="medidaBrazo" step="0.01" min="1" class="form-control" name="medidaBrazo" required value = "{{estadistica.medidaBrazo}}">
+                        <div class="invalid-feedback">Por favor, ingresa un valor válido para la medida del brazo.</div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="medidaCintura" class="form-label">Medida Cintura</label>
+                        <input type="number" id="medidaCintura" step="0.01" min="1" class="form-control" name="medidaCintura" required value ="{{estadistica.medidaCintura}}">
+                        <div class="invalid-feedback">Por favor, ingresa un valor válido para la medida de la cintura.</div>
+                    </div>
+
+                    <div class = "col-md-6">
+                        <label for="medidaPecho" class="form-label">Medida Pecho</label>
+                        <input type="number" id="medidaPecho" step="0.01" min="1" class="form-control" name="medidaPecho" required value = "{{estadistica.medidaPecho}}">
+                        <div class="invalid-feedback">Por favor, ingresa un valor válido para la medida del pecho.</div>
+                    </div>
+
+                    
+
+                    <div class="col-md-6">
+                        <label for="peso" class="form-label">Peso</label>
+                        <input type="number" id="peso" step="0.01" min="1" class="form-control" name="peso" required value = "{{estadistica.peso}}">
+                        <div class="invalid-feedback">Por favor, ingresa un peso válido.</div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="altura" class="form-label">Altura</label>
+                        <input type="number" id="altura" step="0.01" min="1" class="form-control" name="altura" required value="{{estadistica.altura}}">
+                        <div class="invalid-feedback">Por favor, ingresa una altura válida.</div>
+                    </div>
+                <div class ="form-inline">
+                    <div class="col-6">
+                      <button class="btn btn-success rounded-pill" type="submit">Guardar</button>
+                    </div>
+                    <div class="col-6">
+                      <a href="/estadistica" class="btn btn-danger rounded-pill">Cancelar</a>
+                    </div>
+                <div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+  (function () {
+      'use strict';
+      const form = document.getElementById('statisticsForm');
+      form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+              event.preventDefault();
+              event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+      }, false);
+  })();
+  
+</script>
+
+{% endblock %}

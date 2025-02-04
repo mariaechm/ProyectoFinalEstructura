@@ -1,0 +1,35 @@
+{% extends 'blank.html' %}
+{% block title %}Eliminar Ejercicios{% endblock %}
+{% block rutinaDropDown %}
+  active
+{% endblock %}
+{% block ejercicio %}
+  active
+{% endblock %}
+{% block content %}
+
+<div class="pagetitle">
+    <h1>Eliminar Ejercicios</h1>
+</div>
+
+<section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="container-fluid bg-secondary rounded h-100 p-4">
+            <form method="POST" action="/ejercicios/remove" novalidate>
+              <input type="hidden" value="{{ id }}" name="idE"/><br>
+              <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                  <h4 class="alert-heading"><strong><center>¡¡¡ALERTA!!!</strong></h4>
+                  <br><center>¡Esta acción no se podrá revertir!<br><center>¿Desea eliminar el ejercicio seleccionado?<br>
+                  <div class="col-6">
+                      <br><button class="btn btn-success rounded-pill" type="submit">Confirmar</button>
+                      <a href="/ejercicios/list" class="btn btn-primary rounded-pill">Cancelar</a>
+                  </div>
+              </div>
+            </form>
+        </div>
+      </div>
+    </div>
+</section>
+
+{% endblock %}

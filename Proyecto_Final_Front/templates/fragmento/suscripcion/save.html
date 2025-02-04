@@ -1,0 +1,62 @@
+{% extends 'blank.html' %}
+{% block content %}
+<div class="pagetitle">
+    <h1>Información de Suscripción</h1>
+</div>
+
+<div class="col-12">
+    <div class="bg-secondary rounded h-100 p-4">
+        <h6 class="mb-4">Registro</h6>
+        <form class="row g-3 needs-validation" method="POST" action="/suscripcion/save/send" novalidate>
+            <div class="col-sm-6">
+                <label for="inputDate" class="form-label">Fecha de Inicio de Suscripción</label>
+                <input type="date" class="form-control" name="nameFechaI" required>
+            </div>
+                
+            
+            <div class="col-sm-6">
+                <label for="lbltipo" class="form-label">Tipo de Suscripción</label>
+                <select class="form-select mb-3"required name="nameTipo">
+                    {% for tipo in e %}
+                        <option value="{{ tipo }}">{{ tipo }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <select name="hola" class="form-select" multiple aria-label="multiple select example">
+                {% for persona in personas %}
+                    <option value="{{ persona.id }}">{{ persona.nombre }}</option>
+                {% endfor %}
+            </select>
+            
+            <div class="form-inline">
+                <div class="col-sm-6">
+                    <button type="submit" class="btn btn-success rounded-pill">Guardar</button>
+                </div>
+                
+                <div class="col-sm-6">
+                    <a href="/suscripcion/list" class="btn btn-primary rounded-pill">Cancelar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Obtener el select y el campo de número de suscripciones
+    const seleccionSuscripcion = document.getElementById('seleccionSuscripcion');
+    const nroE = document.getElementById('idNroE');
+
+    // Función para actualizar el número de suscripciones seleccionadas
+    function actualizarNumeroSuscripciones() {
+        const suscripcionesSeleccionadas = seleccionSuscripcion.selectedOptions.length; // Cuenta las opciones seleccionadas
+        nroE.value = suscripcionesSeleccionadas; // Actualiza el valor del campo
+    }
+
+    // Escuchar cambios en el select
+    seleccionSuscripcion.addEventListener('change', actualizarNumeroSuscripciones);
+
+    // Inicializar con el valor actual (en caso de que ya haya opciones seleccionadas)
+    actualizarNumeroSuscripciones();
+</script>
+{% endblock%}

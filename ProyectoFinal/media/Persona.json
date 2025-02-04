@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "nombre": "Arnold",
+    "apellido": "Schwarzenegger",
+    "identificacion": "018475839",
+    "celular": "8574638293",
+    "fechaNacimiento": "1947-07-30",
+    "direccion": "Austria",
+    "tipoIdentificacion": "PASAPORTE",
+    "genero": "HOMBRE",
+    "rol": "ADMINISTRADOR"
+  }
+]

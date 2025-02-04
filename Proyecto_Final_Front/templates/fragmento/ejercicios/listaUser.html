@@ -1,0 +1,116 @@
+{% extends 'blank.html'%}
+{% block title %}Ejercicios{% endblock %}
+{% block rutinaDropDown %}
+  active
+{% endblock %}
+{% block ejercicio %}
+  active
+{% endblock %}
+{% block content %}
+
+<div class="pagetitle">
+  <h1>Lista de Ejercicios</h1>
+</div>
+
+<div class="col-12">
+  <div class="container-fluid bg-secondary rounded h-100 p-4">
+    <div class="form-inline">
+      <select class="form-select w-100 w-md-auto m-2" style="width: 250px;" id="atributo">
+        <option value="nombreEjercicio">Nombre del Ejercicio</option>
+        <option value="tiempoDescanso">Tiempo de Descanso </option>
+        <option value="nroSeries">Número de Series</option>
+      </select>
+            
+      <input class="form-control" style="width: 150px;" id="texto" type="text">
+      <a>
+        <button type="button" class="btn btn-warning m-2 w-100 w-md-auto" id="btn"><i class="fa fa-search" id="btn" title="Buscar"></i></button>
+      </a>
+      
+      <select class="form-select w-100 w-md-auto m-2" style="width: 150px;" name="sortMethod" id="sortMethod">
+        <option value="0">Quick Sort</option> 
+        <option value="1">Merge Sort</option>
+        <option value="2">Shell Sort</option>
+      </select>
+    
+      <a hidden href="#" id="sortA"></a> 
+    </div>
+    <div class="table-responsive">
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col"><center>Nro</th>
+            <th scope="col">Ejercicio
+              <span onclick="sortFunct('nombreEjercicio','1')">🡡</span> 
+              <span onclick="sortFunct('nombreEjercicio','0')">🡫</span>
+            </th>
+            <th scope="col"><center>Información</th>
+            <th scope="col"><center>Tiempo de Descanso<br>entre Series
+              <span onclick="sortFunct('tiempoDescanso','1')">🡡</span> 
+              <span onclick="sortFunct('tiempoDescanso','0')">🡫</span>
+            </th>
+            <th scope="col"><center>Número<br>de Series
+              <span onclick="sortFunct('nroSeries','1')">🡡</span> 
+              <span onclick="sortFunct('nroSeries','0')">🡫</span>
+            </th>
+            <th scope="col"><center>Número de Repeticiones<br>por Serie
+              <span onclick="sortFunct('nroRepSerie','1')">🡡</span> 
+              <span onclick="sortFunct('nroRepSerie','0')">🡫</span>
+            </th>
+            <th scope="col"><center>Tipo de<br>Ejercicio
+              <span onclick="sortFunct('tipoEjercicio', '1')">🡡</span>
+              <span onclick="sortFunct('tipoEjercicio', '0')">🡫</span>
+            </th>
+            <th scope="col"><center>Grupo Muscular<br>Objetivo
+              <span onclick="sortFunct('grupoMuscularObjetivo', '1')">🡡</span>
+              <span onclick="sortFunct('grupoMuscularObjetivo', '0')">🡫</span>
+            </th>
+          </tr>
+        </thead>
+          <tbody>
+            {% for ejercicio in ejercicios %}
+              <tr>
+                <td><center>{{ ejercicio.numero}}</td>
+                <td>{{ ejercicio.nombreEjercicio }}</td>
+                <td><center><a href="/ejercicios/informacion/{{ ejercicio.id }}">Ver más</a></td>
+                <td><center>{{ ejercicio.tiempoDescanso }}</td>
+                <td><center>{{ ejercicio.nroSeries }}</td>
+                <td><center>{{ ejercicio.nroRepSerie }}</td>
+                <td><center>{{ ejercicio.tipoEjercicio }}</td>
+                <td><center>{{ ejercicio.grupoMuscularObjetivo }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+      </table>
+      <a href="/ejercicios/list" class="btn btn-warning rounded-pill">Regresar a la lista de ejercicios</a>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<a id="search" href="/ejercicios/list"></a>
+<script>
+  const sortUrl = '/ejercicios/sort'
+  function sortFunct(attr,ord) {
+    const newHref = `${sortUrl}/${attr}/${ord}/${$('#sortMethod').val()}`;
+    $('#sortA').attr('href',newHref) 
+    console.log($('#sortA').attr('href'))
+    $('#sortA')[0].click()
+  }
+  $(document).ready(function () {
+    $("#btn").click(function () {
+      search();
+    });
+    function search() {
+      var texto = $("#texto").val();
+      var atributo = $("#atributo").val();
+      if (texto == "") {
+        alert("Ingrese un valor");
+        return;
+      } else {
+        $("#search").attr("href", "/ejercicios/search/" + atributo + "/" + texto);
+        $("#search")[0].click();
+      }
+    }
+  });
+</script>
+{% endblock %}

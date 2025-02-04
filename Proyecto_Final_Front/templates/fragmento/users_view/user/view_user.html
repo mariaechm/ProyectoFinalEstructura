@@ -1,0 +1,368 @@
+{% extends 'blank.html' %}
+{% block title %}{{ full_user_info.perfil.nickName }}{% endblock %}
+
+{% block custom_styles %}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/flatpickr.min.css' ) }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/custom/validation.register.css' ) }}">
+{% endblock %}
+
+{% set admin_class = 'active' if full_user_info.admins else '' %}
+{% set client_class = 'active' if not full_user_info.admins else '' %}
+
+{% set client_class = '' if my_profile else client_class %}
+
+{% block admin_nav_class %}{{ admin_class }}{% endblock %}
+{% block client_nav_class %}{{ client_class }}{% endblock %}
+
+{% block content %}
+<div class="container-fluid pt-4 px-4">
+
+  {% with messages = get_flashed_messages(with_categories=True) %}
+    {% if messages %}
+      {% for message in messages %}
+        {% if message[0] == 'success' %}
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+          <h4 class="alert alert-heading"><strong>¡Éxito!</strong></h4>
+          <p>{{ message[1]}}</p>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+        </div>
+        {% else %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <h4 class="alert-heading"><strong>¡Error!</strong></h4>
+          <p>{{ message[1]}}</p>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+        </div>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+
+  <div class="bg-secondary rounded h-100 p-4">
+
+    <div class="testimonial-item text-center">
+
+      <img class="img-fluid rounded-circle mx-auto mb-4"
+        src="{{ url_for('static',filename='img/user_profile/' + full_user_info.perfil.imagen ) }}"
+        style="width: 100px; height: 100px;">
+
+      <h5 class="mb-1">{{ full_user_info.perfil.nickName }}</h5>
+      <p>{{ full_user_info.persona.nombre }} {{ full_user_info.persona.apellido }}</p>
+      <p class="mb-0">Se unió el {{ full_user_info.perfil.fechaCreacion }}</p>
+
+    </div>
+    <br>
+    <br>
+
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <button class="nav-link active" id="nav-informacion-personal-tab" data-bs-toggle="tab"
+          data-bs-target="#nav-informacion-personal" type="button" role="tab" aria-controls="nav-informacion-personal"
+          aria-selected="true">Detalles</button>
+
+        <button class="nav-link" id="nav-estadisticas-tab" data-bs-toggle="tab" data-bs-target="#nav-estadisticas"
+          type="button" role="tab" aria-controls="nav-estadisticas" aria-selected="false">Estadísticas</button>
+
+        <button class="nav-link" id="nav-editar-perfil-tab" data-bs-toggle="tab" data-bs-target="#nav-editar-perfil" type="button"
+          role="tab" aria-controls="nav-editar-perfil" aria-selected="false">Editar perfil</button>
+
+
+        {% if user.persona.rol == 'ADMINISTRADOR' %}
+        <button class="nav-link" id="nav-editar-datos-personales-tab" data-bs-toggle="tab"
+          data-bs-target="#nav-editar-datos-personales" type="button" role="tab"
+          aria-controls="nav-editar-datos-personales" aria-selected="false">Editar datos personales</button>
+        {% endif %}
+
+        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button"
+          role="tab" aria-controls="nav-contact" aria-selected="false">Cambiar Contraseña</button>
+
+        <button class="nav-link" id="nav-suscripcion-tab" data-bs-toggle="tab" data-bs-target="#nav-suscripcion" type="button"
+          role="tab" aria-controls="nav-suscripcion" aria-selected="false">Suscripción</button>
+
+      </div>
+    </nav>
+
+
+    <div class="tab-content pt-3" id="nav-tabContent">
+      <div class="tab-pane fade active show" id="nav-informacion-personal" role="tabpanel"
+        aria-labelledby="nav-informacion-personal-tab">
+        <h5>Información personal</h5>
+        <dl class="row mb-0">
+          <dt class="col-sm-4">Correo Electrónico:</dt>
+          <dd class="col-sm-8">{{ full_user_info.cuenta.correoElectronico }}</dd>
+
+          <dt class="col-sm-4">Celular:</dt>
+          <dd class="col-sm-8">{{ full_user_info.persona.celular }}</dd>
+
+          <dt class="col-sm-4">Dirección:</dt>
+          <dd class="col-sm-8">{{ full_user_info.persona.direccion }}</dd>
+
+          <dt class="col-sm-4 text-truncate">Identificación: </dt>
+          <dd class="col-sm-8">{{ full_user_info.persona.identificacion }}</dd>
+
+          <dt class="col-sm-4">Fecha de Nacimiento:</dt>
+          <dd class="col-sm-8">{{ full_user_info.persona.fechaNacimiento }}</dd>
+
+          <dt class="col-sm-4">Genero:</dt>
+          <dd class="col-sm-8">{{ full_user_info.persona.genero }}</dd>
+
+          <dt class="col-sm-4">Rol en el Sistema:</dt>
+          <dd class="col-sm-8">{{ full_user_info.persona.rol }}</dd>
+
+          <dt class="col-sm-4">Objetivo:</dt>
+          <dd class="col-sm-8">{{ full_user_info.perfil.objetivoCliente }}</dd>
+        </dl>
+      </div>
+
+
+      <div class="tab-pane fade" id="nav-estadisticas" role="tabpanel" aria-labelledby="nav-estadisticas-tab">
+
+        <div class="d-flex align-items-center justify-content-between mb-4">
+          <h6>Estadísticas</h6>
+          <a href="/estadistica/edit/{{ full_user_info.estadistica.id }}">Editar</a>
+          <a href="/estadistica/pdf/{{ full_user_info.estadistica.id }}" class="btn btn-primary">Descargar PDF</a>
+        </div>
+
+        <dl class="row mb-0">
+          <dt class="col-sm-4">Medidas de la Espalda:</dt>
+          <dd class="col-sm-8">{{ full_user_info.estadistica.medidaEspalda }} cm</dd>
+
+          <dt class="col-sm-4">Medidas de pierna:</dt>
+          <dd class="col-sm-8">{{ full_user_info.estadistica.medidaPierna }} cm</dd>
+
+          <dt class="col-sm-4">Medidas de los Brazos:</dt>
+          <dd class="col-sm-8">{{ full_user_info.estadistica.medidaBrazo }} cm</dd>
+
+          <dt class="col-sm-4 text-truncate">Medidas de la cintura: </dt>
+
+          <dd class="col-sm-8">{{ full_user_info.estadistica.medidaCintura }} cm</dd>
+          
+          <dt class = "col-sm-4">Medidas del Pecho:</dt>
+          <dd class="col-sm-8">{{ full_user_info.estadistica.medidaPecho }} cm</dd>
+
+
+          <dt class="col-sm-4">Peso:</dt>
+          <dd class="col-sm-8">{{ full_user_info.estadistica.peso }} kg</dd>
+
+          <dt class="col-sm-4">Estatura:</dt>
+          <dd class="col-sm-8">{{ full_user_info.estadistica.altura }} m</dd>
+
+        </dl>
+      </div>
+
+      <div class="tab-pane fade" id="nav-editar-perfil" role="tabpanel"
+        aria-labelledby="nav-editar-full_user_info.perfil-tab">
+        <h5>Editar información del perfil</h5>
+
+        <form style="margin-top: 10px;" class="row g-3 needs-validation" action="/user/update/send" method="post"
+          enctype="multipart/form-data" id="perfil-update-form" novalidate>
+
+          <input type="number" id="user-id-profile-update" name="userId" value="{{ full_user_info.cuenta.id }}" hidden>
+          <input hidden type="number" name="id" id="id-perfil" value="{{ full_user_info.perfil.id }}">
+          <input hidden type="text" name="current-image" id="current-image" value="{{ full_user_info.perfil.imagen }}">
+          <input type="text" id="my-profile-perfil" name="my-profile" value="{{ full_user_info.my_profile }}" hidden>
+          <input type="text" name="admins" id="admins" value="{{ full_user_info.admins }}" hidden>
+
+          <div class="col-12">
+            <div class="col-sm-12">
+              <label for="nickName" class="form-label">NickName </label>
+              <input type="text" class="form-control" id="nickName" name="nickName"
+                value="{{ full_user_info.perfil.nickName }}">
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="col-12">
+              <label for="image" class="form-label">Avatar: </label>
+              <input class="form-control bg-dark" type="file" name="image" id="image" accept="image/*">
+            </div>
+          </div>
+
+          <div class="col-sm-12">
+            <label for="objetivoCliente" class="form-label">Objetivo </label>
+            <textarea class="form-control" name="objetivoCliente"
+              id="objetivoCliente">{{ full_user_info.perfil.objetivoCliente }}</textarea>
+          </div>
+
+          <div class="col-12">
+            <button type="submit" class="btn btn-success">Guardar Cambios</button>
+          </div>
+
+        </form>
+      </div>
+
+      {% if user.persona.rol == 'ADMINISTRADOR' %}
+      <div class="tab-pane fade" id="nav-editar-datos-personales" role="tabpanel"
+        aria-labelledby="nav-editar-datos-personales-tab">
+
+        <div class="d-flex align-items-center justify-content-between mb-4">
+          <h5>Editar Datos personales</h5>
+        </div>
+
+        <form action="/user/update/persona" class="row g-3 needs-validation" method="post" id="persona-update-form">
+
+          <input hidden type="number" name="id" id="id-persona" value="{{ full_user_info.persona.id }}">
+          <input type="number" id="user-id-person-update" name="userId" value="{{ full_user_info.cuenta.id }}" hidden>
+          <input type="text" id="my-profile-persona" name="my-profile" value="{{ full_user_info.my_profile }}" hidden>
+          <input type="text" name="admins" id="admins" value="{{ full_user_info.admins }}" hidden>
+          <input type="text" name="rol" id="rol" value="{{ full_user_info.persona.rol }}" hidden>
+
+          <div class="col-sm-6">
+            <label for="nombre" class="form-label">Nombre: </label>
+            <input type="text" class="form-control" name="nombre" id="nombre"
+              value="{{ full_user_info.persona.nombre }}">
+          </div>
+
+          <div class="col-sm-6">
+            <label for="apellido" class="form-label">Apellido: </label>
+            <input type="text" id="apellido" class="form-control" name="apellido"
+              value="{{ full_user_info.persona.apellido }}">
+          </div>
+
+          <div class="col-sm-6">
+            <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento: </label>
+            <input type="date" id="fechaNacimiento" class="form-control" style="background-color: black;"
+              name="fechaNacimiento" value="{{ full_user_info.persona.fechaNacimiento }}">
+          </div>
+
+          <div class="col-sm-6">
+            <label for="identificacion" class="form-label">Identificación: </label>
+            <input type="text" class="form-control" id="identificacion" name="identificacion"
+              value="{{ full_user_info.persona.identificacion }}">
+          </div>
+
+          <div class="col-sm-12">
+            <label for="celular" class="form-label">Celular: </label>
+            <input type="text" id="celular" class="form-control" name="celular"
+              value="{{ full_user_info.persona.celular }}">
+          </div>
+
+          <div class="col-sm-12">
+            <label for="direccion" class="form-label">Dirección: </label>
+            <input type="text" id="direccion" class="form-control" name="direccion"
+              value="{{ full_user_info.persona.direccion }}">
+          </div>
+
+          <div class="col-sm-6">
+            <label for="tipoIdentificacion" class="form-label">Tipo Identificación: </label>
+            <select class="form-select mb-3" id="tipoIdentificacion" name="tipoIdentificacion" required>
+              {% for tipo in enums.tipos %}
+              <option value="{{ tipo }}" {% if tipo==full_user_info.persona.tipoIdentificacion %} selected {% endif %}>
+                {{ tipo }}
+              </option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div class="col-sm-6">
+            <label for="genero" class="form-label">Genero: </label>
+            <select class="form-select mb-3" name="genero" id="genero" required>
+              {% for genero in enums.generos %}
+              <option value="{{ genero }}" {% if genero==full_user_info.persona.genero %} selected {% endif %}>{{ genero
+                }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div class="col-12">
+            <button type="submit" class="btn btn-success">Guardar Cambios</button>
+          </div>
+
+        </form>
+
+      </div>
+      {% endif %}
+
+
+      <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+        <h5>Cambiar Contraseña</h5><br>
+
+        <form id="change-password-form" class="row g-3 needs-validation" action="/change_password" method="post">
+
+          <input type="number" id="id-cuenta" name="id" value="{{ full_user_info.cuenta.id }}" hidden>
+          <input type="text" id="correoElectronico" name="correoElectronico"
+            value="{{ full_user_info.cuenta.correoElectronico }}" hidden>
+          <input type="number" id="personaId" name="personaId" value="{{ full_user_info.persona.id }}" hidden>
+          <input type="number" id="perfilId" name="perfilId" value="{{ full_user_info.perfil.id }}" hidden>
+          <input type="text" id="rol" name="rol" value="{{ full_user_info.persona.rol }}" hidden>
+
+          <input type="text" id="my-profile" name="my-profile" value="{{ full_user_info.my_profile }}" hidden>
+          <input type="text" name="admins" id="admins" value="{{ full_user_info.admins }}" hidden>
+
+          <div class="col-12">
+            <div class="col-sm-6">
+              <label for="contrasena" class="form-label">Contraseña actual: </label>
+              <div class="input-container">
+                <input type="password" class="form-control" name="contrasena" id="contrasena">
+                <i class="fas fa-eye" id="tgp0" onclick="togglePassword('tgp0','contrasena')"
+                  style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 1000;"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="col-sm-6">
+              <label for="contrasena" class="form-label">Nueva contraseña: </label>
+              <div class="input-container">
+                <input type="password" class="form-control" name="nuevaContrasena1" id="nueva-contrasena-1">
+                <i class="fas fa-eye" id="tgp1" onclick="togglePassword('tgp1','nueva-contrasena-1')"
+                  style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 1000;"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <label for="contrasena" class="form-label">Repita la nueva contraseña: </label>
+            <div class="input-container">
+              <input type="password" class="form-control" name="newContrasena" id="nueva-contrasena-2">
+              <i class="fas fa-eye" id="tgp2" onclick="togglePassword('tgp2','nueva-contrasena-2')"
+                style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; z-index: 1000;"></i>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <button style="margin-top: 20px;" class="btn btn-success" id="btn-contrasena">Guardar Cambios</button>
+          </div>
+
+        </form>
+
+      </div>
+
+
+      <div class="tab-pane fade" id="nav-suscripcion" role="tabpanel"
+        aria-labelledby="nav-suscripcion-tab">
+
+
+        <div class="d-flex align-items-center justify-content-between mb-4">
+          <h5>Suscripción</h5>
+             <a href="/suscripcion/update/{{ full_user_info.suscripcion.id }}">Editar</a>
+        </div>
+
+        <dl class="row mb-0">
+          <dt class="col-sm-4">Fecha de Inicio:</dt>
+          <dd class="col-sm-8">{{ full_user_info.suscripcion.fechaInicio }}</dd>
+
+          <dt class="col-sm-4"> Tipo de suscripción:</dt>
+          <dd class="col-sm-8">{{ full_user_info.suscripcion.tipo }}</dd>
+
+          <dt class="col-sm-4"> Numero de días:</dt>
+          <dd class="col-sm-8">{{ full_user_info.suscripcion.duracionDias }}</dd>
+
+          <dt class="col-sm-4"> Fecha de Finalización:</dt>
+          <dd class="col-sm-8">{{ full_user_info.suscripcion.fechaFinalizacion }}</dd>
+
+          <dt class="col-sm-4"> Precio:</dt>
+          <dd class="col-sm-8">{{ full_user_info.suscripcion.precio }}</dd>
+        </dl>
+      </div>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static',filename='js/flatpickr.js' ) }}"></script>
+<script src="{{ url_for('static',filename='js/jquery-3.6.0.min.js' ) }}"></script>
+<script src="{{ url_for('static',filename='js/jquery.validate.min.js' ) }}"></script>
+<script src="{{ url_for('static',filename='js/fragmento/user/view_user-validations.js' ) }}"></script>
+{% endblock %}
