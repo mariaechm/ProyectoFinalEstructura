@@ -838,5 +838,16 @@
     "medidaPecho": 1.0,
     "peso": 1.0,
     "altura": 1.0
+  },
+  {
+    "id": 85,
+    "medidaEspalda": 1.0,
+    "medidaPierna": 1.0,
+    "medidaBrazo": 1.0,
+    "medidaCintura": 1.0,
+    "medidaPecho": 1.0,
+    "peso": 1.0,
+    "altura": 1.0,
+    "perfilId": 85
   }
 ]

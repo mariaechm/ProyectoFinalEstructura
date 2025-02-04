@@ -670,5 +670,14 @@
     "precio": 3.0,
     "duracionDias": 1,
     "tipo": "DIA"
+  },
+  {
+    "id": 85,
+    "fechaInicio": "2025-02-04",
+    "fechaFinalizacion": "2025-02-05",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "personaId": 85,
+    "tipo": "DIA"
   }
 ]

@@ -586,5 +586,12 @@
     "imagen": "user.png",
     "objetivoCliente": "Mantener una vida saludable",
     "fechaCreacion": "2025-11-25"
+  },
+  {
+    "id": 85,
+    "nickName": "Juan Diego",
+    "imagen": "user.png",
+    "objetivoCliente": "Objetivo ...",
+    "fechaCreacion": "2025-02-04"
   }
 ]
