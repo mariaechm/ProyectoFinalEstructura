@@ -10,12 +10,13 @@ public class Suscripcion {
     private Double precio;
     private int duracionDias;
 
-    private TipoSuscripcion tipo;
-
     private Integer personaId;
+
+    private TipoSuscripcion tipo;
 
     // Constructor vacio
     public Suscripcion() {
+        
     }
 
     // Getters y setters
@@ -66,7 +67,7 @@ public class Suscripcion {
     public void setTipo(TipoSuscripcion tipo) {
         this.tipo = tipo;
     }
-    
+
     public Integer getPersonaId() {
         return this.personaId;
     }
@@ -74,4 +75,5 @@ public class Suscripcion {
     public void setPersonaId(Integer personaId) {
         this.personaId = personaId;
     }
+
 }

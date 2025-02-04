@@ -1,0 +1,50 @@
+.dataTables_length select {
+    background-color: #000 !important; 
+    color: #fff !important; 
+    border: 1px solid #444; 
+    border-radius: 5px; 
+    padding: 10px; 
+  }
+
+  .dataTables_length select:hover {
+    background-color: #333 !important;
+  }
+
+  .dataTables_length select:focus {
+    outline: none; 
+    border-color: #4CAF50; 
+  }
+  .dataTables_paginate .pagination .page-item {
+    margin: 0 5px; 
+  }
+
+  .dataTables_paginate .pagination .page-link {
+    background-color: black !important; 
+    color: white !important; 
+    border: 1px solid #666 !important; 
+    padding: 6px 12px;
+    border-radius: 5px; 
+    font-weight: bold; 
+  }
+
+  .dataTables_paginate .pagination .page-link:hover {
+    background-color: #444 !important;
+    color: white !important; 
+    border-color: #333 !important; 
+  }
+
+  .dataTables_paginate .pagination .next .page-link {
+    background-color: black !important;
+    color: white !important; 
+  }
+
+  .dataTables_paginate .pagination .previous .page-link {
+    background-color: black !important; 
+    color: white !important; 
+  }
+
+  .dataTables_paginate .pagination .active .page-link {
+    background-color: #f91111 !important;
+    color: white !important; 
+    border-color: #666 !important; 
+  }

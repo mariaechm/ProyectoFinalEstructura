@@ -1,5 +1,26 @@
 {% extends 'blank.html' %}
+{% block title %}Estadisticas{% endblock %}
+{% block estadistica_nav_class %}active{% endblock %}
 {% block content %}
+{% with messages = get_flashed_messages(with_categories=True) %}
+  {% if messages %}
+    {% for message in messages %}
+      {% if message[0] == 'success' %}
+          <div class="alert alert-info alert-dismissible fade show" role="alert">
+            <h4 class="alert alert-heading"><strong>¡Éxito!</strong></h4>
+            <p>{{ message[1]}}</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+          </div>
+        {% else %}
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <h4 class="alert-heading"><strong>¡Error!</strong></h4>
+            <p>{{ message[1]}}</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+          </div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endwith %}
 <div class ="pagetitle">
     <h1>Estadísticas</h1>
 </div>
@@ -9,7 +30,7 @@
         <table class="table table-dark">
             <thead>
                 <tr>
-                    <th scope="col">Nr</th>
+                    <th scope="col">Usuario</th>
                     <th scope="col"><center>Medida Espalda</th>
                     <th scope="col"><center>Medida Pierna</th>
                     <th scope="col"><center>Medida Brazo</th>
@@ -24,7 +45,7 @@
             <tbody>
                 {% for estadistica in estadisticas %}
                 <tr>
-                    <td>{{ estadistica.numero }}</td>
+                    <td>{{ estadistica.propietario }}</td>
                     <td><center>{{ estadistica.medidaEspalda }}</td>
                     <td><center>{{ estadistica.medidaPierna}}</td>
                     <td><center>{{ estadistica.medidaBrazo }}</td>

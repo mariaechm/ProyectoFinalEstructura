@@ -1,6 +1,7 @@
 {% extends 'blank.html' %}
 {% block content %}
 
+
 <div class="pagetitle">
     <h1>Guardar Estadísticas</h1>
 </div>
@@ -10,6 +11,7 @@
             <div class="bg-secondary rounded h-100 p-4">
                 <div class="card-body">
                   <h5 class="card-title">Registro De Estadística</h5>
+
                   
                   <!-- Custom Styled Validation with Tooltips -->
                 <form id="statisticsForm" class="row g-3 needs-validation" method="POST" action="/estadistica/save" novalidate>
@@ -58,10 +60,6 @@
 
                     <div class="col-6">
                       <button class="btn btn-success rounded-pill" type="submit">Guardar</button>
-                    </div>
-
-                    <div class="col-6">
-                      <a href="/estadistica" class="btn btn-danger rounded-pill">Cancelar</a>
                     </div>
                 </form>
             </div>

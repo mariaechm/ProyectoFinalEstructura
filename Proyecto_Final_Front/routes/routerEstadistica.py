@@ -22,17 +22,14 @@ router_estadistica = Blueprint('router_estadistica',__name__)
 
 
 @router_estadistica.route('/estadistica')
-
 @login_required()
 def list_estadistica(headers,usr):
     r = requests.get('http://localhost:8080/api/estadistica/list', headers=headers)
-
+    persona = requests.get('http://localhost:8080/api/persona/list/', headers=headers).json()['data']
     print(r.json())
     estadisticas = r.json()["data"]
-    i = 1
-    for estadistica in estadisticas:
-        estadistica["numero"] = i
-        i += 1
+    for i in range(0,len(persona)):
+        if persona[i]['id'] == estadisticas[i]['id']: estadisticas[i]['propietario'] = persona[i]['nombre']
     return render_template('fragmento/estadistica/lista.html', estadisticas=estadisticas, user=usr)
 
 
@@ -137,14 +134,15 @@ def generar_pdf(id, headers, usr):
     pdf.drawString(100, 750, "Reporte de Estadística")
 
     # Datos de la estadística
+    
     pdf.setFont("Helvetica", 12)
-    pdf.drawString(100, 700, f"Medida Espalda: {estadistica['medidaEspalda']}")
-    pdf.drawString(100, 680, f"Medida Pierna: {estadistica['medidaPierna']}")
-    pdf.drawString(100, 660, f"Medida Brazo: {estadistica['medidaBrazo']}")
-    pdf.drawString(100, 640, f"Medida Cintura: {estadistica['medidaCintura']}")
-    pdf.drawString(100, 620, f"Medida Pecho: {estadistica['medidaPecho']}")
-    pdf.drawString(100, 600, f"Peso: {estadistica['peso']}")  
-    pdf.drawString(100, 580, f"Altura: {estadistica['altura']}") 
+    pdf.drawString(100, 700, f"Medida Espalda: {estadistica['medidaEspalda']} cm")
+    pdf.drawString(100, 680, f"Medida Pierna: {estadistica['medidaPierna']} cm")
+    pdf.drawString(100, 660, f"Medida Brazo: {estadistica['medidaBrazo']} cm")
+    pdf.drawString(100, 640, f"Medida Cintura: {estadistica['medidaCintura']} cm")
+    pdf.drawString(100, 620, f"Medida Pecho: {estadistica['medidaPecho']} cm")
+    pdf.drawString(100, 600, f"Peso: {estadistica['peso']} kg")  
+    pdf.drawString(100, 580, f"Altura: {estadistica['altura']}cm") 
 
     # Insertar el gráfico en el PDF
     pdf.drawImage(image, 100, 300, width=300, height=200)

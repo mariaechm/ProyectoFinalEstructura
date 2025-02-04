@@ -11,7 +11,7 @@ public class Estadistica {
     private float peso;
     private float altura;
 
-
+    private Integer perfilId;
 
     public Estadistica(Integer id,  float medidaEspalda, float medidaPierna, float medidaBrazo, float medidaCintura, float medidaPecho, float peso, float altura) {
         this.id = id;
@@ -22,8 +22,6 @@ public class Estadistica {
         this.medidaPecho = medidaPecho;
         this.peso = peso;
         this.altura = altura;
-    }
-    public Estadistica() {
     }
 
      // Getters and Setters
@@ -90,6 +88,17 @@ public class Estadistica {
 
     public void setAltura(float altura) {
         this.altura = altura;
+    }
+
+    public Estadistica() {
+    }
+
+    public Integer getPerfilId() {
+        return perfilId;
+    }
+
+    public void setPerfilId(Integer perfilId) {
+        this.perfilId = perfilId;
     }
 
 }

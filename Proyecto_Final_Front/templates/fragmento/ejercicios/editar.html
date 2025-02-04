@@ -1,9 +1,13 @@
 {% extends 'blank.html' %}
+{% block title %}Editar Ejercicios{% endblock %}
 {% block rutinaDropDown %}
   active
 {% endblock %}
 {% block ejercicio %}
   active
+{% endblock %}
+{% block custom_styles %}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/custom/validation.register.css' ) }}">
 {% endblock %}
 {% block content %}
 
@@ -12,9 +16,9 @@
 </div>
 
 <div class="col-12">
-    <div class="bg-secondary rounded h-100 p-4">
+    <div class="container-fluid bg-secondary rounded h-100 p-4">
         <h6 class="mb-4">Edición</h6>
-        <form class="row g-3 needs-validation" method="POST" action="/ejercicios/update" novalidate="">
+        <form id="ejercicioForm" class="row g-3 needs-validation" method="POST" action="/ejercicios/update" novalidate="">
             <input type="hidden" value="{{ ejercicio.id}}" name="idE"/>
             <div class="col-sm-6">
                 <label for="validationCustom02" class="form-label">Nombre del Ejercicio</label>
@@ -23,17 +27,17 @@
 
             <div class="col-sm-6">
                 <label for="validationCustom02" class="form-label">Tiempo de Descanso entre Series (Minutos)</label>
-                <input type="number" step="1" min="1" class="form-control" name="tiempoD" required value="{{ ejercicio.tiempoDescanso }}">
+                <input type="number" step="0.1" class="form-control" name="tiempoD" required value="{{ ejercicio.tiempoDescanso }}">
             </div>
 
             <div class="col-sm-6">
                 <label for="validationCustom02" class="form-label">Número de Series</label>
-                <input type="number" step="1" min="1" class="form-control" name="nroS" required value="{{ ejercicio.nroSeries }}">
+                <input type="number" class="form-control" name="nroS" required value="{{ ejercicio.nroSeries }}">
             </div>
 
             <div class="col-sm-6">
                 <label for="validationCustom02" class="form-label">Número de Repeticiones por Serie</label>
-                <input type="number" step="1" min="1" class="form-control" name="nroRS" required value="{{ ejercicio.nroRepSerie }}">
+                <input type="number" class="form-control" name="nroRS" required value="{{ ejercicio.nroRepSerie }}">
             </div>
 
             <div class="col-sm-6">
@@ -45,7 +49,7 @@
                 <label for="lbltipo" class="form-label">Tipo de Ejercicio</label>
                 <select class="form-select mb-3" required name="tipoE">
                     {% for item in list %}
-                        <option {% if item == ejercicio.tipoEjercicio%} selected {%endif%} value="{{ item }}">{{ item }}</option>
+                        <option {% if item == ejercicio.tipoEjercicio %} selected {%endif%} value="{{ item }}">{{ item }}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -77,3 +81,9 @@
     </div>
 </div>
 {% endblock%}
+
+{% block extra_js %}
+<script src="{{ url_for('static',filename='js/jquery-3.6.0.min.js' ) }}"></script>
+<script src="{{ url_for('static',filename='js/jquery.validate.min.js' ) }}"></script>
+<script src="{{ url_for('static',filename='js/fragmento/ejercicio/register-ejercicio.js' ) }}"></script>
+{% endblock %}
