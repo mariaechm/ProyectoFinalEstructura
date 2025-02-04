@@ -1,0 +1,178 @@
+[
+  {
+    "id": 2,
+    "nombreEjercicio": "Press de Banca Plano con Barra",
+    "descripcion": "El press de banca plano con barra es un ejercicio compuesto que trabaja principalmente el pectoral mayor junto con los triceps y los deltoides anteriores Para realizarlo la persona debe acostarse en un banco plano con los pies firmes en el suelo agarrar la barra con un agarre un poco mas ancho que el ancho de los hombros bajar la barra de forma controlada hasta el pecho y luego empujarla hacia arriba hasta extender completamente los brazos Es ideal para desarrollar fuerza y masa muscular en el tren superior",
+    "imagen": "https://static.strengthlevel.com/images/exercises/bench-press/bench-press-400.avif",
+    "tiempoDescanso": 5.0,
+    "nroSeries": 3,
+    "nroRepSerie": 8,
+    "tipoEjercicio": "COMPUESTO",
+    "grupoMuscularObjetivo": "PECHO"
+  },
+  {
+    "id": 3,
+    "nombreEjercicio": "Sentadilla Libre",
+    "descripcion": "La sentadilla libre es un ejercicio compuesto que trabaja principalmente los cuadriceps los gluteos y los isquiotibiales junto con el core y la espalda baja Para realizarlo la persona debe colocarse de pie con los pies a la altura de los hombros bajar el cuerpo flexionando las rodillas y caderas manteniendo la espalda recta hasta que los muslos esten al menos paralelos al suelo luego debe empujar con los pies para volver a la posicion inicial Es un ejercicio clave para desarrollar fuerza y estabilidad en el tren inferior",
+    "imagen": "https://static.strengthlevel.com/images/exercises/squat/squat-400.avif",
+    "tiempoDescanso": 6.0,
+    "nroSeries": 3,
+    "nroRepSerie": 10,
+    "tipoEjercicio": "COMPUESTO",
+    "grupoMuscularObjetivo": "CUÁDRICEPS"
+  },
+  {
+    "id": 4,
+    "nombreEjercicio": "Peso Muerto Convencional",
+    "descripcion": "El peso muerto convencional es un ejercicio compuesto que trabaja principalmente la cadena posterior incluyendo los isquiotibiales los gluteos la espalda baja y el core Para realizarlo la persona debe colocarse de pie con los pies a la altura de los hombros agarrar la barra con un agarre prono o mixto mantener la espalda recta y activar el core luego debe levantar la barra extendiendo las caderas y rodillas hasta ponerse de pie y bajarla de forma controlada Es un ejercicio clave para desarrollar fuerza y estabilidad en todo el cuerpo",
+    "imagen": "https://static.strengthlevel.com/images/exercises/deadlift/deadlift-400.avif",
+    "tiempoDescanso": 5.0,
+    "nroSeries": 3,
+    "nroRepSerie": 8,
+    "tipoEjercicio": "COMPUESTO",
+    "grupoMuscularObjetivo": "FEMORALES"
+  },
+  {
+    "id": 7,
+    "nombreEjercicio": "Press Militar con Barra",
+    "descripcion": "El press militar con barra es un ejercicio compuesto que trabaja principalmente los deltoides anteriores junto con los triceps y la parte superior del pecho Para realizarlo la persona debe colocarse de pie con los pies a la altura de los hombros sostener la barra a la altura del pecho con un agarre un poco mas ancho que los hombros y presionarla hacia arriba hasta extender completamente los brazos luego debe bajarla de forma controlada hasta la posicion inicial Es un ejercicio clave para desarrollar fuerza y masa muscular en los hombros y el tren superior",
+    "imagen": "https://static.strengthlevel.com/images/exercises/shoulder-press/shoulder-press-400.avif",
+    "tiempoDescanso": 3.0,
+    "nroSeries": 3,
+    "nroRepSerie": 6,
+    "tipoEjercicio": "COMPUESTO",
+    "grupoMuscularObjetivo": "DELTOIDES"
+  },
+  {
+    "id": 8,
+    "nombreEjercicio": "Dominadas",
+    "descripcion": "Las dominadas son un ejercicio compuesto que trabaja principalmente la espalda alta incluyendo el dorsal ancho y el trapecio junto con los biceps y el core Para realizarlo la persona debe sujetarse de una barra con un agarre prono un poco mas ancho que los hombros colgarse con los brazos extendidos y luego subir el cuerpo flexionando los codos hasta que la barbilla supere la barra despues debe bajar de forma controlada hasta la posicion inicial Es un ejercicio clave para desarrollar fuerza y masa muscular en la espalda y los brazos",
+    "imagen": "https://static.strengthlevel.com/images/exercises/pull-ups/pull-ups-400.avif",
+    "tiempoDescanso": 3.0,
+    "nroSeries": 4,
+    "nroRepSerie": 10,
+    "tipoEjercicio": "COMPUESTO",
+    "grupoMuscularObjetivo": "DORSALES"
+  },
+  {
+    "id": 9,
+    "nombreEjercicio": "Press de Banca Plano con Mancuernas",
+    "descripcion": "El press de banca plano con mancuernas es un ejercicio compuesto que trabaja principalmente el pectoral mayor junto con los triceps y los deltoides anteriores Para realizarlo la persona debe acostarse en un banco plano con los pies firmes en el suelo sostener una mancuerna en cada mano con un agarre neutro o prono bajar las mancuernas de forma controlada hasta la altura del pecho y luego presionarlas hacia arriba hasta extender completamente los brazos Es ideal para mejorar la fuerza el equilibrio y la estabilidad en el tren superior",
+    "imagen": "https://static.strengthlevel.com/images/exercises/dumbbell-bench-press/dumbbell-bench-press-400.avif",
+    "tiempoDescanso": 5.0,
+    "nroSeries": 3,
+    "nroRepSerie": 8,
+    "tipoEjercicio": "COMPUESTO",
+    "grupoMuscularObjetivo": "PECHO"
+  },
+  {
+    "id": 10,
+    "nombreEjercicio": "Curl de Bicep con Mancuernas",
+    "descripcion": "El curl de biceps con mancuernas es un ejercicio de aislamiento que trabaja principalmente el biceps braquial ayudando a desarrollar fuerza y volumen en los brazos Para realizarlo la persona debe estar de pie con una mancuerna en cada mano los brazos extendidos y las palmas mirando hacia adelante Luego debe flexionar los codos para llevar las mancuernas hacia los hombros sin mover los brazos y controlar el descenso hasta la posicion inicial Es un ejercicio clave para mejorar la resistencia y el desarrollo muscular del biceps",
+    "imagen": "https://static.strengthlevel.com/images/exercises/dumbbell-curl/dumbbell-curl-400.avif",
+    "tiempoDescanso": 3.0,
+    "nroSeries": 4,
+    "nroRepSerie": 10,
+    "tipoEjercicio": "AISLADO",
+    "grupoMuscularObjetivo": "BICEPS"
+  },
+  {
+    "id": 11,
+    "nombreEjercicio": "Curl con Barra",
+    "descripcion": "El curl con barra es un ejercicio de aislamiento que trabaja principalmente el biceps braquial ayudando a desarrollar fuerza y volumen en los brazos Para realizarlo la persona debe sostener una barra con un agarre supino a la altura de los hombros y los brazos extendidos Luego debe flexionar los codos para llevar la barra hacia los hombros sin mover los codos y controlar el descenso hasta la posicion inicial",
+    "imagen": "https://static.strengthlevel.com/images/exercises/barbell-curl/barbell-curl-400.avif",
+    "tiempoDescanso": 3.0,
+    "nroSeries": 4,
+    "nroRepSerie": 10,
+    "tipoEjercicio": "AISLADO",
+    "grupoMuscularObjetivo": "BICEPS"
+  },
+  {
+    "id": 12,
+    "nombreEjercicio": "Remo con Barra",
+    "descripcion": "El remo con barra es un ejercicio compuesto que trabaja principalmente la espalda incluyendo los dorsales el trapecio y la zona lumbar Para realizarlo la persona debe sostener una barra con un agarre prono inclinar ligeramente el torso hacia adelante manteniendo la espalda recta y tirar de la barra hacia el abdomen flexionando los codos luego debe bajar la barra de forma controlada hasta la posicion inicial",
+    "imagen": "https://static.strengthlevel.com/images/exercises/bent-over-row/bent-over-row-400.avif",
+    "tiempoDescanso": 5.0,
+    "nroSeries": 4,
+    "nroRepSerie": 8,
+    "tipoEjercicio": "COMPUESTO",
+    "grupoMuscularObjetivo": "TRAPECIOS"
+  },
+  {
+    "id": 13,
+    "nombreEjercicio": "Flexiones",
+    "descripcion": "Las flexiones son un ejercicio compuesto que trabaja principalmente el pecho los triceps y los deltoides Para realizarlo la persona debe colocarse en posicion de plancha con las manos a la altura de los hombros bajar el cuerpo flexionando los codos hasta que el pecho casi toque el suelo y luego empujar con los brazos hasta extenderlos completamente",
+    "imagen": "https://static.strengthlevel.com/images/exercises/push-ups/push-ups-400.avif",
+    "tiempoDescanso": 3.0,
+    "nroSeries": 3,
+    "nroRepSerie": 12,
+    "tipoEjercicio": "COMPUESTO",
+    "grupoMuscularObjetivo": "PECHO"
+  },
+  {
+    "id": 14,
+    "nombreEjercicio": "Sentadilla Hack",
+    "descripcion": "La sentadilla hack es un ejercicio compuesto que trabaja principalmente los cuadriceps los gluteos y los femorales Para realizarlo la persona debe colocarse en la maquina hack con la espalda apoyada en el respaldo bajar el cuerpo flexionando las rodillas hasta que los muslos esten paralelos al suelo y luego empujar con los pies hasta volver a la posicion inicial",
+    "imagen": "https://static.strengthlevel.com/images/exercises/hack-squat/hack-squat-400.avif",
+    "tiempoDescanso": 5.0,
+    "nroSeries": 4,
+    "nroRepSerie": 10,
+    "tipoEjercicio": "COMPUESTO",
+    "grupoMuscularObjetivo": "CUÁDRICEPS"
+  },
+  {
+    "id": 15,
+    "nombreEjercicio": "Fondos",
+    "descripcion": "Los fondos son un ejercicio compuesto que trabaja principalmente los triceps el pecho y los deltoides Para realizarlos la persona debe sujetarse en las paralelas con los brazos extendidos bajar el cuerpo flexionando los codos hasta que los brazos formen un angulo de 90 grados y luego empujar hasta volver a la posicion inicial",
+    "imagen": "https://static.strengthlevel.com/images/exercises/dips/dips-400.avif",
+    "tiempoDescanso": 4.0,
+    "nroSeries": 3,
+    "nroRepSerie": 8,
+    "tipoEjercicio": "COMPUESTO",
+    "grupoMuscularObjetivo": "TRICEPS"
+  },
+  {
+    "id": 16,
+    "nombreEjercicio": "Press de Banca Inclinado con Barra",
+    "descripcion": "El press de banca inclinado con barra es un ejercicio compuesto que trabaja principalmente la parte superior del pecho junto con los triceps y los deltoides Para realizarlo la persona debe acostarse en un banco inclinado sostener la barra con un agarre un poco mas ancho que los hombros bajar la barra de forma controlada hasta el pecho y luego empujarla hacia arriba hasta extender completamente los brazos",
+    "imagen": "https://static.strengthlevel.com/images/exercises/incline-bench-press/incline-bench-press-400.avif",
+    "tiempoDescanso": 5.0,
+    "nroSeries": 4,
+    "nroRepSerie": 8,
+    "tipoEjercicio": "COMPUESTO",
+    "grupoMuscularObjetivo": "PECHO"
+  },
+  {
+    "id": 17,
+    "nombreEjercicio": "Extensiones de Cuadriceps",
+    "descripcion": "Las extensiones de cuadriceps son un ejercicio de aislamiento que trabaja principalmente los cuadriceps ayudando a fortalecer y definir esta zona Para realizarlo la persona debe sentarse en la maquina de extensiones colocar los tobillos bajo el soporte y extender las piernas hasta bloquear las rodillas luego debe bajar de forma controlada hasta la posicion inicial",
+    "imagen": "https://static.strengthlevel.com/images/exercises/leg-extension/leg-extension-400.avif",
+    "tiempoDescanso": 3.0,
+    "nroSeries": 4,
+    "nroRepSerie": 12,
+    "tipoEjercicio": "AISLADO",
+    "grupoMuscularObjetivo": "CUÁDRICEPS"
+  },
+  {
+    "id": 18,
+    "nombreEjercicio": "Prensa de Piernas",
+    "descripcion": "La prensa de piernas es un ejercicio compuesto que trabaja principalmente los cuadriceps los gluteos y los femorales Para realizarlo la persona debe sentarse en la maquina de prensa colocar los pies en la plataforma y empujar con las piernas hasta extenderlas completamente luego debe bajar de forma controlada hasta la posicion inicial",
+    "imagen": "https://static.strengthlevel.com/images/exercises/sled-leg-press/sled-leg-press-400.avif",
+    "tiempoDescanso": 5.0,
+    "nroSeries": 4,
+    "nroRepSerie": 10,
+    "tipoEjercicio": "COMPUESTO",
+    "grupoMuscularObjetivo": "CUÁDRICEPS"
+  },
+  {
+    "id": 19,
+    "nombreEjercicio": "Curl de Femorales",
+    "descripcion": "El curl de femorales es un ejercicio de aislamiento que trabaja principalmente los isquiotibiales ayudando a fortalecer y definir esta zona Para realizarlo la persona debe sentarse en la maquina de curl femoral colocar los tobillos bajo el soporte y flexionar las piernas hasta que los talones toquen los gluteos luego debe extender de forma controlada hasta la posicion inicial",
+    "imagen": "https://static.strengthlevel.com/images/exercises/seated-leg-curl/seated-leg-curl-400.avif",
+    "tiempoDescanso": 3.0,
+    "nroSeries": 4,
+    "nroRepSerie": 12,
+    "tipoEjercicio": "AISLADO",
+    "grupoMuscularObjetivo": "FEMORALES"
+  }
+]
