@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "fecha": "2025-02-03",
+    "hora": "9:58:41",
+    "descripcion": "Se ha registrado la información personal"
+  },
+  {
+    "id": 2,
+    "fecha": "2025-02-03",
+    "hora": "9:59:58",
+    "descripcion": "Se ha registrado la información personal"
+  },
+  {
+    "id": 3,
+    "fecha": "2025-02-03",
+    "hora": "0:10:17",
+    "descripcion": "Se ha registrado la información personal"
+  },
+  {
+    "id": 4,
+    "fecha": "2025-02-03",
+    "hora": "0:10:34",
+    "descripcion": "Se ha eliminado la información personal"
+  },
+  {
+    "id": 5,
+    "fecha": "2025-02-03",
+    "hora": "0:19:20",
+    "descripcion": "Se ha registrado la información personal"
+  },
+  {
+    "id": 6,
+    "fecha": "2025-02-03",
+    "hora": "0:20:02",
+    "descripcion": "Se actualizó con éxito la información personal"
+  },
+  {
+    "id": 7,
+    "fecha": "2025-02-03",
+    "hora": "0:21:59",
+    "descripcion": "Se actualizó con éxito la información personal"
+  },
+  {
+    "id": 8,
+    "fecha": "2025-02-03",
+    "hora": "1:48:47",
+    "descripcion": "Se ha registrado la información personal"
+  }
+]

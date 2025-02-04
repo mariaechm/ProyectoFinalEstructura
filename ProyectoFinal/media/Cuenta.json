@@ -9,42 +9,42 @@
   {
     "id": 2,
     "correoElectronico": "jane.doe@example.com",
-    "contrasena": "c2VjcmV0Y29kZQ==",
+    "contrasena": "c2VjcmV0Y29kZQ\u003d\u003d",
     "personaId": 2,
     "perfilId": 2
   },
   {
     "id": 3,
     "correoElectronico": "john.smith@example.com",
-    "contrasena": "dXNlcnBhc3M=",
+    "contrasena": "dXNlcnBhc3M\u003d",
     "personaId": 3,
     "perfilId": 3
   },
   {
     "id": 4,
     "correoElectronico": "alice.wonder@example.com",
-    "contrasena": "YWxJY2UxMjM=",
+    "contrasena": "YWxJY2UxMjM\u003d",
     "personaId": 4,
     "perfilId": 4
   },
   {
     "id": 5,
     "correoElectronico": "bob.marley@example.com",
-    "contrasena": "Ym9iMTIzNDU=",
+    "contrasena": "Ym9iMTIzNDU\u003d",
     "personaId": 5,
     "perfilId": 5
   },
   {
     "id": 6,
     "correoElectronico": "charlie.brown@example.com",
-    "contrasena": "Y2hhcmxpZTEyMw==",
+    "contrasena": "Y2hhcmxpZTEyMw\u003d\u003d",
     "personaId": 6,
     "perfilId": 6
   },
   {
     "id": 7,
     "correoElectronico": "diana.prince@example.com",
-    "contrasena": "d2FuZGVyd29tYW4=",
+    "contrasena": "d2FuZGVyd29tYW4\u003d",
     "personaId": 7,
     "perfilId": 7
   },
@@ -58,63 +58,63 @@
   {
     "id": 9,
     "correoElectronico": "fiona.green@example.com",
-    "contrasena": "ZmlvbmExMjM=",
+    "contrasena": "ZmlvbmExMjM\u003d",
     "personaId": 9,
     "perfilId": 9
   },
   {
     "id": 10,
     "correoElectronico": "george.orwell@example.com",
-    "contrasena": "MTk4NHBhc3M=",
+    "contrasena": "MTk4NHBhc3M\u003d",
     "personaId": 10,
     "perfilId": 10
   },
   {
     "id": 11,
     "correoElectronico": "laura.fit@example.com",
-    "contrasena": "bGF1cmExMjM=",
+    "contrasena": "bGF1cmExMjM\u003d",
     "personaId": 11,
     "perfilId": 11
   },
   {
     "id": 12,
     "correoElectronico": "michael.gym@example.com",
-    "contrasena": "bWljaGFlbDEyMw==",
+    "contrasena": "bWljaGFlbDEyMw\u003d\u003d",
     "personaId": 12,
     "perfilId": 12
   },
   {
     "id": 13,
     "correoElectronico": "sara.active@example.com",
-    "contrasena": "c2FyYTEyMzQ=",
+    "contrasena": "c2FyYTEyMzQ\u003d",
     "personaId": 13,
     "perfilId": 13
   },
   {
     "id": 14,
     "correoElectronico": "david.strong@example.com",
-    "contrasena": "ZGF2aWQxMjM=",
+    "contrasena": "ZGF2aWQxMjM\u003d",
     "personaId": 14,
     "perfilId": 14
   },
   {
     "id": 15,
     "correoElectronico": "emily.fitness@example.com",
-    "contrasena": "ZW1pbHkxMjM=",
+    "contrasena": "ZW1pbHkxMjM\u003d",
     "personaId": 15,
     "perfilId": 15
   },
   {
     "id": 16,
     "correoElectronico": "peter.health@example.com",
-    "contrasena": "cGV0ZXIxMjM=",
+    "contrasena": "cGV0ZXIxMjM\u003d",
     "personaId": 16,
     "perfilId": 16
   },
   {
     "id": 17,
     "correoElectronico": "linda.trainer@example.com",
-    "contrasena": "bGluZGExMjM=",
+    "contrasena": "bGluZGExMjM\u003d",
     "personaId": 17,
     "perfilId": 17
   },
@@ -142,7 +142,7 @@
   {
     "id": 21,
     "correoElectronico": "william.harris@example.com",
-    "contrasena": "d2lsbGlhbTEyMw==",
+    "contrasena": "d2lsbGlhbTEyMw\u003d\u003d",
     "personaId": 21,
     "perfilId": 21
   },
@@ -156,21 +156,21 @@
   {
     "id": 23,
     "correoElectronico": "james.johnson@example.com",
-    "contrasena": "amFtZXMxMjM=",
+    "contrasena": "amFtZXMxMjM\u003d",
     "personaId": 23,
     "perfilId": 23
   },
   {
     "id": 24,
     "correoElectronico": "emma.brown@example.com",
-    "contrasena": "ZW1tYTEyMw==",
+    "contrasena": "ZW1tYTEyMw\u003d\u003d",
     "personaId": 24,
     "perfilId": 24
   },
   {
     "id": 25,
     "correoElectronico": "alexander.davis@example.com",
-    "contrasena": "YWxleDEyMw==",
+    "contrasena": "YWxleDEyMw\u003d\u003d",
     "personaId": 25,
     "perfilId": 25
   },
@@ -191,14 +191,14 @@
   {
     "id": 28,
     "correoElectronico": "charlotte.taylor@example.com",
-    "contrasena": "Y2hhcmxvdGUxMjM=",
+    "contrasena": "Y2hhcmxvdGUxMjM\u003d",
     "personaId": 28,
     "perfilId": 28
   },
   {
     "id": 29,
     "correoElectronico": "henry.moore@example.com",
-    "contrasena": "aGVucnkxMjM=",
+    "contrasena": "aGVucnkxMjM\u003d",
     "personaId": 29,
     "perfilId": 29
   },
@@ -240,7 +240,7 @@
   {
     "id": 35,
     "correoElectronico": "alexander.davis2@example.com",
-    "contrasena": "YWxleDIyMw==",
+    "contrasena": "YWxleDIyMw\u003d\u003d",
     "personaId": 35,
     "perfilId": 35
   },
@@ -261,14 +261,14 @@
   {
     "id": 38,
     "correoElectronico": "charlotte.taylor2@example.com",
-    "contrasena": "Y2hhcmxvdGUyMjM=",
+    "contrasena": "Y2hhcmxvdGUyMjM\u003d",
     "personaId": 38,
     "perfilId": 38
   },
   {
     "id": 39,
     "correoElectronico": "henry.moore2@example.com",
-    "contrasena": "aGVucnkxMjM=",
+    "contrasena": "aGVucnkxMjM\u003d",
     "personaId": 39,
     "perfilId": 39
   },
@@ -317,14 +317,14 @@
   {
     "id": 46,
     "correoElectronico": "ella.martinez@example.com",
-    "contrasena": "ZWxsYTEyMw==",
+    "contrasena": "ZWxsYTEyMw\u003d\u003d",
     "personaId": 46,
     "perfilId": 46
   },
   {
     "id": 47,
     "correoElectronico": "mason.johnson@example.com",
-    "contrasena": "bWFzb24xMjM=",
+    "contrasena": "bWFzb24xMjM\u003d",
     "personaId": 47,
     "perfilId": 47
   },
@@ -338,21 +338,21 @@
   {
     "id": 49,
     "correoElectronico": "ethan.davis@example.com",
-    "contrasena": "ZXRoYW4xMjM=",
+    "contrasena": "ZXRoYW4xMjM\u003d",
     "personaId": 49,
     "perfilId": 49
   },
   {
     "id": 50,
     "correoElectronico": "isabella.wilson@example.com",
-    "contrasena": "aXNhYmVsbGExMjM=",
+    "contrasena": "aXNhYmVsbGExMjM\u003d",
     "personaId": 50,
     "perfilId": 50
   },
   {
     "id": 51,
     "correoElectronico": "logan.anderson@example.com",
-    "contrasena": "bG9nYW4xMjM=",
+    "contrasena": "bG9nYW4xMjM\u003d",
     "personaId": 51,
     "perfilId": 51
   },
@@ -366,7 +366,7 @@
   {
     "id": 53,
     "correoElectronico": "jack.moore@example.com",
-    "contrasena": "amFjazEyMw==",
+    "contrasena": "amFjazEyMw\u003d\u003d",
     "personaId": 53,
     "perfilId": 53
   },
@@ -408,7 +408,7 @@
   {
     "id": 59,
     "correoElectronico": "alexander.davis3@example.com",
-    "contrasena": "YWxleDIyMw==",
+    "contrasena": "YWxleDIyMw\u003d\u003d",
     "personaId": 59,
     "perfilId": 59
   },
@@ -429,14 +429,14 @@
   {
     "id": 62,
     "correoElectronico": "charlotte.taylor3@example.com",
-    "contrasena": "Y2hhcmxvdGUyMjM=",
+    "contrasena": "Y2hhcmxvdGUyMjM\u003d",
     "personaId": 62,
     "perfilId": 62
   },
   {
     "id": 63,
     "correoElectronico": "henry.moore3@example.com",
-    "contrasena": "aGVucnkxMjM=",
+    "contrasena": "aGVucnkxMjM\u003d",
     "personaId": 63,
     "perfilId": 63
   },
@@ -478,7 +478,7 @@
   {
     "id": 69,
     "correoElectronico": "alexander.davis4@example.com",
-    "contrasena": "YWxleDIyMw==",
+    "contrasena": "YWxleDIyMw\u003d\u003d",
     "personaId": 69,
     "perfilId": 69
   },
@@ -499,14 +499,14 @@
   {
     "id": 72,
     "correoElectronico": "charlotte.taylor4@example.com",
-    "contrasena": "Y2hhcmxvdGUyMjM=",
+    "contrasena": "Y2hhcmxvdGUyMjM\u003d",
     "personaId": 72,
     "perfilId": 72
   },
   {
     "id": 73,
     "correoElectronico": "henry.moore4@example.com",
-    "contrasena": "aGVucnkxMjM=",
+    "contrasena": "aGVucnkxMjM\u003d",
     "personaId": 73,
     "perfilId": 73
   },
@@ -548,7 +548,7 @@
   {
     "id": 79,
     "correoElectronico": "alexander.davis5@example.com",
-    "contrasena": "YWxleDIyMw==",
+    "contrasena": "YWxleDIyMw\u003d\u003d",
     "personaId": 79,
     "perfilId": 79
   },
@@ -569,14 +569,14 @@
   {
     "id": 82,
     "correoElectronico": "charlotte.taylor5@example.com",
-    "contrasena": "Y2hhcmxvdGUyMjM=",
+    "contrasena": "Y2hhcmxvdGUyMjM\u003d",
     "personaId": 82,
     "perfilId": 82
   },
   {
     "id": 83,
     "correoElectronico": "henry.moore5@example.com",
-    "contrasena": "aGVucnkxMjM=",
+    "contrasena": "aGVucnkxMjM\u003d",
     "personaId": 83,
     "perfilId": 83
   },
@@ -586,5 +586,33 @@
     "contrasena": "YW1lbGlhMTIz",
     "personaId": 84,
     "perfilId": 84
+  },
+  {
+    "id": 85,
+    "correoElectronico": "juan@exmple.com",
+    "contrasena": "YWRtaW5pc3RyYWRvcmVz",
+    "personaId": 85,
+    "perfilId": 85
+  },
+  {
+    "id": 86,
+    "correoElectronico": "asdf@exmaple.com",
+    "contrasena": "YWRtaW5pc3RyYWRvcmVz",
+    "personaId": 86,
+    "perfilId": 86
+  },
+  {
+    "id": 88,
+    "correoElectronico": "gabriel.cl@example.com",
+    "contrasena": "YWRtaW5pc3RyYWRvcmVz",
+    "personaId": 88,
+    "perfilId": 88
+  },
+  {
+    "id": 89,
+    "correoElectronico": "assssdfasdf@example.com",
+    "contrasena": "YWRtaW5pc3RyYWRvcmVz",
+    "personaId": 89,
+    "perfilId": 89
   }
 ]

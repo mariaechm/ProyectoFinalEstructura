@@ -35,7 +35,7 @@ public class AuthenticationFilter implements ContainerRequestFilter {
 
         String jwt = authHeader.substring("Bearer ".length());
 
-        if(!JWTManager.isValidToken(jwt)) {
+        if (!JWTManager.isValidToken(jwt)) {
             containerRequestContext.abortWith(Response.status(Status.UNAUTHORIZED).build());
             return;
         }
