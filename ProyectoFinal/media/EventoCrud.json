@@ -16,5 +16,29 @@
     "fecha": "2025-02-03",
     "hora": "5:59:39",
     "descripcion": "Se ha registrado la información personal"
+  },
+  {
+    "id": 4,
+    "fecha": "2025-02-03",
+    "hora": "6:54:55",
+    "descripcion": "Se actualizó con éxito la información personal"
+  },
+  {
+    "id": 5,
+    "fecha": "2025-02-03",
+    "hora": "6:56:40",
+    "descripcion": "Se ha registrado la información personal"
+  },
+  {
+    "id": 6,
+    "fecha": "2025-02-03",
+    "hora": "6:57:57",
+    "descripcion": "Se ha registrado la información personal"
+  },
+  {
+    "id": 7,
+    "fecha": "2025-02-03",
+    "hora": "7:00:17",
+    "descripcion": "Se ha registrado la información personal"
   }
 ]

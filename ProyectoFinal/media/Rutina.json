@@ -3,10 +3,24 @@
     "id": 1,
     "nombreRutina": "Rutina de brazo de Cbum",
     "descripcion": "Rutina para dessarrollar el biceps y se trabaja 2 veces a la semana para el crecimiento muscular",
-    "nroEjercicios": 1,
+    "nroEjercicios": 3,
     "idEjercicio": [
-      1
+      2,
+      3,
+      4
     ],
     "objetivoRutina": "HIPERTROFIA"
+  },
+  {
+    "id": 3,
+    "nombreRutina": "Rutina de Runitas",
+    "descripcion": "La Rutina de Runitas está diseñada para mejorar fuerza y resistencia con un enfoque equilibrado en todo el cuerpo Inspirada en la constancia y el esfuerzo diario esta rutina incluye ejercicios compuestos y accesorios para maximizar resultados",
+    "nroEjercicios": 3,
+    "idEjercicio": [
+      2,
+      3,
+      4
+    ],
+    "objetivoRutina": "RESISTENCIA"
   }
 ]

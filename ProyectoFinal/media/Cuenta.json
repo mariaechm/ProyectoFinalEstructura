@@ -26,5 +26,26 @@
     "contrasena": "c2FuZHJhMTIzNA\u003d\u003d",
     "personaId": 4,
     "perfilId": 4
+  },
+  {
+    "id": 5,
+    "correoElectronico": "joel.cango@example.com",
+    "contrasena": "am9lbDEyMzQ\u003d",
+    "personaId": 5,
+    "perfilId": 5
+  },
+  {
+    "id": 6,
+    "correoElectronico": "homero.contento@example.com",
+    "contrasena": "aG9tZXJvMTIzNA\u003d\u003d",
+    "personaId": 6,
+    "perfilId": 6
+  },
+  {
+    "id": 7,
+    "correoElectronico": "alejandro.feijo@example.com",
+    "contrasena": "YWxlamFuZHJvMTIzNA\u003d\u003d",
+    "personaId": 7,
+    "perfilId": 7
   }
 ]

@@ -1,13 +1,35 @@
 [
   {
-    "id": 1,
-    "nombreEjercicio": "Curl Martillo",
-    "descripcion": "Este ejercicio se utiliza para desarrollar el biceps en extension y flexion de codo",
-    "imagen": "https://static.strengthlevel.com/images/exercises/incline-hammer-curl/incline-hammer-curl-400.avif",
-    "tiempoDescanso": 3.0,
+    "id": 2,
+    "nombreEjercicio": "Press de Banca Plano con Barra",
+    "descripcion": "El press de banca plano con barra es un ejercicio compuesto que trabaja principalmente el pectoral mayor junto con los triceps y los deltoides anteriores Para realizarlo la persona debe acostarse en un banco plano con los pies firmes en el suelo agarrar la barra con un agarre un poco mas ancho que el ancho de los hombros bajar la barra de forma controlada hasta el pecho y luego empujarla hacia arriba hasta extender completamente los brazos Es ideal para desarrollar fuerza y masa muscular en el tren superior",
+    "imagen": "https://static.strengthlevel.com/images/exercises/bench-press/bench-press-400.avif",
+    "tiempoDescanso": 5.0,
+    "nroSeries": 3,
+    "nroRepSerie": 8,
+    "tipoEjercicio": "COMPUESTO",
+    "grupoMuscularObjetivo": "PECHO"
+  },
+  {
+    "id": 3,
+    "nombreEjercicio": "Sentadilla Libre",
+    "descripcion": "La sentadilla libre es un ejercicio compuesto que trabaja principalmente los cuadriceps los gluteos y los isquiotibiales junto con el core y la espalda baja Para realizarlo la persona debe colocarse de pie con los pies a la altura de los hombros bajar el cuerpo flexionando las rodillas y caderas manteniendo la espalda recta hasta que los muslos esten al menos paralelos al suelo luego debe empujar con los pies para volver a la posicion inicial Es un ejercicio clave para desarrollar fuerza y estabilidad en el tren inferior",
+    "imagen": "https://static.strengthlevel.com/images/exercises/squat/squat-400.avif",
+    "tiempoDescanso": 6.0,
     "nroSeries": 3,
     "nroRepSerie": 10,
     "tipoEjercicio": "COMPUESTO",
-    "grupoMuscularObjetivo": "BICEPS"
+    "grupoMuscularObjetivo": "CUÁDRICEPS"
+  },
+  {
+    "id": 4,
+    "nombreEjercicio": "Peso Muerto Convencional",
+    "descripcion": "El peso muerto convencional es un ejercicio compuesto que trabaja principalmente la cadena posterior incluyendo los isquiotibiales los gluteos la espalda baja y el core Para realizarlo la persona debe colocarse de pie con los pies a la altura de los hombros agarrar la barra con un agarre prono o mixto mantener la espalda recta y activar el core luego debe levantar la barra extendiendo las caderas y rodillas hasta ponerse de pie y bajarla de forma controlada Es un ejercicio clave para desarrollar fuerza y estabilidad en todo el cuerpo",
+    "imagen": "https://static.strengthlevel.com/images/exercises/deadlift/deadlift-400.avif",
+    "tiempoDescanso": 5.0,
+    "nroSeries": 3,
+    "nroRepSerie": 8,
+    "tipoEjercicio": "COMPUESTO",
+    "grupoMuscularObjetivo": "FEMORALES"
   }
 ]

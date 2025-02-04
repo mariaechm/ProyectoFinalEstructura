@@ -4,6 +4,7 @@ import com.example.controller.dao.implement.AdapterDao;
 import com.example.controller.dao.implement.JsonFileManager;
 import com.example.controller.tda.list.LinkedList;
 import com.example.models.Ejercicio;
+import com.example.models.Rutina;
 import com.example.models.enumerator.GrupoMuscularObjetivo;
 import com.example.models.enumerator.TipoEjercicio;
 
@@ -53,6 +54,15 @@ public class EjercicioDao extends AdapterDao<Ejercicio> {
 
     public Ejercicio deleteEjercicio(Integer id) throws Exception {
         Ejercicio ejercicio = get(id);
+        RutinaDao rutinaDao = new RutinaDao();
+        LinkedList<Rutina> rutinas = rutinaDao.listAll();
+        for (Rutina rutina : rutinas.toArray()) {
+            for (int i = 0; i < rutina.getNroEjercicios(); i++) {
+                if (rutina.getIdEjercicio()[i] == id) {
+                    rutinaDao.deleteEjercicio(rutina.getId(), rutina.getIdEjercicio()[i]);
+                }
+            }
+        }
         remove(id);
         return ejercicio;
     }

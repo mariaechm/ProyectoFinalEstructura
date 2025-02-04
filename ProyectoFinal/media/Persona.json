@@ -25,12 +25,12 @@
   },
   {
     "id": 3,
-    "nombre": "Gabriel",
-    "apellido": "Cevallos",
+    "nombre": "Jose Francisco",
+    "apellido": "Riofrio",
     "identificacion": "1122445577",
     "celular": "0990921661",
     "fechaNacimiento": "1956-02-17",
-    "direccion": "catamayo",
+    "direccion": "Catamayo",
     "tipoIdentificacion": "CEDULA",
     "genero": "HOMBRE",
     "rol": "CLIENTE"
@@ -45,6 +45,42 @@
     "direccion": "Union Lojana",
     "tipoIdentificacion": "CEDULA",
     "genero": "MUJER",
+    "rol": "CLIENTE"
+  },
+  {
+    "id": 5,
+    "nombre": "Joel",
+    "apellido": "Cango",
+    "identificacion": "1122334455",
+    "celular": "0981920792",
+    "fechaNacimiento": "2005-04-04",
+    "direccion": "Cuenca ve",
+    "tipoIdentificacion": "CEDULA",
+    "genero": "OTRO",
+    "rol": "CLIENTE"
+  },
+  {
+    "id": 6,
+    "nombre": "Homero",
+    "apellido": "Contento",
+    "identificacion": "0123456789",
+    "celular": "0992342037",
+    "fechaNacimiento": "2006-04-20",
+    "direccion": "El redondel del soldado dijo el",
+    "tipoIdentificacion": "CEDULA",
+    "genero": "HOMBRE",
+    "rol": "CLIENTE"
+  },
+  {
+    "id": 7,
+    "nombre": "Alejandro",
+    "apellido": "Feijo",
+    "identificacion": "0987654321",
+    "celular": "0993694156",
+    "fechaNacimiento": "2005-01-03",
+    "direccion": "La pradera",
+    "tipoIdentificacion": "CEDULA",
+    "genero": "HOMBRE",
     "rol": "CLIENTE"
   }
 ]

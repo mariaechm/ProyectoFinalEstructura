@@ -33,5 +33,31 @@
     "duracionDias": 1,
     "personaId": 4,
     "tipo": "DIA"
+  },
+  {
+    "id": 5,
+    "fechaInicio": "2025-02-03",
+    "fechaFinalizacion": "2025-02-04",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "personaId": 5,
+    "tipo": "DIA"
+  },
+  {
+    "id": 6,
+    "fechaInicio": "2025-02-03",
+    "fechaFinalizacion": "2025-02-04",
+    "precio": 3.0,
+    "duracionDias": 1,
+    "personaId": 6,
+    "tipo": "DIA"
+  },
+  {
+    "id": 7,
+    "fechaInicio": "2025-02-05",
+    "fechaFinalizacion": "2025-03-07",
+    "precio": 25.0,
+    "duracionDias": 30,
+    "tipo": "MES"
   }
 ]

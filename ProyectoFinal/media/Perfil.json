@@ -15,7 +15,7 @@
   },
   {
     "id": 3,
-    "nickName": "Gabriel",
+    "nickName": "Pancho",
     "imagen": "user.png",
     "objetivoCliente": "Objetivo ...",
     "fechaCreacion": "2025-02-03"
@@ -23,6 +23,27 @@
   {
     "id": 4,
     "nickName": "Sandra",
+    "imagen": "user.png",
+    "objetivoCliente": "Objetivo ...",
+    "fechaCreacion": "2025-02-03"
+  },
+  {
+    "id": 5,
+    "nickName": "Joel",
+    "imagen": "user.png",
+    "objetivoCliente": "Objetivo ...",
+    "fechaCreacion": "2025-02-03"
+  },
+  {
+    "id": 6,
+    "nickName": "Homero",
+    "imagen": "user.png",
+    "objetivoCliente": "Objetivo ...",
+    "fechaCreacion": "2025-02-03"
+  },
+  {
+    "id": 7,
+    "nickName": "Alejandro",
     "imagen": "user.png",
     "objetivoCliente": "Objetivo ...",
     "fechaCreacion": "2025-02-03"
